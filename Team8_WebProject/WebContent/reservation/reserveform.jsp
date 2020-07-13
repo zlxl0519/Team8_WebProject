@@ -15,23 +15,13 @@
 	<form action="reserve.jsp" method="post">
 		<div class="form-group">
 			<label for="name">보호자명</label>
-			<input class="form-control" type="text" name="name" id="name"/>
+			<input class="form-control" type="text" value="" name="name" id="name"/>
 		</div>	
-		<div class="form-row">
-			<div class="form-group">
-				<label for="phone">연락처</label>
-			</div>
-			<div class="form-group col-md-2">
-				<select name="phone" id="phone">
-					<option value="">연락처 선택</option>
-					<option value="010">010</option>
-					<option value="070">070</option>
-				</select>
-			</div>
-			<div class="form-group col-md-6">
+		<div class="form-group">
+			<label for="phone">연락처</label>
 			<%--연락처가 번호만 들어가도록 제한한다. jquery 사용 --%>
-				<input class="form-control" type="text" name="phone2" id="phone2" maxlength="8" placeholder="'-'을 제외한 휴대폰번호를 입력해 주세요"/>
-			</div>
+			<input class="form-control" type="text" value="" name="phone" id="phone" maxlength="11" placeholder="'-'을 제외한 휴대폰번호를 입력해 주세요"/>
+			
 		</div>
 		<div class="form-group">
 			<label for="service">희망서비스</label>
@@ -45,15 +35,14 @@
 		<div class="form-row">
 			<div class="col" id="dogBreedInput">
 				<label for="dogBreed">반려견종</label>
-				<input class="form-control" type="text" name="dogBreed" id="dogBreed"/>
+				<input class="form-control" type="text" value="" name="dogBreed" id="dogBreed"/>
 			</div>
 			<div class="col" id="dogAgeInput">
 				<label for="dogAge">반려견나이</label>
-				<input class="form-control" type="text" name="dogAge" id="dogAge" />
+				<input class="form-control" type="text" value="" name="dogAge" id="dogAge" />
 			</div>
 			<div id="button">
-				<button class="btn btn-outline-primary" type="button" id="makeBtn">+</button>
-				<button class="btn btn-outline-warning" type="button" id="removeBtn">-</button>
+				<button class="btn btn-outline-primary" type="button" id="addBtn">+</button>
 			</div>
 		</div>
 		<div class="form-group">
@@ -79,17 +68,14 @@
 	});
 	
 	//반려견종, 반려견나이 입력칸 추가하기
-	$("#makeBtn").on("click", function(){
+	$("#addBtn").on("click", function(){
 		$("<label>").text("반려견종").attr("for", "dogBreed").appendTo("#dogBreedInput");
 		$("<input>").attr("class", "form-control").attr("type", "text").attr("name", "dogBreed").appendTo("#dogBreedInput");
 		$("<label>").text("반려견나이").attr("for","dogAge").appendTo("#dogAgeInput");
 		$("<input>").attr("class", "form-control").attr("type", "text").attr("name","dogAge").appendTo("#dogAgeInput");
 		
 	});
-	//반려견종, 반려견나이 입력칸 지우기
-	$("#removeBtn").on("click" ,function(){
-		
-	});
+	
 </script>
 </body>
 </html>
