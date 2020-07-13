@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!-- header -->
 <jsp:include page="./include/header.jsp"></jsp:include>
+<!-- content -->
 <div class="content">
 <!--스크롤 테스틑 겸 넣은 것 입니다. -->
 <p>글이라구</p>
@@ -16,5 +18,5 @@
 <p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p>
 <p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p><p>글이라구</p>
 </div>
-
+<!-- footer -->
 <jsp:include page="./include/footer.jsp"></jsp:include>
