@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원가입 페이지</title>
-</head>
-<body>
+<jsp:include page="../include/header.jsp"></jsp:include>
+
+<%--회원가입  --%>
+
 	<h1>회원가입 폼입니다.</h1>
 	<form action="signup.jsp" method="post">
 		<div>
@@ -55,5 +52,4 @@
 		</div>
 		<a href=""><button>회원가입 하기</button></a>
 	</form>
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

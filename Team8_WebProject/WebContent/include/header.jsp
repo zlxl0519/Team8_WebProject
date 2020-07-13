@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMung</title>
     <!--css-->
-    <link rel="stylesheet" href="./include/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/include/css/base.css">
     <!-- IE9 이전 버전 / 로컬에서는 실행되지 않음-->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -28,8 +28,8 @@
     <div id="wrap">
     <!-- 따라다니는 버튼  -->
     <div class="floatmenu">
-            <a href="#"><img src="./include/img/icon_talk.png" /></a>
-            <a href="#"><img src="./include/img/icon_up.png" /></a>
+            <a href="#"><img src="${pageContext.request.contextPath }/include/img/icon_talk.png" /></a>
+            <a href="#"><img src="${pageContext.request.contextPath }/include/img/icon_up.png" /></a>
         </div>
     <!-- 따라다니는 버튼 종 -->
         
@@ -45,7 +45,7 @@
             </nav>
             <nav class="nav2">
                 <div>
-                    <h1><a href="javascript:void:(o);" target="_blank"><img src="./include/img/logo_top.png" alt="애견 호텔링 전문 : AMung"/></a></h1>
+                    <h1><a href="javascript:void:(o);" target="_blank"><img src="${pageContext.request.contextPath }/include/img/logo_top.png" alt="애견 호텔링 전문 : AMung"/></a></h1>
                 
                     <div class="nav2-gnb">
                         <ul>
