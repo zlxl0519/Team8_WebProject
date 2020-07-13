@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
-
-<%--회원가입  --%>
+<script>
+	document.title = "회원가입 "; 
+</script>
+<%--회원가입 폼입니다.--%>
 
 	<h1>회원가입 폼입니다.</h1>
 	<form action="signup.jsp" method="post">
