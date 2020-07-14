@@ -10,6 +10,24 @@
 
 </head>
 <body>
+<script>
+$(document).ready(function(){
+	var counter =1;
+	 
+	$("#addBtn").on("click", function(){
+		 
+		 var str="<label> 반려견종<input class='form-control' type='text' value='' name='dogBreed"+counter+"' id='dogBreed"+counter+"'/></label>";
+		var str2="<label>반려견나이<input class='form-control' type='text' value='' name='dogAge"+counter+"' id='dogAge"+counter+"' /></label>"
+		 var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter++);
+		 newTextBoxDiv.after().html(str+str2);
+		  newTextBoxDiv.appendTo("#dogInput");
+	});
+	$("#removeBtn").on("click", function(){
+		
+		$("#TextBoxDiv" + counter--).remove();
+	});
+});
+</script>
 <div class="container">
 	<h1>예약 페이지 폼입니다.</h1>
 	<form action="reserve.jsp" method="post">
@@ -32,17 +50,18 @@
 				<option value="스페셜 케어">스페셜 케어</option>
 			</select>
 		</div>
-		<div class="form-row">
-			<div class="col" id="dogBreedInput">
-				<label for="dogBreed">반려견종</label>
-				<input class="form-control" type="text" value="" name="dogBreed" id="dogBreed"/>
-			</div>
-			<div class="col" id="dogAgeInput">
-				<label for="dogAge">반려견나이</label>
-				<input class="form-control" type="text" value="" name="dogAge" id="dogAge" />
-			</div>
-			<div id="button">
-				<button class="btn btn-outline-primary" type="button" id="addBtn">+</button>
+		<button class="btn btn-outline-primary" type="button" id="addBtn">+</button>
+		<button type="button" id="removeBtn">-</button>
+		<div id="dogInput" class="form-row">
+			<div id="TextBoxDiv">
+				<label>
+					반려견종
+					<input class="form-control" type="text" value="" name="dogBreed" id="dogBreed"/>
+				</label>
+				<label>
+					반려견나이
+					<input class="form-control" type="text" value="" name="dogAge" id="dogAge" />
+				</label>
 			</div>
 		</div>
 		<div class="form-group">
@@ -67,14 +86,7 @@
 		$(this).val($(this).val().replace(/[^0-9]/g,""));
 	});
 	
-	//반려견종, 반려견나이 입력칸 추가하기
-	$("#addBtn").on("click", function(){
-		$("<label>").text("반려견종").attr("for", "dogBreed").appendTo("#dogBreedInput");
-		$("<input>").attr("class", "form-control").attr("type", "text").attr("name", "dogBreed").appendTo("#dogBreedInput");
-		$("<label>").text("반려견나이").attr("for","dogAge").appendTo("#dogAgeInput");
-		$("<input>").attr("class", "form-control").attr("type", "text").attr("name","dogAge").appendTo("#dogAgeInput");
-		
-	});
+	
 	
 </script>
 </body>
