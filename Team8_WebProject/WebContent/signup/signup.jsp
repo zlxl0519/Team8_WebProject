@@ -1,6 +1,4 @@
-<%@page import="test.Dogs.dao.DogsDao"%>
 <%@page import="test.member.dao.MemberDao"%>
-<%@page import="test.Dogs.dto.DogsDto"%>
 <%@page import="test.member.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -19,26 +17,22 @@
 	String gender = request.getParameter("gender");
 	String memo = request.getParameter("memo");
 	
-	MemberDto dto1 = new MemberDto();
-	dto1.setId(id);
-	dto1.setPwd(pwd);
-	dto1.setEmail(email);
-	dto1.setName(name);
-	dto1.setPhone(phone);
+	MemberDto dto = new MemberDto();
+	dto.setId(id);
+	dto.setPwd(pwd);
+	dto.setEmail(email);
+	dto.setName(name);
+	dto.setPhone(phone);
+	dto.setDname(dname);
+	dto.setDage(dage);
+	dto.setBreed(breed);
+	dto.setWeight(weight);
+	dto.setNeutral(neutral);
+	dto.setGender(gender);
+	dto.setMemo(memo);
 	
-	DogsDto dto2 = new DogsDto(); 
-	dto2.setId(id);
-	dto2.setDname(dname);
-	dto2.setDage(dage);
-	dto2.setBreed(breed);
-	dto2.setBreed(breed);
-	dto2.setWeight(weight);
-	dto2.setNeutral(neutral);
-	dto2.setGender(gender);
-	dto2.setMemo(memo);
-	
-	boolean isSuccess1 = MemberDao.getInstance().insert(dto1);
-	boolean isSuccess2 = DogsDao.getInstance().insert(dto2);
+	boolean isSuccess1 = MemberDao.getInstance().insertHuman(dto);
+	boolean isSuccess2 = MemberDao.getInstance().insertDog(dto);
 %>
 <!DOCTYPE html>
 <html>
