@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Amung's FAQ</title>
 <style>
 	.btn{padding:0; background:transparent; border:0; outline:0}
 	.faq{width: 690px; margin:20px auto; border:1px solid #000}
