@@ -4,13 +4,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/users/loginform.jsp</title>
+<title>로그인화면</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css" />
+<script src=${pageContext.request.contextPath }/js/jquery-3.5.1.js/>
 </head>
+
 <body>
+<script>
+	function checkValue(){
+		inputForm=eval("document.loginForm");
+		if(!inputForm.id.value){
+			alert("아이디를 입력하세요");
+			inputForm.id.focus();
+			return false;
+		}
+		if(!inputForm.pwd.value){
+			alert("비밀번호를 입력하세요");
+			inputForm.pwd.focus();
+			return false;
+		}
+	}
+</script>
 <div class="container">
 	<h1>LOGIN</h1>
-	<form action="login.jsp" method="post">
+	<form name="loginForm" action="login.jsp" method="post" onsubmit="return checkValue()">
 		<div class="form-group col-md-6">
 			<input class="form-control" type="text" name="id" id="id" placeholder="아이디" />
 		</div>
