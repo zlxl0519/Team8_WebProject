@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,14 @@
 </style>
 </head>
 <body>
+=======
+<jsp:include page="../include/header.jsp"></jsp:include>
+<script>
+	document.title = "회원가입 "; 
+</script>
+<%--회원가입 폼입니다.--%>
+
+>>>>>>> refs/remotes/origin/master
 	<h1>회원가입 폼입니다.</h1>
 	<form action="signup.jsp" method="post">
 		<div style=" width:450px; border-top-style: solid; margin-bottom: 20px; padding-top: 10px;">
@@ -68,6 +77,10 @@
 		</div>	
 		<a href="signup.jsp"><button>회원가입 하기</button></a>
 	</form>
+<<<<<<< HEAD
 	
 </body>
 </html>
+=======
+<jsp:include page="../include/footer.jsp"></jsp:include>
+>>>>>>> refs/remotes/origin/master
