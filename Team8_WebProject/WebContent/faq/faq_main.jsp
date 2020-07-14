@@ -25,8 +25,9 @@
 	List<FaqDto> list = dao.getList();
 
 %>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
-<div class="container" style="text-align:center;">
+<div class="content" style="text-align:center;">
 
 	<h1>FAQ</h1>
 	<h3>자주 물어보시는 질문들입니다.</h3>
@@ -42,6 +43,7 @@
 	
 </div>
 
+<jsp:include page="../include/footer.jsp"></jsp:include>
 
 <script>
 

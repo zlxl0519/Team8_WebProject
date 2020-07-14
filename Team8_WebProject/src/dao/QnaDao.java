@@ -47,6 +47,7 @@ public class QnaDao {
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setHit(rs.getInt("hit"));
 				dto.setId(rs.getString("id"));
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
