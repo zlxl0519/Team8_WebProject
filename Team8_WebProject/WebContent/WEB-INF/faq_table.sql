@@ -1,0 +1,6 @@
+CREATE TABLE faq (
+num NUMBER PRIMARY KEY, qst CLOB, ans CLOB
+);
+
+CREATE SEQUENCE faq_seq;
+
