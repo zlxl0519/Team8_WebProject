@@ -23,7 +23,7 @@
     <![endif]-->
 <!-- //IE9 이전 버전-->
 <!--script -->
-<script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/script.js"></script>
 </head>
