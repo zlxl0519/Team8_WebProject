@@ -24,8 +24,8 @@
 		<input type="checkbox" name="remember" value="remember"/>로그인 상태 유지
 	</form>
 	<div class="content">
-		<a href="id_findform.jsp">아이디 찾기</a>
-		<a href="pw_findform.jsp">비밀번호 찾기</a>
+		<a href="findform.jsp">아이디 찾기</a>
+		<a href="findform.jsp">비밀번호 찾기</a>
 		<a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a>
 	</div>
 </div>
