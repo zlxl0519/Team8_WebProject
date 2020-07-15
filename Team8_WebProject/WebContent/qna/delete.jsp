@@ -7,7 +7,7 @@
 	QnaDao.getInstance().delete(num);
 	
 	String cPath = request.getContextPath();
-	response.sendRedirect(cPath+"/board/list.jsp");
+	response.sendRedirect(cPath+"/qna/qna_list.jsp");
 	
 
 %>

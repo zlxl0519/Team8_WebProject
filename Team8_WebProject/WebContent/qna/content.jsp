@@ -33,6 +33,14 @@
 			<td><%=dto.getTitle() %></td>
 		</tr>
 		<tr>
+			<th>작성일</th>
+			<td><%=dto.getRegdate() %></td>
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td><%=dto.getHit() %></td>
+		</tr>
+		<tr>
 			<th>내용</th>
 			<td><textarea cols="60" rows="30" readonly><%=dto.getContent() %></textarea></td>
 		</tr>
