@@ -5,7 +5,7 @@
 	document.title = "회원가입 "; 
 </script>
 <%--회원가입 폼입니다.--%>
-
+<div class="content">
 	<h1>회원가입 폼입니다.</h1>
 	<form action="signup.jsp" method="post">
 		<div>
@@ -54,4 +54,5 @@
 		</div>
 		<a href=""><button>회원가입 하기</button></a>
 	</form>
+	</div>
 <jsp:include page="../include/footer.jsp"></jsp:include>

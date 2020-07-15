@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String id=(String)session.getAttribute("id");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +26,7 @@
     <![endif]-->
 <!-- //IE9 이전 버전-->
 <!--script -->
-<script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/script.js"></script>
 </head>
@@ -39,9 +42,16 @@
 		<header>
 			<nav class="nav1">
 				<div class="nav-gnb">
-					<ul>
-						<li><a href="javascript:void(0);">로그인</a></li>
-						<li><a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a></li>
+				<ul>
+					<%if(id !=null){%>
+						<li><a href="javascript:void(0);"><%=id %> 님 환영합니다.</a></li>
+						<li><a href="${pageContext.request.contextPath }/mypage/info.jsp">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a></li>
+						
+					<% }else{%>
+							<li><a href="${pageContext.request.contextPath }/users/loginform.jsp">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a></li>
+					<%} %>
 					</ul>
 				</div>
 
@@ -56,7 +66,7 @@
 					<div class="nav2-gnb">
 						<ul>
 							<li><a href="#">공지사항</a></li>
-							<li><a href="#">예약하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
 							<li><a href="#">이용안내</a></li>
 							<li><a href="#">커뮤니티</a></li>
 							<li><a href="#">FAQ</a></li>
@@ -76,7 +86,7 @@
 					<div class="nav2-gnb">
 						<ul>
 							<li><a href="#">공지사항</a></li>
-							<li><a href="#">예약하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
 							<li><a href="#">이용안내</a></li>
 							<li><a href="#">커뮤니티</a></li>
 							<li><a href="#">FAQ</a></li>
