@@ -6,28 +6,14 @@
 <meta charset="UTF-8">
 <title>로그인화면</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css" />
-<script src=${pageContext.request.contextPath }/js/jquery-3.5.1.js/>
+<script src="${pageContext.request.contextPath }/js/jquery-3.5.1.js"></script>
 </head>
 
 <body>
-<script>
-	function checkValue(){
-		inputForm=eval("document.loginForm");
-		if(!inputForm.id.value){
-			alert("아이디를 입력하세요");
-			inputForm.id.focus();
-			return false;
-		}
-		if(!inputForm.pwd.value){
-			alert("비밀번호를 입력하세요");
-			inputForm.pwd.focus();
-			return false;
-		}
-	}
-</script>
+
 <div class="container">
 	<h1>LOGIN</h1>
-	<form name="loginForm" action="login.jsp" method="post" onsubmit="return checkValue()">
+	<form id="loginForm" action="login.jsp" method="post" >
 		<div class="form-group col-md-6">
 			<input class="form-control" type="text" name="id" id="id" placeholder="아이디" />
 		</div>
@@ -38,10 +24,28 @@
 		<input type="checkbox" name="remember" value="remember"/>로그인 상태 유지
 	</form>
 	<div class="content">
-		<a href="id_find.jsp">아이디 찾기</a>
-		<a href="pw_find.jsp">비밀번호 찾기</a>
+		<a href="id_findform.jsp">아이디 찾기</a>
+		<a href="pw_findform.jsp">비밀번호 찾기</a>
 		<a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a>
 	</div>
 </div>
+<script>
+
+	$("#loginForm").on("submit", function(){
+		
+		if($("#id").val()==""){
+			alert("아이디를 입력해주세요");
+			$("#id").focus();
+			return false;
+		}
+		
+		if($("#pwd").val()==""){
+			alert("비밀번호를 입력해주세요");
+			$("#pwd").focus();
+			return false;
+		}
+	});
+
+</script>
 </body>
 </html>
