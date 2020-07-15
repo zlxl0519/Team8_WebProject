@@ -37,7 +37,7 @@
 	</div>
 	<div class="id_phonefind">
 		<h2>이름, 핸드폰번호로 찾기</h2>
-		<form id="id_phonefind" action="pwd_find.jsp" method="post">
+		<form id="id_phonefind" action="id_find2.jsp" method="post">
 			<div class="form-group">
 				<label for="name2">이름</label>
 				<input type="text" name="name2" id="name2" />
