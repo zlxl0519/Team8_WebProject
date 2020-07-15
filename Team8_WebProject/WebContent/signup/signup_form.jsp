@@ -17,9 +17,9 @@
 			<label for="img">프로필 이미지</label>
 			<input type="file" name="img" id="img"/><br />
 			<label for="id">아이디</label>
-			<input type="text" name="id" id="id" placeholder="30자 이내의 영문/숫자만 입력 가능합니다."/><br />
+			<input type="text" name="id" id="id" maxlength="30" placeholder="30자 이내의 영문/숫자만 입력 가능합니다."/><span id="checkResult"></span><br />
 			<span>*입력하신 아이디의 중복확인을 해주세요.</span>
-			<a href=""><button>중복확인</button></a><br />
+			<button id="checkBtn">중복확인</button><br />
 			<label for="pwd">비밀번호</label>
 			<input type="password" name="pwd" id="pwd" maxlength="16" placeholder="영문/숫자/특수문자 조합 8~16자리"/><br />
 			<label for="pwd2">비밀번호 확인</label>
@@ -74,6 +74,7 @@
 	</div>
 
 	<script>
+	//==========  비밀번호 재확인 일치불일치 =============
 		$("#alert-success").hide();
 		$("#alert-danger").hide();
 		$("#signup").keyup(function(){
@@ -92,6 +93,45 @@
 				}
 			}
 		})
+	
+	//=========== 아이디 중복 확인 =======================
+		$("#checkBtn").click(function(){
+			var clicked = 0;
+			clicked++;
+			console.log(clicked);
+		})
+		
+		$("#checkBtn").on("click", function(){
+			
+			var inputId = $("#id").val();
+			
+			$.ajax({
+				method : "get",
+				url : "checkid.jsp",
+				data : "inputId="+inputId,
+				success : function(data){
+					if(data.isExist){
+						$("#checkResult").text("중복되는 아이디이므로 사용이 불가합니다.").css("color", "red");
+						canUseId=false;
+					}else{
+						$("#checkResult").text("사용 가능한 아이디입니다.").css("color","green");
+						canUseId=true;
+					}
+				}
+			}); 
+			return false;
+		});
+		$("#signup").on("submit", function(){
+			if(!canUseId){
+				alert("아이디 중복을 확인하세요");
+				return false;
+			}
+		})
+		
+		
+	//=========아이디 영문/숫자 제한==============
+		
+
 	</script>
 </body>
 </html>
