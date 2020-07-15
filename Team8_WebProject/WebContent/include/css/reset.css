@@ -24,7 +24,7 @@ a img {border: none;}
 
 a {text-decoration:none;color: #000;}
 
-legend, caption{position:absolute; overflow:hidden; visibility:hidden; height:0; line-height:0; z-index:-1;}
+caption{position:absolute; overflow:hidden; visibility:hidden; height:0; line-height:0; z-index:-1;}
 
 caption,.hide{overflow:hidden; visibility:hidden; height:0; line-height:0; z-index:-1; display:none;}
 

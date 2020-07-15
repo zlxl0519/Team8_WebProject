@@ -89,6 +89,9 @@ footer .copyright {float: right; margin-top : 95px}
 .main-notice-list li span { color : #858355;}
 .main-review{ display : inline-block;width: 1180px; margin: 80px 0;}
 .main-review h6 { text-align : left; margin : 0 0 20px 20px; color : #98d2bf;} 
+
+
+
 .review-ul li{margin-bottom : 40px;width: 1180px; display : inline-block;
 cursor : pointer;}
 .review-ul li:last-child {margin-bottom : 0px;}
