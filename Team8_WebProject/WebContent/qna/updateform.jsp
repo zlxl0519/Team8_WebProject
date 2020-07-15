@@ -32,7 +32,7 @@
 			<label for="content">글내용</label>
 			<textarea name="content" id="content" cols="60" rows="30"><%=dto.getContent() %></textarea><br>
 		</div>
-		<button type="submit">수정</button>
+		<button type="submit">등록</button>
 		<button type="reset">취소</button>
 	</form>
 </div>
