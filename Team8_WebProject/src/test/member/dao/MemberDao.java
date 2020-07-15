@@ -284,6 +284,42 @@ public class MemberDao {
 		}
 		return id;
 	}
+	
+	//아이디, 이름, 연락처로 비밀번호 찾는 메소드
+	public String pwd_search(MemberDto dto) {
+		String pwd=null;//찾을 비밀번호
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select pwd"
+					+ "	from am_member"
+					+ "	where id=? and name=? and phone=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getPhone());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				pwd=rs.getString("pwd");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return pwd;
+	}
 }
 
 
