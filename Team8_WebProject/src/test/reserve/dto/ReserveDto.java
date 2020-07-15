@@ -2,6 +2,7 @@ package test.reserve.dto;
 
 public class ReserveDto {
 	private int num;
+	private String id;
 	private String service;
 	private String checkin;
 	private String checkout;
@@ -9,9 +10,10 @@ public class ReserveDto {
 	
 	public ReserveDto() {}
 
-	public ReserveDto(int num, String service, String checkin, String checkout, String etc) {
+	public ReserveDto(int num, String id, String service, String checkin, String checkout, String etc) {
 		super();
 		this.num = num;
+		this.id = id;
 		this.service = service;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -24,6 +26,14 @@ public class ReserveDto {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getService() {
@@ -56,7 +66,8 @@ public class ReserveDto {
 
 	public void setEtc(String etc) {
 		this.etc = etc;
-	};
+	}
+
 	
 	
 }
