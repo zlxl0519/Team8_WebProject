@@ -77,6 +77,7 @@ public class QnaDao {
 					+" from qna"
 					+" where num=?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				dto = new QnaDto();
@@ -188,7 +189,8 @@ public class QnaDao {
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getTitle());
-			pstmt.setString(2, dto.getId());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setInt(3, dto.getNum());
 			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {

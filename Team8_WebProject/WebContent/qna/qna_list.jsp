@@ -15,7 +15,6 @@
 	List<QnaDto> list = dao.getList();
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
-
 	<div class="content">
 		<h1>QnA 게시판</h1>	
 		<h3>문의사항이 있다면 글 남겨주세요~^^</h3>
