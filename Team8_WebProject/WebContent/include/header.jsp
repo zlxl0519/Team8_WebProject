@@ -44,7 +44,8 @@
 				<div class="nav-gnb">
 				<ul>
 					<%if(id !=null){%>
-						<li><a href="${pageContext.request.contextPath }/users/info.jsp"><%=id %></a> 님 환영합니다.</li>
+						<li><a href="javascript:void(0);"><%=id %></a> 님 환영합니다.</li>
+						<li><a href="${pageContext.request.contextPath }/mypage/info.jsp">마이페이지</a></li>
 						<li><a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a></li>
 						
 					<% }else{%>
