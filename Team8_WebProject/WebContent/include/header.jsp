@@ -42,16 +42,16 @@
 		<header>
 			<nav class="nav1">
 				<div class="nav-gnb">
+				<ul>
 					<%if(id !=null){%>
-						<p><a href="${pageContext.request.contextPath }/users/info.jsp"><%=id %></a> 님 환영합니다.
-							<a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a>
-						</p>
+						<li><a href="${pageContext.request.contextPath }/users/info.jsp"><%=id %></a> 님 환영합니다.</li>
+						<li><a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a></li>
+						
 					<% }else{%>
-						<ul>
 							<li><a href="${pageContext.request.contextPath }/users/loginform.jsp">로그인</a></li>
 							<li><a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a></li>
-						</ul>
 					<%} %>
+					</ul>
 				</div>
 
 			</nav>
