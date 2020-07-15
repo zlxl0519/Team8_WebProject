@@ -248,6 +248,41 @@ public class MemberDao {
 			}
 		}
 		return id;
+	}//메소드 종료
+	
+	//이름, 연락처로 아이디 찾는 메소드
+	public String id_search2(MemberDto dto) {
+		String id=null; // 찾을 아이디
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select id"
+					+ " from am_member"
+					+ "	where name=? and phone=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getPhone());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				id=rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
 	}
 }
 
