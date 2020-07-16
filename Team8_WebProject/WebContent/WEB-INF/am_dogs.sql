@@ -1,4 +1,5 @@
 create table am_dogs(
+
 num number primary key, -- 강아지 고유의 pk
 id_name varchar2(35) references am_member(id), -- 강아지 소유자 의 id
 dname varchar2(40), -- 강아지 이름
@@ -8,5 +9,6 @@ weight varchar2(10),  -- 몸무게
 neutral varchar2(5) , -- 중성화 여부
 gender varchar2(7) ,  -- 성별
 memo clob); -- 기타등등
+
 
 
