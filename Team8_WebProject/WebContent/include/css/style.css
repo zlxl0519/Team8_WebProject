@@ -41,7 +41,7 @@ select{width: 120px; height: 30px; border: 1px solid #b2b2b2; padding-left: 10px
 
 textarea {resize: none;border: 1px solid #f0f0f0; height : 250px;width : 100%;box-sizing: border-box; padding: 10px; font-size : 15px;}
 button {border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
-.btn-default {font-size : 25px; border-radius : 30px; padding : 10px 80px;}
+.btn-default {font-size : 25px; padding : 10px 80px;}
 input[type="button"]{cursor: pointer;}
 input[type="text"],
 input[type="password"],
@@ -70,6 +70,18 @@ select{cursor: pointer;}
 .form-wrap textarea {border : none;}
 .form-wrap legend {font-size : 15px; color : #97d2bf; font-weight : bold;margin-bottom : 10px;}
 .form-wrap input[type="checkbox"] {margin-right : 10px;}
+
+
+/*users-wrap*/
+.users-wrap {text-align : left;}
+.users-wrap input[type="text"], .users-wrap input[type="password"]{border : none; width : 100%;font-size : 20px; font-weight : bold;}
+.users-wrap .btn-default{width : 100%;padding : 20px 80px;}
+.chk-wrap {margin : 20px 0; font-size : 13px;}
+.a-wrap {width : 100%; text-align : center;}
+.a-wrap a{font-weight : bold; color : #a2a2a2;font-size : 18px;border-right : 2px solid #f0f0f0;padding : 0 60px;}
+.a-wrap a:first-child {padding : 0 60px 0 0 }
+.a-wrap a:last-child {border : none;padding : 0 0 0 60px;}
+.a-wrap a:hover{color: #96d2bf;}
 
 /*프로필 이미지 */
 li.profile-wrap {text-align : center;}
