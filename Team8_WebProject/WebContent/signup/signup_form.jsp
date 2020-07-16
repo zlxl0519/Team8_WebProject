@@ -16,16 +16,21 @@
 		<div style=" width:450px; border-top-style: solid; margin-bottom: 20px; padding-top: 10px;">
 			<label for="img">프로필 이미지</label>
 			<input type="file" name="img" id="img"/><br />
+			
 			<label for="id">아이디</label>
 			<input type="text" name="id" id="id" maxlength="30" placeholder="30자 이내의 영문/숫자만 입력 가능합니다."/><span id="checkResult"></span><br />
+			<div id="idAlert">아이디는 30자 이내의 영문/숫자만 입력 가능합니다.</div>
 			<span>*입력하신 아이디의 중복확인을 해주세요.</span>
 			<button id="checkBtn">중복확인</button><br />
+			
 			<label for="pwd">비밀번호</label>
 			<input type="password" name="pwd" id="pwd" maxlength="16" placeholder="영문/숫자/특수문자 조합 8~16자리"/><br />
+			<div id="pwdAlert">특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자 ~!@#$%^&* 만 사용이 가능합니다.</div>
 			<label for="pwd2">비밀번호 확인</label>
 			<input type="password" name="pwd2" id="pwd2" maxlength="16" placeholder="비밀번호 입력 확인"/><br />
 			<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
 			<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+			
 			<label for="email">이메일</label>
 			<input type="text" name="email01" id="email01" /><span>@</span>
             <input id="email02" name="email02" list="domains" placeholder="도메인입력/선택"><br />
@@ -35,9 +40,11 @@
                 <option value="gmail.com">
                 <option value="yahoo.co.kr">
             </datalist>
+			
 			<label for="name">성함</label>
 			<input type="text" name="name" id="name" />
 			<br />
+			
 			<label for="phone">연락처</label>
 			<input type="tel" name="phone" id="phone" placeholder="-없이 번호만 입력해주세요"/>
 		</div>
@@ -94,6 +101,7 @@
 			}
 		})
 	
+		
 	//=========== 아이디 중복 확인 =======================
 		$("#checkBtn").click(function(){
 			var clicked = 0;
@@ -111,27 +119,55 @@
 				data : "inputId="+inputId,
 				success : function(data){
 					if(data.isExist){
-						$("#checkResult").text("중복되는 아이디이므로 사용이 불가합니다.").css("color", "red");
-						canUseId=false;
+						$("#checkResult").text("사용이 불가한 아이디입니다.").css("color", "red");
+						canUseId1=false;
 					}else{
 						$("#checkResult").text("사용 가능한 아이디입니다.").css("color","green");
-						canUseId=true;
+						canUseId1=true;
 					}
 				}
 			}); 
 			return false;
 		});
+		
 		$("#signup").on("submit", function(){
-			if(!canUseId){
+			if(!canUseId1){
 				alert("아이디 중복을 확인하세요");
 				return false;
 			}
 		})
 		
 		
-	//=========아이디 영문/숫자 제한==============
 		
-
+	//=========아이디 영문/숫자 제한==============
+		var enNumCheck = RegExp(/[^A-Za-z0-9]$/);
+		$("#idAlert").hide();
+		$("#id").keyup(function(){
+			if(enNumCheck.test($("#id").val())){
+				$("#idAlert").show();
+				$("#submit").attr("disabled", "disabled");
+				canUseId2=false;
+				return false;
+			}else{
+				$("#idAlert").hide();
+				$("#submit").removeAttr("disabled");
+			}
+		})
+		
+		
+		
+	//=========비밀번호 영문/숫자/특수문자 제한===========
+		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+		$("#pwdAlert").hide();
+		$("#pwd").keyup(function(){
+			if(enNumSpkCheck.test($("#pwd").val())){
+				$("#pwdAlert").show();
+				$("#submit").attr("disabled", "disabled");
+			}else{
+				$("#pwdAlert").hide();
+				$("#submit").removeAttr("disabled");
+			}
+		})
 	</script>
 </body>
 </html>
