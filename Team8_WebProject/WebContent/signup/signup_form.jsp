@@ -9,7 +9,6 @@
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-<%--회원가입 폼입니다.--%>
 	<h1>회원가입 폼입니다.</h1>
 	<div class="content">
 	<form action="upload.jsp" method="post" enctype="multipart/form-data">
