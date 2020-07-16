@@ -2,7 +2,8 @@ package test.reserve.dto;
 
 public class ReserveDto {
 	private int num;
-	private String id;
+	private String member_id;
+	private int dog_num;
 	private String service;
 	private String checkin;
 	private String checkout;
@@ -10,10 +11,12 @@ public class ReserveDto {
 	
 	public ReserveDto() {}
 
-	public ReserveDto(int num, String id, String service, String checkin, String checkout, String etc) {
+	public ReserveDto(int num, String member_id, int dog_num, String service, String checkin, String checkout,
+			String etc) {
 		super();
 		this.num = num;
-		this.id = id;
+		this.member_id = member_id;
+		this.dog_num = dog_num;
 		this.service = service;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -28,12 +31,20 @@ public class ReserveDto {
 		this.num = num;
 	}
 
-	public String getId() {
-		return id;
+	public String getMember_id() {
+		return member_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+
+	public int getDog_num() {
+		return dog_num;
+	}
+
+	public void setDog_num(int dog_num) {
+		this.dog_num = dog_num;
 	}
 
 	public String getService() {
@@ -68,6 +79,7 @@ public class ReserveDto {
 		this.etc = etc;
 	}
 
+	
 	
 	
 }

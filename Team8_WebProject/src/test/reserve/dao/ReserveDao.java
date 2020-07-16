@@ -18,37 +18,35 @@ public class ReserveDao {
 		}
 		return dao;
 	}
-	
+	//예약 정보 추가하기
 	public boolean insert(ReserveDto dto) {
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		int flag=0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
 		try {
-			conn=new DbcpBean().getConn();
+			conn = new DbcpBean().getConn();
 			//sql 문 작성
-			String sql="insert into reserve"
-					+ " (num, service, checkin, checkout, etc)"
-					+ "	values(reserve_seq, ?, to_date(?, yyyy-mm-dd), to_date(?, yyyy-mm-dd), ?)";
-			pstmt=conn.prepareStatement(sql);
+			String sql = "insert into reserve"
+					+ " (num, )";
+			pstmt = conn.prepareStatement(sql);
 			//sql 문에 ? 부분을 넣는것
-			pstmt.setString(1, dto.getService());
-			pstmt.setString(2, dto.getCheckin());
-			pstmt.setString(3, dto.getCheckout());
-			pstmt.setString(4, dto.getEtc());
-			flag=pstmt.executeUpdate();
-		}catch(Exception e) {
+
+			flag = pstmt.executeUpdate();
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		if(flag>0) {
+		if (flag > 0) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
