@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+html, body{height: 100%;}
+
+/* common */
+.left {text-align: left;}
+.center {text-align: center;}
+.right {text-align: right;}
+table a:hover, table a:active {text-decoration: underline !important;}
+
+.gulim{font-family:"굴림";}
+
+.f11{font-size:11px;}
+.f12{font-size:12px;}
+.f13{font-size:13px;}
+.f14{font-size:14px;}
+.f15{font-size:15px;}
+.f16{font-size:16px;}
+
+select{width: 120px; height: 30px; border: 1px solid #b2b2b2; padding-left: 10px;font-size: 13px;font-weight: 400;color: #86858c;border-radius: 0px; -webkit-appearance: none; -moz-appearance: none;    appearance: none;}
+
+.m0 {margin : 0!important;}
+.mt0 {margin-top: 0!important;}
+.mb0 {margin-bottom: 0!important;}
+.mt20 {margin-top: 20px!important;}
+.bn {border: none!important;}
+.bbn{border-bottom : none!important;}
+.lh13 {line-height: 1.3em!important;}
+.b{font-weight:bold;}
+
+.underline{text-decoration:underline;}
+
+.f_blue{color:#96d2bf!important;}
+.f_red{color:#fa2929!important;}
+
+.fr{float: right;border: 1px solid #f0f0f0;}
+
+.height10{ float:left; width:100%; height:10px;}
+.height20{ float:left; width:100%; height:20px;}
+.height30{ float:left; width:100%; height:30px;}
+.height40{ float:left; width:100%; height:40px;}
+
+textarea {resize: none;border: 1px solid #f0f0f0; height : 250px;width : 100%;box-sizing: border-box; padding: 10px; font-size : 15px;}
+button {border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
+.btn-default {font-size : 25px; padding : 10px 80px;}
+input[type="button"]{cursor: pointer;}
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="text"]
+{ margin-left : 10px;border: 1px solid #f0f0f0; box-sizing: border-box; padding: 10px; height: 40px; width: 320px; font-size : 13px;}
+
+input[name="email"],
+input[name="email01"],
+input[name="email02"]{width : 200px;}
+
+
+select{cursor: pointer;}
+
+.content {width : 1281px;}
+
+/*폼 스타일 */
+.form-wrap {width : 600px;}
+.form-wrap h2 {margin-bottom : 20px;text-align : left; font-weight: bold;font-size: 30px;color: #96d2bf;}
+.form-wrap h2 > span{display : block; font-size : 13px; color : #99a09d; margin-top : 10px;}
+.form-wrap li {display : block;padding : 20px; border : 1px solid #f0f0f0; border-top : none;text-align : left;}
+.form-wrap li:first-child {border-top : 1px solid #f0f0f0;}
+.form-wrap label {font-size : 15px; color : #97d2bf; font-weight : bold;}
+.form-span {line-height : 1.2em;display : block; color : #bbc5c2; font-size : 13px; margin : 10px 0 0 70px;}
+.form-ul-wrap {margin-bottom : 20px;}
+.form-wrap textarea {border : none;}
+.form-wrap legend {font-size : 15px; color : #97d2bf; font-weight : bold;margin-bottom : 10px;}
+.form-wrap input[type="checkbox"] {margin-right : 10px;}
+.form-wrap .alert {margin-left : 118px;}
+.form-wrap #pwdAlert {margin-left : 84px;}
+/*users-wrap*/
+.users-wrap {text-align : left;}
+.users-wrap input[type="text"], .users-wrap input[type="password"]{border : none; width : 100%;font-size : 20px; font-weight : bold;}
+.users-wrap .btn-default{width : 100%;padding : 20px 80px;}
+.chk-wrap {margin : 20px 0; font-size : 13px;}
+.a-wrap {width : 100%; text-align : center;}
+.a-wrap a{font-weight : bold; color : #a2a2a2;font-size : 18px;border-right : 2px solid #f0f0f0;padding : 0 60px;}
+.a-wrap a:first-child {padding : 0 60px 0 0 }
+.a-wrap a:last-child {border : none;padding : 0 0 0 60px;}
+.a-wrap a:hover{color: #96d2bf;}
+
+/*프로필 이미지 */
+li.profile-wrap {text-align : center;}
+.profile-box label{display : block; float : left; width : 100%; text-align : left;}
+.profile-img {width : 150px; height : 150px; display : inline-block; text-align : center;border-radius: 70%;
+    overflow: hidden;box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    background: #e4e4e4 url("../img/icon_user.png") no-repeat center center;
+    background-size : 20px auto;
+    }
+    
+    
+.profile-img img {width : 100%; height : 100%; object-fit: cover;z-index : 2;}
+.profile-btn {display : inline-block; width : 100%;text-align : center;position : relative;}
+.profile-btn label {width : 50px; height : 50px;position : absolute; top : -70px; right : 35%; font-size : 20px; display : inline-block; line-height : 3.3rem; text-align : center; background-color: #feefbb;; cursor: pointer;   
+					border-radius: 50%;overflow: hidden; border : 1px solid #fff;}
+.profile-btn label i {color : #fff; font-size : inherit;}
+.profile-btn input[type="file"] { /* 파일 필드 숨기기 */ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+
