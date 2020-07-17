@@ -152,7 +152,7 @@
 		
 		
 	//=========아이디 영문/숫자 제한==============
-		var enNumCheck = RegExp(/[^A-Za-z0-9]$/);
+		var enNumCheck = RegExp(/[^A-Za-z0-9]{5,30}$/);
 		$("#idAlert").hide();
 		$("#id").keyup(function(){
 			if(enNumCheck.test($("#id").val())){
@@ -169,7 +169,8 @@
 		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
-		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]{8,16}$/);
+
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
 			if(enNumSpkCheck.test($("#pwd").val())){
