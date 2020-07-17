@@ -12,19 +12,25 @@
 <body>
 <script>
 $(document).ready(function(){
-	var counter =1;
+	var counter = 0;
 	 
 	$("#addBtn").on("click", function(){
-		 
-		 var str="<label> 반려견종<input class='form-control' type='text' value='' name='dogBreed"+counter+"' id='dogBreed"+counter+"'/></label>";
+		//카운터 1 증가 
+		counter++;
+		var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv'+counter);
+		var str="<label> 반려견종<input class='form-control' type='text' value='' name='dogBreed"+counter+"' id='dogBreed"+counter+"'/></label>";
 		var str2="<label>반려견나이<input class='form-control' type='text' value='' name='dogAge"+counter+"' id='dogAge"+counter+"' /></label>"
-		 var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter++);
-		 newTextBoxDiv.after().html(str+str2);
-		  newTextBoxDiv.appendTo("#dogInput");
+		newTextBoxDiv.after().html(str+str2);
+		newTextBoxDiv.appendTo("#dogInput");
+	
 	});
 	$("#removeBtn").on("click", function(){
-		
-		$("#TextBoxDiv" + counter--).remove();
+		if(counter>=1){
+			//현재 카운터 삭제 
+			$("#TextBoxDiv"+counter).remove();
+			//카운터 1 감소 시키기
+			counter--;
+		}
 	});
 });
 </script>
