@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,6 +89,7 @@
 		<button type="submit" id="submit">회원가입 하기</button>
 	</form>
 	</div>
+
 
 
 	<script>
@@ -256,3 +258,4 @@
 			 console.log(change);
 			 --> result : Please visit Naver!
  --%>
+
