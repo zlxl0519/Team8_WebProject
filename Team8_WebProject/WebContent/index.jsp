@@ -18,7 +18,7 @@
 				
 				
 				<div class="
-reservation-btn"><a href="#"> 예약하기 </a></div>
+reservation-btn"><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp"> 예약하기 </a></div>
 </div>
 			</div>
 			<img src="${pageContext.request.contextPath }/include/img/main01.png"/>
