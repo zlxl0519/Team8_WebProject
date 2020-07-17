@@ -70,8 +70,8 @@ public class MemberDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = " insert into am_dogs "
-					+ "(id, dname, dage, breed, weight, neutral, gender, memo) "
-					+  " values(?, ?, ?, ?, ?, ?, ?, ?) ";
+					+ "(num, id, dname, dage, breed, weight, neutral, gender, memo) "
+					+  " values(am_dogs_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?) ";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getId());

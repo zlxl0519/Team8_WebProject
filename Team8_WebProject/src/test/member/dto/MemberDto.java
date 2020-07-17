@@ -9,6 +9,7 @@ public class MemberDto {
 	private String phone;
 	private String regdate;
 	
+	private int num;
 	private String dname;
 	private int dage;
 	private String breed;
@@ -20,7 +21,7 @@ public class MemberDto {
 	public MemberDto() {}
 
 	public MemberDto(String id, String pwd, String email, String profile, String name, String phone, String regdate,
-			String dname, int dage, String breed, String weight, String neutral, String gender, String memo) {
+			int num, String dname, int dage, String breed, String weight, String neutral, String gender, String memo) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -29,6 +30,7 @@ public class MemberDto {
 		this.name = name;
 		this.phone = phone;
 		this.regdate = regdate;
+		this.num = num;
 		this.dname = dname;
 		this.dage = dage;
 		this.breed = breed;
@@ -92,6 +94,14 @@ public class MemberDto {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public String getDname() {

@@ -10,5 +10,4 @@ netural varchar2(5) , -- 중성화 여부
 gender varchar2(7) ,  -- 성별
 memo clob); -- 기타등등
 
-
-
+create sequence am_dogs_seq;
