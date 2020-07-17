@@ -84,7 +84,7 @@
 			<nav class="nav2 nav2-small">
 				<div>
 					<h1>
-						<a href="${pageContext.request.contextPath }/index.jsp"s><img
+						<a href="${pageContext.request.contextPath }/index.jsp"><img
 							src="${pageContext.request.contextPath }/include/img/logo.png" alt="애견 호텔링 전문 : AMung" /></a>
 					</h1>
 

@@ -5,23 +5,6 @@
 	document.title = "로그인 "; 
 </script>
 <%--로그인 페이지 입니다.--%>
-<script>
-	function checkValue(){
-		inputForm=eval("document.loginForm");
-		if(!inputForm.id.value){
-			alert("아이디를 입력하세요");
-			inputForm.id.focus();
-			return false;
-		}
-		if(!inputForm.pwd.value){
-			alert("비밀번호를 입력하세요");
-			inputForm.pwd.focus();
-			return false;
-		}
-	}
-</script>
-
-
 <div class="content">
 
 <div class="form-wrap">
@@ -60,4 +43,23 @@
 </div> <!--form-wrap 종료 --> 
 	
 </div><!-- content 종료  -->
+
+<script>
+
+	$("#loginForm").on("submit", function(){
+		
+		if($("#id").val()==""){
+			alert("아이디를 입력해주세요");
+			$("#id").focus();
+			return false;
+		}
+		
+		if($("#pwd").val()==""){
+			alert("비밀번호를 입력해주세요");
+			$("#pwd").focus();
+			return false;
+		}
+	});
+
+</script>
 <jsp:include page="../include/footer.jsp"></jsp:include>

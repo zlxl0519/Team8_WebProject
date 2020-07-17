@@ -7,7 +7,7 @@
 
 
 <div class="content">
-	<div class="form-wrap">
+	<div class="pwdfind form-wrap">
 		<h2>비밀번호 찾기</h2>
 		<p>회원정보에 등록한 정보로 인증.</p>
 		
