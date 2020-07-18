@@ -30,7 +30,7 @@ $(document).ready(function(){
 </script>
 <div class="content">
 <div class="form-wrap">
-	<h2>예약페이지</h2>
+	<h2>예약하</h2>
 	<form action="reserve.jsp" method="post">
 	<div class="form-ul-wrap">
 		<ul>
