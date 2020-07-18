@@ -33,12 +33,13 @@
 					<li>
 						<input type="text" name="name" id="name" placeholder="이름 "/>
 					</li>
-					<li class="mb20">
+					<li>
 						<input type="text" name="phone"	id="phone" placeholder="연락처 " />
 					</li>
 					
 				</ul>
 				
+				<div class="form-span m20 f_red">* 연락처는 '-' 없이 숫자만 입력해주세요.</div>
 			
 			
 			<button type="submit" class="btn-default">찾기</button>

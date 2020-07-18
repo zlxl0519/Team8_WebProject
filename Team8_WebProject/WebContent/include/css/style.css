@@ -20,6 +20,7 @@ table a:hover, table a:active {text-decoration: underline !important;}
 .m0 {margin : 0!important;}
 .mt0 {margin-top: 0!important;}
 .mb0 {margin-bottom: 0!important;}
+.m20{margin : 20px 0!important;}
 .mb20 {margin-bottom: 20px!important;}
 .mt20 {margin-top: 20px!important;}
 .bn {border: none!important;}
@@ -57,7 +58,8 @@ input[type="text"], select
 
 input[name="email"],
 input[name="email01"],
-input[name="email02"]{width : 200px;}
+input[name="email02"]
+{width : 200px;}
 
 
 select{cursor: pointer;}
@@ -83,10 +85,14 @@ select{cursor: pointer;}
 .icon-wrap{padding : 50px 0;}
 .icon-wrap i {font-size : 4em; margin-bottom : 20px; color : #98d2bf;}
 .icon-wrap .form-span strong {font-size : 1rem;}
+.icon-wrap .form-span {line-height : 2em;}
 
 /*users-wrap*/
 .users-wrap {text-align : left;}
-.users-wrap input[type="text"], .users-wrap input[type="password"]{border : none; width : 100%;font-size : 20px; font-weight : bold;}
+.users-wrap input[type="text"],
+.users-wrap input[type="password"],
+.users-wrap input[type="tel"]
+{border : none; width : 100%;font-size : 20px; font-weight : bold;}
 .users-wrap .btn-default{width : 100%;padding : 20px 80px;}
 .chk-wrap {margin : 20px 0; font-size : 13px;}
 .a-wrap {width : 100%; text-align : center;}
@@ -101,8 +107,16 @@ select{cursor: pointer;}
 .find-tab a:first-child {border-right : none;}
 .find-tab a.bbc {border-bottom : 1px solid #96d2bf;}
 .find-tab a.active {color : #96d2bf;  border : 1px solid #96d2bf;}
-.users-find-wrap input[type="text"], .users-find-wrap input[type="password"]{font-size : 13px; color : f0f0f0}
+.users-find-wrap input[type="text"],
+.users-find-wrap input[type="password"],
+.users-find-wrap input[type="tel"]
+{font-size : 13px;}
 .users-find-wrap .btn-default {width : 49.5555%; font-size : 20px}
+.users-find-wrap input[name="email_1"],
+.users-find-wrap input[name="email_2"],
+.users-find-wrap select
+{border: 1px solid #f0f0f0; height: 40px; width: 150px; font-size : 13px;}
+
 
 /*프로필 이미지 */
 li.profile-wrap {text-align : center;}

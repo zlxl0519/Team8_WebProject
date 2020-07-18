@@ -22,15 +22,16 @@
 		 </div>
 		<form id="id_emailfind" action="id_find.jsp" method="post">
 		<div class="form-ul-wrap users-wrap users-find-wrap">
-			<ul>
+			<ul class="mb20">
 				<li>
 					<input type="text" name="name" id="name" placeholder="이름 "/>
 				</li>
 				<li>
 					<label for="email">e-mail</label>
-					<input type="text" name="email_1" id="email_1" />@
+					<input type="text" name="email_1" id="email_1" /> 
+					&nbsp;&nbsp;@
 					<input type="text" name="email_2" id="email_2" />
-					<select name="selectEmail" id="selectEmail">
+					<select name="selectEmail" id="selectEmail" class="m0">
 						<option value="etc">직접입력</option>
 						<option value="naver.com">naver.com</option>
 						<option value="daum.net">daum.net</option>
@@ -39,35 +40,34 @@
 					</select>
 				</li>
 			</ul>
-			<button type="submit">찾기</button>
-			<button type="reset">취소</button>
-		</div>
-		</form>
+			<button type="submit" class="btn-default">찾기</button>
+			<button type="reset" class="btn-default btn-gray">취소</button>
+		</div><!-- users-find-wrap -->
+		</form><!-- id_emailfind -->
 	
-	<div class="id_phonefind">
+	<div id="id_phonefind">
 		<div class="icon-wrap">
 			<i class="fas fa-mobile-alt"></i>		 	
 		 	<p class="form-span m0">
 		 	<strong>등록된 휴대폰 번호로 찾기</strong><br />
 		 	가입 당시 입력한 연락처를 통해 아이디를 찾아주세요.
 		 </div>
-		<form id=id_phonefind" action="id_find2.jsp" method="post">
+		<form id="id_phonefind" action="id_find2.jsp" method="post">
 		<div class="form-ul-wrap users-wrap users-find-wrap">
 			<ul>
 				<li>
 					<input type="text" name="name2" id="name2" placeholder="이름 "/>
 				</li>
 				<li>
-					<label for="phone">연락처</label>
-					<input type="tel" name="phone" id="phone" placeholder="-없이 번호만 입력해주세요"/>
+					<input type="tel" name="phone" id="phone" placeholder="연락처 "/>
 				</li>
 			</ul>
-			
-		</div>
-			<button type="submit">찾기</button>
-			<button type="reset">취소</button>
+			<div class="form-span m20 f_red">* 연락처는 '-' 없이 숫자만 입력해주세요.</div>
+			<button type="submit" class="btn-default">찾기</button>
+			<button type="reset" class="btn-default btn-gray">취소</button>
+		</div><!-- users-find-wrap -->
 		</form>
-	</div>
+	</div><!-- id_phonefind -->
 	
 	</div><!-- form-wrap -->
 		 
