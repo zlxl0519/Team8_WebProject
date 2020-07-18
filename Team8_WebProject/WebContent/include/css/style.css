@@ -45,7 +45,7 @@ table a:hover, table a:active {text-decoration: underline !important;}
 
 textarea {resize: none;border: 1px solid #f0f0f0; height : 250px;width : 100%;box-sizing: border-box; padding: 10px; font-size : 15px;}
 button {border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
-
+button#addBtn, button#removeBtn { width : 40px; height : 40px;padding : 10px 15px;}
 .btn-default {font-size : 25px; padding : 10px 80px;}
 .btn-gray {background : #e7e4e8;}
 input[type="button"]{cursor: pointer;}
@@ -53,8 +53,11 @@ input[type="text"],
 input[type="password"],
 input[type="tel"],
 input[type="number"],
-input[type="text"], select
+input[type="text"], select,
+input[type="date"]
 { margin-left : 10px;border: 1px solid #f0f0f0; box-sizing: border-box; padding: 10px; height: 40px; width: 320px; font-size : 13px;}
+
+input[type="date"]{cursor:pointer}
 
 input[name="email"],
 input[name="email01"],
