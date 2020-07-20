@@ -4,7 +4,9 @@
 <script>
 	document.title = "예약현황"; 
 </script>
-
+<div class="content">
 <p>예약현황 페이지입니다.</p>
+</div>
+
 
 <jsp:include page="../include/footer.jsp"></jsp:include>

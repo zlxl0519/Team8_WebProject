@@ -13,7 +13,7 @@ $(document).ready(function(){
 		counter++;
 		var newTextBoxDiv = $(document.createElement('ul')).attr("id", 'TextBoxDiv'+counter);
 		var str="<li><label> 반려견종<input class='form-control' type='text' value='' name='dogBreed"+counter+"' id='dogBreed"+counter+"'/></label></li>";
-		var str2="<li class='bbn'><label>반려견나이<input class='form-control' type='text' value='' name='dogAge"+counter+"' id='dogAge"+counter+"' /></label></li>"
+		var str2="<li class='bbn'><label>반려견나이<input type='text' value='' name='dogAge"+counter+"' id='dogAge"+counter+"' /></label></li>"
 		newTextBoxDiv.after().html(str+str2);
 		newTextBoxDiv.appendTo("#dogInput");
 	
