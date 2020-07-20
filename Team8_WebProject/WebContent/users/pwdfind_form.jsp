@@ -8,30 +8,44 @@
 
 <div class="content">
 	<div class="pwdfind form-wrap">
-		<h2>비밀번호 찾기</h2>
-		<p>회원정보에 등록한 정보로 인증.</p>
+		<h2>아이디 / 비밀번호 찾기</h2>
+		<div class="find-tab">
+			<a href="idfind_form.jsp" class="bbc">아이디 찾기</a>
+			<a href="pwdfind_form.jsp" class="active bbn">비밀번호 찾기</a>
+		</div>
+		 
+		 <div class="icon-wrap">
+			<i class="fas fa-mobile-alt"></i>		 	
+		 	<p class="form-span m0">
+		 	<strong>등록된 휴대폰 번호로 찾기</strong><br />
+		 	가입 당시 입력한 연락처를 통해 비밀번호를 찾아주세요.
+		 	</p>
+		 </div>
+		 
+		
 		
 		<form id="pwdfind_form" action="pwd_find.jsp" method="post">
-			<h2>아이디와 이름, 핸드폰 번호를 입력해주세요.</h2>
-			<div class="form-ul-wrap">
+			<div class="form-ul-wrap users-wrap users-find-wrap">
 				<ul>
 					<li>
-						<label for="id">아이디</label>
-						<input class="form-control" type="text" name="id" id="id" />
+						<input type="text" name="id" id="id" placeholder="아이디 " />
 					</li>
 					<li>
-						<label for="name">이름</label>
-						<input class="form-control" type="text" name="name" id="name" />
+						<input type="text" name="name" id="name" placeholder="이름 "/>
 					</li>
 					<li>
-						<label for="phone">연락처</label>
-						<input class="form-control" type="text" name="phone"	id="phone" />
+						<input type="text" name="phone"	id="phone" placeholder="연락처 " />
 					</li>
 					
 				</ul>
-				<button type="submit">찾기</button>
-				<button type="reset">취소</button>
+				
+				<div class="form-span m20 f_red">* 연락처는 '-' 없이 숫자만 입력해주세요.</div>
+			
+			
+			<button type="submit" class="btn-default">찾기</button>
+			<button type="reset" class="btn-default btn-gray">취소</button>
 			</div>
+			
 		</form>
 		
 	</div><!-- form-wrap -->

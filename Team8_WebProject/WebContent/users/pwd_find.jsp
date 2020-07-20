@@ -14,24 +14,27 @@
 	dto.setPhone(phone);
 	String pwd=MemberDao.getInstance().pwd_search(dto);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/users/pwd_find.jsp</title>
-</head>
-<body>
-	<%if(pwd!=null){ //비밀번호를 찾았다면%>
-		<p>회원님의 비밀번호는?</p>
-		<p><strong><%=pwd %></strong>입니다.</p>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<div class="content">
+ 	<div class="icon-wrap">
+ 		<%if(pwd!=null){ //비밀번호를 찾았다면%>
+ 		<i class="fas fa-lock-open"></i>
+		 	<p class="form-span m0">
+		 	회원님이 설정한 비밀번호는<br/>
+		 	<strong><%=pwd %></strong>입니다.
+		 	</p>
 		<div>
-			<button onclick="location.href='${pageContext.request.contextPath }/users/loginform.jsp'">로그인 화면으로 돌아가기</button>
+			<button onclick="location.href='${pageContext.request.contextPath }/users/loginform.jsp'" class="btn-default">로그인하러 가기</button>
 		</div>
 	<%}else{ %>
-		<p>비밀번호 찾기를 실패하셨습니다.</p>
+	<i class="fas fa-lock"></i>
+		<p class="form-span m0">
+		<strong>비밀번호 찾기를 실패하셨습니다.</strong>
+		</p>
 		<div>
-			<button onclick="location.href='${pageContext.request.contextPath }/users/pwdfind_form.jsp'">돌아가기</button>
+			<button onclick="location.href='${pageContext.request.contextPath }/users/pwdfind_form.jsp'" class="btn-default">돌아가기</button>
 		</div>
 	<%} %>
-</body>
-</html>
+</div>
+</div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
