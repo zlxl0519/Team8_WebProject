@@ -113,8 +113,8 @@
 			<li>
 				<fieldset>
 					<legend>중성화 유무</legend>
-					<input type="radio" name="neutral" value="yes" checked/> 유
-					<input type="radio" name="neutral" value="no" /> 무
+					<input type="radio" name="netural" value="yes" checked/> 유
+					<input type="radio" name="netural" value="no" /> 무
 				</fieldset>	
 			</li>
 			<li>

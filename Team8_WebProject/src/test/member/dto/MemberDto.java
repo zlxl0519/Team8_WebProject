@@ -14,14 +14,14 @@ public class MemberDto {
 	private int dage;
 	private String breed;
 	private String weight;
-	private String neutral;
+	private String netural;
 	private String gender;
 	private String memo;
 	
 	public MemberDto() {}
 
 	public MemberDto(String id, String pwd, String email, String profile, String name, String phone, String regdate,
-			int num, String dname, int dage, String breed, String weight, String neutral, String gender, String memo) {
+			int num, String dname, int dage, String breed, String weight, String netural, String gender, String memo) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -35,7 +35,7 @@ public class MemberDto {
 		this.dage = dage;
 		this.breed = breed;
 		this.weight = weight;
-		this.neutral = neutral;
+		this.netural = netural;
 		this.gender = gender;
 		this.memo = memo;
 	}
@@ -136,12 +136,12 @@ public class MemberDto {
 		this.weight = weight;
 	}
 
-	public String getNeutral() {
-		return neutral;
+	public String getNetural() {
+		return netural;
 	}
 
-	public void setNeutral(String neutral) {
-		this.neutral = neutral;
+	public void setNetural(String netural) {
+		this.netural = netural;
 	}
 
 	public String getGender() {

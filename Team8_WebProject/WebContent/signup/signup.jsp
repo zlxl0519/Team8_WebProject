@@ -13,7 +13,7 @@
 	int dage = Integer.parseInt(request.getParameter("dage"));
 	String breed = request.getParameter("breed");
 	String weight = request.getParameter("weight");
-	String neutral = request.getParameter("neutral");
+	String neutral = request.getParameter("netural");
 	String gender = request.getParameter("gender");
 	String memo = request.getParameter("memo");
 	
@@ -27,7 +27,7 @@
 	dto.setDage(dage);
 	dto.setBreed(breed);
 	dto.setWeight(weight);
-	dto.setNeutral(neutral);
+	dto.setNetural(neutral);
 	dto.setGender(gender);
 	dto.setMemo(memo);
 	

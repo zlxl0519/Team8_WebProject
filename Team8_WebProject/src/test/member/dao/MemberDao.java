@@ -70,7 +70,7 @@ public class MemberDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = " insert into am_dogs "
-					+ "(id, dname, dage, breed, weight, neutral, gender, memo) "
+					+ "(id, dname, dage, breed, weight, netural, gender, memo) "
 					+  " values(?, ?, ?, ?, ?, ?, ?, ?) ";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
@@ -79,7 +79,7 @@ public class MemberDao {
 			pstmt.setInt(3, dto.getDage());
 			pstmt.setString(4, dto.getBreed());
 			pstmt.setString(5, dto.getWeight());
-			pstmt.setString(6, dto.getNeutral());
+			pstmt.setString(6, dto.getNetural());
 			pstmt.setString(7, dto.getGender());
 			pstmt.setString(8, dto.getMemo());
 			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
@@ -116,7 +116,7 @@ public class MemberDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기
 			String sql = " select m.id, m.pwd, m.email, m.profile, m.name, m.phone, m.regdate, "
-					+ " d.dname, d.dage, d.breed, d.weight, d.neutral, d.gender, d.memo "
+					+ " d.dname, d.dage, d.breed, d.weight, d.netural, d.gender, d.memo "
 					+" from am_member m, am_dogs d "
 					+" where m.id=d.id"
 					+ " order by regdate desc ";
@@ -133,8 +133,8 @@ public class MemberDao {
 				dto.setDname(rs.getString("dname"));
 				dto.setDage(rs.getInt("dage"));
 				dto.setBreed(rs.getString("breed"));
-				dto.setWeight(rs.getString("neutral"));
-				dto.setNeutral(rs.getString("neutral"));
+				dto.setWeight(rs.getString("netural"));
+				dto.setNetural(rs.getString("netural"));
 				dto.setGender(rs.getString("gender"));
 				dto.setMemo(rs.getString("memo"));
 				list.add(dto);
@@ -198,9 +198,10 @@ public class MemberDao {
 			ResultSet rs = null;
 			try {
 				conn = new DbcpBean().getConn();
-				String sql = "select pwd, email, profile, name, phone,regdate"
-						+ "	from am_member"
-						+ "	where id=?";
+				String sql = "select m.pwd, m.email, m.profile, m.name, m.phone, m.regdate,"
+						+ "d.dname, d.dage, d.breed, d.weight, d.netural, d.gender, d.memo"
+						+ "	from am_member m ,am_dogs d"
+						+ "	where m.id=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -213,6 +214,13 @@ public class MemberDao {
 					dto.setName(rs.getString("name"));
 					dto.setPhone(rs.getString("phone"));
 					dto.setRegdate(rs.getString("regdate"));
+					dto.setDname(rs.getString("dname"));
+					dto.setDage(rs.getInt("dage"));
+					dto.setBreed(rs.getString("breed"));
+					dto.setWeight(rs.getString("netural"));
+					dto.setNetural(rs.getString("netural"));
+					dto.setGender(rs.getString("gender"));
+					dto.setMemo(rs.getString("memo"));
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
