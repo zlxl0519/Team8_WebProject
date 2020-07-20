@@ -1,7 +1,7 @@
 <%@page import="test.member.dao.MemberDao"%>
 <%@page import="test.member.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
@@ -34,17 +34,23 @@
 	boolean isSuccess1 = MemberDao.getInstance().insertHuman(dto);
 	boolean isSuccess2 = MemberDao.getInstance().insertDog(dto);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<% if(isSuccess1 && isSuccess2){%>
-		<p>회원가입이 완료되었습니다. <a href="signup_form.jsp">확인</a></p>
-	<% }else{%>
-		<p>회원가입을 실패했습니다. <a href="signup_form.jsp">확인</a></p>
-	<% }%>
-</body>
-</html>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<div class="content">
+
+	<div class="icon-wrap">
+		<% if(isSuccess1 && isSuccess2){%>
+		<i class="fas fa-lock-open"></i>
+		<p class="form-span m20">
+			<strong>회원가입이 완료되었습니다.</strong>
+		</p>
+		<a href="loginform.jsp" class="btn-default">확인</a>
+		<% }else{%>
+		<i class="fas fa-lock"></i>
+		<p class="form-span m20">
+			<strong>회원가입을 실패했습니다.</strong>
+		</p>
+		<a href="signup_form.jsp" class="btn-default">확인</a>
+		<% }%>
+	</div>
+</div>
+<jsp:include page="../include/footer.jsp"></jsp:include>

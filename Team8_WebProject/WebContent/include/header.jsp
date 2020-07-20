@@ -74,7 +74,7 @@
 							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
 							<li><a href="#">이용안내</a></li>
 							<li><a href="#">커뮤니티</a></li>
-							<li><a href="#">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath }/faq/faq_main.jsp">FAQ</a></li>
 						</ul>
 					</div>
 
@@ -94,7 +94,7 @@
 							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
 							<li><a href="#">이용안내</a></li>
 							<li><a href="#">커뮤니티</a></li>
-							<li><a href="#">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath }/faq/faq_main.jsp">FAQ</a></li>
 						</ul>
 					</div>
 
