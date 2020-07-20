@@ -3,11 +3,10 @@
 <%@page import="dto.FaqDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Amung's FAQ</title>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<script>
+	document.title = "Amung's FAQ "; 
+</script>
 <style>
 	.btn{padding:0; background:transparent; border:0; outline:0}
 	.faq{width: 690px; margin:20px auto; border:1px solid #000}
@@ -25,13 +24,13 @@
 	List<FaqDto> list = dao.getList();
 
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
 
-<div class="content" style="text-align:center;">
+
+<div class="content" style="text-align:center;"> 
 
 	<h1>FAQ</h1>
 	<h3>자주 물어보시는 질문들입니다.</h3>
-	<p>검색해도 나오지 않는 질문이 있으시다면 QnA 게시판을 찾아주세요.</p>
+	<p>검색해도 나오지 않는 질문이 있으시다면 <a href="${pageContext.request.contextPath }/qna/qna_list.jsp"></a>QnA 게시판을 찾아주세요.</p>
 	
 		<!-- faq 아코디언형 게시판 부분 -->
 		<% for(FaqDto tmp:list){ %>
@@ -43,7 +42,7 @@
 	
 </div>
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+
 
 <script>
 
@@ -72,6 +71,4 @@ function faqevent(wrap){
 faqevent('.faq');
 
 </script>
-
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

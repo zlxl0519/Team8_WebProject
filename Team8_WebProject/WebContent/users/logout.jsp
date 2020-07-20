@@ -15,4 +15,3 @@
 		location.href="${pageContext.request.contextPath }/index.jsp";
 	</script>
 </body>
-</html>
