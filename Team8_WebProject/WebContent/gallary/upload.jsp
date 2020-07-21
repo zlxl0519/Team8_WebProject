@@ -97,7 +97,7 @@
         //작성자
         String writer = (String)session.getAttribute("id");
         GalleryDto dto = new GalleryDto();
-        dto.setId(id);
+        dto.setId(writer);
         dto.setCaption(caption);
         dto.setImagePath(imagePath);
         
