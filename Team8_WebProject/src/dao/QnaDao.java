@@ -20,8 +20,46 @@ public class QnaDao {
 		return dao;
 	}
 	
+	//전체 row의 갯수를 리턴해주는 메소드
+	public int getCount() {
+		int count=0;
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Connection 객체의 참조값 얻어오기 
+			conn = new DbcpBean().getConn();
+			//실행할 sql 문 준비하기
+			String sql = "select nvl(max(rownum), 0) as num"
+					+ " from qna";
+			pstmt = conn.prepareStatement(sql);
+			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			//반복문 돌면서 결과 값 추출하기 
+			while (rs.next()) {
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return count;
+	}
+	
 	//전체글을 가져오는 메소드 (select)
-	public List<QnaDto> getList(){
+	public List<QnaDto> getList(QnaDto dto){
 		List<QnaDto> list = new ArrayList<>();
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
@@ -31,24 +69,30 @@ public class QnaDao {
 			//Connection 객체의 참조값 얻어오기 
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기
-			String sql = "select num, writer, title, content, image, regdate, hit"
-					+" from qna"
-					+" order by num asc";
+			String sql = "select *"
+					+" from"
+					+" 	(select result1.*, rownum as rnum"
+					+" 		from(select num, writer, title, content, image, regdate, hit"
+					+" 			from qna order by num desc)"
+					+" 	result1)"
+					+" where rnum between ? and ?";
 			pstmt = conn.prepareStatement(sql);
 			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고
+			pstmt.setInt(1, dto.getStartRowNum());
+			pstmt.setInt(2, dto.getEndRowNum());
 			//select 문 수행하고 결과 받아오기 
 			rs = pstmt.executeQuery();
 			//반복문 돌면서 결과 값 추출하기 
 			while (rs.next()) {
-				QnaDto dto = new QnaDto();
-				dto.setNum(rs.getInt("num"));
-				dto.setWriter(rs.getString("writer"));
-				dto.setTitle(rs.getString("title"));
-				dto.setContent(rs.getString("content"));
-				dto.setImage(rs.getString("image"));
-				dto.setRegdate(rs.getString("regdate"));
-				dto.setHit(rs.getInt("hit"));
-				list.add(dto);
+				QnaDto tmp = new QnaDto();
+				tmp.setNum(rs.getInt("num"));
+				tmp.setWriter(rs.getString("writer"));
+				tmp.setTitle(rs.getString("title"));
+				tmp.setContent(rs.getString("content"));
+				tmp.setImage(rs.getString("image"));
+				tmp.setRegdate(rs.getString("regdate"));
+				tmp.setHit(rs.getInt("hit"));
+				list.add(tmp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

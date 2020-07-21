@@ -9,9 +9,13 @@ public class QnaDto {
 	private int hit;
 	private String image;
 	
+	private int startRowNum;
+	private int endRowNum;
+	
 	public QnaDto() {}
 
-	public QnaDto(int num, String writer, String title, String content, String regdate, int hit, String image) {
+	public QnaDto(int num, String writer, String title, String content, String regdate, int hit, String image,
+			int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -20,6 +24,8 @@ public class QnaDto {
 		this.regdate = regdate;
 		this.hit = hit;
 		this.image = image;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getNum() {
@@ -76,6 +82,22 @@ public class QnaDto {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
 	}
 
 

@@ -1,6 +1,7 @@
 package test.member.dto;
 
 public class MemberDto {
+	//사람용
 	private String id;
 	private String pwd;
 	private String email;
@@ -9,6 +10,9 @@ public class MemberDto {
 	private String phone;
 	private String regdate;
 	
+	//강아지용
+	private int num; 
+	private String member_id;
 	private String dname;
 	private int dage;
 	private String breed;
@@ -20,7 +24,8 @@ public class MemberDto {
 	public MemberDto() {}
 
 	public MemberDto(String id, String pwd, String email, String profile, String name, String phone, String regdate,
-			String dname, int dage, String breed, String weight, String neutral, String gender, String memo) {
+			int num, String member_id, String dname, int dage, String breed, String weight, String neutral,
+			String gender, String memo) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -29,6 +34,8 @@ public class MemberDto {
 		this.name = name;
 		this.phone = phone;
 		this.regdate = regdate;
+		this.num = num;
+		this.member_id = member_id;
 		this.dname = dname;
 		this.dage = dage;
 		this.breed = breed;
@@ -92,6 +99,22 @@ public class MemberDto {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
 	public String getDname() {

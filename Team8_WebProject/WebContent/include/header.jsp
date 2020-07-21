@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String id=(String)session.getAttribute("id");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +19,11 @@
 <!--css-->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/include/css/base.css">
+	<!-- fontAwesome -->
+	<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
 <!-- IE9 이전 버전 / 로컬에서는 실행되지 않음-->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -23,7 +31,7 @@
     <![endif]-->
 <!-- //IE9 이전 버전-->
 <!--script -->
-<script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/script.js"></script>
 </head>
@@ -39,9 +47,16 @@
 		<header>
 			<nav class="nav1">
 				<div class="nav-gnb">
-					<ul>
-						<li><a href="javascript:void(0);">로그인</a></li>
-						<li><a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a></li>
+				<ul>
+					<%if(id !=null){%>
+						<li><a href="javascript:void(0);"><%=id %> 님 환영합니다.</a></li>
+						<li><a href="${pageContext.request.contextPath }/mypage/info.jsp">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a></li>
+						
+					<% }else{%>
+							<li><a href="${pageContext.request.contextPath }/users/loginform.jsp">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath }/signup/signup_form.jsp">회원가입</a></li>
+					<%} %>
 					</ul>
 				</div>
 
@@ -49,17 +64,17 @@
 			<nav id="nav-slide" class="nav2">
 				<div>
 					<h1>
-						<a href="javascript:void:(o);" target="_blank"><img
+						<a href="${pageContext.request.contextPath }/index.jsp"><img
 							src="${pageContext.request.contextPath }/include/img/logo_top.png" alt="애견 호텔링 전문 : AMung" /></a>
 					</h1>
 
 					<div class="nav2-gnb">
 						<ul>
 							<li><a href="#">공지사항</a></li>
-							<li><a href="#">예약하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
 							<li><a href="#">이용안내</a></li>
 							<li><a href="#">커뮤니티</a></li>
-							<li><a href="#">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath }/faq/faq_main.jsp">FAQ</a></li>
 						</ul>
 					</div>
 
@@ -69,17 +84,17 @@
 			<nav class="nav2 nav2-small">
 				<div>
 					<h1>
-						<a href="javascript:void:(o);" target="_blank"><img
+						<a href="${pageContext.request.contextPath }/index.jsp"><img
 							src="${pageContext.request.contextPath }/include/img/logo.png" alt="애견 호텔링 전문 : AMung" /></a>
 					</h1>
 
 					<div class="nav2-gnb">
 						<ul>
 							<li><a href="#">공지사항</a></li>
-							<li><a href="#">예약하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
 							<li><a href="#">이용안내</a></li>
 							<li><a href="#">커뮤니티</a></li>
-							<li><a href="#">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath }/faq/faq_main.jsp">FAQ</a></li>
 						</ul>
 					</div>
 
