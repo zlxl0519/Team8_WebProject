@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+html, body{height: 100%;}
+
+/* common */
+.left {text-align: left;}
+.center {text-align: center;}
+.right {text-align: right;}
+table a:hover, table a:active {text-decoration: underline !important;}
+
+.gulim{font-family:"굴림";}
+
+.f11{font-size:11px;}
+.f12{font-size:12px;}
+.f13{font-size:13px;}
+.f14{font-size:14px;}
+.f15{font-size:15px;}
+.f16{font-size:16px;}
+
+.m0 {margin : 0!important;}
+.mt0 {margin-top: 0!important;}
+.mb0 {margin-bottom: 0!important;}
+.m20{margin : 20px 0!important;}
+.mb20 {margin-bottom: 20px!important;}
+.mt20 {margin-top: 20px!important;}
+.bn {border: none!important;}
+.bbn{border-bottom : none!important;}
+.bln{border-left: none!important;}
+.brn{border-right : none!important;}
+.btn{border-top : none!important;}
+.lh13 {line-height: 1.3em!important;}
+.b{font-weight:bold;}
+
+.underline{text-decoration:underline;}
+
+.f_blue{color:#96d2bf!important;}
+.f_red{color:#fa2929!important;}
+
+.fr{float: right;border: 1px solid #f0f0f0;}
+
+.height10{ float:left; width:100%; height:10px;}
+.height20{ float:left; width:100%; height:20px;}
+.height30{ float:left; width:100%; height:30px;}
+.height40{ float:left; width:100%; height:40px;}
+
+textarea {resize: none;border: 1px solid #f0f0f0; height : 250px;width : 100%;box-sizing: border-box; padding: 10px; font-size : 15px;}
+button, a.btn-default {border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
+button#addBtn, button#removeBtn { width : 40px; height : 40px;padding : 10px 15px;}
+.btn-default {font-size : 25px; padding : 10px 80px;}
+.btn-gray {background : #e7e4e8;}
+input[type="button"]{cursor: pointer;}
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="text"], select,
+input[type="date"]
+{ margin-left : 10px;border: 1px solid #f0f0f0; box-sizing: border-box; padding: 10px; height: 40px; width: 320px; font-size : 13px;}
+
+input[type="date"]{cursor:pointer}
+
+input[name="email"],
+input[name="email01"],
+input[name="email02"]
+{width : 200px;}
+
+
+select{cursor: pointer;}
+
+.content {width : 1281px;}
+.content h2 {margin-bottom : 20px;text-align : left; font-weight: bold;font-size: 30px;color: #96d2bf;}
+/*폼 스타일 */
+.form-wrap {width : 600px;}
+.form-wrap h2 > span{display : block; font-size : 13px; color : #99a09d; margin-top : 10px;}
+.form-wrap li {display : block;padding : 20px; border : 1px solid #f0f0f0; border-top : none;text-align : left;}
+.form-wrap li:first-child {border-top : 1px solid #f0f0f0;}
+.form-wrap label {font-size : 15px; color : #97d2bf; font-weight : bold;}
+.form-span {line-height : 1.2em;display : block; color : #bbc5c2; font-size : 13px; margin : 10px 0 0 70px;}
+.form-ul-wrap {margin-bottom : 20px;}
+.form-wrap textarea {border : none;}
+.form-wrap legend {font-size : 15px; color : #97d2bf; font-weight : bold;margin-bottom : 10px;}
+.form-wrap input[type="checkbox"] {margin-right : 10px;}
+.form-wrap .alert {margin-left : 118px;}
+.form-wrap #pwdAlert {margin-left : 84px;}
+
+/*테이블 스타일 */
+.table-wrap {width : 100%; clear:both; display: inline-block;}
+.table-wrap table{width : 100%;}
+.table-wrap th {text-align: center;padding: 26px 5px; background:#e0f1e9; color: #b7c1bc;font-size: 15px;font-weight : bold;}
+.table-wrap td {font-size: 13px; padding: 13px 0; text-align: center; border-bottom: 1px solid #c8d8d0;line-height: 1.3em;}
+.table-wrap td a:visited {color: #7fa396;}
+
+
+
+
+
+
+
+
+/**/
+.icon-wrap{padding : 50px 0;}
+.icon-wrap i {font-size : 4em; margin-bottom : 20px; color : #98d2bf;}
+.icon-wrap .form-span strong {font-size : 1rem;}
+.icon-wrap .form-span {line-height : 2em;}
+
+/*users-wrap*/
+.users-wrap {text-align : left;}
+.users-wrap input[type="text"],
+.users-wrap input[type="password"],
+.users-wrap input[type="tel"]
+{border : none; width : 100%;font-size : 20px; font-weight : bold;}
+.users-wrap .btn-default{width : 100%;padding : 20px 80px;}
+.chk-wrap {margin : 20px 0; font-size : 13px;}
+.a-wrap {width : 100%; text-align : center;}
+.a-wrap a{font-weight : bold; color : #a2a2a2;font-size : 18px;border-right : 2px solid #f0f0f0;padding : 0 60px;}
+.a-wrap a:first-child {padding : 0 60px 0 0 }
+.a-wrap a:last-child {border : none;padding : 0 0 0 60px;}
+.a-wrap a:hover{color: #96d2bf;}
+
+/*아이디/비밀번호 찾기 */
+.find-tab {width : 100%;font-size : 0px;}
+.find-tab a {padding : 25px 0;display : inline-block;font-size : 20px; font-weight : bold;width : 50%; color : #d0d0d0; border : 1px solid #f0f0f0;;}
+.find-tab a:first-child {border-right : none;}
+.find-tab a.bbc {border-bottom : 1px solid #96d2bf;}
+.find-tab a.active {color : #96d2bf;  border : 1px solid #96d2bf;}
+.users-find-wrap input[type="text"],
+.users-find-wrap input[type="password"],
+.users-find-wrap input[type="tel"]
+{font-size : 13px;}
+.users-find-wrap .btn-default {width : 49.5555%; font-size : 20px}
+.users-find-wrap input[name="email_1"],
+.users-find-wrap input[name="email_2"],
+.users-find-wrap select
+{border: 1px solid #f0f0f0; height: 40px; width: 150px; font-size : 13px;}
+
+
+/*프로필 이미지 */
+li.profile-wrap {text-align : center;}
+.profile-box label{display : block; float : left; width : 100%; text-align : left;}
+.profile-img {width : 150px; height : 150px; display : inline-block; text-align : center;border-radius: 70%;
+    overflow: hidden;box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.2);
+    background: #e4e4e4 url("../img/icon_user.png") no-repeat center center;
+    background-size : 20px auto;
+    }
+    
+    
+.profile-img img {width : 100%; height : 100%; object-fit: cover;z-index : 2;}
+.profile-btn {display : inline-block; width : 100%;text-align : center;position : relative;}
+.profile-btn label {width : 50px; height : 50px;position : absolute; top : -70px; right : 35%; font-size : 20px; display : inline-block; line-height : 3.3rem; text-align : center; background-color: #feefbb;; cursor: pointer;   
+					border-radius: 50%;overflow: hidden; border : 1px solid #fff;}
+.profile-btn label i {color : #fff; font-size : inherit;}
+.profile-btn input[type="file"] { /* 파일 필드 숨기기 */ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+

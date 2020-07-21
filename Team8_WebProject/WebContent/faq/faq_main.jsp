@@ -77,6 +77,10 @@
     }
     
 %>
+            
+<script>
+	document.title = "Amung's FAQ "; 
+</script>
 
 <style>
 	.btn{
@@ -135,10 +139,10 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 <div class="content">
-
+  
 	<h1>FAQ</h1>
 	<h3>자주 물어보시는 질문들입니다.</h3>
-	<p>검색해도 나오지 않는 질문이 있으시다면 QnA 게시판을 찾아주세요.</p>
+	<p>검색해도 나오지 않는 질문이 있으시다면 <a href="${pageContext.request.contextPath }/qna/qna_list.jsp"></a>QnA 게시판을 찾아주세요.</p>
 	
 		<!-- faq 아코디언형 게시판 부분 -->
 	
@@ -185,7 +189,7 @@
           
 </div>
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+
 
 <script>
 //faq 아코디언 게시판 접고 펴는 기능
@@ -213,3 +217,4 @@ function faqevent(wrap1){
 faqevent('.faq');
 
 </script>
+<jsp:include page="../include/footer.jsp"></jsp:include>

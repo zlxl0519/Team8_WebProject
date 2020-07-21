@@ -9,7 +9,7 @@ html, body{height: 100%;}
 .floatmenu a:first-child {margin-bottom: 10px;}
 
 /*header*/
-#wrap header {width : 100%; position : fixed; top : 0px; left : 0px; margin-bottom : 100px;box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.08);}
+#wrap header {width : 100%; z-index : 999; position : fixed; top : 0px; left : 0px; margin-bottom : 100px;box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.08);}
 .nav1{background: #97d2bf; height: 37px;}
 .nav1 > div {background: #97d2bf;height: 37px;} 
 .nav-gnb { float: right; margin : 0 10px 0 0;}
@@ -53,3 +53,74 @@ footer .footer-text {float: left; text-align: left;}
 footer .footer-text h3 {font-size: 16px;font-weight: bold; margin-bottom: 30px;}
 footer .footer-text p {font-size: 12px; font-weight: bold; line-height: 1rem;;}
 footer .copyright {float: right; margin-top : 95px}
+
+
+
+
+/*main*/
+.main-article { margin : 39px 0; padding-top : 120px; text-align : center;}
+.main-slide{  width :  100%; height : 400px; display : inline-block; text-align : center;}
+.main-slide ul li{width : auto; display : inline-block; position : relative;}
+.main-slide img{object-fit: cover; width : 100%; height : 400px;}
+.main-slide-content { width : 1281px;display : inline-block;text-align : center;}
+.slide-content-wrap {width : 550px; text-align : left;position : absolute; top : 118px; right : 187px;}
+.main-slide-content * {font-family: 'NanumBarunGothic'!important;  }
+.main-slide-content h4{font-size : 34px; color : #d9e6b0; font-weight : bold;}
+.slide-txt  {margin : 20px 0 30px 0;}
+.slide-txt h3 {font-size : 44px; font-weight : 900;color : #fbf0c1;display: inline-block;}
+.slide-txt h4 { display : inline-block; color : #c4e07b;}
+.reservation-btn {width: 292px;height: 51px;border-radius : 50px;background-color: rgb(217, 230, 176);display: inline-block;opacity: 0.66; text-align : center;}
+.reservation-btn > a{font-weight : 900; line-height : 3.4rem;font-size : 28px;color : #fff;}
+.main-room{width : 100%;margin : 70px 0;text-align : center; }
+.main-room ul{width : 1281px;display: inline-block;}
+.main-room li{ display : inline-block; width : 375px; height : 255px; margin-right : 20px;}
+.main-room li:last-child {margin-right : 0px;}
+.main-room li img {width : 100%; height : auto;}
+.main-notice{text-align : center;}
+.main-notice-wrap{width: 1180px;display: inline-block; text-align: left;}
+.main-notice-con {width : 500px; display : inline-block;float : left;text-align : left;}
+.main-article h6{font-weight : bold; font-size : 30px;color : #3f3f3f;}
+.main-notice-con p {margin : 20px 0; line-height : 1rem;font-weight : bold;text-align : left; font-size : 12px;color : #9a9a9a;}
+.main-notice-con .notice-plus {background-color: #97d2bf; width : 120px; height : 35px; display : inline-block;font-size : 14px; text-align : left; line-height : 2.3rem;font-weight : bold; color : #fffbfb;}
+.main-notice-con .notice-plus span {color : #fff;padding-left : 20px;margin-right : 20px;}
+.main-notice-list{width : 600px; display : inline-block;float : right;}
+.main-notice-list li { text-align : left; line-height : 2rem;}
+.main-notice-list li a{font-size : 16px; font-weight : bold; display : block;color : #818181;text-overflow: ellipsis; white-space: nowrap; overflow: hidden}
+.main-notice-list li span { color : #858355;}
+.main-review{ display : inline-block;width: 1180px; margin: 80px 0;}
+.main-review h6 { text-align : left; margin : 0 0 20px 20px; color : #98d2bf;} 
+
+
+
+.review-ul li{margin-bottom : 40px;width: 1180px; display : inline-block;
+cursor : pointer;}
+.review-ul li:last-child {margin-bottom : 0px;}
+.review-wrap{ padding :30px 50px;border-radius: 50px;box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1); width: 1174px;height: 230px;
+ background: #fff url("../img/arrow.png") no-repeat 95% center;
+}
+.review-wrap-users{width : 100%; height : 70px;}
+.review-profile { width : 50px; height : 50px; text-align : center;border-radius: 70%;
+    overflow: hidden;box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.2);float : left;}
+.review-profile  img {width : 100%; height : auto; object-fit: cover;}
+.review-wrap-users .review-users {margin : 20px 0 0 20px;font-size : 20px; font-weight : bold; color : #85d4be;float:left;}
+.review-wrap-con {display : block;color : #818181;}
+.review-wrap-con p { display : inline-block;text-align : left; font-size : 20px; font-weight : bold; line-height : 2rem;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp: 3; 
+					-webkit-box-orient: vertical;
+					word-wrap:break-word; 
+					line-height: 1.5em;
+					height: 4.5em; 
+					}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
