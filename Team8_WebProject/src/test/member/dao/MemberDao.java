@@ -21,7 +21,6 @@ public class MemberDao {
 		return dao;
 	}
 	
-	
 	//회원(사람용) 추가
 	public boolean insertHuman(MemberDto dto) {
 		Connection conn = null;
@@ -156,219 +155,261 @@ public class MemberDao {
 	}
 	
 	//로그인시 DB에 회원정보가 있는지 확인하는 메소드
-		public boolean isValid(MemberDto dto) {
-			boolean isValid=false;
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			try {
-				conn=new DbcpBean().getConn();
-				String sql = "select id"
-						+ "	from am_member"
-						+ "	where id=? and pwd=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getId());
-				pstmt.setString(2, dto.getPwd());
-				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					isValid=true;
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+	public boolean isValid(MemberDto dto) {
+		boolean isValid=false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn=new DbcpBean().getConn();
+			String sql = "select id"
+					+ "	from am_member"
+					+ "	where id=? and pwd=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPwd());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				isValid=true;
 			}
-			return isValid;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		//한명의 회원 정보 읽어오는 메소드
-		public MemberDto getData(String id) {
-			MemberDto dto=null;
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+		return isValid;
+	}
+	
+	//한명의 회원 정보 읽어오는 메소드
+	public MemberDto getData(String id) {
+		MemberDto dto=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select id, pwd, email, profile, name, phone, regdate"
+					+ "	from am_member"
+					+ "	where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto=new MemberDto();
+				dto.setId(id);
+				dto.setPwd(rs.getString("pwd"));
+				dto.setEmail(rs.getString("email"));
+				dto.setProfile(rs.getString("profile"));
+				dto.setName(rs.getString("name"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				conn = new DbcpBean().getConn();
-				String sql = "select pwd, email, profile, name, phone,regdate"
-						+ "	from am_member"
-						+ "	where id=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					dto=new MemberDto();
-					dto.setId(id);
-					dto.setPwd(rs.getString("pwd"));
-					dto.setEmail(rs.getString("email"));
-					dto.setProfile(rs.getString("profile"));
-					dto.setName(rs.getString("name"));
-					dto.setPhone(rs.getString("phone"));
-					dto.setRegdate(rs.getString("regdate"));
-				}
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
-			return dto;
 		}
-		
-		//회원정보 삭제하는 메소드
-		public boolean delete(String id) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			int flag = 0;
+		return dto;
+	}
+	
+	//한명 회원의 강아지 정보를 가져오는 메소드
+	public MemberDto getPuppyData(String id) {
+		MemberDto dto=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select num, dname, dage, breed, weight, neutral, gender, memo"
+					+ "	from am_dogs"
+					+ "	where member_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dto=new MemberDto();
+				dto.setNum(rs.getInt("num"));
+				dto.setDname(rs.getString("dname"));
+				dto.setDage(rs.getInt("dage"));
+				dto.setBreed(rs.getString("breed"));
+				dto.setWeight(rs.getString("weight"));
+				dto.setNeutral(rs.getString("neutral"));
+				dto.setGender(rs.getString("gender"));
+				dto.setMemo(rs.getString("memo"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				conn = new DbcpBean().getConn();
-				//sql 문 작성
-				String sql = "delete from am_member"
-						+ "	where id=?";
-				pstmt = conn.prepareStatement(sql);
-				//sql 문에 ? 부분을 넣는것
-				pstmt.setString(1, id);
-				flag = pstmt.executeUpdate();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
-			if (flag > 0) {
-				return true;
-			} else {
-				return false;
-			}
-		}//delete 메소드 종료
-		
-		//이름, 이메일로 아이디 찾는 메소드
-		public String id_search(MemberDto dto) {
-			String id=null; // 찾을 아이디
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			try {
-				conn = new DbcpBean().getConn();
-				String sql = "select id"
-						+ " from am_member"
-						+ "	where name=? and email=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getName());
-				pstmt.setString(2, dto.getEmail());
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					id=rs.getString("id");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			return id;
-		}//메소드 종료
-		
-		//이름, 연락처로 아이디 찾는 메소드
-		public String id_search2(MemberDto dto) {
-			String id=null; // 찾을 아이디
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			try {
-				conn = new DbcpBean().getConn();
-				String sql = "select id"
-						+ " from am_member"
-						+ "	where name=? and phone=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getName());
-				pstmt.setString(2, dto.getPhone());
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					id=rs.getString("id");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			return id;
 		}
-		
-		//아이디, 이름, 연락처로 비밀번호 찾는 메소드
-		public String pwd_search(MemberDto dto) {
-			String pwd=null;//찾을 비밀번호
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+		return dto;
+	}
+	
+	//회원정보 삭제하는 메소드
+	public boolean delete(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			//sql 문 작성
+			String sql = "delete from am_member"
+					+ "	where id=?";
+			pstmt = conn.prepareStatement(sql);
+			//sql 문에 ? 부분을 넣는것
+			pstmt.setString(1, id);
+			flag = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				conn = new DbcpBean().getConn();
-				String sql = "select pwd"
-						+ "	from am_member"
-						+ "	where id=? and name=? and phone=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, dto.getId());
-				pstmt.setString(2, dto.getName());
-				pstmt.setString(3, dto.getPhone());
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					pwd=rs.getString("pwd");
-				}
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
-			return pwd;
 		}
+		if (flag > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}//delete 메소드 종료
+	
+	//이름, 이메일로 아이디 찾는 메소드
+	public String id_search(MemberDto dto) {
+		String id=null; // 찾을 아이디
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select id"
+					+ " from am_member"
+					+ "	where name=? and email=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getEmail());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				id=rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	}//메소드 종료
+	
+	//이름, 연락처로 아이디 찾는 메소드
+	public String id_search2(MemberDto dto) {
+		String id=null; // 찾을 아이디
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select id"
+					+ " from am_member"
+					+ "	where name=? and phone=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getPhone());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				id=rs.getString("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	}
+	
+	//아이디, 이름, 연락처로 비밀번호 찾는 메소드
+	public String pwd_search(MemberDto dto) {
+		String pwd=null;//찾을 비밀번호
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select pwd"
+					+ "	from am_member"
+					+ "	where id=? and name=? and phone=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getPhone());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				pwd=rs.getString("pwd");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return pwd;
+	}
 	
 		
 	//아이디 생성 시 중복확인
@@ -410,9 +451,36 @@ public class MemberDao {
 		}
 		return isExist;
 	}
-	
-	
-	
+	//이메일 읽어오는 메소드 
+	public MemberDto getEmail(String id) {
+		MemberDto dto=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select email"
+					+ " from am_member"
+					+ " where email LIKE'a%'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
 	
 	
 	
