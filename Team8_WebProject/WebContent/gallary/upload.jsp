@@ -1,3 +1,4 @@
+<%@page import="test.gallery.dao.GalleryDao"%>
 <%@page import="test.gallery.dto.GalleryDto"%>
 <%@page import="java.util.Map"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
@@ -82,22 +83,25 @@
 					imagePath = "/upload/"+saveFileName;                   	
                     
                 }else{//폼 필드라면 
-                	//input name = "title" 에 입력한 문자열 읽어오는 부분
-                	if(item.getFieldName().equals("caption")){   //==============> 상황에 맞게 코딩
+                	if(item.getFieldName().equals("caption")){ 
                 		//제목 읽어오기
                 		caption=item.getString("utf-8");
                 	}if(item.getFieldName().equals("content")){
                 		//내용 읽어오기
+                		content=item.getString("utf-8");
                 	}
                 }//if
             }//for  
         }//if
         
-        //작성자
+        //작성자를 세션에서 얻어오기 (현재 로그인 되어있는 아이디)
         String writer = (String)session.getAttribute("id");
+        
+        //dto에 삽입    		
         GalleryDto dto = new GalleryDto();
-        dto.setId(id);
+        dto.setId(writer);
         dto.setCaption(caption);
+        dto.setContent(content);
         dto.setImagePath(imagePath);
         
         //DB에 저장하기
@@ -113,14 +117,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>/gallery/test_upload.jsp</title>
+<title>upload</title>
 </head>
 <body>
 <div class="container">
 	<%if(isSuccess){ %>
-		<p>이미지를 업로드 했습니다. <a href="../list.jsp">확인</a></p>
+		<script>
+			location.href="list.jsp"
+		</script>
 	<%}else{ %>
-		<p>업로드 실패! <a href="upload_form.jsp">다시시도</a></p>
+		<p>업로드를 실패했습니다. 다시 시도해주세요<a href="upload_form.jsp">다시시도</a></p>
 	<%} %>
 </div>
 </body>
