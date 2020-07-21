@@ -38,8 +38,9 @@ public class GalleryDao {
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getId());
 			pstmt.setString(2, dto.getCaption());
-			pstmt.setString(3, dto.getImagePath());
-			pstmt.setInt(4, dto.getHit());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getImagePath());
+			pstmt.setInt(5, dto.getHit());
 			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
