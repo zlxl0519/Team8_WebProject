@@ -1,5 +1,6 @@
 create table am_dogs(
-id varchar2(35) references am_member(id) primary key, 
+num number primary key,
+id varchar2(35) references am_member(id),
 dname varchar2(40),
 dage number, 
 breed varchar2(50), 
