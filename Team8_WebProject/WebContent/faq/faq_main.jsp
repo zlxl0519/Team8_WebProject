@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.FaqDao"%>
 <%@page import="dto.FaqDto"%>
@@ -80,60 +81,6 @@
 <script>
 	document.title = "Amung's FAQ "; 
 </script>
-<style>
-
-	.btn{
-	padding:0; background:transparent; border:0; outline:0
-	} 
-	
-	.faq{
-	width: 690px; margin:20px auto; border:1px solid #000
-	} 
-	
-	.faq .btn_toggle{
-	display:block; width:100%; height:30px; padding:0 10px;
-	background:#85D4BE; font-size:14px; text-align: left;
-	line-height:30px; box-sizing: border-box}
-	
-	.faq .btn_toggle::before{
-	display:inline; content:'Q.'
-	}
-	
-	.faq .content{
-	display:none; padding:10px; text-align: left; background:#ffffff
-	}
-	
-	.faq .content::before{
-	display:inline; content:'A.'
-	}
-	
-	.faq .content.act{
-	display:block
-	}
-	
-	.page-display{
-		margin-left: 360px;
-	}
-	
-	.page-display a{
-		text-decoration: none;
-		color: #000000;
-	}
-	
-	.page-display ul li{
-		float: left;
-		list-style-type: none; 
-		margin-left: 10px;
-	}
-	
-	.page-display ul li.active{
-		font-weight: bold;
-	}
-	
-	.page-display ul li.active a{
-		color: #85D4BE
-	}
-</style>
 
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -143,47 +90,56 @@
 	<h2>FAQ</h2>
 	
 	<div class="left">
-	<h3>자주 물어보시는 질문들입니다.</h3>
-	<p>
-		검색해도 나오지 않는 질문이 있으시다면 
-		<a href="${pageContext.request.contextPath }/qna/qna_list.jsp">
-		   <strong class="f_blue f16">QnA</strong>
-		</a>
-		게시판을 찾아주세요.
-	</p>
+		<h3>자주 물어보시는 질문들입니다.</h3>
+		<p>
+			검색해도 나오지 않는 질문이 있으시다면 
+			<a href="${pageContext.request.contextPath }/qna/qna_list.jsp">
+			   <strong class="f_blue f16">QnA</strong>
+			</a>
+			게시판을 찾아주세요.
+		</p>
 	</div>
-	
-<!-- faq 아코디언형 게시판 부분 -->
+	 <!-- 검색 폼 --> 
+	 <div class="search-form">
+	 	<form action="faq_main.jsp" method="get">
+	 		<div class="search-wrap">
+	        	<select name="condition" id="condition">
+	        		<option value="qst_ans" <%if(condition.equals("qst_ans")){%>selected<%} %>>제목+내용</option>
+	        		<option value="qst" <%if(condition.equals("qst")){%>selected<%} %>>제목</option>
+	        		<option value="ans" <%if(condition.equals("ans")){%>selected<%} %>>내용</option>
+	        	</select>
+	        	<label for="keyword">
+	        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
+	        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+	        	</label>
+        	</div>
+        	</form> 
+	 </div>        
+        
+    <!-- faq 아코디언형 게시판 부분 -->
 	<ul class="accordion-wrap">
 	<% for(FaqDto tmp:list){ %>
 		<li>
-		<div class="accordion-q">
-		<div class="q">
-			<h6></h6>
-		</div>
-			
-			<a href=""><%=tmp.getQst() %></a>
-			
-			
-		</div>
-		<div class="accordion-a">
-		<div class="a">
-			<h6></h6>
-		</div>
-		
-			<p><%=tmp.getAns() %></p>
-		</div>
-			
+			<div class="accordion-q">
+				<div class="q">
+					<h6></h6>
+				</div>
+				<a href=""><%=tmp.getQst() %></a>
+			</div>
+			<div class="accordion-a">
+				<div class="a">
+					<h6></h6>
+				</div>
+				<p><%=tmp.getAns() %></p>
+			</div>
 		</li>
 	<%} %>
 	</ul>
-
-
-		<%} %>
+	<%--페이징 --%>
 		<div class="page-display">
               <ul>
                    <%if(startPageNum !=1){ %>
-                        <li><a href="faq_main.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
+                        <li class="prev"><a href="faq_main.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
                    <%} %>
                    <%for(int i=startPageNum; i<=endPageNum; i++){ %>
                         <%if(i==pageNum){ %>
@@ -193,25 +149,14 @@
                         <%} %>
                    <%} %>
                    <%if(endPageNum < totalPageCount){ %>
-                        <li><a href="faq_main.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+                        <li class="next"><a href="faq_main.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
                    <%} %>
               </ul>
           </div>
           <br/>
           <br/>
  
- <!-- 검색 폼 -->         
-        
-        <form action="faq_main.jsp" method="get">
-        	<label for="condition">검색 조건</label>
-        	<select name="condition" id="condition">
-        		<option value="qst_ans" <%if(condition.equals("qst_ans")){%>selected<%} %>>제목+내용</option>
-        		<option value="qst" <%if(condition.equals("qst")){%>selected<%} %>>제목</option>
-        		<option value="ans" <%if(condition.equals("ans")){%>selected<%} %>>내용</option>
-        	</select>
-        	<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
-        	<button type="submit">검색</button>
-        </form> 
+
           
 </div>
 
@@ -249,9 +194,11 @@ function faqevent(wrap1){
 		});
 	});
 	
-} */
-
+} 
 faqevent('.faq');
+*/
+
+
 
 </script>
 <jsp:include page="../include/footer.jsp"></jsp:include>

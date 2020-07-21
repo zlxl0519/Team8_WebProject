@@ -93,6 +93,61 @@ select{cursor: pointer;}
 .form-wrap .alert {margin-left : 118px;}
 .form-wrap #pwdAlert {margin-left : 84px;}
 
+/*검색폼 */
+.search-form {margin : 20px 0;}
+.search-form label[for="keyword"]{
+	position : relative;
+	z-index : 1;
+}
+.search-form .search-wrap:hover input, .search-wrap:hover select{background : #fff;}
+.search-form select {
+	background : #f7f7f7;
+ 	border-radius: 30px 0 0 30px;
+ 	line-height: 16px;
+ 	padding : 0 50px 0 20px;
+	height: 50px;
+ 	width : 21.5%;
+ 	position : relative;
+ 	z-index : 2;
+ 	
+	margin : 0 -24px 0 0;
+	border: 1px solid #f7f7f6;
+	border-right : none;
+ }
+.search-form input {
+	width:80%;
+    height: 50px;
+    padding: 0 50px 0 40px;
+    border: 1px solid #f7f7f6;
+    border-radius: 30px;
+    background-color: #f7f7f7;
+    font-weight: 400;
+    font-size: 12px;
+    color: #666;
+    line-height: 16px; margin-left : 0px;
+    outline: none;}
+.btn-search{
+	background : none;
+	position: absolute;
+    right: 26px;
+    top: 2px;
+  	padding : 0 0;
+    }
+.btn-search i {font-size : 20px;}
+
+
+/*페이징 */
+.page-display {margin-top : 100px;}
+.page-display ul{}
+.page-display li{display : inline-block;}
+
+.page-display li a{margin : 0 10px;display:inline-block;width : 30px; height : 30px;padding : 6px 0;border-radius : 50%;font-weight : bold; font-size : 18px; color : #3f3f3f;}
+.page-display li.active a{background : #97d2bf;color : #fff;}
+.page-display li.prev a,
+.page-display li.next a
+{width : auto; padding : 6px 20px;background : #97d2bf; color : #fff;}
+.page-display li.prev a{border-radius: 20px 0 0 20px;}
+.page-display li.next a{border-radius: 0px 20px 20px 0px;}
 /*테이블 스타일 */
 .form-table-wrap table {width : 100%; text-align : left;}
 .form-table-wrap th,
