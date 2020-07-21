@@ -14,7 +14,7 @@
 			<%for(GalleryDto tmp : list){%>
 			<li>
 				<div>
-					<a href="imgInfo.jsp?num=<%=tmp.getNum()%>"><img src="${pageContext.request.contextPath }<%= tmp.getImagePath()%></a>"/>
+					<img src="${pageContext.request.contextPath }<%= tmp.getImagePath()%>"/>
 				</div>
 				<div class="caption"><%=tmp.getCaption() %></div>
 			</li>
