@@ -14,6 +14,8 @@
 	QnaDao dao = QnaDao.getInstance();
 	QnaDto dto = dao.getData(num);
 	dao.viewCount(num);
+	//세션에서 아이디 얻어오기
+	String id = (String)session.getAttribute("id");
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -47,8 +49,11 @@
 		<tr>
 			<td></td>
 			<td>
+			<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
+			<%if(dto.getId().equals(id)){ %>
 				<a href="updateform.jsp?num=<%=dto.getNum()%>">수정</a>
 				<a href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
+			<%} %>
 				<a href="qna_list.jsp">목록</a>
 			</td>
 		</tr>		

@@ -9,6 +9,13 @@
 	String id = dto.getId();
 	String title = dto.getTitle();
 	String content = dto.getContent();
+	
+	//로그인 된 아이디와 글 작성자가 같을 때에만 수정할 수 있도록
+	String sId = (String)session.getAttribute("id");
+	if(!id.equals(sId)){
+		response.sendError(HttpServletResponse.SC_FORBIDDEN,"잘못된 접근입니다!");
+		return;
+	}
 %>
 <!DOCTYPE html>
 <html>
