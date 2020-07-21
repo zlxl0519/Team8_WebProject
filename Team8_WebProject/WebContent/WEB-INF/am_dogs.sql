@@ -1,5 +1,4 @@
 create table am_dogs(
-
 num number primary key, -- 강아지 고유의 pk
 member_id varchar2(35) references am_member(id), -- 강아지 소유자 의 id
 dname varchar2(40), -- 강아지 이름

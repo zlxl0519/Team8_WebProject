@@ -71,7 +71,8 @@
                     //원본 파일명과 저장된 파일명을 FileDto 객체에 담는다.
                    	
                    	//이미지 경로
-					imageSrc = "/upload/"+saveFileName;                   	
+					imageSrc = "/upload/"+saveFileName;
+                    System.out.println(imageSrc);
                     
                 }else{//폼 필드라면 
                 }//if

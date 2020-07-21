@@ -11,21 +11,21 @@
 <span>* 표시가 되어있는 칸은 반드시 입력하셔야 가입이 가능합니다</span>
 </h2>
 
-	<form action="upload.jsp" method="post" enctype="multipart/form-data">
+	<%-- 프로필사진  업로드 폼--%>
+	<form action="profile_upload.jsp" method="post" enctype="multipart/form-data" id="profileForm">
 		<div class="form-ul-wrap mb0">
 		
 			<ul>
 				<li class="profile-wrap bbn">
 				<div class="profile-box">
-				<label for="img">프로필 이미지</label>
+				<label for="image">프로필 이미지</label>
 					<div class="profile-img">
-					 <!-- <img src="https://bit.ly/32l7wx5" /> -->
-					 
+						<img id="profileImage" src="https://bit.ly/32l7wx5"/>
 					</div>
 					
 						<div class="profile-btn">
-							<label for="img"><i class="fas fa-images"></i></label>
-							<input type="file" name="img" id="img"/>
+							<label for="image"><i class="fas fa-images"></i></label>
+							<input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
 						</div>
 						
 					</div>
@@ -33,9 +33,13 @@
 				</li>
 			</ul>
 		</div>
-			
 	</form>
+	
+	
+	
+	<%-- 나머지 정보 업로드 폼 --%>
 	<form action="signup.jsp" method="post" id="signup">
+		<input type="hidden" name="profile" id="profile" />
 		<div class="form-ul-wrap">
 		<ul>
 			
@@ -135,9 +139,22 @@
 	</form>
 	</div>
 	</div><!-- content 종료  -->
-
-
+	
+	<script src="${pageContext.request.contextPath }/include/js/jquery.form.min.js"></script>
 	<script>
+	
+	//========= form 에 submit 이벤트가 일어 났을때 프로필 사진을 ajax 로 제출 하도록  ====================
+		$("#profileForm").ajaxForm(function(data){
+			//프로필 이미지를 업데이트 한다.
+			$("#profileImage").attr("src", "${pageContext.request.contextPath }"+data.imageSrc);
+			//회원정보 수정폼 전송될 때 같이 전송되도록 한다.
+			$("#profile").val(data.imageSrc);
+		});
+	//이미지 파일을 선택했을때 change 이벤트가 일어난다.
+	$("#image").on("change", function(){
+		$("#profileForm").submit();//폼 강제 제출
+	});
+		
 		
 	var canUse = false;
 	//==========  비밀번호 재확인 일치불일치 =============
