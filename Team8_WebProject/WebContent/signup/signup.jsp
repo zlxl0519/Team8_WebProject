@@ -3,12 +3,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+	//사람
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
 	String email = request.getParameter("email01")+"@"+request.getParameter("email02");
 	String name = request.getParameter("name");
 	String phone = request.getParameter("phone");
+	String profile = request.getParameter("profile");
+	if(profile.equals("null")){
+		profile=null;
+	}
+	
+	//강아지
 	String dname = request.getParameter("dname");
 	int dage = Integer.parseInt(request.getParameter("dage"));
 	String breed = request.getParameter("breed");
@@ -18,11 +24,15 @@
 	String memo = request.getParameter("memo");
 	
 	MemberDto dto = new MemberDto();
+	//사람
 	dto.setId(id);
 	dto.setPwd(pwd);
 	dto.setEmail(email);
 	dto.setName(name);
 	dto.setPhone(phone);
+	dto.setProfile(profile);
+	//강아지
+	dto.setMember_id(id);
 	dto.setDname(dname);
 	dto.setDage(dage);
 	dto.setBreed(breed);
@@ -43,13 +53,13 @@
 		<p class="form-span m20">
 			<strong>회원가입이 완료되었습니다.</strong>
 		</p>
-		<a href="loginform.jsp" class="btn-default">확인</a>
+		<a href="../index.jsp" class="btn-default">확인</a>
 		<% }else{%>
 		<i class="fas fa-lock"></i>
 		<p class="form-span m20">
 			<strong>회원가입을 실패했습니다.</strong>
 		</p>
-		<a href="signup_form.jsp" class="btn-default">확인</a>
+		<a href="../index.jsp" class="btn-default">확인</a>
 		<% }%>
 	</div>
 </div>
