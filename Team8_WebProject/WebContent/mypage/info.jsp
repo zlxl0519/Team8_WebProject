@@ -14,20 +14,19 @@
 	document.title = "Amnug: Mypage-info"; 
 	
 </script>
-<%-- --%>
+<%--마이페이지-정보보기 mypage/info.jsp--%>
 <div class="content">
 <div class="sub-nav">
 	<h2>MyPage</h2>
 	<div class="sub-nav-gnb">
 		<ul>
-			<li><a href="">내 정보 보기 </a></li>
-			<li><a href="">예약현황</a></li>
-			<li><a href="">내 정보 수정 </a></li>
+			<li class="active"><a href="info.jsp">내 정보 보기 </a></li>
+			<li><a href="reserve_status.jsp">예약현황</a></li>
+			<li><a href="update_pwdokform.jsp">내 정보 수정 </a></li>
 		</ul>
-	</div>
-</div>
+	</div><!-- sub-nav-gnb -->
+</div><!-- sub-nav -->
 	<div class="form-table-wrap mb20">
-	
 		<table>
 			<tr>
 				<th>아이디</th>
@@ -56,7 +55,7 @@
 		</table>
 
 	</div><!-- table-wrap -->
-	<a href="update_pwdok.jsp" class="btn-default">개인정보 수정</a>
+	<a href="update_pwdokform.jsp" class="btn-default">개인정보 수정</a>
 	<a href="javascript:deleteConfirm()"class="btn-default btn-gray">탈퇴</a>
 </div><!-- content -->
 <script>
@@ -72,8 +71,3 @@ function deleteConfirm(){
 </script>
 
 <jsp:include page="../include/footer.jsp"></jsp:include>
-
-
-
-</body>
-</html>
