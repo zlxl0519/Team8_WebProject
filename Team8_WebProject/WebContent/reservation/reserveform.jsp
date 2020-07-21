@@ -79,7 +79,7 @@
 			<li>
 				<label for="etc">기타사항</label>
 				<textarea name="etc" id="etc" cols="30" rows="10" 
-			     placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한사항을 작성해 주세요."></textarea>
+			     placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한사항을 작성해 주세요. 그리고 추가한 강아지의 정보도 입력해주세요"></textarea>
 		
 			</li>
 		</ul>

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import test.member.dto.MemberDto;
 import test.reserve.dto.ReserveDto;
 import test.util.DbcpBean;
 
@@ -19,8 +20,10 @@ public class ReserveDao {
 		}
 		return dao;
 	}
+	//am_dogs 테이블 select 하는 메소드
+	 
 	//예약 정보 추가하기
-	public boolean insert(ReserveDto dto) {
+	public boolean insert(ReserveDto Rdto ,MemberDto Mdto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
@@ -28,14 +31,16 @@ public class ReserveDao {
 			conn = new DbcpBean().getConn();
 			//sql 문 작성
 			String sql = "insert into reserve"
-					+ " (num, service, checkin, checkout, etc)"
-					+ "	values(reserve_seq.nextval, ?, to_date('?', 'yyyy-mm-dd'), to_date('?', 'yyyy-mm-dd'), ?)";
+					+ " (num, member_id, dog_num, service, checkin, checkout, etc)"
+					+ "	values(reserve_seq.nextval, ?, ?, ?, to_date( ? , 'yyyy-mm-dd'), to_date( ? , 'yyyy-mm-dd'), ?)";
 			pstmt = conn.prepareStatement(sql);
 			//sql 문에 ? 부분을 넣는것
-			pstmt.setString(1, dto.getService());
-			pstmt.setString(2, dto.getCheckin());
-			pstmt.setString(3, dto.getCheckout());
-			pstmt.setString(4, dto.getEtc());
+			pstmt.setString(1, Rdto.getMember_id());
+			pstmt.setInt(2, Mdto.getNum());
+			pstmt.setString(3, Rdto.getService());
+			pstmt.setString(4, Rdto.getCheckin());
+			pstmt.setString(5, Rdto.getCheckout());
+			pstmt.setString(6, Rdto.getEtc());
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,20 +69,13 @@ public class ReserveDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "select m.name, m.phone, r.service, "
-					+ "	d.breed, d.dage,r.checkin,r.checkout, r.etc"
-					+ "	from am_member m, reserve r, am_dogs d"
-					+ "	where m.id=r.member_id and r.dog_num=d.num and r.num=? ";
+			String sql = "";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dto=new ReserveDto();
-				dto.setMember_name(rs.getString("m.name"));
-				dto.setMember_phone(rs.getString("m.phone"));
 				dto.setService(rs.getString("r.service"));
-				dto.setDog_breed(rs.getString("d.breed"));
-				dto.setDog_age(rs.getString("d.dage"));
 				dto.setCheckin(rs.getString("r.checkin"));
 				dto.setCheckout(rs.getString("r.checkout"));
 				dto.setEtc(rs.getString("r.etc"));
