@@ -31,7 +31,7 @@ public class QnaDao {
 			//Connection 객체의 참조값 얻어오기 
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기
-			String sql = "select num, title, content, regdate, hit, id"
+			String sql = "select num, writer, title, content, image, regdate, hit"
 					+" from qna"
 					+" order by num asc";
 			pstmt = conn.prepareStatement(sql);
@@ -42,11 +42,12 @@ public class QnaDao {
 			while (rs.next()) {
 				QnaDto dto = new QnaDto();
 				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setImage(rs.getString("image"));
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setHit(rs.getInt("hit"));
-				dto.setId(rs.getString("id"));
 				list.add(dto);
 			}
 		} catch (Exception e) {
@@ -73,7 +74,7 @@ public class QnaDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "select num, title, content, regdate, hit, id"
+			String sql = "select num, writer, title, content, image, regdate, hit"
 					+" from qna"
 					+" where num=?";
 			pstmt = conn.prepareStatement(sql);
@@ -82,11 +83,12 @@ public class QnaDao {
 			while (rs.next()) {
 				dto = new QnaDto();
 				dto.setNum(num);
+				dto.setWriter(rs.getString("writer"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setImage(rs.getString("image"));
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setHit(rs.getInt("hit"));
-				dto.setId(rs.getString("id"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,13 +115,14 @@ public class QnaDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = "insert into qna"
-					+ " (num, title, content, regdate, hit, id)"
-					+ " values(qna_seq.NEXTVAL, ?, ?, sysdate, 0, ?)";
+					+ " (num, writer, title, content, image, regdate, hit)"
+					+ " values(qna_seq.NEXTVAL, ?, ?, ?, ? sysdate, 0)";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
-			pstmt.setString(1, dto.getTitle());
-			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getId());
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getTitle());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getImage());
 			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -184,13 +187,14 @@ public class QnaDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = "update qna"
-					+ " set title = ?, content = ?"
+					+ " set title = ?, content = ?, image = ?"
 					+ " where num = ?";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getTitle());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setInt(3, dto.getNum());
+			pstmt.setString(3, dto.getImage());
+			pstmt.setInt(4, dto.getNum());
 			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {

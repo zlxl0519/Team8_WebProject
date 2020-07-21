@@ -11,9 +11,9 @@
 	response.sendRedirect(cPath+"/qna/qna_list.jsp");
 	
 	QnaDto dto = QnaDao.getInstance().getData(num);
-	String id = dto.getId();
-	String sId = (String)session.getAttribute("id");
-	if(!id.equals(sId)){
+	String writer = dto.getWriter();
+	String swriter = (String)session.getAttribute("id");
+	if(!writer.equals(swriter)){
 		response.sendError(HttpServletResponse.SC_FORBIDDEN,"잘못된 접근입니다!");
 		return;
 	}

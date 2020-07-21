@@ -33,7 +33,7 @@
 				<tr style="text-align:center;">
 					<td><%=tmp.getNum() %></td>
 					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
-					<td><%=tmp.getId() %></td>
+					<td><%=tmp.getWriter() %></td>
 					<td><%=tmp.getRegdate() %></td>
 					<td><%=tmp.getHit() %></td>
 				</tr>

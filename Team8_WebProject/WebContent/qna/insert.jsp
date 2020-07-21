@@ -11,7 +11,7 @@
 	QnaDto dto = new QnaDto();
 	dto.setTitle(title);
 	dto.setContent(content);
-	dto.setId(id);
+	dto.setWriter(id);
 	boolean isSuccess = QnaDao.getInstance().insert(dto);
 %>
 <!DOCTYPE html>
