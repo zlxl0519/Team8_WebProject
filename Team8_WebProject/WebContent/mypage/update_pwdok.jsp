@@ -1,36 +1,35 @@
-<%@page import="test.member.dto.MemberDto"%>
+
 <%@page import="test.member.dao.MemberDao"%>
+<%@page import="test.member.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String id=(String)session.getAttribute("id");
-	MemberDto dto=MemberDao.getInstance().getData(id);
+<%	
+	String id= (String)session.getAttribute("id");
+	String pwd=request.getParameter("pwd");
+	
+	MemberDto dto=new MemberDto();
+	dto.setId(id);
+	dto.setPwd(pwd);
+	boolean isValid=MemberDao.getInstance().isValid(dto);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 확인</title>
-<script>
-	function checkValue(){
-		if(!document.update_pwdokform.pwd.value){
-			alert("비밀번호를 입력하지 않았습니다.");
-			return false;
-		}
-	}
-</script>
+<title>/update_pwdok.jsp</title>
 </head>
 <body>
-<div class="container">
-	<h1>비밀번호 확인</h1>
-	<p>회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</p>
-	<form name="update_pwdokform" action="pwd_ok.jsp" method="post" onsubmit="return checkValue()">
-		<label for="id">아이디</label>
-		<input type="text" id="id" value="<%=dto.getId() %>" disabled/>
-		<label for="pwd">비밀번호</label>
-		<input type="text" id="pwd" name="pwd_ok" />
-		<button type="submit">확인</button>
-	</form>
-</div>
+	<%if(isValid){ 
+		session.setAttribute("id", id);%>
+		<script>
+			alert("비밀번호가 확인되었습니다.");
+			location.href="updateform.jsp";
+		</script>
+	<%} else{%>
+		<script>
+			alert("잘못된 비밀번호 입니다.");
+			location.href="update_pwdokform.jsp";
+		</script>
+	<%} %>
 </body>
 </html>
