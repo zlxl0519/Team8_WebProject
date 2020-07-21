@@ -198,7 +198,9 @@ public class MemberDao {
 			ResultSet rs = null;
 			try {
 				conn = new DbcpBean().getConn();
-				String sql = "select ";
+				String sql = "select id, pwd, email, profile, name, phone, regdate"
+						+ "	from am_member"
+						+ "	where id=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -211,10 +213,44 @@ public class MemberDao {
 					dto.setName(rs.getString("name"));
 					dto.setPhone(rs.getString("phone"));
 					dto.setRegdate(rs.getString("regdate"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return dto;
+		}
+		
+		//한명 회원의 강아지 정보를 가져오는 메소드
+		public MemberDto getPuppyData(String id) {
+			MemberDto dto=null;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = new DbcpBean().getConn();
+				String sql = "select num, member_id, dname, dage, breed, weight, neutral, gender, memo"
+						+ "	from am_dogs"
+						+ "	where member_id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					dto=new MemberDto();
 					dto.setDname(rs.getString("dname"));
 					dto.setDage(rs.getInt("dage"));
 					dto.setBreed(rs.getString("breed"));
-					dto.setWeight(rs.getString("neutral"));
+					dto.setWeight(rs.getString("weight"));
 					dto.setNeutral(rs.getString("neutral"));
 					dto.setGender(rs.getString("gender"));
 					dto.setMemo(rs.getString("memo"));
