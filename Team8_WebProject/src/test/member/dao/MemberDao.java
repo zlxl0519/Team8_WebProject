@@ -232,7 +232,7 @@ public class MemberDao {
 		}
 		
 		//한명 회원의 강아지 정보를 읽어오는 메소드
-		public MemberDto getPuppydata(String id) {
+		public MemberDto getPuppyData(String id) {
 			MemberDto dto=null;
 			Connection conn = null;
 			PreparedStatement pstmt = null;
