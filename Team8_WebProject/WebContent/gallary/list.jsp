@@ -1,3 +1,4 @@
+<%@page import="test.member.dto.MemberDto"%>
 <%@page import="test.gallery.dao.GalleryDao"%>
 <%@page import="java.util.List"%>
 <%@page import="test.gallery.dto.GalleryDto"%>
@@ -5,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	List<GalleryDto> list = GalleryDao.getInstance().getList();
+	String id = (String)session.getAttribute("id");
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
@@ -20,7 +22,14 @@
 			</li>
 			<%} %>
 		</ul>
-		<a href="upload_form.jsp"><button>글쓰기</button></a>
+		<%if(id.equals("admin")){ %>
+			<div id="btn" style="margin-top: 40px"></div>
+			<script>
+				$("<a>").attr("id", "submit").attr("href", "upload_form.jsp").appendTo("#btn");
+				$("<button>").text("글쓰기").appendTo("#submit");
+			</script>
+		<%}%>
+		}
 	</div>
 </div>
 </div>

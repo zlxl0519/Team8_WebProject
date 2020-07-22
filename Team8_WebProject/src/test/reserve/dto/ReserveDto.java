@@ -79,7 +79,5 @@ public class ReserveDto {
 		this.etc = etc;
 	}
 
-	
-
-	
+		
 }
