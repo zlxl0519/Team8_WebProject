@@ -22,7 +22,7 @@ public class ReserveDao {
 	}
 	 
 	//예약 정보 추가하기
-	public boolean insert(ReserveDto Rdto ,MemberDto Mdto) {
+	public boolean insert(ReserveDto rdto ,MemberDto mdto) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -35,12 +35,12 @@ public class ReserveDao {
 					+ "	values(reserve_seq.nextval, ?, ?, ?, to_date( ? , 'yyyy-mm-dd'), to_date( ? , 'yyyy-mm-dd'), ?)";
 			pstmt = conn.prepareStatement(sql);
 			//sql 문에 ? 부분을 넣는것
-			pstmt.setString(1, Rdto.getMember_id());
-			pstmt.setInt(2, Mdto.getNum());
-			pstmt.setString(3, Rdto.getService());
-			pstmt.setString(4, Rdto.getCheckin());
-			pstmt.setString(5, Rdto.getCheckout());
-			pstmt.setString(6, Rdto.getEtc());
+			pstmt.setString(1, rdto.getMember_id());
+			pstmt.setInt(2, mdto.getNum());
+			pstmt.setString(3, rdto.getService());
+			pstmt.setString(4, rdto.getCheckin());
+			pstmt.setString(5, rdto.getCheckout());
+			pstmt.setString(6, rdto.getEtc());
 			flag = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

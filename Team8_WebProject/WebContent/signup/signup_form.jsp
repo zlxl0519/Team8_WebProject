@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
-	document.title = "회원가입 페이지"; 
+   document.title = "회원가입 페이지"; 
 </script>
 <%--회원가입 폼입니다.--%>
 <div class="content">
@@ -10,7 +10,6 @@
 <h2>회원가입
 <span>* 표시가 되어있는 칸은 반드시 입력하셔야 가입이 가능합니다</span>
 </h2>
-
 	<%-- 프로필사진  업로드 폼--%>
 	<form action="profile_upload.jsp" method="post" enctype="multipart/form-data" id="profileForm">
 		<div class="form-ul-wrap mb0">
@@ -215,10 +214,10 @@
 		
 		
 	//=========아이디 영문/숫자 제한==============
-		var enNumCheck = RegExp(/[^A-Za-z0-9]{5,30}$/);
+		var enNumCheck = RegExp(/[^A-Za-z0-9]$/);
 		$("#idAlert").hide();
 		$("#id").keyup(function(){
-			if(enNumCheck.test($("#id").val())){
+			if(enNumCheck.test($("#id").val()) || $("#id").val().length < 5){
 				$("#idAlert").show();
 				$("#submit").attr("disabled", true);
 				canUseId2 = false;
@@ -232,10 +231,11 @@
 		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
-		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]{8,16}$/);
+		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
-			if(enNumSpkCheck.test($("#pwd").val())){
+			if(enNumSpkCheck.test($("#pwd").val()) || $("#pwd").val().length < 8){
 				$("#pwdAlert").show();
 				$("#submit").attr("disabled", true);
 				 canUse = false;
@@ -260,6 +260,8 @@
 				 canUse = true; 
 			}
 		})
+
+
 		
 		//=========기타...등등===========
 		$("#submit").on("click", function(){
@@ -271,7 +273,7 @@
 				alert("아이디 중복확인을 해주세요")
 				$("#id").focus();
 				return false;
-			}else if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val()){
+			}else if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val() || $("#pwd").val.length < 8){
 				alert("비밀번호를 확인하세요.")
 				$("#pwd").focus();
 				return false;
@@ -296,24 +298,24 @@
 
 
 <%--
-	자바스크립트 정규식에서 자주 사용되는 메소드 search(), test(), replace()
-	1. search(); == 전체 문장에서 찾고자 하는 문자열이 몇 번째에 위치해있는지 알려준다.
-		용례) var string = "Please visit myWeb!";
-			 var position = string.search("myWeb");
-			 console.log(position);
-			 -->  result : 13
-	
-	2. test(); == 문장 안에 찾으려는 문자가 들어있으면, 결과는 "true"이다.
-		용례) var string = "Please visit myWeb!";
-			 var reg = /my/;
-			 var testing = reg.test(string);
-			 console.log(testing);
-			 --> result : true
-			 
-	3. replace(); == 문자열의 일부를 다른 문자열로 바꿀 때 사용한다.
-		용례) var string = "Please visit myWeb!";
-			 var change = string.replace("myWeb", "Naver");
-			 console.log(change);
-			 --> result : Please visit Naver!
+   자바스크립트 정규식에서 자주 사용되는 메소드 search(), test(), replace()
+   1. search(); == 전체 문장에서 찾고자 하는 문자열이 몇 번째에 위치해있는지 알려준다.
+      용례) var string = "Please visit myWeb!";
+          var position = string.search("myWeb");
+          console.log(position);
+          -->  result : 13
+   
+   2. test(); == 문장 안에 찾으려는 문자가 들어있으면, 결과는 "true"이다.
+      용례) var string = "Please visit myWeb!";
+          var reg = /my/;
+          var testing = reg.test(string);
+          console.log(testing);
+          --> result : true
+          
+   3. replace(); == 문자열의 일부를 다른 문자열로 바꿀 때 사용한다.
+      용례) var string = "Please visit myWeb!";
+          var change = string.replace("myWeb", "Naver");
+          console.log(change);
+          --> result : Please visit Naver!
  --%>
 <jsp:include page="../include/footer.jsp"></jsp:include>

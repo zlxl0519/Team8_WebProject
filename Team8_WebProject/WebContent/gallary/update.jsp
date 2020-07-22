@@ -113,21 +113,21 @@
     }
    
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
-<div class="content">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>upload</title>
+</head>
+<body>
+<div class="container">
 	<%if(isSuccess){ %>
 		<script>
 			location.href="list_admin.jsp"
 		</script>
 	<%}else{ %>
-	<div class="icon-wrap">
-		<i class="fas fa-lock"></i>
-		<p class="form-span m20">
-			<strong>업로드를 실패했습니다.</strong><br/>
-			다시 시도해주세요
-		</p>
-		<a href="upload_form.jsp" class="btn-default">다시시도</a>
-	</div>
+		<p>업로드를 실패했습니다. 다시 시도해주세요<a href="update_form.jsp">다시시도</a></p>
 	<%} %>
 </div>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+</body>
+</html>

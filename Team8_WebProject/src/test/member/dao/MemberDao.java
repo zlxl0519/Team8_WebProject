@@ -230,6 +230,43 @@ public class MemberDao {
 			return dto;
 		}
 		
+		//예약시 회원의 강아지 정보와 일치하는 강아지 dog_num 얻어오기
+		public MemberDto getDogNum(MemberDto dto) {
+			MemberDto mdto=null;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = new DbcpBean().getConn();
+				String sql = "select num"
+						+ "	from am_dogs"
+						+ "	where dname=? and breed=? and dage=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, dto.getDname());
+				pstmt.setString(2, dto.getBreed());
+				pstmt.setInt(3, dto.getDage());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					mdto=new MemberDto();
+					mdto.setNum(rs.getInt("num"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return mdto;
+		}
+		
 		//한명 회원의 강아지 정보를 읽어오는 메소드
 		public MemberDto getPuppyData(String id) {
 			MemberDto dto=null;
@@ -271,6 +308,50 @@ public class MemberDao {
 				}
 			}
 			return dto;
+		}
+		
+		//한명회원의 강아지가 여러마리라면 한명회원의 강아지 리스트를 불러오는 메소드
+		public List<MemberDto> getPuppyList(String id){
+			List<MemberDto> puppyList=new ArrayList();
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = new DbcpBean().getConn();
+				String sql = "select num, dname, dage, breed, weight, neutral, gender, memo"
+						+ "	from am_dogs"
+						+ "	where member_id=?"
+						+ "	order by num desc";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					MemberDto dto=new MemberDto();
+					dto.setNum(rs.getInt("num"));
+					dto.setDname(rs.getString("dname"));
+					dto.setDage(rs.getInt("dage"));
+					dto.setBreed(rs.getString("breed"));
+					dto.setWeight(rs.getString("weight"));
+					dto.setNeutral(rs.getString("neutral"));
+					dto.setGender(rs.getString("gender"));
+					dto.setMemo(rs.getString("memo"));
+					puppyList.add(dto);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return puppyList;
 		}
 		
 		//회원정보 삭제하는 메소드
