@@ -31,7 +31,7 @@ public class QnaDao {
 			//Connection 객체의 참조값 얻어오기 
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기
-			String sql = "select num, title, content, regdate, hit, id"
+			String sql = "select num, title, content, regdate, hit"
 					+" from qna"
 					+" order by num asc";
 			pstmt = conn.prepareStatement(sql);
@@ -46,7 +46,6 @@ public class QnaDao {
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setHit(rs.getInt("hit"));
-				dto.setId(rs.getString("id"));
 				list.add(dto);
 			}
 		} catch (Exception e) {
