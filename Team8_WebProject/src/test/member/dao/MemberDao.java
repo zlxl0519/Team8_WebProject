@@ -21,7 +21,6 @@ public class MemberDao {
 		return dao;
 	}
 	
-	
 	//회원(사람용) 추가
 	public boolean insertHuman(MemberDto dto) {
 		Connection conn = null;
@@ -452,9 +451,36 @@ public class MemberDao {
 		}
 		return isExist;
 	}
-	
-	
-	
+	//이메일 읽어오는 메소드 
+	public MemberDto getEmail(String id) {
+		MemberDto dto=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "select email"
+					+ " from am_member"
+					+ " where email LIKE'a%'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
 	
 	
 	
