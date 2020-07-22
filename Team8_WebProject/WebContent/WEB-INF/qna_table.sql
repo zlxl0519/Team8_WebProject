@@ -5,7 +5,6 @@ title VARCHAR2(300),
 content CLOB,
 regdate DATE,
 hit NUMBER,
-image VARCHAR2(200)
 );
 
 CREATE SEQUENCE qna_seq;

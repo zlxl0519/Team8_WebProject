@@ -7,7 +7,7 @@
 <%	
 	List<MemberDto> list = MemberDao.getInstance().getList();
 %>
-	<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <script>
 	document.title = "회원목록 "; 
 </script>
