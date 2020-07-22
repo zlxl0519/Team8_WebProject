@@ -126,7 +126,7 @@
 			location.href="list_admin.jsp"
 		</script>
 	<%}else{ %>
-		<p>업로드를 실패했습니다. 다시 시도해주세요<a href="upload_form.jsp">다시시도</a></p>
+		<p>업로드를 실패했습니다. 다시 시도해주세요<a href="update_form.jsp">다시시도</a></p>
 	<%} %>
 </div>
 </body>

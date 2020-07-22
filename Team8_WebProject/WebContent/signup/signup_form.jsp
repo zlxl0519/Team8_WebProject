@@ -215,10 +215,10 @@
 		
 		
 	//=========아이디 영문/숫자 제한==============
-		var enNumCheck = RegExp(/[^A-Za-z0-9]{5,30}$/);
+		var enNumCheck = RegExp(/[^A-Za-z0-9]$/);
 		$("#idAlert").hide();
 		$("#id").keyup(function(){
-			if(enNumCheck.test($("#id").val())){
+			if(enNumCheck.test($("#id").val()) || $("#id").val().length < 5){
 				$("#idAlert").show();
 				$("#submit").attr("disabled", true);
 				canUseId2 = false;
@@ -232,11 +232,11 @@
 		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
-		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]{8,16}$/);
+		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
 
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
-			if(enNumSpkCheck.test($("#pwd").val())){
+			if(enNumSpkCheck.test($("#pwd").val()) || $("#pwd").val().length < 8){
 				$("#pwdAlert").show();
 				$("#submit").attr("disabled", true);
 				 canUse = false;
@@ -273,7 +273,7 @@
 				alert("아이디 중복확인을 해주세요")
 				$("#id").focus();
 				return false;
-			}else if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val()){
+			}else if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val() || $("#pwd").val.length < 8){
 				alert("비밀번호를 확인하세요.")
 				$("#pwd").focus();
 				return false;
