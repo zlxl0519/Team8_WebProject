@@ -15,10 +15,10 @@
 					<h4>호텔링 경험을 선물하세요</h4>
 					
 				</div>
-				
-				
-				<div class="reservation-btn"><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp"> 예약하기 </a></div>
-</div>
+
+			<div class="reservation-btn"><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp"> 예약하기 </a></div>
+			</div>
+
 			</div>
 			<img src="${pageContext.request.contextPath }/include/img/main01.png"/>
 		</li>

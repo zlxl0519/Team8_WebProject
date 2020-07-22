@@ -27,6 +27,7 @@
 	String checkin=request.getParameter("checkin");
 	String checkout=request.getParameter("checkout");
 	String etc=request.getParameter("etc");
+
 	
 	//입력한 강아지 정보를 강아지 주인의 id 값으로 넣기
 	MemberDto dto=new MemberDto();

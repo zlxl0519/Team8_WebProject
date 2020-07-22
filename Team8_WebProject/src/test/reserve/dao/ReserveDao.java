@@ -20,10 +20,10 @@ public class ReserveDao {
 		}
 		return dao;
 	}
-	//am_dogs 테이블 select 하는 메소드
 	 
 	//예약 정보 추가하기
 	public boolean insert(ReserveDto Rdto ,MemberDto Mdto) {
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
