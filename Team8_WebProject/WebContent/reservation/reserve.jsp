@@ -49,7 +49,7 @@
 		alert("예약되었습니다.");
 		location.href="reserve_status.jsp";
 	<%}else{ %>
-		alert("예약에 실패했습니다.");
+		alert("예약에 실패했습니다. 강아지 이름, 견종, 나이가 회원가입시 입력한 값과 같은지 확인해주세요.");
 		location.href="reserveform.jsp";
 	<%}%>
 </script>
