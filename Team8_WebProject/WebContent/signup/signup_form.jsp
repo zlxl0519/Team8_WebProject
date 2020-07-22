@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
-	document.title = "회원가입 페이지"; 
+   document.title = "회원가입 페이지"; 
 </script>
 <%--회원가입 폼입니다.--%>
 <div class="content">
@@ -262,6 +262,7 @@
 			}
 		})
 
+
 		
 		//=========기타...등등===========
 		$("#submit").on("click", function(){
@@ -296,26 +297,25 @@
 		
 	</script>
 
-
 <%--
-	자바스크립트 정규식에서 자주 사용되는 메소드 search(), test(), replace()
-	1. search(); == 전체 문장에서 찾고자 하는 문자열이 몇 번째에 위치해있는지 알려준다.
-		용례) var string = "Please visit myWeb!";
-			 var position = string.search("myWeb");
-			 console.log(position);
-			 -->  result : 13
-	
-	2. test(); == 문장 안에 찾으려는 문자가 들어있으면, 결과는 "true"이다.
-		용례) var string = "Please visit myWeb!";
-			 var reg = /my/;
-			 var testing = reg.test(string);
-			 console.log(testing);
-			 --> result : true
-			 
-	3. replace(); == 문자열의 일부를 다른 문자열로 바꿀 때 사용한다.
-		용례) var string = "Please visit myWeb!";
-			 var change = string.replace("myWeb", "Naver");
-			 console.log(change);
-			 --> result : Please visit Naver!
+   자바스크립트 정규식에서 자주 사용되는 메소드 search(), test(), replace()
+   1. search(); == 전체 문장에서 찾고자 하는 문자열이 몇 번째에 위치해있는지 알려준다.
+      용례) var string = "Please visit myWeb!";
+          var position = string.search("myWeb");
+          console.log(position);
+          -->  result : 13
+   
+   2. test(); == 문장 안에 찾으려는 문자가 들어있으면, 결과는 "true"이다.
+      용례) var string = "Please visit myWeb!";
+          var reg = /my/;
+          var testing = reg.test(string);
+          console.log(testing);
+          --> result : true
+          
+   3. replace(); == 문자열의 일부를 다른 문자열로 바꿀 때 사용한다.
+      용례) var string = "Please visit myWeb!";
+          var change = string.replace("myWeb", "Naver");
+          console.log(change);
+          --> result : Please visit Naver!
  --%>
 <jsp:include page="../include/footer.jsp"></jsp:include>
