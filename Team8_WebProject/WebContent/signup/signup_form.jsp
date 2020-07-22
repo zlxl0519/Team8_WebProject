@@ -10,7 +10,6 @@
 <h2>회원가입
 <span>* 표시가 되어있는 칸은 반드시 입력하셔야 가입이 가능합니다</span>
 </h2>
-
 	<%-- 프로필사진  업로드 폼--%>
 	<form action="profile_upload.jsp" method="post" enctype="multipart/form-data" id="profileForm">
 		<div class="form-ul-wrap mb0">
@@ -296,6 +295,7 @@
 		})
 		
 	</script>
+
 
 <%--
    자바스크립트 정규식에서 자주 사용되는 메소드 search(), test(), replace()

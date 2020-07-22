@@ -7,8 +7,7 @@
 	String id=(String)session.getAttribute("id");
 	//한사람의 회원정보 불러오기
 	MemberDto dto=MemberDao.getInstance().getData(id);
-	//한사람 회원의 강아지 정보 불러오기
-	MemberDto dtoPuppy=MemberDao.getInstance().getPuppyData(id);
+	
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <%--예약페이지
@@ -47,23 +46,21 @@
 				<li>
 					<label>
 						반려견 이름
-						<input type="text" value="<%=dtoPuppy.getDname() %>" name="dogName" id="dogName0" disabled/>
+						<input type="text"  name="dogName" id="dogName0" />
 					</label>
 				</li>
 				<li>
 					<label>
 						반려견종
-						<input type="text" value="<%=dtoPuppy.getBreed() %>" name="dogBreed" id="dogBreed0" disabled/>
+						<input type="text" name="dogBreed" id="dogBreed0" />
 					</label>
 							
 				</li>
 				<li class="bbn">
 					<label>
 						반려견나이
-						<input type="text" value="<%=dtoPuppy.getDage() %>" name="dogAge" id="dogAge0" disabled/>
+						<input type="text" name="dogAge" id="dogAge0" />
 					</label>
-					<button type="button" id="addBtn">+</button>
-					<button type="button" id="removeBtn"class="btn-gray">-</button>
 				</li>
 			</ul>
 		</div>
@@ -96,61 +93,35 @@
 		$(this).val($(this).val().replace(/[^0-9]/g,""));
 	});
 	
-	//반려견이름, 반려견종, 반려견 나이 입력칸  추가/ 삭제 하는 기능
-	$(document).ready(function(){
-		var counter = 0;
-		 //입력칸 추가하기
-		$("#addBtn").on("click", function(){
-			//카운터 1 증가 
-			counter++;
-			var newTextBoxDiv = $(document.createElement('ul')).attr("id", 'TextBoxDiv'+counter);
-			var str="<li><label>반려견이름<input type='text' name='dogName' id='dogName"+counter+"'/></label></li>"
-			var str2="<li><label> 반려견종<input type='text' name='dogBreed' id='dogBreed"+counter+"'/></label></li>";
-			var str3="<li class='bbn'><label>반려견나이<input type='text' name='dogAge' id='dogAge"+counter+"' /></label></li>"
-			newTextBoxDiv.after().html(str+str2+str3);
-			newTextBoxDiv.appendTo("#dogInput");
 		
-		});
-		//입력칸 삭제하기
-		$("#removeBtn").on("click", function(){
-			if(counter>=1){
-				//현재 카운터 삭제 
-				$("#TextBoxDiv"+counter).remove();
-				//카운터 1 감소 시키기
-				counter--;
-			}
-		});
+	//반려견이름, 반려견종, 반려견나이, 체크인, 체크아웃 입력 안했을시 폼전송 막기
+	$("#reserveForm").on("submit", function(){
+		if($("#dogName"+counter+"").val()==""){
+			alert("반려견 이름을 입력해주세요");
+			$("#dogName"+counter+"").focus();
+			return false;
+		
+		}else if($("#dogBreed"+counter+"").val()==""){
+			alert("반려견종을 입력해주세요");
+			$("#dogBreed"+counter+"").focus();
+			return false;
+		
+		}else if($("#dogAge"+counter+"").val()==""){
+			alert("반려견 나이를 입력해주세요");
+			$("#dogAge"+counter+"").focus();
+			return false;
+		
+		}else if($("#checkin").val()==""){
+			alert("체크인 날짜를 입력해주세요");
+			$("#checkin").focus();
+			return false;
+		
+		}else if($("#checkout").val()==""){
+			alert("체크아웃 날짜를 입력해주세요");
+			$("#checkout").focus();
+			return false;
+		}
 	});
-	
-		
-		//반려견이름, 반려견종, 반려견나이, 체크인, 체크아웃 입력 안했을시 폼전송 막기
-		$("#reserveForm").on("submit", function(){
-			if($("#dogName"+counter+"").val()==""){
-				alert("반려견 이름을 입력해주세요");
-				$("#dogName"+counter+"").focus();
-				return false;
-			
-			}else if($("#dogBreed"+counter+"").val()==""){
-				alert("반려견종을 입력해주세요");
-				$("#dogBreed"+counter+"").focus();
-				return false;
-			
-			}else if($("#dogAge"+counter+"").val()==""){
-				alert("반려견 나이를 입력해주세요");
-				$("#dogAge"+counter+"").focus();
-				return false;
-			
-			}else if($("#checkin").val()==""){
-				alert("체크인 날짜를 입력해주세요");
-				$("#checkin").focus();
-				return false;
-			
-			}else if($("#checkout").val()==""){
-				alert("체크아웃 날짜를 입력해주세요");
-				$("#checkout").focus();
-				return false;
-			}
-		});
 
 	
 </script>
