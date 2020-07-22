@@ -86,7 +86,7 @@
 		
 		</div><!-- form-ul-wrap -->
 		
-		<button class="btn-default" type="submit">예약하기</button>
+		<button class="btn-default" type="submit" id="submit">예약하기</button>
 	</form>
 </div><!-- form-wrap -->
 </div><!--content -->
@@ -96,15 +96,15 @@
 		$(this).val($(this).val().replace(/[^0-9]/g,""));
 	});
 	
-	
+	//반려견이름, 반려견종, 반려견 나이 입력칸  추가/ 삭제 하는 기능
 	$(document).ready(function(){
 		var counter = 0;
-		//반려견 이름, 견종, 나이 입력칸 추가
+		 //입력칸 추가하기
 		$("#addBtn").on("click", function(){
 			//카운터 1 증가 
 			counter++;
 			var newTextBoxDiv = $(document.createElement('ul')).attr("id", 'TextBoxDiv'+counter);
-			var str="<li><label>반려견 이름<input type='text' name='dogName' id='dogName"+counter+"'/></label></li>"
+			var str="<li><label>반려견이름<input type='text' name='dogName' id='dogName"+counter+"'/></label></li>"
 			var str2="<li><label> 반려견종<input type='text' name='dogBreed' id='dogBreed"+counter+"'/></label></li>";
 			var str3="<li class='bbn'><label>반려견나이<input type='text' name='dogAge' id='dogAge"+counter+"' /></label></li>"
 			newTextBoxDiv.after().html(str+str2+str3);
@@ -120,6 +120,8 @@
 				counter--;
 			}
 		});
+	});
+	
 		
 		//반려견이름, 반려견종, 반려견나이, 체크인, 체크아웃 입력 안했을시 폼전송 막기
 		$("#reserveForm").on("submit", function(){
@@ -149,8 +151,7 @@
 				return false;
 			}
 		});
-	});
-	
+
 	
 </script>
 <jsp:include page="../include/footer.jsp"></jsp:include>
