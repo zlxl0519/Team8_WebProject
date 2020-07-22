@@ -5,16 +5,19 @@
 <%
 
 	int num = Integer.parseInt(request.getParameter("num"));
-	QnaDao.getInstance().delete(num);
+	QnaDao dao = QnaDao.getInstance();
+	QnaDto dto = dao.getData(num);
 	
-	String cPath = request.getContextPath();
-	response.sendRedirect(cPath+"/qna/qna_list.jsp");
-	
-	QnaDto dto = QnaDao.getInstance().getData(num);
 	String writer = dto.getWriter();
-	String swriter = (String)session.getAttribute("id");
-	if(!writer.equals(swriter)){
+	String id = (String)session.getAttribute("id");
+	if(!writer.equals(id)){
 		response.sendError(HttpServletResponse.SC_FORBIDDEN,"잘못된 접근입니다!");
 		return;
 	}
+	
+	QnaDao.getInstance().delete(num);
+
+	String cPath = request.getContextPath();
+	response.sendRedirect(cPath+"/qna/qna_list.jsp");
+
 %>

@@ -44,7 +44,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea cols="60" rows="30" readonly><%=dto.getContent() %></textarea></td>
+			<td><div id="content"><%=dto.getContent() %></div></td>
 		</tr>
 		<tr>
 			<td></td>
