@@ -122,30 +122,6 @@
 		});
 	});
 	
-<<<<<<< HEAD
-	$(document).ready(function(){
-		var counter = 0;
-		//반려견 이름, 견종, 나이 입력칸 추가
-		$("#addBtn").on("click", function(){
-			//카운터 1 증가 
-			counter++;
-			var newTextBoxDiv = $(document.createElement('ul')).attr("id", 'TextBoxDiv'+counter);
-			var str="<li><label>반려견 이름<input type='text' name='dogName' id='dogName"+counter+"'/></label></li>"
-			var str2="<li><label> 반려견종<input type='text' name='dogBreed' id='dogBreed"+counter+"'/></label></li>";
-			var str3="<li class='bbn'><label>반려견나이<input type='text' name='dogAge' id='dogAge"+counter+"' /></label></li>"
-			newTextBoxDiv.after().html(str+str2+str3);
-			newTextBoxDiv.appendTo("#dogInput");
-		
-		});
-		//입력칸 삭제하기
-		$("#removeBtn").on("click", function(){
-			if(counter>=1){
-				//현재 카운터 삭제 
-				$("#TextBoxDiv"+counter).remove();
-				//카운터 1 감소 시키기
-				counter--;
-			}
-		});
 		
 		//반려견이름, 반려견종, 반려견나이, 체크인, 체크아웃 입력 안했을시 폼전송 막기
 		$("#reserveForm").on("submit", function(){
@@ -175,7 +151,7 @@
 				return false;
 			}
 		});
-	});
+
 	
 </script>
 <jsp:include page="../include/footer.jsp"></jsp:include>
