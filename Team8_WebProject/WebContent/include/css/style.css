@@ -293,7 +293,7 @@ li.profile-wrap {text-align : center;}
 .profile-box label{display : block; float : left; width : 100%; text-align : left;}
 .profile-img {width : 150px; height : 150px; display : inline-block; text-align : center;border-radius: 70%;
     overflow: hidden;box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.2);
-    background: #e4e4e4;
+    background: #fff;
     background-size : 20px auto;
     }
     

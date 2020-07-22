@@ -253,7 +253,7 @@ public class MemberDao {
 					dto.setBreed(rs.getString("breed"));
 					dto.setWeight(rs.getString("weight"));
 					dto.setNeutral(rs.getString("neutral"));
-					dto.setGender(rs.getString("getnder"));
+					dto.setGender(rs.getString("gender"));
 					dto.setMemo(rs.getString("memo"));
 				}
 			} catch (Exception e) {
@@ -451,67 +451,7 @@ public class MemberDao {
 		}
 		return isExist;
 	}
-	//이메일 앞부분 읽어오는 메소드 
-	public MemberDto getEmail1(String id) {
-		MemberDto dto=null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = new DbcpBean().getConn();
-			String sql = "select email"
-					+ " from am_member"
-					+ " where email LIKE'%@||'%'";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return dto;
-	}
-	
-	//이메일 뒷부분 읽어오는 메소드 
-		public MemberDto getEmail2(String id) {
-			MemberDto dto=null;
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			try {
-				conn = new DbcpBean().getConn();
-				String sql = "select email"
-						+ " from am_member"
-						+ " where email LIKE'@%'";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			return dto;
-		}
+
 		
 	
 }

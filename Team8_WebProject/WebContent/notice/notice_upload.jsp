@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<script>
+	document.title = ""; 
+</script>
+<%-- --%>
+	<div class="content">
+		
+	</div><!-- content -->
+<jsp:include page="../include/footer.jsp"></jsp:include>
