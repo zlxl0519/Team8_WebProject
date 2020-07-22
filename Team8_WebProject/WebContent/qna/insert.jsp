@@ -14,6 +14,7 @@
 	dto.setWriter(id);
 	boolean isSuccess = QnaDao.getInstance().insert(dto);
 	
+	
 %>
 <!DOCTYPE html>
 <html>

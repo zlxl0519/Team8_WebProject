@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	//한 페이지에 나타낼 row 의 갯수
-	final int PAGE_ROW_COUNT=5;
+	final int PAGE_ROW_COUNT=10;
 	//하단 디스플레이 페이지 갯수
 	final int PAGE_DISPLAY_COUNT=5;
 	
@@ -108,6 +108,7 @@
 			</tbody>
 		</table>
 		<a href="insertform.jsp"><button>작성하기</button></a>
+		<a href="myqna.jsp"><button>내 글 보기</button></a>
 		
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
