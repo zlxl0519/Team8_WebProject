@@ -2,22 +2,28 @@ package dto;
 
 public class QnaDto {
 	private int num;
+	private String writer;
 	private String title;
 	private String content;
 	private String regdate;
 	private int hit;
-	private String id;
+	
+	private int startRowNum;
+	private int endRowNum;
 	
 	public QnaDto() {}
 
-	public QnaDto(int num, String title, String content, String regdate, int hit, String id) {
+	public QnaDto(int num, String writer, String title, String content, String regdate, int hit, int startRowNum,
+			int endRowNum) {
 		super();
 		this.num = num;
+		this.writer = writer;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
 		this.hit = hit;
-		this.id = id;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getNum() {
@@ -26,6 +32,14 @@ public class QnaDto {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public String getTitle() {
@@ -60,13 +74,21 @@ public class QnaDto {
 		this.hit = hit;
 	}
 
-	public String getId() {
-		return id;
+	public int getStartRowNum() {
+		return startRowNum;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
 	}
-	
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
+
 }
-	
