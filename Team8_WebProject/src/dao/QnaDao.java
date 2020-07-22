@@ -74,6 +74,46 @@ public class QnaDao {
 		return list;
 	}
 	
+	//내 글 갯수를 리턴해주는 메소드
+	public int getCountMine(String id) {
+		int count=0;
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Connection 객체의 참조값 얻어오기 
+			conn = new DbcpBean().getConn();
+			//실행할 sql 문 준비하기
+			String sql = "select max(rownum) as num"
+					+ " from qna"
+					+ " where writer=? ";
+			pstmt = conn.prepareStatement(sql);
+			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+			pstmt.setString(1, id);
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			//반복문 돌면서 결과 값 추출하기 
+			if (rs.next()) {
+				count = rs.getInt("num");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return count;
+	}
+	
+	
 	
 	//전체 row의 갯수를 리턴해주는 메소드
 	public int getCount() {
