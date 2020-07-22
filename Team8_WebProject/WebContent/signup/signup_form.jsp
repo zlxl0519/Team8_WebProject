@@ -20,7 +20,7 @@
 				<div class="profile-box">
 				<label for="image">프로필 이미지</label>
 					<div class="profile-img">
-						<img id="profileImage" src="https://bit.ly/32l7wx5"/>
+						<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 					</div>
 					
 						<div class="profile-btn">
@@ -233,7 +233,6 @@
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
 		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]{8,16}$/);
-
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
 			if(enNumSpkCheck.test($("#pwd").val())){
@@ -261,7 +260,6 @@
 				 canUse = true; 
 			}
 		})
-
 		
 		//=========기타...등등===========
 		$("#submit").on("click", function(){

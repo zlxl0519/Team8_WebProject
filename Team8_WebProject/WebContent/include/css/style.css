@@ -183,6 +183,10 @@ select{cursor: pointer;}
 {padding : 30px 30px;}
 
 .boardList textarea {padding : 0;border : none;}
+.boardList #content {height : 700px;border : none!important;}
+#smart_editor2 {border : none!important; width : 100%!important;}
+.smart_content {padding : 0!important;}
+#smart_editor2 #smart_editor2_content {border : none!important;}
 .boardList tr:first-child td{border-top: 1px solid #c8d8d0;}
 .boardList th {text-align : center;border-top: 1px solid #c8d8d0;border-bottom : 1px solid #c8d8d0;color :#616161; width : 200px;}
 .boardList input[type="text"]{width : 100%; height : auto;margin : 0px;border : none; padding : 0 0;}
@@ -289,7 +293,7 @@ li.profile-wrap {text-align : center;}
 .profile-box label{display : block; float : left; width : 100%; text-align : left;}
 .profile-img {width : 150px; height : 150px; display : inline-block; text-align : center;border-radius: 70%;
     overflow: hidden;box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.2);
-    background: #e4e4e4 url("../img/icon_user.png") no-repeat center center;
+    background: #e4e4e4;
     background-size : 20px auto;
     }
     

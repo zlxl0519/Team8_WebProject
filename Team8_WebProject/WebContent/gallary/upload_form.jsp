@@ -27,7 +27,7 @@
 							<th>
 								<label for="content">내용</label>
 							</th>
-							<td>
+							<td class="smart_content">
 								<textarea name="content" id="content" cols="30" rows="10"></textarea>
 							</td>
 						</tr>
