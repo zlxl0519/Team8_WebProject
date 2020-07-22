@@ -92,6 +92,22 @@
 		
 		</h3>
 	</div>
+	 <!-- 검색용 폼 -->
+	 <div class="search-form mt20">
+	 	<form action="qna_list.jsp" method="get">
+	 		<div class="search-wrap">
+	        	<select name="condition" id="condition">
+	        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
+	        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
+	        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
+	        	</select>
+	        	<label for="keyword">
+	        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
+	        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+	        	</label>
+        	</div>
+        </form> 
+	 </div> 
 	<div class="table-wrap">
 		<table>
 		<colgroup>
@@ -150,22 +166,7 @@
               </ul>
          </div>
          
-     <!-- 검색용 폼 -->
-	 <div class="search-form mt20">
-	 	<form action="qna_list.jsp" method="get">
-	 		<div class="search-wrap">
-	        	<select name="condition" id="condition">
-	        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
-	        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
-	        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
-	        	</select>
-	        	<label for="keyword">
-	        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
-	        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
-	        	</label>
-        	</div>
-        </form> 
-	 </div> 
+    
 
 	
 </div>
