@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="test.member.dto.MemberDto"%>
 <%@page import="test.member.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -13,6 +14,14 @@
 <%--예약페이지
 
 --%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+
 <div class="content">
 <div class="form-wrap">
 	<h2>예약하기 </h2>
@@ -67,11 +76,11 @@
 		<ul>
 			<li>
 				<label for="checkin">체크인</label>
-				<input type="date" name="checkin" id="checkin" placeholder="MM/DD/YYYY" />
+				<input type="text" name="checkin" id="checkin" placeholder="MM/DD/YYYY" />
 			</li>
 			<li>
 				<label for="checkout">체크아웃</label>
-				<input type="date" name="checkout" id="checkout" placeholder="MM/DD/YYYY" />
+				<input type="text" name="checkout" id="checkout" placeholder="MM/DD/YYYY" />
 			</li>
 			<li>
 				<label for="etc">기타사항</label>
@@ -123,6 +132,26 @@
 		}
 	});
 
+	$(function(){
+		$("#checkin").datepicker({
+			minDate:0, //오늘포함한 이후 날짜만 활성화
+			dateFormat: 'yy-mm-dd',//yyyy-mm-dd 모양으로 바꿈
+			showOn:"both", // 옆에 버튼누르거나 input 칸 누르면 달력이 나온다.
+			dayNamesMin:['일','월','화','수','목','금','토']//달력의 요일 부분 텍스트
+		});
+		
+		//초기값을 오늘 날짜로 설정
+		$('#checkin').datepicker('setDate', 'today');
+		
+		$("#checkout").datepicker({
+			minDate:0, //오늘포함한 이후 날짜만 활성화
+			dateFormat: 'yy-mm-dd',//yyyy-mm-dd 모양으로 바꿈
+			showOn:"both",// 옆에 버튼누르거나 input 칸 누르면 달력이 나온다.
+			dayNamesMin:['일','월','화','수','목','금','토']//달력의 요일 부분 텍스트
+		});
+		//초기값을 오늘 날짜로 설정
+		$('#checkout').datepicker('setDate', 'today')
+	});
 	
 </script>
 <jsp:include page="../include/footer.jsp"></jsp:include>
