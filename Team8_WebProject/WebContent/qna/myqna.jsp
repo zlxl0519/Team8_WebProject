@@ -6,10 +6,7 @@
 <%
 	String id = (String)session.getAttribute("id");
 	QnaDao dao = QnaDao.getInstance();
-	
-	if(id == null){
-		id = "not_login_guest";
-	}
+
 	
 	 //한 페이지에 나타낼 row 의 갯수
     final int PAGE_ROW_COUNT=10;
@@ -87,7 +84,7 @@
 			</tbody>
 		</table>
 		<div class="left mt20">
-			<a href="insertform.jsp"><button>작성하기</button></a>
+			<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
 			<a href="qna_list.jsp"><button>목록으로</button></a>
 		</div>
 		
@@ -113,6 +110,6 @@
          
          
          
-</div><!-- content -->
-
+</div>
+	
 <jsp:include page="../include/footer.jsp"></jsp:include>

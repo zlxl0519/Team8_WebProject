@@ -3,8 +3,9 @@
 <%@page import="java.util.List"%>
 <%@page import="dao.QnaDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
+	String id = (String)session.getAttribute("id");
 	//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT=10;
 	//하단 디스플레이 페이지 갯수
@@ -75,6 +76,7 @@
 	     endPageNum=totalPageCount; //보정해준다.
 	}
 %>
+
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
 	document.title = "Amung's QnA";
@@ -143,8 +145,10 @@
 		
 	</div><!-- table-wrap -->
 	<div class="left mt20">
-		<a href="insertform.jsp" ><button>작성하기</button></a>
-		<a href="myqna.jsp"><button>내 글 보기</button></a>
+	<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
+		<%if(id!=null){ %>
+			<a href="myqna.jsp" class="btn-a btn-b"><button>내 글 보기</button></a>
+		<%} %>
 			
 	</div>
 		<!-- 페이징 처리 버튼 -->

@@ -34,7 +34,20 @@
 			<tr>
 				<th>내용</th>
 				<td colspan="7"><div id="content"><%=dto.getContent() %></div></td>
-			</tr>	
+			</tr>
+			<tr>
+			<td></td>
+			<td>
+				<%if(dto.getPrevNum()!=0){ %>
+					<a href="content.jsp?num=<%=dto.getPrevNum() %>">이전글</a>
+				<%} %>
+			</td>
+			<td>
+				<%if(dto.getNextNum()!=0){ %>
+					<a href="content.jsp?num=<%=dto.getNextNum() %>">다음글</a>
+				<%} %>
+			</td>
+		</tr>	
 		</table>
 	</div><!-- table-wrap -->
 	<div class="mt20 left">
