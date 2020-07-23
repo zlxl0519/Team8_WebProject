@@ -10,10 +10,10 @@
 	MemberDto dto = MemberDao.getInstance().getData(id);
 	MemberDto dto2 = MemberDao.getInstance().getPuppyData(id);
 	
-	// @를 기준으로 문자열을 추출할 것이다.
+	// @를 기준으로 문자열 추출
     String email = dto.getEmail();
     
-    // 먼저 @ 의 인덱스를 찾는다 - 인덱스 값: 5
+    // @ 의 인덱스를 찾는다
     int idx = email.indexOf("@"); 
     
     // @ 앞부분을 추출
@@ -60,24 +60,24 @@
 						<%} %>
 						
 						
-					</div>
+					</div><!-- profile-img -->
 					
 						<div class="profile-btn">
 							<label for="image"><i class="fas fa-images"></i></label>
 							<input type="file" name="image" id="image" accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
 						</div>
 						
-					</div>
+					</div><!-- Profile-box -->
 					
-				</li>
+				</li><!-- profile-wrap -->
 			</ul>
-		</div>
+		</div><!-- form-ul-wrap -->
 	</form>
 	
 	
 	
 	<%-- 나머지 정보 업로드 폼 --%>
-	<form action="signup.jsp" method="post" id="signup">
+	<form action="update.jsp" method="post" id="signup">
 		<input type="hidden" name="profile" id="profile" />
 		<div class="form-ul-wrap">
 		<ul>
@@ -149,34 +149,68 @@
 			</li>
 			<li>
 				<fieldset>
-				
 					<legend>반려견 무게</legend>
-					<input type="checkbox" name="weight" value="0to4"/>0~4kg
-					<input type="checkbox" name="weight" value="4to10"/>4~10kg
-					<input type="checkbox" name="weight" value="10to25"/>10~25kg
-					<input type="checkbox" name="weight" value="over25"/>25~kg
+						<%if(dto2.getWeight().equals("0to4")){ %>
+							<input type="checkbox" name="weight" value="0to4" checked/>0~4kg
+						<%}else{ %>
+							<input type="checkbox" name="weight" value="0to4"/>0~4kg
+						<%}%>
+						
+						<%if(dto2.getWeight().equals("4to10")){ %>
+							<input type="checkbox" name="weight" value="4to10" checked/>4~10kg
+						<%}else{ %>
+							<input type="checkbox" name="weight" value="4to10"/>4~10kg
+						<%}%>
+						
+						<%if(dto2.getWeight().equals("10~25kg")){ %>
+							<input type="checkbox" name="weight" value="10to25" checked/>10~25kg
+						<%}else{ %>
+							<input type="checkbox" name="weight" value="10to25"/>10~25kg
+						<%}%>
+						
+						<%if(dto2.getWeight().equals("over25")){ %>
+							<input type="checkbox" name="weight" value="over25"  checked/>25~kg
+						<%}else{ %>
+							<input type="checkbox" name="weight" value="over25"/>25~kg
+						<%}%>
 				</fieldset>
 			</li>
 			<li>
 				<fieldset>
 					<legend>중성화 유무</legend>
-					<input type="radio" name="neutral" value="yes" checked/> 유
-					<input type="radio" name="neutral" value="no" /> 무
+					<%if(dto2.getNeutral().equals("yes")){ %>
+							 <input type="radio" name="neutral" value="yes" checked/> 유
+					<%}else{ %>
+							<input type="radio" name="neutral" value="yes"/> 유
+					<%}%>
+					
+					<%if(dto2.getNeutral().equals("no")){ %>
+							<input type="radio" name="neutral" value="no" checked/> 무
+					<%}else{ %>
+							<input type="radio" name="neutral" value="no" /> 무
+					<%}%>
 				</fieldset>	
 			</li>
 			<li>
 			
 			<fieldset>
 				<legend>성별선택</legend>
-				<input type="radio" name="gender" value="male" checked/> 남아
-				<input type="radio" name="gender" value="female" /> 여아
+				<%if(dto2.getGender().equals("male")){ %>
+					<input type="radio" name="gender" value="male" checked/> 남아		 
+				<%}else{ %>
+					<input type="radio" name="gender" value="male"/> 남아		
+				<%}%>
+				
+				<%if(dto2.getGender().equals("female")){ %>
+					<input type="radio" name="gender" value="female" checked /> 여아		 
+				<%}else{ %>
+					<input type="radio" name="gender" value="female" /> 여아		
+				<%}%>
 			</fieldset>
 			</li>
 			<li>
 				<label for="memo">기타사항</label>
-				<textarea name="memo" id="memo" cols="60" rows="10" placeholder="반려견 호텔링 시, 요청사항이나 주의해야하는 사항을 적어주세요">
-					
-				</textarea>
+				<textarea name="memo" id="memo" cols="60" rows="10" placeholder="반려견 호텔링 시, 요청사항이나 주의해야하는 사항을 적어주세요"><%=dto2.getMemo() %></textarea>
 			</li>
 		</ul>	
 		</div>	
@@ -262,7 +296,7 @@
 		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
-	/* 	var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+ 	var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
 
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
@@ -275,7 +309,7 @@
 				$("#submit").removeAttr("disabled");
 				 canUse = true;
 			}
-		}) */
+		}) 
 		
 		
 	//=========연락처 숫자 제한===========
@@ -294,7 +328,7 @@
 		
 		//=========기타...등등===========
 		$("#submit").on("click", function(){
-			if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val()){
+			if($("#pwd").val() == " " || $("#pwd").val() != $("#pwd2").val()){
 				alert("비밀번호를 확인하세요.")
 				$("#pwd").focus();
 				return false;

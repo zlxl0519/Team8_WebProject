@@ -70,7 +70,7 @@ public class MemberDao {
 			//실행할 sql 문 준비하기 
 			String sql = " insert into am_dogs "
 					+ " (num, member_id, dname, dage, breed, weight, neutral, gender, memo) "
-					+ " values(am_dogs_seq.nextval,? ,?, ?, ?, ?, ?, ?, ?) ";
+					+ " values(am_dogs_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?) ";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getId());
@@ -100,10 +100,6 @@ public class MemberDao {
 			return false;
 		}
 	}
-	
-	
-	
-	
 	
 	
 	
@@ -281,7 +277,7 @@ public class MemberDao {
 				conn = new DbcpBean().getConn();
 				String sql = "select num, member_id, dname, dage, breed, weight, neutral, gender, memo"
 						+ " from am_dogs"
-						+ "	where member_id=?";
+						+ " where member_id=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -316,7 +312,7 @@ public class MemberDao {
 		
 		//한명회원의 강아지가 여러마리라면 한명회원의 강아지 리스트를 불러오는 메소드
 		public List<MemberDto> getPuppyList(String id){
-			List<MemberDto> puppyList=new ArrayList<>();
+			List<MemberDto> puppyList=new ArrayList();
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -536,40 +532,71 @@ public class MemberDao {
 		}
 		return isExist;
 	}
-
-		
 	
-	
-	
-	
-	//clob 출력
-	public MemberDto getDogMemo(String id) {
-		MemberDto dto=null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = new DbcpBean().getConn();
-//			String sql = "SELECT DBMS_LOB.SUBSTR(memo, DBMS_LOB.GETLENGTH(memo)) "
-//					+ " FROM am_dogs"
-//					+ " WHERE member_id=?";
-			String sql = "select memo"
-					+ " from am_dogs"
-					+ " where member_id=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+	    //회원 update 사람
+		public boolean updateHuman(MemberDto dto) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			int flag = 0;
 			try {
-				if (rs != null)rs.close();
-				if (pstmt != null)pstmt.close();
-				if (conn != null)conn.close();
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return dto;
-	}//getDogMEmo
+				conn = new DbcpBean().getConn();
+				//실행할 sql 문 준비하기 
+				String sql = " UPDATE am_member"
+						     + " SET profile=?, pwd=?, email=?, name=?, phone=? "
+						     + " WHERE id =?";
+				pstmt = conn.prepareStatement(sql);
+				//? 에 바인딩 할 값이 있으면 바인딩한다.
+				pstmt.setString(1, dto.getProfile());
+				pstmt.setString(2, dto.getPwd());
+				pstmt.setString(3, dto.getEmail());
+				pstmt.setString(4, dto.getName());
+				pstmt.setString(5, dto.getPhone());
+				pstmt.setString(6, dto.getId());
+				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+				flag = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {}
+			}if (flag > 0) {return true;} else {return false;}
+		}//updateHuman
 		
+		//회원 update 강아지
+		public boolean updateDog(MemberDto dto) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			int flag = 0;
+			try {
+				conn = new DbcpBean().getConn();
+				String sql = " UPDATE am_dogs"
+						     + " SET dname=?, dage=?, breed=?, weight=?, neutral=?, gender=?, memo=? "
+						     + " WHERE member_id =?";
+				pstmt = conn.prepareStatement(sql);
+				//? 에 바인딩 할 값이 있으면 바인딩한다.
+				pstmt.setString(1, dto.getDname());
+				pstmt.setInt(2, dto.getDage());
+				pstmt.setString(3, dto.getBreed());
+				pstmt.setString(4, dto.getWeight());
+				pstmt.setString(5, dto.getNeutral());
+				pstmt.setString(6, dto.getGender());
+				pstmt.setString(7, dto.getMemo());
+				pstmt.setString(8, dto.getMember_id());
+				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+				flag = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {}
+			}if (flag > 0) {return true;} else {return false;}
+		}//updateDog
+	
+	
+	
 	
 }
