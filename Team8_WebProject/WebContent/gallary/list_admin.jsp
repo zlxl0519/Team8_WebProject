@@ -10,24 +10,34 @@
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
-<div class="table-wrap">
 	<h2>운영관리 | 호텔일상</h2>
-		<ul>
+	<div class="left">
+		<a href="upload_form.jsp"><button>새 글 작성</button></a>
+	</div>
+	
+		<ul class="gallery-list">
 			<%for(GalleryDto tmp : list){%>
 			<li>
-				<div>
+				<div class="gallery-img">
 					<a href="content.jsp?num=<%=tmp.getNum()%>">
-						<img src="${pageContext.request.contextPath }<%= tmp.getImagePath()%>" style="width: 150px;"/>
+						<img src="${pageContext.request.contextPath }<%= tmp.getImagePath()%>"/>
 					</a>
 				</div>
-				<div class="caption"><%=tmp.getCaption() %></div>
-				<a href="update_form.jsp?num=<%=tmp.getNum()%>">수정</a>
-				<a href="delete.jsp?num=<%=tmp.getNum() %>" >삭제</a>
+				<div class="caption"><p><%=tmp.getCaption() %></p></div>
+				<div class="gallery-btn">
+					<div>
+						<a href="update_form.jsp?num=<%=tmp.getNum()%>" class="btn-default">수정</a>
+						<a href="delete.jsp?num=<%=tmp.getNum() %>" class="btn-default btn-gray">삭제</a>
+					</div>
+				</div>
+				
 			</li>
 			<%} %>
 		</ul>
-		<a href="upload_form.jsp"><button>새 글 작성</button></a>
 		
+		<div class="btn-down">
+			<a href="#"><i class="fas fa-chevron-down"></i></a>
+		</div><!-- btn-down -->
 		<%-- 어드민 적용
 		<%if(id.equals("admin")){ %>
 			<div id="btn" style="margin-top: 40px"></div>
@@ -37,7 +47,5 @@
 			</script>
 		<%}%>
 		 --%>
-	</div>
-</div>
-</div>
+</div><!-- content -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
