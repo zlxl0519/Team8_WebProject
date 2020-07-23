@@ -7,12 +7,14 @@
 	//사람
 	String id = (String) session.getAttribute("id");
 	String pwd = request.getParameter("pwd");
+	String pwdnew = request.getParameter("pwdnew");
 	String email = request.getParameter("email01")+"@"+request.getParameter("email02");
 	String name = request.getParameter("name");
 	String phone = request.getParameter("phone");
 	String profile = request.getParameter("profile");
-	if(profile.equals("null")){
-		profile=null;
+	String profilenew = request.getParameter("newprofile");
+	if(profilenew.equals("null")){
+		profilenew=null;
 	}
 	
 	//강아지
@@ -28,12 +30,17 @@
 	
 	//사람
 	dto.setId(id);
-	dto.setPwd(pwd);
 	dto.setEmail(email);
 	dto.setName(name);
 	dto.setPhone(phone);
-	dto.setProfile(profile);
 	
+	
+	//사람 비밀번호
+	dto.setPwd(pwd);
+    dto.setNewPwd(pwdnew);
+	//사람 프로필
+	dto.setNewProfile(profilenew);
+	dto.setProfile(profile);
 	//강아지
 	dto.setDname(dname);
 	dto.setDage(dage);
@@ -45,6 +52,10 @@
 	dto.setMember_id(id);
 	boolean isSuccess1 = MemberDao.getInstance().updateHuman(dto);
 	boolean isSuccess2 = MemberDao.getInstance().updateDog(dto);
+	boolean isSuccess3 = MemberDao.getInstance().updateHumanPwd(dto);
+	boolean isSuccess4 = MemberDao.getInstance().updateHumanProfile(dto);
+	
+	
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">

@@ -145,7 +145,10 @@
 	</table>
 	
 	<%-- 검색창 --%>
-	<div class="search-form">
+	<div class="right">
+	
+	
+	<div class="search-form search-sm">
 		<form action="list.jsp" method="get">
 			<select name="condition" id="condition">
 				<option value="id" <%if(condition.equals("id")){ %>selected<% }%>>아이디</option>
@@ -158,8 +161,13 @@
 			</label>
 		</form>
 	</div>
+	<div class="leftf mt30">
+		<a href="list.jsp"><button>전체목록 보기</button></a>
+	</div>
 	
-	<a href="list.jsp"><button>전체목록 보기</button></a>
+	</div><!-- right -->
+	
+	
 	
 	<%-- 페이징 넘버 --%>
 	<div class="page-display">

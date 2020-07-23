@@ -8,6 +8,7 @@
 	String id=(String)session.getAttribute("id");
 	//한사람의 회원정보 불러오기
 	MemberDto dto=MemberDao.getInstance().getData(id);
+	MemberDto dto2=MemberDao.getInstance().getPuppyData(id);
 	
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -49,20 +50,20 @@
 				<li>
 					<label>
 						반려견 이름
-						<input type="text"  name="dogName" id="dogName" />
+						<input type="text"  name="dogName" id="dogName" value="<%=dto2.getDname() %>" />
 					</label>
 				</li>
 				<li>
 					<label>
 						반려견종
-						<input type="text" name="dogBreed" id="dogBreed" />
+						<input type="text" name="dogBreed" id="dogBreed" value="<%=dto2.getBreed() %>"/>
 					</label>
 							
 				</li>
 				<li class="bbn">
 					<label>
 						반려견나이
-						<input type="text" name="dogAge" id="dogAge" />
+						<input type="text" name="dogAge" id="dogAge" value="<%=dto2.getDage() %>" />
 					</label>
 				</li>
 			</ul>
