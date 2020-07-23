@@ -104,7 +104,7 @@ public class MemberDao {
 	
 	
 	//회원 리스트 불러오기
-	public List<MemberDto> getList(){
+	public List<MemberDto> getList(MemberDto dto){
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -114,29 +114,35 @@ public class MemberDao {
 			//Connection 객체의 참조값 얻어오기 
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기
-			String sql = " select m.id, m.pwd, m.email, m.profile, m.name, m.phone, m.regdate, "
-					+ " d.dname, d.dage, d.breed, d.weight, d.netural, d.gender, d.memo "
-					+" from am_member m, am_dogs d "
-					+" where m.id=d.id"
-					+ " order by regdate desc ";
+			String sql = 
+					" select * from "
+					+ " (select result1.*, rownum as rnum from "
+					+ " (select m.id, m.pwd, m.email, m.profile, m.name, m.phone, m.regdate, "
+					+ " d.dname, d.dage, d.breed, d.weight, d.neutral, d.gender, d.memo "
+					+ " from am_member m, am_dogs d "
+					+ " where m.id=d.member_id "
+					+ " order by regdate desc) result1) "
+					+ " where rnum between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getStartRowNum());
+			pstmt.setInt(2, dto.getEndRowNum());
 			rs = pstmt.executeQuery();
 			//반복문 돌면서 결과 값 추출하기 
 			while (rs.next()) {
-				MemberDto dto = new MemberDto();
-				dto.setId(rs.getString("id"));
-				dto.setEmail(rs.getString("email"));
-				dto.setName(rs.getString("name"));
-				dto.setPhone(rs.getString("phone"));
-				dto.setRegdate(rs.getString("regdate"));
-				dto.setDname(rs.getString("dname"));
-				dto.setDage(rs.getInt("dage"));
-				dto.setBreed(rs.getString("breed"));
-				dto.setWeight(rs.getString("netural"));
-				dto.setNeutral(rs.getString("netural"));
-				dto.setGender(rs.getString("gender"));
-				dto.setMemo(rs.getString("memo"));
-				list.add(dto);
+				MemberDto tmp = new MemberDto();
+				tmp.setId(rs.getString("id"));
+				tmp.setEmail(rs.getString("email"));
+				tmp.setName(rs.getString("name"));
+				tmp.setPhone(rs.getString("phone"));
+				tmp.setRegdate(rs.getString("regdate"));
+				tmp.setDname(rs.getString("dname"));
+				tmp.setDage(rs.getInt("dage"));
+				tmp.setBreed(rs.getString("breed"));
+				tmp.setWeight(rs.getString("weight"));
+				tmp.setNeutral(rs.getString("neutral"));
+				tmp.setGender(rs.getString("gender"));
+				tmp.setMemo(rs.getString("memo"));
+				list.add(tmp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

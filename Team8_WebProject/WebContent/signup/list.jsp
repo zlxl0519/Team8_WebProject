@@ -16,7 +16,6 @@
 	<h2>회원 목록</h2>
 	<div class="table-wrap">
 	
-	
 	<table >
 		<thead>
 			<tr>
@@ -37,20 +36,25 @@
 		<tbody>
 			<%for(MemberDto tmp : list){ %>
 			<tr>
-				<td><%=tmp.getId() %></td>
-				<td><%=tmp.getName() %></td>
-				<td><%=tmp.getEmail() %></td>
-				<td><%=tmp.getPhone() %></td>
-				<td><%=tmp.getRegdate() %></td>
-				<td><%=tmp.getDname() %></td>
-				<td><%=tmp.getDage() %></td>
-				<td><%=tmp.getBreed() %></td>
-				<td><%=tmp.getWeight() %></td>
-				<td><%=tmp.getGender() %></td>
-				<td><%=tmp.getNeutral() %></td>
-				<td><%=tmp.getMemo() %></td>
+				<td><%= tmp.getId()%></td>
+				<td><%= tmp.getEmail()%></td>
+				<td><%= tmp.getName()%></td>
+				<td><%= tmp.getPhone()%></td>
+				<td><%= tmp.getRegdate()%></td>
+				<td><%= tmp.getDname()%></td>
+				<td><%= tmp.getDage()%></td>
+				<td><%= tmp.getBreed()%></td>
+				<td><%= tmp.getWeight()%></td>
+				<td><%= tmp.getNeutral()%></td>
+				<td><%= tmp.getGender()%></td>
+				<%if(tmp.getMemo() != null){ %>
+					<td><%= tmp.getMemo()%></td>
+				<%}else{ %>
+					<td></td>
+				<%} %>
 			</tr>
 			<%} %>
+			
 		</tbody>
 	</table>
 	</div><!-- table-wrap -->
