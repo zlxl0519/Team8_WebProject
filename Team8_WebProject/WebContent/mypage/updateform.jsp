@@ -9,7 +9,22 @@
 	String pwd=(String)session.getAttribute("pwd");
 	MemberDto dto = MemberDao.getInstance().getData(id);
 	MemberDto dto2 = MemberDao.getInstance().getPuppyData(id);
-	String email01 = (String)session.getAttribute("email01");
+	
+	// @를 기준으로 문자열을 추출할 것이다.
+    String email = dto.getEmail();
+    
+    // 먼저 @ 의 인덱스를 찾는다 - 인덱스 값: 5
+    int idx = email.indexOf("@"); 
+    
+    // @ 앞부분을 추출
+    // substring은 첫번째 지정한 인덱스는 포함하지 않는다.
+    // 아래의 경우는 첫번째 문자열인 a 부터 추출된다.
+    String mail1 = email.substring(0, idx);
+    
+    // 뒷부분을 추출
+    // 아래 substring은 @ 바로 뒷부분인 n부터 추출된다.
+    String mail2 = email.substring(idx+1);
+
 	/* String[] */
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -89,17 +104,18 @@
 				<div class="alert alert-success form-span f_blue" id="alert-success"style="margin-left : 135px;">* 비밀번호가 일치합니다.</div>
 				<div class="alert alert-danger form-span f_red" id="alert-danger"style="margin-left : 135px;">* 비밀번호가 일치하지 않습니다.</div>
 			</li>
-			<li>
+			<li class="updateform">
 				<label for="email">이메일</label>
-				<input type="text" name="email01" id="email01" value="<%=email01 %>" />
+				<input type="text" name="email01" id="email01" value="<%=mail1 %>" />
 				<span>&nbsp;&nbsp;@</span>
-	            <input type="text" id="email02" name="email02" list="domains" placeholder="도메인입력/선택" />
-	            <datalist id="domains">
-	                <option value="naver.com">
-	                <option value="daum.net">
-	                <option value="gmail.com">
-	                <option value="yahoo.co.kr">
-	            </datalist>
+	            <input type="text" id="email02" name="email02" list="domains" placeholder="도메인입력/선택" value="<%=mail2 %>" />
+	            <select id="domains" name="email02">
+	            	<option value="">직접선택</option>
+	                <option value="naver.com">naver.com</option>
+	                <option value="daum.net">daum.net</option>
+	                <option value="gmail.com">gmail.com</option>
+	                <option value="kakao.com">kakao.com</option>
+	            </select>
 			</li>
 			<li>
 				<label for="name">성함</label>
@@ -158,17 +174,22 @@
 			</li>
 			<li>
 				<label for="memo">기타사항</label>
-				<textarea name="memo" id="memo" cols="60" rows="10" placeholder="반려견 호텔링 시, 요청사항이나 주의해야하는 사항을 적어주세요"> <%=dto.getMemo() %> </textarea>
+				<textarea name="memo" id="memo" cols="60" rows="10" placeholder="반려견 호텔링 시, 요청사항이나 주의해야하는 사항을 적어주세요">
+					
+				</textarea>
 			</li>
 		</ul>	
 		</div>	
-		<button type="submit" id="submit" class="btn-default">회원가입 하기</button>
+		<button type="submit" id="submit" class="btn-default">수정하기</button>
 	</form>
 	</div>
 	</div><!-- content 종료  -->
 	
 	<script src="${pageContext.request.contextPath }/include/js/jquery.form.min.js"></script>
 	<script>
+	
+	
+	
 	
 	//========= form 에 submit 이벤트가 일어 났을때 프로필 사진을 ajax 로 제출 하도록  ====================
 		$("#profileForm").ajaxForm(function(data){
@@ -184,6 +205,22 @@
 		
 		
 	var canUse = false;
+	
+	
+	
+	//이메일 입력방식 선택 
+	$('#domains').change(function(){
+		$("#domains option:selected").each(function () {
+			if($(this).val()== '0'){ //직접입력일 경우 
+				$("#email02").val(""); //값 초기화
+				$("#email02").attr("disabled",false);//활성화 
+				}else{ //직접입력이 아닐경우 
+					$("#email02").val($(this).text()); //선택값 입력 
+					$("#email02").attr("disabled",true); //비활성화 
+					} }); });
+
+	
+	
 	//==========  비밀번호 재확인 일치불일치 =============
 		$("#alert-success").hide();
 		$("#alert-danger").hide();
@@ -208,10 +245,10 @@
 	
 		
 	//=========아이디 영문/숫자 제한==============
-		var enNumCheck = RegExp(/[^A-Za-z0-9]{5,30}$/);
+		var enNumCheck = RegExp(/[^A-Za-z0-9]$/);
 		$("#idAlert").hide();
 		$("#id").keyup(function(){
-			if(enNumCheck.test($("#id").val())){
+			if(enNumCheck.test($("#id").val()) || $("#id").val().length < 5){
 				$("#idAlert").show();
 				$("#submit").attr("disabled", true);
 				canUseId2 = false;
@@ -225,10 +262,11 @@
 		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
-		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]{8,16}$/);
+	/* 	var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
-			if(enNumSpkCheck.test($("#pwd").val())){
+			if(enNumSpkCheck.test($("#pwd").val()) || $("#pwd").val().length < 8){
 				$("#pwdAlert").show();
 				$("#submit").attr("disabled", true);
 				 canUse = false;
@@ -237,7 +275,7 @@
 				$("#submit").removeAttr("disabled");
 				 canUse = true;
 			}
-		})
+		}) */
 		
 		
 	//=========연락처 숫자 제한===========

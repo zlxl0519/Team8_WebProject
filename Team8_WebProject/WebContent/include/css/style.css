@@ -70,6 +70,11 @@ input[name="email02"]
 {width : 200px;}
 
 
+.updateform input[name="email01"],
+.updateform input[name="email02"],
+.updateform #domains
+{width : 150px!important;}
+.updateform #domains {margin : 0;}
 select{cursor: pointer;}
 
 .content {width : 1281px;}

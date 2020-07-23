@@ -70,7 +70,7 @@ public class MemberDao {
 			//실행할 sql 문 준비하기 
 			String sql = " insert into am_dogs "
 					+ " (num, member_id, dname, dage, breed, weight, neutral, gender, memo) "
-					+ " values(am_dogs_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?) ";
+					+ " values(am_dogs_seq.nextval,? ,?, ?, ?, ?, ?, ?, ?) ";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getId());
@@ -100,6 +100,10 @@ public class MemberDao {
 			return false;
 		}
 	}
+	
+	
+	
+	
 	
 	
 	
@@ -312,7 +316,7 @@ public class MemberDao {
 		
 		//한명회원의 강아지가 여러마리라면 한명회원의 강아지 리스트를 불러오는 메소드
 		public List<MemberDto> getPuppyList(String id){
-			List<MemberDto> puppyList=new ArrayList();
+			List<MemberDto> puppyList=new ArrayList<>();
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -533,6 +537,39 @@ public class MemberDao {
 		return isExist;
 	}
 
+		
+	
+	
+	
+	
+	//clob 출력
+	public MemberDto getDogMemo(String id) {
+		MemberDto dto=null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+//			String sql = "SELECT DBMS_LOB.SUBSTR(memo, DBMS_LOB.GETLENGTH(memo)) "
+//					+ " FROM am_dogs"
+//					+ " WHERE member_id=?";
+			String sql = "select memo"
+					+ " from am_dogs"
+					+ " where member_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)rs.close();
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return dto;
+	}//getDogMEmo
 		
 	
 }
