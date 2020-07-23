@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 
 	
 	<div class="content">
@@ -26,7 +26,7 @@
 
 	</div>
 	
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
 
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath  }/SmartEditor/js/HuskyEZCreator.js"></script>
