@@ -49,6 +49,7 @@
 			<%if(dto.getNextNum()!=0){ %>
 					<a class="btn-right" href="content.jsp?num=<%=dto.getNextNum() %>"><i class="fas fa-chevron-right"></i></a>
 			<%} %>
+
 	</div>
 	<div class="mt20 left">
 		<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
@@ -62,6 +63,7 @@
 	
 	</div>
 </div><!-- content -->
+
 <jsp:include page="../include/footer.jsp"></jsp:include>
 
 <script>
