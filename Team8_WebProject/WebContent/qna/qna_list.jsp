@@ -110,6 +110,25 @@
 		<a href="insertform.jsp"><button>작성하기</button></a>
 		<a href="myqna.jsp"><button>내 글 보기</button></a>
 		
+		<!-- 검색용 폼 -->
+		 <div class="search-form">
+		 	<form action="qna_list.jsp" method="get">
+		 		<div class="search-wrap">
+		        	<select name="condition" id="condition">
+		        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
+		        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
+		        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
+		        	</select>
+		        	<label for="keyword">
+		        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
+		        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+		        	</label>
+	        	</div>
+	        </form> 
+		 </div> 
+		 
+		 <a href="qna_list.jsp"><button>전체목록 보기</button></a>
+		
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
@@ -131,22 +150,6 @@
           <br/>
           <br/>
          
-     <!-- 검색용 폼 -->
-	 <div class="search-form">
-	 	<form action="qna_list.jsp" method="get">
-	 		<div class="search-wrap">
-	        	<select name="condition" id="condition">
-	        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
-	        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
-	        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
-	        	</select>
-	        	<label for="keyword">
-	        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
-	        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
-	        	</label>
-        	</div>
-        </form> 
-	 </div> 
 		
 </div>
 	
