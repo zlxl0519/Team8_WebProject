@@ -273,8 +273,12 @@
 				alert("아이디 중복확인을 해주세요")
 				$("#id").focus();
 				return false;
-			}else if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val() || $("#pwd").val.length < 8){
+			}else if($("#pwd").val() == "" || $("#pwd").val() != $("#pwd2").val()){
 				alert("비밀번호를 확인하세요.")
+				$("#pwd").focus();
+				return false;
+			}else if($("#pwd").val().length < 8){
+				alert("특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자 ~!@#$%^&* 만 사용가능합니다.")
 				$("#pwd").focus();
 				return false;
 			}else if($("#email01").val() == "" || $("#email02").val() == ""){

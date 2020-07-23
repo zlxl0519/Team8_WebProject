@@ -10,3 +10,16 @@ gender varchar2(7) ,  -- 성별
 memo clob); -- 기타등등
 
 create sequence am_dogs_seq;
+
+
+create table am_member(
+id varchar2(35) primary key, not null,
+pwd varchar2(20),
+email varchar2(40),
+profile varchar2(100),
+name varchar2(15),
+phone varchar2(15),
+regdate date
+);
+
+create sequence am_member_seq;

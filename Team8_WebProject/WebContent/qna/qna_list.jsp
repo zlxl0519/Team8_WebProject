@@ -149,8 +149,9 @@
 		<%if(id!=null){ %>
 			<a href="myqna.jsp"><button class="btn-b">내 글 보기</button></a>
 		<%} %>
-			
-	</div>
+
+     <a href="qna_list.jsp"><button>전체목록 보기</button></a>
+  </div><!--left-->
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
@@ -169,10 +170,7 @@
                    <%} %>
               </ul>
          </div>
-         
-    
-
-	
+	  
 </div>
 <!-- content -->
 
