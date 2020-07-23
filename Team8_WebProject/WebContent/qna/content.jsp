@@ -35,21 +35,21 @@
 				<th>내용</th>
 				<td colspan="7"><div id="content"><%=dto.getContent() %></div></td>
 			</tr>
-			<tr>
-			<td></td>
-			<td>
-				<%if(dto.getPrevNum()!=0){ %>
-					<a href="content.jsp?num=<%=dto.getPrevNum() %>">이전글</a>
-				<%} %>
-			</td>
-			<td>
-				<%if(dto.getNextNum()!=0){ %>
-					<a href="content.jsp?num=<%=dto.getNextNum() %>">다음글</a>
-				<%} %>
-			</td>
-		</tr>	
+				
 		</table>
+		
 	</div><!-- table-wrap -->
+	<div>
+	
+	
+	<div class="right">
+			<%if(dto.getPrevNum()!=0){ %>
+					<a class="btn-left" href="content.jsp?num=<%=dto.getPrevNum() %>"><i class="fas fa-chevron-left"></i></a>
+			<%} %>
+			<%if(dto.getNextNum()!=0){ %>
+					<a class="btn-right" href="content.jsp?num=<%=dto.getNextNum() %>"><i class="fas fa-chevron-right"></i></a>
+			<%} %>
+	</div>
 	<div class="mt20 left">
 		<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
 		<a class="btn-a" href="qna_list.jsp">목록</a>

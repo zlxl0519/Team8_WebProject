@@ -147,7 +147,7 @@
 	<div class="left mt20">
 	<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
 		<%if(id!=null){ %>
-			<a href="myqna.jsp" class="btn-a btn-b"><button>내 글 보기</button></a>
+			<a href="myqna.jsp"><button class="btn-b">내 글 보기</button></a>
 		<%} %>
 			
 	</div>
