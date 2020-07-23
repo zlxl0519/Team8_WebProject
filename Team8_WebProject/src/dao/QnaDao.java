@@ -35,7 +35,7 @@ public class QnaDao {
 			String sql = "select *"
 					+" from"
 					+" 	(select result1.*, rownum as rnum"
-					+" 		from (select num, writer, title, content, regdate, hit"
+					+" 		from (select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 					+" 			from qna where writer=?"
 					+ "			order by num desc)"
 					+" 	result1)"
@@ -282,7 +282,7 @@ public class QnaDao {
 			String sql = "select *"
 					+" from"
 					+" 	(select result1.*, rownum as rnum"
-					+" 		from (select num, writer, title, content, regdate, hit"
+					+" 		from (select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 					+" 			from qna order by num desc)"
 					+" 	result1)"
 					+" where rnum between ? and ?";
@@ -319,7 +319,7 @@ public class QnaDao {
 		return list;
 	}
 	
-	//전체글을 가져오는 메소드 (select)
+	//전체글을 가져오는 메소드- 제목, 내용 검색 ver(select)
 		public List<QnaDto> getListTC(QnaDto dto){
 			List<QnaDto> list = new ArrayList<>();
 			//필요한 객체의 참조값을 담을 지역변수 만들기 
@@ -333,7 +333,7 @@ public class QnaDao {
 				String sql = "select *"
 						+" from"
 						+" 	(select result1.*, rownum as rnum"
-						+" 		from(select num, writer, title, content, regdate, hit"
+						+" 		from(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 						+" 			from qna"
 						+"			where title like '%'||?||'%' or content like '%'||?||'%' "
 						+"			order by num desc)"
@@ -374,7 +374,7 @@ public class QnaDao {
 			return list;
 		}
 		
-		//전체글을 가져오는 메소드 (select)
+		//전체글을 가져오는 메소드- 제목 검색 ver (select)
 		public List<QnaDto> getListT(QnaDto dto){
 			List<QnaDto> list = new ArrayList<>();
 			//필요한 객체의 참조값을 담을 지역변수 만들기 
@@ -388,7 +388,7 @@ public class QnaDao {
 				String sql = "select *"
 						+" from"
 						+" 	(select result1.*, rownum as rnum"
-						+" 		from(select num, writer, title, content, regdate, hit"
+						+" 		from(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 						+" 			from qna"
 						+"			where title like '%'||?||'%' "	
 						+"			order by num desc)"
@@ -428,7 +428,7 @@ public class QnaDao {
 			return list;
 		}
 		
-		//전체글을 가져오는 메소드 (select)
+		//전체글을 가져오는 메소드- 작성자 검색ver (select)
 		public List<QnaDto> getListW(QnaDto dto){
 			List<QnaDto> list = new ArrayList<>();
 			//필요한 객체의 참조값을 담을 지역변수 만들기 
@@ -442,7 +442,7 @@ public class QnaDao {
 				String sql = "select *"
 						+" from"
 						+" 	(select result1.*, rownum as rnum"
-						+" 		from(select num, writer, title, content, regdate, hit"
+						+" 		from(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 						+" 			from qna"
 						+"			where writer like '%'||?||'%' "
 						+"			order by num desc)"
@@ -491,8 +491,12 @@ public class QnaDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "select num, writer, title, content, regdate, hit"
-					+" from qna"
+			String sql = "select result1.*"
+					+" from"
+					+"	(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit,"
+					+" 	LAG(num,1,0) over (order by num desc) as prevNum,"
+					+" 	LEAD(num,1,0) over (order by num desc) as nextNum"
+					+" 	from qna) result1"
 					+" where num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
@@ -505,6 +509,8 @@ public class QnaDao {
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setHit(rs.getInt("hit"));
+				dto.setPrevNum(rs.getInt("prevNum"));
+				dto.setNextNum(rs.getInt("nextNum"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -531,7 +537,7 @@ public class QnaDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = "insert into qna"
-					+ " (num, writer, title, content, regdate, hit)"
+					+ " (num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit)"
 					+ " values(qna_seq.NEXTVAL, ?, ?, ?, sysdate, 0)";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.

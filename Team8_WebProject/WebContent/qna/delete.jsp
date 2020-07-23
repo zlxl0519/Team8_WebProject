@@ -15,9 +15,27 @@
 		return;
 	}
 	
-	QnaDao.getInstance().delete(num);
-
-	String cPath = request.getContextPath();
-	response.sendRedirect(cPath+"/qna/qna_list.jsp");
+	boolean isSuccess = QnaDao.getInstance().delete(num);
 
 %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%if(isSuccess){ %>
+		<script>
+			alert("삭제되었습니다!");
+			location.href = "qna_list.jsp";
+		</script>
+	<%} else{ %>
+		<script>
+			alert("삭제 실패!");
+			location.href = "content.jsp?num=<%=num%>";
+		</script>
+	<%} %>
+</body>
+</html>
