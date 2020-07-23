@@ -58,7 +58,20 @@
 			<%} %>
 				<a href="qna_list.jsp">목록</a>
 			</td>
-		</tr>		
+		</tr>	
+		<tr>
+			<td></td>
+			<td>
+				<%if(dto.getPrevNum()!=0){ %>
+					<a href="content.jsp?num=<%=dto.getPrevNum() %>">이전글</a>
+				<%} %>
+			</td>
+			<td>
+				<%if(dto.getNextNum()!=0){ %>
+					<a href="content.jsp?num=<%=dto.getNextNum() %>">다음글</a>
+				<%} %>
+			</td>
+		</tr>	
 	</table>
 </div>
 <jsp:include page="../include/footer.jsp"></jsp:include>

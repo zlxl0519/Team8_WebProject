@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	String id = (String)session.getAttribute("id");
 	//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT=10;
 	//하단 디스플레이 페이지 갯수
@@ -107,8 +108,11 @@
 				<%} %>
 			</tbody>
 		</table>
-		<a href="insertform.jsp"><button>작성하기</button></a>
-		<a href="myqna.jsp"><button>내 글 보기</button></a>
+		<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
+		<%if(id!=null){ %>
+			<a href="myqna.jsp"><button>내 글 보기</button></a>
+		<%} %>
+		
 		
 		<!-- 검색용 폼 -->
 		 <div class="search-form">
