@@ -466,7 +466,7 @@ public class MemberDao {
 				conn = new DbcpBean().getConn();
 				String sql = "select num, member_id, dname, dage, breed, weight, neutral, gender, memo"
 						+ " from am_dogs"
-						+ "	where member_id=?";
+						+ " where member_id=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -721,36 +721,70 @@ public class MemberDao {
 		}
 		return isExist;
 	}
-	//이메일 읽어오는 메소드 
-	public MemberDto getEmail(String id) {
-		MemberDto dto=null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			conn = new DbcpBean().getConn();
-			String sql = "select email"
-					+ " from am_member"
-					+ " where email LIKE'a%'";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+	
+	    //회원 update 사람
+		public boolean updateHuman(MemberDto dto) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			int flag = 0;
 			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
+				conn = new DbcpBean().getConn();
+				//실행할 sql 문 준비하기 
+				String sql = " UPDATE am_member"
+						     + " SET profile=?, pwd=?, email=?, name=?, phone=? "
+						     + " WHERE id =?";
+				pstmt = conn.prepareStatement(sql);
+				//? 에 바인딩 할 값이 있으면 바인딩한다.
+				pstmt.setString(1, dto.getProfile());
+				pstmt.setString(2, dto.getPwd());
+				pstmt.setString(3, dto.getEmail());
+				pstmt.setString(4, dto.getName());
+				pstmt.setString(5, dto.getPhone());
+				pstmt.setString(6, dto.getId());
+				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+				flag = pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-		}
-		return dto;
-	}
+			} finally {
+				try {
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {}
+			}if (flag > 0) {return true;} else {return false;}
+		}//updateHuman
+		
+		//회원 update 강아지
+		public boolean updateDog(MemberDto dto) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			int flag = 0;
+			try {
+				conn = new DbcpBean().getConn();
+				String sql = " UPDATE am_dogs"
+						     + " SET dname=?, dage=?, breed=?, weight=?, neutral=?, gender=?, memo=? "
+						     + " WHERE member_id =?";
+				pstmt = conn.prepareStatement(sql);
+				//? 에 바인딩 할 값이 있으면 바인딩한다.
+				pstmt.setString(1, dto.getDname());
+				pstmt.setInt(2, dto.getDage());
+				pstmt.setString(3, dto.getBreed());
+				pstmt.setString(4, dto.getWeight());
+				pstmt.setString(5, dto.getNeutral());
+				pstmt.setString(6, dto.getGender());
+				pstmt.setString(7, dto.getMemo());
+				pstmt.setString(8, dto.getMember_id());
+				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+				flag = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {}
+			}if (flag > 0) {return true;} else {return false;}
+		}//updateDog
+	
 	
 	
 	//전체 row의 갯수를 리턴해주는 메소드

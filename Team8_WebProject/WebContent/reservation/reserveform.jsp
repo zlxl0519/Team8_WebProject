@@ -151,6 +151,6 @@
 			buttonText:"날짜 선택"		
 		});
 	});
-	
+
 </script>
 <jsp:include page="../include/footer.jsp"></jsp:include>

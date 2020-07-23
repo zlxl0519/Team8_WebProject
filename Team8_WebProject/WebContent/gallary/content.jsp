@@ -10,7 +10,7 @@
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
-<div class="table-wrap">
+<div class="table-wrap boardList">
 	<h2>호텔 일상</h2>
 	<table>
 		<tr>

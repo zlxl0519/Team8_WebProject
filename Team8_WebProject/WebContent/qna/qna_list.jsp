@@ -78,22 +78,54 @@
 %>
 
 <jsp:include page="../include/header.jsp"></jsp:include>
-
+<script>
+	document.title = "Amung's QnA";
+</script>
+<%--qna/qna_list.jsp--%>
 <div class="content">
-
-		<h1>QnA 게시판</h1>
-			
-		<h3>문의사항이 있다면 글 남겨주세요~^^</h3>
+	<h2>QnA</h2>
+	<div class="left mb20">
+		<h3>문의사항이 있다면 글을 남겨주세요<br/>
+		자주 묻는 질문은
+		<a href="${pageContext.request.contextPath }/faq/faq_main.jsp">
+			<strong class="f_blue f16"> FaQ</strong>
+		</a>
+		에서 확인해주요.
 		
-		<!-- 글 목록 테이블 -->
-		<table class="table">
-			<thead class="thead-light">
-				<tr style="text-align:center;">
-					<th> 글번호 </th>
-					<th> 제목 </th>
-					<th> 작성자 </th>
-					<th> 작성일 </th>
-					<th> 조회수 </th>
+		</h3>
+	</div>
+	 <!-- 검색용 폼 -->
+	 <div class="search-form mt20">
+	 	<form action="qna_list.jsp" method="get">
+	 		<div class="search-wrap">
+	        	<select name="condition" id="condition">
+	        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
+	        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
+	        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
+	        	</select>
+	        	<label for="keyword">
+	        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
+	        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+	        	</label>
+        	</div>
+        </form> 
+	 </div> 
+	<div class="table-wrap">
+		<table>
+		<colgroup>
+        	<col width="100px"/>
+        	<col width="50%"/>
+        	<col width=""/>
+       		<col width="200px"/>
+        	<col width="100px"/>
+   		</colgroup>
+			<thead>
+				<tr>
+					<th>글번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -105,34 +137,21 @@
 					<td><%=tmp.getRegdate() %></td>
 					<td><%=tmp.getHit() %></td>
 				</tr>
-				<%} %>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
-		<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
+		
+	</div><!-- table-wrap -->
+	<div class="left mt20">
+	<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
 		<%if(id!=null){ %>
-			<a href="myqna.jsp"><button>내 글 보기</button></a>
+			<a href="myqna.jsp"><button class="btn-b">내 글 보기</button></a>
 		<%} %>
-		
-		
-		<!-- 검색용 폼 -->
-		 <div class="search-form">
-		 	<form action="qna_list.jsp" method="get">
-		 		<div class="search-wrap">
-		        	<select name="condition" id="condition">
-		        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
-		        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
-		        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
-		        	</select>
-		        	<label for="keyword">
-		        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
-		        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
-		        	</label>
-	        	</div>
-	        </form> 
-		 </div> 
-		 
-		 <a href="qna_list.jsp"><button>전체목록 보기</button></a>
-		
+
+     <a href="qna_list.jsp"><button>전체목록 보기</button></a>
+  </div><!--left-->
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
@@ -151,10 +170,8 @@
                    <%} %>
               </ul>
          </div>
-          <br/>
-          <br/>
-         
-		
+	  
 </div>
-	
+<!-- content -->
+
 <jsp:include page="../include/footer.jsp"></jsp:include>

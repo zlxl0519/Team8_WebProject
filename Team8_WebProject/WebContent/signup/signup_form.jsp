@@ -19,7 +19,7 @@
 				<div class="profile-box">
 				<label for="image">프로필 이미지</label>
 					<div class="profile-img">
-						<img id="profileImage" src="https://bit.ly/32l7wx5"/>
+						<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 					</div>
 					
 						<div class="profile-btn">
