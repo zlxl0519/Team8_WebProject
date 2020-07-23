@@ -113,44 +113,45 @@
 			<a href="myqna.jsp"><button>내 글 보기</button></a>
 		<%} %>
 		
+		<!-- 검색용 폼 -->
+	 	<div class="search-form">
+	 		<form action="qna_list.jsp" method="get">
+	 			<div class="search-wrap">
+	        		<select name="condition" id="condition">
+	        			<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
+	        			<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
+	        			<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
+	        		</select>
+	        		<label for="keyword">
+	        			<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
+	        			<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+	        		</label>
+        		</div>
+       		</form> 
+		 </div> 
+		 <br/>
+         <br/>
+         
 		
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
                    <%if(startPageNum !=1){ %>
-                        <li class="prev"><a href="qna_list.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
+                        <li class="prev"><a href="qna_list.jsp?pageNum=<%=startPageNum-1  %>&condition=<%=condition %>&keyword=<%=encodedK  %>">Prev</a></li>
                    <%} %>
                    <%for(int i=startPageNum; i<=endPageNum; i++){ %>
                         <%if(i==pageNum){ %>
-                             <li class="active"><a href="qna_list.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li class="active"><a href="qna_list.jsp?pageNum=<%=i%>&condition=<%=condition %>&keyword=<%=encodedK  %>"><%=i %></a></li>
                         <%} else{%>
-                             <li><a href="qna_list.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li><a href="qna_list.jsp?pageNum=<%=i%>&condition=<%=condition %>&keyword=<%=encodedK  %>"><%=i %></a></li>
                         <%} %>
                    <%} %>
                    <%if(endPageNum < totalPageCount){ %>
-                        <li class="next"><a href="qna_list.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+                        <li class="next"><a href="qna_list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK  %>">Next</a></li>
                    <%} %>
               </ul>
          </div>
-          <br/>
-          <br/>
-         
-     <!-- 검색용 폼 -->
-	 <div class="search-form">
-	 	<form action="qna_list.jsp" method="get">
-	 		<div class="search-wrap">
-	        	<select name="condition" id="condition">
-	        		<option value="title_content" <%if(condition.equals("title_content")){%>selected<%} %>>제목+내용</option>
-	        		<option value="title" <%if(condition.equals("title")){%>selected<%} %>>제목</option>
-	        		<option value="writer" <%if(condition.equals("writer")){%>selected<%} %>>작성자</option>
-	        	</select>
-	        	<label for="keyword">
-	        		<input value="<%=keyword %>" type="text" name="keyword" placeholder="검색어를 입력하세요." />
-	        		<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
-	        	</label>
-        	</div>
-        </form> 
-	 </div> 
+   
 		
 </div>
 	
