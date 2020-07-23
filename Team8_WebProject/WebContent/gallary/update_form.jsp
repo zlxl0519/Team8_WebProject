@@ -1,52 +1,53 @@
+<%@page import="test.gallery.dao.GalleryDao"%>
+<%@page import="test.gallery.dto.GalleryDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%
+	int num = Integer.parseInt(request.getParameter("num"));
+	GalleryDto dto = GalleryDao.getInstance().getData(num);
+%>
 <jsp:include page="../include/header.jsp"></jsp:include>
+
 <div class="content">
-	<h2>호텔 일상 | 글 작성</h2>
+	<h2>호텔 일상 | 글 수정</h2>
+	<form action="update.jsp" method="post" enctype="multipart/form-data">
 	<div class="table-wrap boardList">
-		<form action="upload.jsp" method="post" enctype="multipart/form-data">
-				<table>
-					<tbody>
-						<tr>
-							<th scope="row"><label for="caption">제목</label></th>
-							<td>
-								<input type="text" name="caption" id="caption" placeholder="제목을 입력해주세요." />
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">
-								<label for="image">썸네일</label>
-							</th>
-							<td class="filebox">
-								<input class="upload-name" value="파일선택" disabled="disabled">
-								<label for="image">업로드</label> 
-								<input type="file" name="image" id="image" class="upload-hidden" accept=".jpg, jpeg, .png, .JPG, .JPEG" />
-							</td>
-						</tr>
-						<tr>
-							<th>
-								<label for="content">내용</label>
-							</th>
-							<td class="smart_content">
-								<textarea name="content" id="content" cols="30" rows="10"></textarea>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="left mt20">
-					<button type="submit" onclick="submitContents(this);">저장</button>
-				</div>
-				
-				
+		<table>
+			<tr>
+				<th>
+					<label for="caption">제목</label>
+				</th>
+				<td>
+					<input type="text" name="caption" id="caption" value="<%=dto.getCaption() %>"/>
+				</td>
+			</tr>
 			
-		</form>
-	</div><!-- form-wrap -->
+			<tr>
+				<th>
+					<label for="image">썸네일</label>
+				</th>
+				<td class="filebox">
+					<input class="upload-name" value="파일선택" disabled="disabled">
+					<label for="image">업로드</label> 
+					<input type="file" name="image" id="image" class="upload-hidden" accept=".jpg, jpeg, .png, .JPG, .JPEG" />
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<label for="content">내용</label>
+				</th>
+				<td class="smart_content">
+					<textarea name="content" id="content" cols="30" rows="10"><%=dto.getContent() %></textarea>
+				</td>
+			</tr>
+		</table>
+	</div><!-- table-wrap -->
+	<div class="left mt20">
+		<button type="submit" onclick="submitContents(this);">저장</button>		
+	</div>
 	
-
-	
-
-</div><!--content -->
-
+	</form>
+</div><!-- content -->
 
 <%----------스마트 에디터 script--------------%>
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>

@@ -21,11 +21,15 @@ public class MemberDto {
 	private String gender;
 	private String memo;
 	
+	//페이징 처리
+	private int startRowNum;
+	private int endRowNum;
+	
 	public MemberDto() {}
 
 	public MemberDto(String id, String pwd, String email, String profile, String name, String phone, String regdate,
 			int num, String member_id, String dname, int dage, String breed, String weight, String neutral,
-			String gender, String memo) {
+			String gender, String memo, int startRowNum, int endRowNum) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -43,6 +47,8 @@ public class MemberDto {
 		this.neutral = neutral;
 		this.gender = gender;
 		this.memo = memo;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public String getId() {
@@ -172,4 +178,21 @@ public class MemberDto {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
 }

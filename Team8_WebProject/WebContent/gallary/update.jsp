@@ -113,6 +113,7 @@
     }
    
 %>
+
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
 	<%if(isSuccess){ %>
@@ -126,7 +127,7 @@
 			<strong>업로드를 실패했습니다.</strong><br/>
 			다시 시도해주세요
 		</p>
-		<a href="upload_form.jsp" class="btn-default">다시시도</a>
+		<a href="update_form.jsp" class="btn-default">다시시도</a>
 	</div>
 	<%} %>
 </div>
