@@ -4,11 +4,8 @@
 <script>
 	document.title = "Amung'Notice"; 
 </script>
-<%--공지사항 리스트--%>
-<div class="content">
+<%--공지사항 글 자세히 보기--%>
+	<div class="content">
 		
-		
-
-</div><!-- content -->
+	</div><!-- content -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
-
