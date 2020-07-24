@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
-	document.title = ""; 
+	document.title = "Amung'Notice"; 
 </script>
-<%-- --%>
+<%--공지사항업로드폼 --%>
 	<div class="content">
 		
 	</div><!-- content -->

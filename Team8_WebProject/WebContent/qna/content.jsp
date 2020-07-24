@@ -61,6 +61,8 @@
 			<a class="btn-a btn-gray" href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
 		<%} %>
 	
+	</div><!-- left -->
+	
 	</div>
 </div><!-- content -->
 

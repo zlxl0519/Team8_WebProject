@@ -102,7 +102,6 @@ public class MemberDao {
 	}
 	
 	
-	
 	//회원 리스트 불러오기 & 페이징
 	public List<MemberDto> getList(MemberDto dto){
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
@@ -761,7 +760,7 @@ public class MemberDao {
 				//실행할 sql 문 준비하기 
 				String sql = " UPDATE am_member"
 						     + " SET pwd=? "
-						     + " WHERE id =?  AND pwd=?";
+						     + " WHERE id=?  AND pwd=?";
 				pstmt = conn.prepareStatement(sql);
 				//? 에 바인딩 할 값이 있으면 바인딩한다.
 				pstmt.setString(1, dto.getNewPwd());
@@ -789,7 +788,7 @@ public class MemberDao {
 				//실행할 sql 문 준비하기 
 				String sql = " UPDATE am_member"
 						     + " SET profile=? "
-						     + " WHERE id =? AND profile=?";
+						     + " WHERE id =?";
 				pstmt = conn.prepareStatement(sql);
 				//? 에 바인딩 할 값이 있으면 바인딩한다.
 				pstmt.setString(1, dto.getNewProfile());

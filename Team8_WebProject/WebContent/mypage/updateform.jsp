@@ -54,7 +54,7 @@
 						<%if(dto.getProfile()==null){ %>
 							<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 						<%}else{ %>
-							<img id="profileImagenew" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
+							<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
 						<%} %>
 							
 						
@@ -76,8 +76,9 @@
 	
 	<%-- 나머지 정보 업로드 폼 --%>
 	<form action="update.jsp" method="post" id="signup">
-		<input type="hidden" name="newprofile" id="newprofile" />
+		
 		<input type="hidden" name="profile" id="profile" />
+		<input type="hidden" name="newprofile" id="newprofile" />
 		<div class="form-ul-wrap">
 		<ul>
 			
@@ -229,7 +230,7 @@
 			//프로필 이미지를 업데이트 한다.
 			$("#profileImage").attr("src", "${pageContext.request.contextPath }"+data.imageSrc);
 			//회원정보 수정폼 전송될 때 같이 전송되도록 한다.
-			$("#profile").val(data.imageSrc);
+			$("#newprofile").val(data.imageSrc);
 		});
 	//이미지 파일을 선택했을때 change 이벤트가 일어난다.
 	$("#image").on("change", function(){

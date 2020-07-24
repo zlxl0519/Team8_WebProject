@@ -49,17 +49,19 @@ table a:hover, table a:active {text-decoration: underline !important;}
 .height20{ float:left; width:100%; height:20px;}
 .height30{ float:left; width:100%; height:30px;}
 .height40{ float:left; width:100%; height:40px;}
-input:disabled {
+	input:disabled {
   background: #fff;
 }
 textarea {resize: none;border: 1px solid #f0f0f0; height : 250px;width : 100%;box-sizing: border-box; padding: 10px; font-size : 15px;}
 button#addBtn, button#removeBtn { width : 40px; height : 40px;padding : 10px 15px;}
 .btn-default {font-size : 25px; padding : 10px 80px;}
 button, a.btn-default ,input[type="submit"],
-input[type="reset"], .btn-a{border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
-.btn-y {background : #fdf0bb!important;}
-.btn-b {background : #cdeef3!important;}
-.btn-gray {background : #e7e4e8!important;}
+input[type="reset"], .btn-a{border: 1px solid #97d2bf;border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
+.btn-y {background : #fdf0bb!important;color : #a2881e!important;border: 1px solid #fdf0bb}
+.btn-b {background : #cdeef3!important;border: 1px solid #cdeef3}
+.btn-out{background: #ffffff!important; color: #97d2bf!important;box-sizing:border-box; border: 1px solid #97d2bf;}
+.btn-out-b{background: #ffffff!important; color: #86d6e2!important;box-sizing:border-box; border: 1px solid #cdeef3!important;}
+.btn-gray {border: 1px solid #e7e4e8; background : #e7e4e8!important;}
 .btn-down { margin-top : 70px;border-radius : 50%;width : 50px; height :50px; background : #d5e8aa; text-align : center;}
 .btn-down a { width : 100%; height :100%;}
 .btn-down i{font-size : 2em; line-height : 1.7em; color : #fff; font-weight : 900;}
