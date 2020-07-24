@@ -102,17 +102,17 @@
 	$("#reserveForm").on("submit", function(){
 		if($("#dogName").val()==""){
 			alert("반려견 이름을 입력해주세요");
-			$("#dogName"+counter+"").focus();
+			$("#dogName").focus();
 			return false;
 		
 		}else if($("#dogBreed").val()==""){
 			alert("반려견종을 입력해주세요");
-			$("#dogBreed"+counter+"").focus();
+			$("#dogBreed").focus();
 			return false;
 		
 		}else if($("#dogAge").val()==""){
 			alert("반려견 나이를 입력해주세요");
-			$("#dogAge"+counter+"").focus();
+			$("#dogAge").focus();
 			return false;
 		
 		}else if($("#checkin").val()==""){
