@@ -52,15 +52,12 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 <div class="content">
-	<h2>My QnA</h2>
-	<div class="left mb20">
-		<h3>
-			<strong class="f_blue f16"> <%=id %></strong>
-			님의 게시물 목록입니다.
-		</h3>
-	</div>
+
+		<h1>QnA 게시판</h1>
+			
+		<h3><%=id %>님의 게시물 목록입니다.</h3>
+		
 		<!-- 글 목록 테이블 -->
-	<div class="table-wrap">
 		<table class="table">
 			<thead class="thead-light">
 				<tr style="text-align:center;">
@@ -83,12 +80,9 @@
 				<%} %>
 			</tbody>
 		</table>
-		<div class="left mt20">
-			<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
-			<a href="qna_list.jsp"><button>목록으로</button></a>
-		</div>
+		<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
+		<a href="qna_list.jsp"><button>목록으로</button></a>
 		
-		</div><!-- table-wrap -->
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
@@ -106,9 +100,9 @@
                         <li class="next"><a href="myqna.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
                    <%} %>
               </ul>
-         </div><!-- page-display -->
-         
-         
+         </div>
+          <br/>
+          <br/>
          
 </div>
 	

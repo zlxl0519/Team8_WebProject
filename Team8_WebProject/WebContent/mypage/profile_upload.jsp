@@ -1,5 +1,3 @@
-<%@page import="test.gallery.dao.GalleryDao"%>
-<%@page import="test.gallery.dto.GalleryDto"%>
 <%@page import="java.util.Map"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.util.List"%>
@@ -7,7 +5,7 @@
 <%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="application/json; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
@@ -45,16 +43,9 @@
     System.out.println(uploadPath);
     //전송된 파라미터의 한글 인코딩 설정 
     upload.setHeaderEncoding("utf-8");
-  
     
-    // 폼 전송된 title 
-    String caption="";
-    // 폼 전송된 content
-    String content="";
     //WebContent 안에서 이미지 파일이 저장된 경로
-    String imagePath="";
-    //작업의 성공 여부
-    boolean isSuccess = false;
+    String imageSrc="";
     
     try {
         //폼전송된 아이템 목록 얻어오기 
@@ -80,55 +71,17 @@
                     //원본 파일명과 저장된 파일명을 FileDto 객체에 담는다.
                    	
                    	//이미지 경로
-					imagePath = "/upload/"+saveFileName;                   	
+					imageSrc = "/upload/"+saveFileName;
+                    System.out.println(imageSrc);
                     
                 }else{//폼 필드라면 
-                	if(item.getFieldName().equals("caption")){ 
-                		//제목 읽어오기
-                		caption=item.getString("utf-8");
-                	}if(item.getFieldName().equals("content")){
-                		//내용 읽어오기
-                		content=item.getString("utf-8");
-                	}
                 }//if
-            }//for  
+            }//for
         }//if
         
-        //작성자를 세션에서 얻어오기 (현재 로그인 되어있는 아이디)
-        String writer = (String)session.getAttribute("id");
-        
-        //dto에 삽입    		
-        GalleryDto dto = new GalleryDto();
-        dto.setId(writer);
-        dto.setCaption(caption);
-        dto.setContent(content);
-        dto.setImagePath(imagePath);
-        
-        //DB에 저장하기
-        isSuccess = GalleryDao.getInstance().insert(dto);
-        
     } catch (Exception ex) {
-     
         System.out.println(ex.getMessage());
     }
    
 %>
-
-<jsp:include page="../include/header.jsp"></jsp:include>
-<div class="content">
-	<%if(isSuccess){ %>
-		<script>
-			location.href="list_admin.jsp"
-		</script>
-	<%}else{ %>
-	<div class="icon-wrap">
-		<i class="fas fa-lock"></i>
-		<p class="form-span m20">
-			<strong>업로드를 실패했습니다.</strong><br/>
-			다시 시도해주세요
-		</p>
-		<a href="update_form.jsp" class="btn-default">다시시도</a>
-	</div>
-	<%} %>
-</div>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+{"imageSrc":"<%=imageSrc %>"}

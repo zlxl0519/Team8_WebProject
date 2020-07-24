@@ -34,6 +34,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/script.js"></script>
+<!-- jquery ui datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cdd137b0b885c589d0ff1e9d01738a4"></script>
 </head>
 
 <body onload="javascript:scrollMenu();">

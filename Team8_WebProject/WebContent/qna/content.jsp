@@ -2,13 +2,6 @@
 <%@page import="dto.QnaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
 	QnaDao dao = QnaDao.getInstance();
@@ -20,60 +13,57 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 <div class="content">
-	<h1>QnA 게시판</h1>
-	<table>
-		<tr>
-			<th>글번호</th>
-			<td><%=dto.getNum() %></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><%=dto.getWriter() %></td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><%=dto.getTitle() %></td>
-		</tr>
-		<tr>
-			<th>작성일</th>
-			<td><%=dto.getRegdate() %></td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td><%=dto.getHit() %></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><div id="content"><%=dto.getContent() %></div></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>
-			<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
-			<%if(dto.getWriter().equals(id)){ %>
-				<a href="updateform.jsp?num=<%=dto.getNum()%>">수정</a>
+	<h2>QnA 게시판</h2>	
+	<div class="table-wrap boardList bl2">
+	
+		<table>
+			<tr>
+				<th>글번호</th>
+				<td class="center"><%=dto.getNum() %></td>
+				<th>작성자</th>
+				<td class="center"><%=dto.getWriter() %></td>
+				<th>작성일</th>
+				<td><%=dto.getRegdate() %></td>
+				<th>조회수</th>
+				<td class="center"><%=dto.getHit() %></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td colspan="7"><%=dto.getTitle() %></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="7"><div id="content"><%=dto.getContent() %></div></td>
+			</tr>
+				
+		</table>
+		
+	</div><!-- table-wrap -->
+	<div>
+	
+	
+	<div class="right">
+			<%if(dto.getPrevNum()!=0){ %>
+					<a class="btn-left" href="content.jsp?num=<%=dto.getPrevNum() %>"><i class="fas fa-chevron-left"></i></a>
 			<%} %>
-			<%if(dto.getWriter().equals(id)||id.equals("admin")){ %>
-				<a href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
+			<%if(dto.getNextNum()!=0){ %>
+					<a class="btn-right" href="content.jsp?num=<%=dto.getNextNum() %>"><i class="fas fa-chevron-right"></i></a>
 			<%} %>
-				<a href="qna_list.jsp">목록</a>
-			</td>
-		</tr>	
-		<tr>
-			<td></td>
-			<td>
-				<%if(dto.getPrevNum()!=0){ %>
-					<a href="content.jsp?num=<%=dto.getPrevNum() %>">이전글</a>
-				<%} %>
-			</td>
-			<td>
-				<%if(dto.getNextNum()!=0){ %>
-					<a href="content.jsp?num=<%=dto.getNextNum() %>">다음글</a>
-				<%} %>
-			</td>
-		</tr>	
-	</table>
-</div>
+
+	</div>
+	<div class="mt20 left">
+		<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
+		<a class="btn-a" href="qna_list.jsp">목록</a>
+		<%if(dto.getWriter().equals(id)){ %>
+			<a class="btn-a btn-b" href="updateform.jsp?num=<%=dto.getNum()%>">수정</a>
+		<%} %>
+		<%if(dto.getWriter().equals(id)||id.equals("admin")){ %>
+			<a class="btn-a btn-gray" href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
+		<%} %>
+	
+	</div>
+</div><!-- content -->
+
 <jsp:include page="../include/footer.jsp"></jsp:include>
 
 <script>
@@ -84,6 +74,3 @@
 		  }
 	}
 </script>
-
-</body>
-</html>

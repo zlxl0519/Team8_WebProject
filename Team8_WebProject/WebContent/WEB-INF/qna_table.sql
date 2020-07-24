@@ -4,7 +4,7 @@ writer VARCHAR2(100),
 title VARCHAR2(300),
 content CLOB,
 regdate DATE,
-hit NUMBER,
+hit NUMBER
 );
 
 CREATE SEQUENCE qna_seq;

@@ -537,7 +537,7 @@ public class QnaDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = "insert into qna"
-					+ " (num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit)"
+					+ " (num, writer, title, content, regdate, hit)"
 					+ " values(qna_seq.NEXTVAL, ?, ?, ?, sysdate, 0)";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.

@@ -4,8 +4,10 @@ public class MemberDto {
 	//사람용
 	private String id;
 	private String pwd;
+	private String newPwd;//수정할 새 비밀번호
 	private String email;
 	private String profile;
+	private String newProfile;//수정할 새 프로필사진
 	private String name;
 	private String phone;
 	private String regdate;
@@ -21,16 +23,22 @@ public class MemberDto {
 	private String gender;
 	private String memo;
 	
+	//페이징 처리
+	private int startRowNum;
+	private int endRowNum;
+	
 	public MemberDto() {}
 
-	public MemberDto(String id, String pwd, String email, String profile, String name, String phone, String regdate,
-			int num, String member_id, String dname, int dage, String breed, String weight, String neutral,
-			String gender, String memo) {
+	public MemberDto(String id, String pwd, String newPwd, String email, String profile, String newProfile, String name,
+			String phone, String regdate, int num, String member_id, String dname, int dage, String breed,
+			String weight, String neutral, String gender, String memo, int startRowNum, int endRowNum) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
+		this.newPwd = newPwd;
 		this.email = email;
 		this.profile = profile;
+		this.newProfile = newProfile;
 		this.name = name;
 		this.phone = phone;
 		this.regdate = regdate;
@@ -43,6 +51,8 @@ public class MemberDto {
 		this.neutral = neutral;
 		this.gender = gender;
 		this.memo = memo;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public String getId() {
@@ -61,6 +71,14 @@ public class MemberDto {
 		this.pwd = pwd;
 	}
 
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -75,6 +93,14 @@ public class MemberDto {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	public String getNewProfile() {
+		return newProfile;
+	}
+
+	public void setNewProfile(String newProfile) {
+		this.newProfile = newProfile;
 	}
 
 	public String getName() {
@@ -172,4 +198,21 @@ public class MemberDto {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
 }
