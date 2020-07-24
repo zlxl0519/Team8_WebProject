@@ -34,7 +34,7 @@ body, #smart_editor2, #smart_editor2 p, #smart_editor2 h1, #smart_editor2 h2, #s
 
 #smart_editor2 .se2_allhelp { display: inline-block; width: 18px; height: 18px; padding: 0; background: url("../img/ko_KR/btn_set.png?130306") -437px -358px no-repeat; font-size: 0; line-height: 0; text-indent: -10000px; vertical-align: middle; }
 
-#smart_editor2 #smart_editor2_content { border: 1px solid #b5b5b5; }
+#smart_editor2 #smart_editor2_content {/* border: 1px solid #b5b5b5; */}
 
 #smart_editor2 .se2_tool { overflow: visible; position: relative; z-index: 25; }
 

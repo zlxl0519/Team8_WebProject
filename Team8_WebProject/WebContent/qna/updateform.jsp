@@ -17,33 +17,56 @@
 		return;
 	}
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
-	<div class="form-wrap">
-		<form action="update.jsp" method="post">
-			<input type="hidden" name="num" value="<%=dto.getNum() %>" />
-			<input type="hidden" name="id" value="<%=dto.getWriter() %>" />
-			<div class="form-group">
-				<label for="num">글번호</label>
-				<input type="text" class="form-control" id="num" value="<%=dto.getNum() %>" disabled /><br/>
-				<label for="id">작성자</label>
-				<input type="text" class="form-control" id="id" value="<%=dto.getWriter() %>" disabled /><br/>
-				<label for="title">제목</label>
-				<input type="text" class="form-control" name="title" id="title" value="<%=dto.getTitle() %>" /><br/>
-				<label for="content">글내용</label>
-				<textarea name="content" id="content" cols="40" rows="20"><%=dto.getContent() %></textarea><br>
+<h2>QnA 수정하기</h2>
+	<div class="table-wrap boardList">
+		<form action="update.jsp" method="post" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<th>
+					<label for="num">글번호</label>
+				</th>
+				<td>
+					<input type="hidden" name="num" value="<%=dto.getNum() %>" />
+					<input type="text" class="form-control" id="num" value="<%=dto.getNum() %>" disabled /><br/>
+					
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<label for="id">작성자</label>
+				</th>
+				<td>
+					<input type="hidden" name="id" value="<%=dto.getWriter() %>" />
+					<input type="text" class="form-control" id="id" value="<%=dto.getWriter() %>" disabled />
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					<label for="title">제목</label>
+				</th>
+				<td>
+					<input type="text" class="form-control" name="title" id="title" value="<%=dto.getTitle() %>" /><br/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					<label for="content">글내용</label>
+				</th>
+				<td class="smart_content">
+					<textarea name="content" id="content" cols="40" rows="20"><%=dto.getContent() %></textarea>
+				</td>
+			</tr>
+			</table>
+			<div class="mt20 left">
+				<button type="submit" onclick="submitContents(this);">등록</button>
 			</div>
-			<button type="submit" onclick="submitContents(this);">등록</button>
 		</form>
-	</div>
-</div>
+	</div><!-- table-wrap -->
+</div><!-- content -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
 
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
@@ -103,6 +126,3 @@
           oEditors.getById["content"].setDefaultFont(sDefaultFont,  nFontSize);
      }
 </script>
-
-</body>
-</html>

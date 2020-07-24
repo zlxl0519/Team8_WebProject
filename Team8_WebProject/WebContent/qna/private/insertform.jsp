@@ -1,33 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	pageEncoding="UTF-8"%>
 <jsp:include page="../../include/header.jsp"></jsp:include>
-
-	
-	<div class="content">
-		<div class="form-wrap">
-			<br/>
-			<h1>QnA 작성하기</h1>
-			<form action="insert.jsp" method="post">
-				<label for="title">제목</label>
-				<input type="text" name="title" id="title" /><br/>
-				<label for="content">작성하기</label>
-				<textarea name="content" id="content" cols="40" rows="20"></textarea><br/>
-				<br/>
-				<button type="submit" onclick="submitContents(this);">등록</button>
+<div class="content">
+	<h2>QnA 작성하기</h2>
+	<div class="table-wrap boardList">
+		<form action="insert.jsp" method="post" enctype="multipart/form-data">
+			<table class="mb20">
+				<tbody>
+					<tr>
+						<th scope="row">
+							<label for="title">제목</label> 
+						</th>
+						<td>
+							<input type="text" name="title" id="title" placeholder="제목을 입력해주세요."/>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<label for="content">작성하기</label>
+						</th>
+						<td class="smart_content">
+							<textarea name="content" id="content" cols="40" rows="20"></textarea>
+						</td>
+					</tr>
+			</table> 
+			<div>
+				<button type="submit"  class="btn-default" onclick="submitContents(this);">등록</button>
+			</div>
 			</form>
-		</div>
-
 	</div>
-	
-<jsp:include page="../../include/footer.jsp"></jsp:include>
-
+</div>
+<!-- content -->
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath  }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
@@ -85,6 +88,4 @@
           oEditors.getById["content"].setDefaultFont(sDefaultFont,  nFontSize);
      }
 </script>
-
-</body>
-</html>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
