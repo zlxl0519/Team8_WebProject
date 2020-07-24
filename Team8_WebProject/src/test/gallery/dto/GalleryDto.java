@@ -8,10 +8,13 @@ public class GalleryDto {
 	private String imagePath;
 	private int hit;
 	private String regdate;
+	private int startRowNum;
+	private int endRowNum;
 	
 	public GalleryDto() {}
 
-	public GalleryDto(int num, String id, String caption, String content, String imagePath, int hit, String regdate) {
+	public GalleryDto(int num, String id, String caption, String content, String imagePath, int hit, String regdate,
+			int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.id = id;
@@ -20,6 +23,8 @@ public class GalleryDto {
 		this.imagePath = imagePath;
 		this.hit = hit;
 		this.regdate = regdate;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getNum() {
@@ -78,5 +83,20 @@ public class GalleryDto {
 		this.regdate = regdate;
 	}
 
-	
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
 }
