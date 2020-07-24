@@ -139,17 +139,17 @@
 		<div class="page-display">
               <ul>
                    <%if(startPageNum !=1){ %>
-                        <li class="prev"><a href="faq_main.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
+                        <li class="prev"><a href="faq_main.jsp?pageNum=<%=startPageNum-1  %>&condition=<%=condition %>&keyword=<%=encodedK  %>">prev</a></li>
                    <%} %>
                    <%for(int i=startPageNum; i<=endPageNum; i++){ %>
                         <%if(i==pageNum){ %>
-                             <li class="active"><a href="faq_main.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li class="active"><a href="faq_main.jsp?pageNum=<%=i%>&condition=<%=condition %>&keyword=<%=encodedK  %>"><%=i %></a></li>
                         <%} else{%>
-                             <li><a href="faq_main.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li><a href="faq_main.jsp?pageNum=<%=i%>&condition=<%=condition %>&keyword=<%=encodedK  %>"><%=i %></a></li>
                         <%} %>
                    <%} %>
                    <%if(endPageNum < totalPageCount){ %>
-                        <li class="next"><a href="faq_main.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+                        <li class="next"><a href="faq_main.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK  %>">Next</a></li>
                    <%} %>
               </ul>
           </div>
