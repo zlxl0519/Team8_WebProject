@@ -541,7 +541,6 @@ public class MemberDao {
 			}
 			return puppyList;
 		}
-		
 		//회원정보 삭제하는 메소드
 		public boolean delete(String id) {
 			Connection conn = null;
@@ -550,29 +549,20 @@ public class MemberDao {
 			try {
 				conn = new DbcpBean().getConn();
 				//sql 문 작성
-				String sql = "delete from am_member"
-						+ "	where id=?";
+				String sql = "DELETE from am_member"
+						+ "	WHERE id=?";
 				pstmt = conn.prepareStatement(sql);
 				//sql 문에 ? 부분을 넣는것
 				pstmt.setString(1, id);
 				flag = pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch (Exception e) {e.printStackTrace();
 			} finally {
 				try {
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			if (flag > 0) {
-				return true;
-			} else {
-				return false;
-			}
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {e.printStackTrace();}
+			}if (flag > 0) {return true;
+			} else {return false;}
 		}//delete 메소드 종료
 		
 		//이름, 이메일로 아이디 찾는 메소드

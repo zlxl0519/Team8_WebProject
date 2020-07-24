@@ -39,19 +39,27 @@
 		</table>
 		
 	</div><!-- table-wrap -->
-	<div>
 	
-	
-	<div class="right">
-			<%if(dto.getPrevNum()!=0){ %>
+	<div class="bottom-list">
+	<div class="mt20">
+		<div class="left">
+				<%if(dto.getPrevNum()!=0){ %>
 					<a class="btn-left" href="content.jsp?num=<%=dto.getPrevNum() %>"><i class="fas fa-chevron-left"></i></a>
-			<%} %>
-			<%if(dto.getNextNum()!=0){ %>
+				<%}else{%>
+					<a class="btn-left mute" href="javacript:void(0)"><i class="fas fa-chevron-left"></i></a>
+				<%} %>
+		</div>
+		<div class="right">
+				<%if(dto.getNextNum()!=0){ %>
 					<a class="btn-right" href="content.jsp?num=<%=dto.getNextNum() %>"><i class="fas fa-chevron-right"></i></a>
-			<%} %>
+				<%}else{%>
+					<a class="btn-right mute" href="javacript:void(0)"><i class="fas fa-chevron-right"></i></a>
+				<%} %>
+		</div>
+			
 
-	</div>
-	<div class="mt20 left">
+	</div><!-- mt20 -->
+	<div class="center">
 		<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
 		<a class="btn-a" href="qna_list.jsp">목록</a>
 		<%if(dto.getWriter().equals(id)){ %>
@@ -62,8 +70,7 @@
 		<%} %>
 	
 	</div><!-- left -->
-	
-	</div>
+	</div><!-- bottom-list -->
 </div><!-- content -->
 
 <jsp:include page="../include/footer.jsp"></jsp:include>

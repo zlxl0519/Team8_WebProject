@@ -3,12 +3,13 @@
 html, body{height: 100%;}
 
 /* common */
+.cb { clear : both;}
 .left {text-align: left;}
 .leftf {float : left;clear : both;}
 .left h3{line-height : 1.8em;}
 .center {text-align: center!important;}
 .right {text-align: right;}
-.rightf {float : rightf;clear : both;}
+.rightf {float : right;clear : both;}
 table a:hover, table a:active {text-decoration: underline !important;}
 
 .gulim{font-family:"굴림";}
@@ -66,13 +67,20 @@ input[type="reset"], .btn-a{border: 1px solid #97d2bf;border-radius : 5px;backgr
 .btn-down a { width : 100%; height :100%;}
 .btn-down i{font-size : 2em; line-height : 1.7em; color : #fff; font-weight : 900;}
 .btn-left, .btn-right {display : inline-block; border-radius : 50%; width : 50px; height :50px; background : #d5e8aa; text-align : center;}
-.btn-left {padding-right: 6px;}
+.btn-left {margin-right : 10px;padding-right: 6px;}
+.btn-left.mute {background : #eaeaea;}
 .btn-right {padding-left: 6px;}
+.btn-right.mute{background : #fdf0bb}
 .btn-left i, .btn-right i {font-size : 2em; line-height : 1.7em; color : #fff; font-weight : 900;}
+
+
 input[type="button"],
 input[type="submit"],
-input[type="reset"]
+input[type="reset"],
+input[name="checkin"],
+input[name="checkout"]
 {cursor: pointer;}
+.ui-datepicker-trigger {cursor : pointer; margin-left : 10px;}
 input[type="text"],
 input[type="password"],
 input[type="tel"],
@@ -107,6 +115,13 @@ select{cursor: pointer;}
 .sub-nav-gnb li:first-child a{border-top : 1px solid #f0f0f0;}
 .sub-nav-gnb li.active a { background :#97d2bf;color : #fff;}
 .sub-nav-gnb li a{display : inline-block;width : 100%;border-bottom : 1px solid #f0f0f0;text-align : left; padding : 20px 10px 20px 10px; font-size : 20px; font-weight : bold;}
+
+/* 하단 버튼 */
+.bottom-list{}
+.bottom-list .left{float :left; }
+.bottom-list .right{float :right; }
+.bottom-list .center{padding : 10px;} 
+
 
 /*폼 스타일 */
 .form-wrap, .form-table-wrap {width : 600px;}
@@ -213,7 +228,7 @@ select{cursor: pointer;}
 {padding : 30px 30px;}
 
 .boardList textarea {padding : 0;border : none;}
-.boardList #content {height : 700px;border : none!important;}
+.boardList #content {min-height : 500px;border : none!important;}
 .boardList #content img {max-width : 100%; height : auto;}
 #smart_editor2 {border : none!important; width : 100%!important;}
 .smart_content {padding : 0!important;}
