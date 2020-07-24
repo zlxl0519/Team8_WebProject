@@ -110,6 +110,7 @@
         	</div>
         </form> 
 	 </div> 
+
 	<div class="table-wrap">
 		<table>
 		<colgroup>
@@ -149,28 +150,26 @@
 		<%if(id!=null){ %>
 			<a href="myqna.jsp"><button class="btn-b">내 글 보기</button></a>
 		<%} %>
-
      <a href="qna_list.jsp"><button>전체목록 보기</button></a>
   </div><!--left-->
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
                    <%if(startPageNum !=1){ %>
-                        <li class="prev"><a href="qna_list.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
+                        <li class="prev"><a href="qna_list.jsp?pageNum=<%=startPageNum-1  %>&condition=<%=condition %>&keyword=<%=encodedK  %>">Prev</a></li>
                    <%} %>
                    <%for(int i=startPageNum; i<=endPageNum; i++){ %>
                         <%if(i==pageNum){ %>
-                             <li class="active"><a href="qna_list.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li class="active"><a href="qna_list.jsp?pageNum=<%=i%>&condition=<%=condition %>&keyword=<%=encodedK  %>"><%=i %></a></li>
                         <%} else{%>
-                             <li><a href="qna_list.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li><a href="qna_list.jsp?pageNum=<%=i%>&condition=<%=condition %>&keyword=<%=encodedK  %>"><%=i %></a></li>
                         <%} %>
                    <%} %>
                    <%if(endPageNum < totalPageCount){ %>
-                        <li class="next"><a href="qna_list.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+                        <li class="next"><a href="qna_list.jsp?pageNum=<%=endPageNum+1 %>&condition=<%=condition %>&keyword=<%=encodedK  %>">Next</a></li>
                    <%} %>
               </ul>
          </div>
-	  
 </div>
 <!-- content -->
 

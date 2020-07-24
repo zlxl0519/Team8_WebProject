@@ -1,10 +1,11 @@
 CREATE TABLE review (
 num NUMBER PRIMARY KEY,
-id VARCHAR2(35) references am_member(id)
+writer VARCHAR2(35),
+profile VARCHAR2(200),
 title VARCHAR2(100),
 content CLOB,
 regdate DATE,
-rating NUMBER NOT NULL DEFAULT 0
+recomm NUMBER
 );
 
 CREATE SEQUENCE rev_seq;
