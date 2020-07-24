@@ -63,7 +63,7 @@ public class GalleryDao {
 	
 	
 	//갤러리 사진 리스트 불러오기 기능
-	public List<GalleryDto> getList(){	
+	public List<GalleryDto> getList(GalleryDto dto){	
 		List<GalleryDto> list = new ArrayList<>();
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
@@ -73,24 +73,28 @@ public class GalleryDao {
 			//Connection 객체의 참조값 얻어오기 
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기
-			String sql = " select * from gallery "
-					+ " order by regdate desc ";
+			String sql = " select * from "
+					+ " (select result1.*, rownum as rnum "
+					+ " from (select * from gallery "
+					+ " order by regdate desc) result1) "
+					+ " where rnum between ? and ? ";
 			pstmt = conn.prepareStatement(sql);
 			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
-
+			pstmt.setInt(1, dto.getStartRowNum());
+			pstmt.setInt(2, dto.getEndRowNum());
 			//select 문 수행하고 결과 받아오기 
 			rs = pstmt.executeQuery();
 			//반복문 돌면서 결과 값 추출하기 
 			while (rs.next()) {
-				GalleryDto dto = new GalleryDto();
-				dto.setNum(rs.getInt("num"));
-				dto.setId(rs.getString("id"));
-				dto.setCaption(rs.getString("caption"));
-				dto.setContent(rs.getString("content"));
-				dto.setImagePath(rs.getString("imagePath"));
-				dto.setHit(rs.getInt("hit"));
-				dto.setRegdate(rs.getString("regdate"));
-				list.add(dto);
+				GalleryDto tmp = new GalleryDto();
+				tmp.setNum(rs.getInt("num"));
+				tmp.setId(rs.getString("id"));
+				tmp.setCaption(rs.getString("caption"));
+				tmp.setContent(rs.getString("content"));
+				tmp.setImagePath(rs.getString("imagePath"));
+				tmp.setHit(rs.getInt("hit"));
+				tmp.setRegdate(rs.getString("regdate"));
+				list.add(tmp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,6 +110,44 @@ public class GalleryDao {
 			}
 		}
 		return list;
+	}
+	
+	//전체 row의 갯수를 리턴해주는 메소드
+	public int getCount() {
+		int count = 0;
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Connection 객체의 참조값 얻어오기 
+			conn = new DbcpBean().getConn();
+			//실행할 sql 문 준비하기
+			String sql = "SELECT NVL(MAX(ROWNUM), 0) AS count"
+					+ " FROM gallery";
+			pstmt = conn.prepareStatement(sql);
+			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			//반복문 돌면서 결과 값 추출하기 
+			if (rs.next()) {
+				count = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return count;
 	}
 	
 	//갤러리 글 가져오기
