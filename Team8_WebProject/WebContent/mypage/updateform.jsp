@@ -54,7 +54,7 @@
 						<%if(dto.getProfile()==null){ %>
 							<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 						<%}else{ %>
-							<img id="profileImagenew" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
+							<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
 						<%} %>
 							
 						
@@ -76,8 +76,7 @@
 	
 	<%-- 나머지 정보 업로드 폼 --%>
 	<form action="update.jsp" method="post" id="signup">
-		<input type="hidden" name="newprofile" id="newprofile" />
-		<input type="hidden" name="profile" id="profile" />
+		<input type="hidden" name="profile" id="profile" value="<%=dto.getProfile() %>"/>
 		<div class="form-ul-wrap">
 		<ul>
 			
@@ -89,6 +88,7 @@
 			<li>
 				<label for="pwd">기존 비밀번호</label>
 				<input type="text" name="pwd" id="pwd" maxlength="16" value="<%=dto.getPwd()%>" disabled/>
+				<input type="hidden" name="pwd" id="pwd" maxlength="16" value="<%=dto.getPwd()%>"/>
 			</li>
 			<li>
 				<label for="pwdnew">변경 비밀번호</label>
