@@ -24,8 +24,6 @@
     // 뒷부분을 추출
     // 아래 substring은 @ 바로 뒷부분인 n부터 추출된다.
     String mail2 = email.substring(idx+1);
-
-	/* String[] */
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
@@ -56,9 +54,9 @@
 						<%if(dto.getProfile()==null){ %>
 							<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 						<%}else{ %>
-							<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
+							<img id="profileImagenew" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
 						<%} %>
-						
+							
 						
 					</div><!-- profile-img -->
 					
@@ -78,6 +76,7 @@
 	
 	<%-- 나머지 정보 업로드 폼 --%>
 	<form action="update.jsp" method="post" id="signup">
+		<input type="hidden" name="newprofile" id="newprofile" />
 		<input type="hidden" name="profile" id="profile" />
 		<div class="form-ul-wrap">
 		<ul>
@@ -88,19 +87,19 @@
 				<span class="form-span">* 아이디는 변경이 불가합니다.</span>
 			</li>
 			<li>
-				<label for="pwdnew">기존 비밀번호</label>
-				<input type="text" name="pwdnew" id="pwdnew" maxlength="16" value="<%=dto.getPwd()%>" disabled/>
+				<label for="pwd">기존 비밀번호</label>
+				<input type="text" name="pwd" id="pwd" maxlength="16" value="<%=dto.getPwd()%>" disabled/>
 			</li>
 			<li>
-				<label for="pwd">변경 비밀번호</label>
-				<input type="password" name="pwd" id="pwd" maxlength="16" placeholder="영문/숫자/특수문자 조합 8~16자리"/>
+				<label for="pwdnew">변경 비밀번호</label>
+				<input type="password" name="pwdnew" id="pwdnew" maxlength="16" placeholder="영문/숫자/특수문자 조합 8~16자리"/>
 				<div id="pwdAlert" class="form-span" style="margin-left : 103px;">* 특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자<br/>
 													&nbsp;&nbsp;&nbsp;~!@#$%^&* 만 사용이 가능합니다.
 				</div>
 			</li>
 			<li>
-				<label for="pwd2">변경 비밀번호 확인</label>
-				<input type="password" name="pwd2" id="pwd2" maxlength="16" placeholder="비밀번호 입력 확인"/>
+				<label for="pwdnew2">변경 비밀번호 확인</label>
+				<input type="password" name="pwdnew2" id="pwdnew2" maxlength="16" placeholder="비밀번호 입력 확인"/>
 				<div class="alert alert-success form-span f_blue" id="alert-success"style="margin-left : 135px;">* 비밀번호가 일치합니다.</div>
 				<div class="alert alert-danger form-span f_red" id="alert-danger"style="margin-left : 135px;">* 비밀번호가 일치하지 않습니다.</div>
 			</li>
@@ -162,7 +161,7 @@
 							<input type="checkbox" name="weight" value="4to10"/>4~10kg
 						<%}%>
 						
-						<%if(dto2.getWeight().equals("10~25kg")){ %>
+						<%if(dto2.getWeight().equals("10to25")){ %>
 							<input type="checkbox" name="weight" value="10to25" checked/>10~25kg
 						<%}else{ %>
 							<input type="checkbox" name="weight" value="10to25"/>10~25kg
@@ -252,7 +251,6 @@
 					$("#email02").val($(this).text()); //선택값 입력 
 					$("#email02").attr("disabled",true); //비활성화 
 					} }); });
-
 	
 	
 	//==========  비밀번호 재확인 일치불일치 =============
@@ -260,8 +258,8 @@
 		$("#alert-danger").hide();
 		
 		$("#signup").keyup(function(){
-			var pwd1 = $("#pwd").val();
-			var pwd2 = $("#pwd2").val();
+			var pwd1 = $("#pwdnew").val();
+			var pwd2 = $("#pwdnew2").val();
 			if(pwd1!="" || pwd2!=""){
 				if(pwd1==pwd2){
 					$("#alert-sucess").show();
@@ -297,10 +295,9 @@
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
  	var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
-
 		$("#pwdAlert").hide();
-		$("#pwd").keyup(function(){
-			if(enNumSpkCheck.test($("#pwd").val()) || $("#pwd").val().length < 8){
+		$("#pwdnew").keyup(function(){
+			if(enNumSpkCheck.test($("#pwdnew").val()) || $("#pwdnew").val().length < 8){
 				$("#pwdAlert").show();
 				$("#submit").attr("disabled", true);
 				 canUse = false;
@@ -328,9 +325,9 @@
 		
 		//=========기타...등등===========
 		$("#submit").on("click", function(){
-			if($("#pwd").val() == " " || $("#pwd").val() != $("#pwd2").val()){
+			if($("#pwdnew").val() == " " || $("#pwdnew").val() != $("#pwdnew2").val()){
 				alert("비밀번호를 확인하세요.")
-				$("#pwd").focus();
+				$("#pwdnew").focus();
 				return false;
 			}else if($("#email01").val() == "" || $("#email02").val() == ""){
 				alert("이메일을 확인하세요")
@@ -343,9 +340,6 @@
 			}else if($("#name").val() == ""){
 				alert("이름을 확인하세요")
 				$("#name").focus();
-			}else if(!canUse){
-				alert("잘못입력하신 가입란이 있습니다. 다시 확인해주세요.")
-				return false;
 			}
 		})
 		

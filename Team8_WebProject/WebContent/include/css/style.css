@@ -4,9 +4,11 @@ html, body{height: 100%;}
 
 /* common */
 .left {text-align: left;}
+.leftf {float : left;clear : both;}
 .left h3{line-height : 1.8em;}
 .center {text-align: center!important;}
 .right {text-align: right;}
+.rightf {float : rightf;clear : both;}
 table a:hover, table a:active {text-decoration: underline !important;}
 
 .gulim{font-family:"굴림";}
@@ -27,6 +29,7 @@ table a:hover, table a:active {text-decoration: underline !important;}
 .m20{margin : 20px 0!important;}
 .mb20 {margin-bottom: 20px!important;}
 .mt20 {margin-top: 20px!important;}
+.mt30 {margin-top: 30px!important;}
 .bn {border: none!important;}
 .bbn{border-bottom : none!important;}
 .bln{border-left: none!important;}
@@ -120,7 +123,10 @@ select{cursor: pointer;}
 .form-wrap #pwdAlert {margin-left : 84px;}
 
 /*검색폼 */
+
 .search-form {margin : 20px 0;}
+.search-form.search-sm{width : 500px; display : inline-block;}
+.search-form.search-sm select {padding : 0 0 0 10px}
 .search-form label[for="keyword"]{
 	position : relative;
 	z-index : 1;
