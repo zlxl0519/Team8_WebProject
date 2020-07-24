@@ -5,13 +5,16 @@
 <%
 
 	MemberDto dto = new MemberDto();
+	MemberDto dto2 = new MemberDto();
+	MemberDto dto3 = new MemberDto();
+	MemberDao dao = MemberDao.getInstance();
 	
 	//사람
-	String id = (String) session.getAttribute("id");
+	String id = (String)session.getAttribute("id");
 	String email = request.getParameter("email01")+"@"+request.getParameter("email02");
 	String name = request.getParameter("name");
 	String phone = request.getParameter("phone");
-	
+	String profile = request.getParameter("profile");
 	
 	//강아지
 	String dname = request.getParameter("dname");
@@ -29,26 +32,18 @@
 	dto.setEmail(email);
 	dto.setName(name);
 	dto.setPhone(phone);
+	dto.setProfile(profile);
 	
 	
 	//사람 비밀번호
 	String pwd = request.getParameter("pwd");
 	String pwdnew = request.getParameter("pwdnew");
-    dto.setNewPwd(pwdnew);
-    dto.setPwd(pwd);
-    dto.setId(id);
-    
-	//사람 프로필
-	String profile = request.getParameter("profile");
-	String profilenew = request.getParameter("newprofile");
-	if(profilenew.equals("null")){
-		profilenew=null;
+	if(pwdnew.equals("")){//비밀번호 미수정시
+	    dto.setPwd(pwd);
+	}else{//비밀번호 수정시
+		dto.setPwd(pwdnew);
 	}
-	
-	
-	dto.setNewProfile(profilenew);
-	dto.setProfile(profile);
-	dto.setId(id);
+
 	
 	//강아지
 	dto.setDname(dname);
@@ -61,10 +56,10 @@
 	dto.setMember_id(id);
 	
 	
-	boolean isSuccess1 = MemberDao.getInstance().updateHuman(dto);
-	boolean isSuccess2 = MemberDao.getInstance().updateDog(dto);
-	boolean isSuccess3 = MemberDao.getInstance().updateHumanPwd(dto);
-	boolean isSuccess4 = MemberDao.getInstance().updateHumanProfile(dto);
+	boolean isSuccess1 = dao.updateHuman(dto);
+	boolean isSuccess2 = dao.updateDog(dto);
+	
+	
 	
 	
 %>
@@ -85,21 +80,8 @@
 		</p>
 		<a href="updateform.jsp" class="btn-default">확인</a>
 		<% }%>
-		
-		<%if(isSuccess3){ %>
-			<i class="fas fa-lock-open"></i>
-			<p class="form-span m20">
-				<strong>비밀번호 수정이 완료되었습니다.</strong>
-			</p>
-		<a href="info.jsp" class="btn-default">확인</a>
-		<%}else{ %>
-			<i class="fas fa-lock"></i>
-			<p class="form-span m20">
-				<strong>비밀번호 수정에 실패했습니다.</strong>
-			</p>
-			<a href="updateform.jsp" class="btn-default">확인</a>
 
-		<%} %>
+		
 	</div>
 </div>
 <jsp:include page="../include/footer.jsp"></jsp:include>

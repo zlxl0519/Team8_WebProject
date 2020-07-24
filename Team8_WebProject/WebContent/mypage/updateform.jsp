@@ -76,9 +76,7 @@
 	
 	<%-- 나머지 정보 업로드 폼 --%>
 	<form action="update.jsp" method="post" id="signup">
-		
-		<input type="hidden" name="profile" id="profile" />
-		<input type="hidden" name="newprofile" id="newprofile" />
+		<input type="hidden" name="profile" id="profile" value="<%=dto.getProfile() %>"/>
 		<div class="form-ul-wrap">
 		<ul>
 			
@@ -90,6 +88,7 @@
 			<li>
 				<label for="pwd">기존 비밀번호</label>
 				<input type="text" name="pwd" id="pwd" maxlength="16" value="<%=dto.getPwd()%>" disabled/>
+				<input type="hidden" name="pwd" id="pwd" maxlength="16" value="<%=dto.getPwd()%>"/>
 			</li>
 			<li>
 				<label for="pwdnew">변경 비밀번호</label>
@@ -230,7 +229,7 @@
 			//프로필 이미지를 업데이트 한다.
 			$("#profileImage").attr("src", "${pageContext.request.contextPath }"+data.imageSrc);
 			//회원정보 수정폼 전송될 때 같이 전송되도록 한다.
-			$("#newprofile").val(data.imageSrc);
+			$("#profile").val(data.imageSrc);
 		});
 	//이미지 파일을 선택했을때 change 이벤트가 일어난다.
 	$("#image").on("change", function(){

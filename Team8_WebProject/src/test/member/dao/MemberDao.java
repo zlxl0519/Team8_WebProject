@@ -730,14 +730,17 @@ public class MemberDao {
 				conn = new DbcpBean().getConn();
 				//실행할 sql 문 준비하기 
 				String sql = " UPDATE am_member"
-						     + " SET email=?, name=?, phone=? "
+						     + " SET email=?, name=?, phone=?, profile=?, pwd=? "
 						     + " WHERE id =?";
 				pstmt = conn.prepareStatement(sql);
 				//? 에 바인딩 할 값이 있으면 바인딩한다.
 				pstmt.setString(1, dto.getEmail());
 				pstmt.setString(2, dto.getName());
 				pstmt.setString(3, dto.getPhone());
-				pstmt.setString(4, dto.getId());
+				pstmt.setString(4, dto.getProfile());
+				pstmt.setString(5, dto.getPwd());
+				pstmt.setString(6, dto.getId());
+				
 				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
 				flag = pstmt.executeUpdate();
 			} catch (Exception e) {
@@ -749,62 +752,6 @@ public class MemberDao {
 				} catch (Exception e) {}
 			}if (flag > 0) {return true;} else {return false;}
 		}//updateHuman
-		
-		//회원 update 사람 비밀번호 수정
-		public boolean updateHumanPwd(MemberDto dto) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			int flag = 0;
-			try {
-				conn = new DbcpBean().getConn();
-				//실행할 sql 문 준비하기 
-				String sql = " UPDATE am_member"
-						     + " SET pwd=? "
-						     + " WHERE id=?  AND pwd=?";
-				pstmt = conn.prepareStatement(sql);
-				//? 에 바인딩 할 값이 있으면 바인딩한다.
-				pstmt.setString(1, dto.getNewPwd());
-				pstmt.setString(2, dto.getId());
-				pstmt.setString(3, dto.getPwd());
-				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
-				flag = pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null)pstmt.close();
-					if (conn != null)conn.close();
-				} catch (Exception e) {}
-			}if (flag > 0) {return true;} else {return false;}
-		}//updateHumanPwd
-		
-		//회원 update 사람 프로필 수정
-		public boolean updateHumanProfile(MemberDto dto) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			int flag = 0;
-			try {
-				conn = new DbcpBean().getConn();
-				//실행할 sql 문 준비하기 
-				String sql = " UPDATE am_member"
-						     + " SET profile=? "
-						     + " WHERE id =?";
-				pstmt = conn.prepareStatement(sql);
-				//? 에 바인딩 할 값이 있으면 바인딩한다.
-				pstmt.setString(1, dto.getNewProfile());
-				pstmt.setString(2, dto.getId());
-				pstmt.setString(3, dto.getProfile());
-				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
-				flag = pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null)pstmt.close();
-					if (conn != null)conn.close();
-				} catch (Exception e) {}
-			}if (flag > 0) {return true;} else {return false;}
-		}//updateHumanProfile
 		
 		//회원 update 강아지
 		public boolean updateDog(MemberDto dto) {

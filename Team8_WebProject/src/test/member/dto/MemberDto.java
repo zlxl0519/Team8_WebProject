@@ -7,7 +7,6 @@ public class MemberDto {
 	private String newPwd;//수정할 새 비밀번호
 	private String email;
 	private String profile;
-	private String newProfile;//수정할 새 프로필사진
 	private String name;
 	private String phone;
 	private String regdate;
@@ -29,7 +28,7 @@ public class MemberDto {
 	
 	public MemberDto() {}
 
-	public MemberDto(String id, String pwd, String newPwd, String email, String profile, String newProfile, String name,
+	public MemberDto(String id, String pwd, String newPwd, String email, String profile, String name,
 			String phone, String regdate, int num, String member_id, String dname, int dage, String breed,
 			String weight, String neutral, String gender, String memo, int startRowNum, int endRowNum) {
 		super();
@@ -38,7 +37,6 @@ public class MemberDto {
 		this.newPwd = newPwd;
 		this.email = email;
 		this.profile = profile;
-		this.newProfile = newProfile;
 		this.name = name;
 		this.phone = phone;
 		this.regdate = regdate;
@@ -93,14 +91,6 @@ public class MemberDto {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
-	}
-
-	public String getNewProfile() {
-		return newProfile;
-	}
-
-	public void setNewProfile(String newProfile) {
-		this.newProfile = newProfile;
 	}
 
 	public String getName() {
