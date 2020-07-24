@@ -10,7 +10,7 @@
 <div class="form-wrap">
 <h2>LOGIN</h2>
 
-	<form name="loginForm" action="login.jsp" method="post" onsubmit="return checkValue()">
+	<form id="loginForm" name="loginForm" action="login.jsp" method="post" >
 	<div class="form-ul-wrap users-wrap">
 		<ul>
 			<li>
@@ -52,9 +52,7 @@
 			alert("아이디를 입력해주세요");
 			$("#id").focus();
 			return false;
-		}
-		
-		if($("#pwd").val()==""){
+		}else if($("#pwd").val()==""){
 			alert("비밀번호를 입력해주세요");
 			$("#pwd").focus();
 			return false;
