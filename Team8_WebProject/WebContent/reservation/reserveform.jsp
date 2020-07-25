@@ -135,7 +135,7 @@
 			changeYear:true, // 달력 년도 select 박스로 선택하게 하기
 			changeMonth:true, // 달력 월 select 박스로 선택하게 하기
 			showOn:"both", //버튼클릭하거나 포커스가 가면 달력이 나온다.
-			buttonImage:"../include/img/icon_up.png",
+			buttonImage:"${pageContext.request.contextPath }/include/img/icon_cal.png",
 			buttonImageOnly:true,
 			buttonText:"날짜 선택"
 		});
@@ -147,7 +147,7 @@
 			changeYear:true, // 달력 년도 select 박스로 선택하게 하기
 			changeMonth:true, // 달력 월 select 박스로 선택하게 하기
 			showOn:"both", //버튼클릭하거나 포커스가 가면 달력이 나온다.
-			buttonImage:"http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+			buttonImage:"${pageContext.request.contextPath }/include/img/icon_cal.png",
 			buttonImageOnly:true,
 			buttonText:"날짜 선택"		
 		});

@@ -62,16 +62,19 @@ public class ReserveDao {
 		ResultSet rs = null;
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT num, member_id, dog_num, service, checkin, checkout, etc"
+			String sql = "SELECT num, member_id, dog_num, service,"
+					   + " to_char(checkin, 'yyyy-mm-dd') checkin, "
+					   + " to_char(checkout, 'yyyy-mm-dd') checkout,"
+					   + " etc"
 					   + " FROM reserve"
-					   + " WHERE id=?";
+					   + " WHERE member_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dto=new ReserveDto();
 				dto.setNum(rs.getInt("num"));
-				dto.setMember_id(rs.getString("member_id"));
+				dto.setMember_id(id);
 				dto.setDog_num(rs.getInt("dog_num"));
 				dto.setService(rs.getString("service"));
 				dto.setCheckin(rs.getString("checkin"));

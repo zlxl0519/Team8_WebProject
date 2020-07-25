@@ -6,10 +6,15 @@
 	String id = (String) session.getAttribute("id");
 	MemberDto dto = MemberDao.getInstance().getData(id);
 	MemberDto dto2 = MemberDao.getInstance().getPuppyData(id);
+	
+	
+	// - 를 기준으로 문자열 추출
+    String regdate = dto.getRegdate();
+    
+   // split()을 이용해 '-'를 기준으로 문자열을 자른다.
+   // split()은 지정한 문자를 기준으로 문자열을 잘라 배열로 반환한다.
+   String date[] = regdate.split("-");
 %>
-
-
-
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
 	document.title = "Amnug: Mypage-info"; 
@@ -76,7 +81,11 @@
 				</li>
 				<li>
 					<label for="">가입일</label>
-					<p><%=dto.getRegdate() %></p>
+					<p>
+					<%=date[0] %> 년 
+					<%=date[1] %> 월
+					<%=date[2] %> 일 
+					</p>
 				</li>
 			</ul>
 	

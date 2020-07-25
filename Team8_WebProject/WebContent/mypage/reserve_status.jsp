@@ -6,9 +6,25 @@
     pageEncoding="UTF-8"%>
    <%
     String id = (String)session.getAttribute("id");
+   //사람 정보 
     MemberDto dto=MemberDao.getInstance().getData(id);
+   //개 정보 
 	MemberDto dto2=MemberDao.getInstance().getPuppyData(id);
+   //예약 정보 
 	ReserveDto dto3=ReserveDao.getInstance().getData(id);
+   
+   
+	// - 를 기준으로 문자열 추출
+    String checkin = dto3.getCheckin();
+    String checkout = dto3.getCheckout();
+    String regdate = dto.getRegdate();
+    
+   // split()을 이용해 '-'를 기준으로 문자열을 자른다.
+   // split()은 지정한 문자를 기준으로 문자열을 잘라 배열로 반환한다.
+   String date[] = checkin.split("-");
+   String date2[] = checkout.split("-");
+   String date3[] = regdate.split("-");
+
    %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
@@ -27,8 +43,6 @@
 </div><!-- sub-nav -->
 
 <div class="form-wrap">
-	<h2>예약하기 </h2>
-	<form action="reserve.jsp" method="post" id="reserveForm">
 	<div class="form-ul-wrap">
 		<ul>
 			<li>
@@ -37,7 +51,7 @@
 			</li>
 			<li>
 				<label>연락처</label>
-				<%=dto.getPhone() %> %>
+				<p><%=dto.getPhone() %></p>
 			</li>
 			<li>
 				<label>희망서비스</label>
@@ -57,22 +71,28 @@
 			</li>
 			<li>
 				<label>체크인</label>
-				<p><%=dto3.getCheckin() %></p>
+				<p>
+					<%=date[0] %> 년 
+					<%=date[1] %> 월
+					<%=date[2] %> 일 
+				</p>
 			</li>
 			<li>
 				<label>체크아웃</label>
-				<p><%=dto3.getCheckout() %></p>
+				<p>
+					<%=date2[0] %> 년 
+					<%=date2[1] %> 월
+					<%=date2[2] %> 일 
+				
+				</p>
 			</li>
 			<li>
 				<label>기타사항</label>
-				<%=dto3.getEtc() %>
+				<pre><%=dto3.getEtc() %></pre>
 			</li>
 		</ul>
 		
 		</div><!-- form-ul-wrap -->
-		
-		<button class="btn-default" type="submit" id="submit">예약하기</button>
-	</form>
 </div><!-- form-wrap -->
 </div><!-- content -->
 

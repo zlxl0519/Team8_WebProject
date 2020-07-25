@@ -385,7 +385,8 @@ public class MemberDao {
 			ResultSet rs = null;
 			try {
 				conn = new DbcpBean().getConn();
-				String sql = "select id, pwd, email, profile, name, phone, regdate"
+				String sql = "select id, pwd, email, profile, name, phone, "
+						+ " to_char(regdate, 'yyyy-mm-dd') regdate"
 						+ "	from am_member"
 						+ "	where id=?";
 				pstmt = conn.prepareStatement(sql);
