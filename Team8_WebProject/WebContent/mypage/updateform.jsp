@@ -35,8 +35,8 @@
 		<h2>MyPage</h2>
 		<div class="sub-nav-gnb">
 			<ul>
-				<li><a href="info.jsp">내 정보 보기 </a></li>
 				<li><a href="reserve_status.jsp">예약현황</a></li>
+				<li><a href="info.jsp">내 정보 보기 </a></li>
 				<li class="active"><a href="update_pwdokform.jsp">내 정보 수정 </a></li>
 			</ul>
 		</div><!-- sub-nav-gnb -->

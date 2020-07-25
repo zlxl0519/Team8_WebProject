@@ -13,7 +13,6 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script>
 	document.title = "Amnug: Mypage-info"; 
-	
 </script>
 
 <%--마이페이지-정보보기 mypage/info.jsp--%>
@@ -23,8 +22,8 @@
 		<h2>MyPage</h2>
 		<div class="sub-nav-gnb">
 			<ul>
-				<li class="active"><a href="info.jsp">내 정보 보기 </a></li>
 				<li><a href="reserve_status.jsp">예약현황</a></li>
+				<li class="active"><a href="info.jsp">내 정보 보기 </a></li>
 				<li><a href="update_pwdokform.jsp">내 정보 수정 </a></li>
 			</ul>
 		</div><!-- sub-nav-gnb -->
