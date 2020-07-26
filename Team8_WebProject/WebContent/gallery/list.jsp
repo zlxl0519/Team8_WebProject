@@ -59,7 +59,7 @@
 			<%} %>
 		</ul>
 		<div class="btn-down">
-			<a href="#" id="nextBtn"><i class="fas fa-chevron-down"></i></a>
+			<a href="javascript:void(0);" id="nextBtn"><i class="fas fa-chevron-down"></i></a>
 		</div><!-- btn-down -->
 		
 </div>

@@ -26,7 +26,7 @@
    String date3[] = regdate.split("-");
 
    %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <script>
 	document.title = "예약현황"; 
 </script>
@@ -97,4 +97,4 @@
 </div><!-- content -->
 
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

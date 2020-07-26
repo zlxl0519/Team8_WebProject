@@ -4,7 +4,7 @@ html, body{height: 100%;}
 
 /* common */
 .cb { clear : both;}
-.left {text-align: left;}
+.left {text-align: left!important;}
 .leftf {float : left;clear : both;}
 .left h3{line-height : 1.8em;}
 .center {text-align: center!important;}
@@ -192,11 +192,18 @@ select{cursor: pointer;}
 
 .page-display li a{margin : 0 10px;display:inline-block;width : 30px; height : 30px;padding : 6px 0;border-radius : 50%;font-weight : bold; font-size : 18px; color : #3f3f3f;}
 .page-display li.active a{background : #97d2bf;color : #fff;}
+.page-display li:hover a {background : #ebf6ce; color : #fff;}
 .page-display li.prev a,
 .page-display li.next a
 {width : auto; padding : 6px 20px;background : #97d2bf; color : #fff;}
+.page-display li.muted a,
+.page-display li.muted a
+{background : #ebebeb; color : #fff;}
+
 .page-display li.prev a{border-radius: 20px 0 0 20px;}
 .page-display li.next a{border-radius: 0px 20px 20px 0px;}
+
+
 /*테이블 스타일 */
 .form-table-wrap table {width : 100%; text-align : left;}
 .form-table-wrap th,
@@ -220,8 +227,8 @@ select{cursor: pointer;}
     word-wrap: break-word;
     line-height: 1.5em;
 }
-
-
+.board_title span, .title-select {color : #957f35;font-weight : bold; margin : 0 20px;}
+.title-select {margin-left : 0px;}
 /*글작성 */
 .boardList th,
 .boardList td
@@ -260,7 +267,13 @@ select{cursor: pointer;}
   border: 1px solid #ebebeb;
   border-radius: 5px;
 }
-
+.boardList-select {padding : 0px!important;}
+.boardList-select select {
+	width : 20%; margin : 0 10px;
+}
+.boardList-select input {
+	width : 75%!important;
+}
 /*갤러리*/
 
 .gallery-list {width : 100%; text-align : left;}

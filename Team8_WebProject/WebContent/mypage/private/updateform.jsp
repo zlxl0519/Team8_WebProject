@@ -25,7 +25,7 @@
     // 아래 substring은 @ 바로 뒷부분인 n부터 추출된다.
     String mail2 = email.substring(idx+1);
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <script>
 	document.title = "회원 정보 수정"; 
 </script>
@@ -367,4 +367,4 @@
 			 console.log(change);
 			 --> result : Please visit Naver!
  --%>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

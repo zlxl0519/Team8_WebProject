@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cafe/private/delete.jsp</title>
+<title>notice/private/notice_delete.jsp</title>
 </head>
 <body>
 	<script>
@@ -23,10 +23,10 @@
 	if(isSuccess){%>
 		alert("삭제되었습니다.");
 		location.href="${pageContext.request.contextPath }/notice/notice_list.jsp";
-		<%}else{%>
+	<%}else{%>
 		alert("삭제실패하였습니다.");
 		location.href="${pageContext.request.contextPath }/notice/notice_detail.jsp?num=<%=num %>";
-		<%}%>
+	<%}%>
 	
 	
 </script>

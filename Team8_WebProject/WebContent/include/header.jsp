@@ -54,7 +54,7 @@
 				<ul>
 					<%if(id !=null){%>
 						<li><a href="javascript:void(0);"><%=id %> 님 환영합니다.</a></li>
-						<li><a href="${pageContext.request.contextPath }/mypage/info.jsp">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath }/mypage/private/info.jsp">마이페이지</a></li>
 						<li><a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a></li>
 						
 					<% }else{%>
@@ -74,10 +74,10 @@
 
 					<div class="nav2-gnb">
 						<ul>
-							<li><a href="#">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath }/notice/notice_list.jsp">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
-							<li><a href="#">이용안내</a></li>
-							<li><a href="#">커뮤니티</a></li>
+							<li><a href="${pageContext.request.contextPath }/guide/guide.jsp">이용안내</a></li>
+							<li><a href="${pageContext.request.contextPath }/gallery/list.jsp">커뮤니티</a></li>
 							<li><a href="${pageContext.request.contextPath }/faq/faq_main.jsp">FAQ</a></li>
 						</ul>
 					</div>
@@ -94,10 +94,10 @@
 
 					<div class="nav2-gnb">
 						<ul>
-							<li><a href="#">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath }/notice/notice_list.jsp">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
-							<li><a href="#">이용안내</a></li>
-							<li><a href="#">커뮤니티</a></li>
+							<li><a href="${pageContext.request.contextPath }/guide/guide.jsp">이용안내</a></li>
+							<li><a href="${pageContext.request.contextPath }/gallery/list.jsp">커뮤니티</a></li>
 							<li><a href="${pageContext.request.contextPath }/faq/faq_main.jsp">FAQ</a></li>
 						</ul>
 					</div>

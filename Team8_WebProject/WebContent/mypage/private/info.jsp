@@ -15,7 +15,7 @@
    // split()은 지정한 문자를 기준으로 문자열을 잘라 배열로 반환한다.
    String date[] = regdate.split("-");
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <script>
 	document.title = "Amnug: Mypage-info"; 
 </script>
@@ -162,11 +162,11 @@ function deleteConfirm(){
 	
 	var isDelete = confirm("탈퇴하시겠습니까?");
 	if (isDelete) {
-		location.href = "${pageContext.request.contextPath }/mypage/delete.jsp";
+		location.href = "${pageContext.request.contextPath }/mypage/private/delete.jsp";
 	}else {
 		return false
 	}
 }
 </script>
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

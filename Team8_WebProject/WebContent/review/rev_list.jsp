@@ -87,7 +87,7 @@
 				</tr>
 				<%} %>
 		</table>
-		<a href="${pageContext.request.contextPath}/rev/private/insertform.jsp"><button>작성하기</button></a>
+		<a href="${pageContext.request.contextPath}/review/private/insertform.jsp"><button>작성하기</button></a>
 		<%if(id!=null){ %>
 			<a href="myrev.jsp"><button>내 글 보기</button></a>
 		<%} %>

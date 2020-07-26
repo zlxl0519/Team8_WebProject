@@ -3,6 +3,7 @@ package test.notice.dto;
 public class NoticeDto {
 	private int num;
 	private String title;
+	private String sel; // select
 	private String content;
 	private int viewCount;
 	private String regdate;
@@ -13,11 +14,12 @@ public class NoticeDto {
 	
 	public NoticeDto() {}
 
-	public NoticeDto(int num, String title, String content, int viewCount, String regdate, int startRowNum,
+	public NoticeDto(int num, String title, String sel, String content, int viewCount, String regdate, int startRowNum,
 			int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.title = title;
+		this.sel = sel;
 		this.content = content;
 		this.viewCount = viewCount;
 		this.regdate = regdate;
@@ -41,6 +43,14 @@ public class NoticeDto {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getSel() {
+		return sel;
+	}
+
+	public void setSel(String sel) {
+		this.sel = sel;
 	}
 
 	public String getContent() {
@@ -98,6 +108,7 @@ public class NoticeDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
-	
+
+
 
 }//NoticeDto
