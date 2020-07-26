@@ -177,6 +177,45 @@ public class NoticeDao {
 		}return list;
 	}//getList
 	
+	//글 목록을 리턴하는 메소드 
+	public List<NoticeDto> getList2(){
+		List<NoticeDto> list=new ArrayList<NoticeDto>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql="SELECT num,title,sel"
+					  + " FROM am_notice"
+					  + " ORDER BY num DESC";
+			pstmt=conn.prepareStatement(sql);
+			// ? 에 값 바인딩 
+			rs = pstmt.executeQuery();
+			while (rs.next()) {//반목문 돌면서
+				//select 된 row 의 정보를 NoticeDto 객체에 담아서 
+				NoticeDto tmp=new NoticeDto();
+				tmp.setNum(rs.getInt("num"));
+				tmp.setTitle(rs.getString("title"));
+				tmp.setSel(rs.getString("sel"));
+				//ArrayList 객체에 누적 시킨다.
+				list.add(tmp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)rs.close();
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
+			} catch (Exception e) {}
+		}return list;
+	}//getList
+	
+	
+	
+	
+	
+	
 	//글하나의 정보를 리턴하는 메소드
 	public NoticeDto getData(int num) {
 		NoticeDto dto=null;

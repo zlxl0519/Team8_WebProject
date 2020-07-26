@@ -38,7 +38,7 @@
 			</tr>
 		</table>
 		<div class="left mt20"> 
-			<button type="submit" onclick="submitContents(this);">저장</button>
+			<button id="submit" type="submit" onclick="submitContents(this);">저장</button>
 		</div>
 	</form>
 </div><!-- table-wrap -->
@@ -53,6 +53,18 @@
 	</div>
 <%} %>
 </div><!-- content -->
+<script>
+	$("#submit").on("click", function(){
+		if($("#title").val() == ""){
+			alert("제목을 입력해주세요")
+			$("#title").focus();
+			return false;
+		}
+	});
+	
+	</script>
+
+
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
