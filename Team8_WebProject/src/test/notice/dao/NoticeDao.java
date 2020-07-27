@@ -179,7 +179,7 @@ public class NoticeDao {
 		}return list;
 	}//getList
 	
-	//글 목록을 리턴하는 메소드 
+	//메인에서 글 목록을 리턴하는 메소드 
 	public List<NoticeDto> getList2(){
 		List<NoticeDto> list=new ArrayList<NoticeDto>();
 		Connection conn = null;
