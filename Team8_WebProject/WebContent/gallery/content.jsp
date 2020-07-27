@@ -13,31 +13,27 @@
 <div class="table-wrap boardList">
 	<h2>호텔 일상</h2>
 	<table>
-		<tr>
-			<th>글번호</th>
-			<td><%= dto.getNum()%></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td>운영자</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><%= dto.getCaption()%></td>
-		</tr>
-		<tr>
-			<th>작성일</th>
-			<td><%= dto.getRegdate()%></td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td><%= dto.getHit()%></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><%= dto.getContent()%></td>
-		</tr>
-	</table>
+			<tr>
+				<th>글번호</th>
+				<td class="center"><%=dto.getNum() %></td>
+				<th>작성자</th>
+				<td class="center">운영자</td>
+				<th>작성일</th>
+				<td><%=dto.getRegdate() %></td>
+				<th>조회수</th>
+				<td class="center"><%=dto.getHit() %></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td colspan="7"><%=dto.getCaption() %></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="7"><div id="content"><%=dto.getContent() %></div></td>
+			</tr>
+				
+		</table>
+	
 </div>
 </div>
 <jsp:include page="../include/footer.jsp"></jsp:include>

@@ -6,14 +6,18 @@
 	String id = (String) session.getAttribute("id");
 	MemberDto dto = MemberDao.getInstance().getData(id);
 	MemberDto dto2 = MemberDao.getInstance().getPuppyData(id);
+	
+	
+	// - 를 기준으로 문자열 추출
+    String regdate = dto.getRegdate();
+    
+   // split()을 이용해 '-'를 기준으로 문자열을 자른다.
+   // split()은 지정한 문자를 기준으로 문자열을 잘라 배열로 반환한다.
+   String date[] = regdate.split("-");
 %>
-
-
-
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <script>
 	document.title = "Amnug: Mypage-info"; 
-	
 </script>
 
 <%--마이페이지-정보보기 mypage/info.jsp--%>
@@ -23,8 +27,8 @@
 		<h2>MyPage</h2>
 		<div class="sub-nav-gnb">
 			<ul>
-				<li class="active"><a href="info.jsp">내 정보 보기 </a></li>
 				<li><a href="reserve_status.jsp">예약현황</a></li>
+				<li class="active"><a href="info.jsp">내 정보 보기 </a></li>
 				<li><a href="update_pwdokform.jsp">내 정보 수정 </a></li>
 			</ul>
 		</div><!-- sub-nav-gnb -->
@@ -77,7 +81,11 @@
 				</li>
 				<li>
 					<label for="">가입일</label>
-					<p><%=dto.getRegdate() %></p>
+					<p>
+					<%=date[0] %> 년 
+					<%=date[1] %> 월
+					<%=date[2] %> 일 
+					</p>
 				</li>
 			</ul>
 	
@@ -154,11 +162,11 @@ function deleteConfirm(){
 	
 	var isDelete = confirm("탈퇴하시겠습니까?");
 	if (isDelete) {
-		location.href = "${pageContext.request.contextPath }/mypage/delete.jsp";
+		location.href = "${pageContext.request.contextPath }/mypage/private/delete.jsp";
 	}else {
 		return false
 	}
 }
 </script>
 
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
