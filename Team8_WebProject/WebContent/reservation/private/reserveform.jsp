@@ -11,7 +11,7 @@
 	MemberDto dto2=MemberDao.getInstance().getPuppyData(id);
 	
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <%--예약페이지
 
 --%>
@@ -157,4 +157,4 @@
 	});
 
 </script>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
