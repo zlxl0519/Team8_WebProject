@@ -58,27 +58,31 @@
 		<h3><%=id %>님의 게시물 목록입니다.</h3>
 		
 		<!-- 글 목록 테이블 -->
+		<!-- 글 목록 테이블 -->
 		<table class="table">
-			<thead class="thead-light">
-				<tr style="text-align:center;">
-					<th> 글번호 </th>
+			<% for(ReviewDto tmp:list){ %>
+				<tr>
 					<th> 제목 </th>
-					<th> 작성자 </th>
-					<th> 작성일 </th>
-					<th> 조회수 </th>
-				</tr>
-			</thead>
-			<tbody>
-				<% for(ReviewDto tmp:list){ %>
-				<tr style="text-align:center;">
-					<td><%=tmp.getNum() %></td>
-					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
+					<td><%=tmp.getTitle() %></td>
+				</tr>	
+				<tr>
+					<th><img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/></th>
 					<td><%=tmp.getWriter() %></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><%=tmp.getContent() %></td>
+					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><button>더보기</button></a></td>
+				</tr>
+				<tr>
+					<th> 작성일 </th>
 					<td><%=tmp.getRegdate() %></td>
+				</tr>
+				<tr>
+					<th> 추천수 </th>
 					<td><%=tmp.getRecomm() %></td>
 				</tr>
 				<%} %>
-			</tbody>
 		</table>
 		<a href="${pageContext.request.contextPath}/review/private/insertform.jsp"><button>작성하기</button></a>
 		<a href="rev_list.jsp"><button>목록으로</button></a>

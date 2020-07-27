@@ -7,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#profileImage{
+		width: 75px;
+		height: 75px;
+		border: 1px solid;
+		border-radius: 50%;
+	}
+</style>
 </head>
 <body>
 <%
@@ -15,6 +23,10 @@
 	ReviewDto dto = dao.getData(num);
 	//세션에서 아이디 얻어오기
 	String id = (String)session.getAttribute("id");
+	if(id==null){
+		id="";
+	}
+
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -31,7 +43,7 @@
 		</tr>
 		<tr>
 			<th>프로필</th>
-			<td><%=dto.getProfile() %></td>
+			<td><img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>"/></td>
 		</tr>
 		<tr>
 			<th>제목</th>
