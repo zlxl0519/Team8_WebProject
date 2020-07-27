@@ -144,7 +144,12 @@
 				</li>
 				<li>
 					<label for="memo">기타사항</label>
+					<%if(dto2.getMemo() != null) {%>
 					<pre><%=dto2.getMemo() %></pre>
+					<%}else{ %>
+					<pre>요청하신 기타사항이 없습니다.</pre>
+					<%} %>
+					
 					
 				</li>
 			</ul>

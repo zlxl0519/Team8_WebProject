@@ -29,7 +29,7 @@ public class MemberDao {
 		try {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
-			String sql = " insert into am_member "
+			String sql = " insert into am_member " 
 					+ " (id, pwd, email, profile, name, phone, regdate) "
 					+ " values(?, ?, ?, ?, ?, ?, sysdate) " ;
 			pstmt = conn.prepareStatement(sql);
