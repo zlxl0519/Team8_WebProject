@@ -123,8 +123,8 @@
 			<%for(MemberDto tmp : list){ %>
 			<tr>
 				<td><%= tmp.getId()%></td>
-				<td><%= tmp.getEmail()%></td>
 				<td><%= tmp.getName()%></td>
+				<td><%= tmp.getEmail()%></td>
 				<td><%= tmp.getPhone()%></td>
 				<td><%= tmp.getRegdate()%></td>
 				<td><%= tmp.getDname()%></td>

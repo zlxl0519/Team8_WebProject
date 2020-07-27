@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"%>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
-	ReviewDao.getInstance().recommCount(num);
+	ReviewDao dao = ReviewDao.getInstance();
+	dao.recommCount(num);
 %>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,8 @@
 </head>
 <body>
 	<script>
-		alert("추천했습니다!");
-		location.href = "content.jsp?num=<%=num%>";
+			alert("추천했습니다!");
+			location.href = "content.jsp?num=<%=num%>";
 	</script>
 </body>
 </html>
