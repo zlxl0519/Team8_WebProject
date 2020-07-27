@@ -14,7 +14,7 @@
 <%if(id.equals("admin")){ %>
 <h2>공지사항 작성</h2>
 <div class="table-wrap boardList">
-	<form action="notice_upload.jsp" method="post" enctype="multipart/form-data">
+	<form action="notice_upload.jsp" method="post">
 		<table>
 			<tr>
 				<th>

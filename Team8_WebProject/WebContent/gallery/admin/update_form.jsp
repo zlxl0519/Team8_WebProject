@@ -6,7 +6,7 @@
 	int num = Integer.parseInt(request.getParameter("num"));
 	GalleryDto dto = GalleryDao.getInstance().getData(num);
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 
 <div class="content">
 	<h2>호텔 일상 | 글 수정</h2>
@@ -103,4 +103,4 @@
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
 </script>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

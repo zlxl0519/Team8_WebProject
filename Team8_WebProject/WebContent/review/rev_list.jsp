@@ -4,6 +4,14 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+	#profileImage{
+		width: 75px;
+		height: 75px;
+		border: 1px solid;
+		border-radius: 50%;
+	}
+</style>
 <%
 		//로그인 된 아이디 읽어오기.(로그인 하지 않으면  null이다.)
 		String id = (String)session.getAttribute("id");
@@ -46,7 +54,6 @@
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
 		
-		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다.
 		List<ReviewDto> list =  ReviewDao.getInstance().getList(dto);
 
 %>
@@ -67,9 +74,7 @@
 					<td><%=tmp.getTitle() %></td>
 				</tr>	
 				<tr>
-					<th> 프로필 이미지</th>
-					<td><%=tmp.getProfile() %></td>
-					<th> 작성자 </th>
+					<th><img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/></th>
 					<td><%=tmp.getWriter() %></td>
 				</tr>
 				<tr>

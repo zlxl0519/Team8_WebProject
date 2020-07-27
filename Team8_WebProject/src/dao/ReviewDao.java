@@ -172,7 +172,7 @@ public class ReviewDao {
 					+" from"
 					+" 	(select result1.*, rownum as rnum"
 					+" 		from (select num, writer, profile, title,"
-					+ "			CONCAT(SUBSTR(content, 1, 150), '……' ),"
+					+ "			CONCAT(SUBSTR(content, 1, 100), '……') AS content,"
 					+ "			TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, recomm"
 					+" 			from review order by num desc)"
 					+" 	result1)"

@@ -24,7 +24,7 @@
 			<p class="form-span m20">
 				<strong>작성하신 글이 저장되었습니다</strong>
 			</p>
-		<a href="qna_list.jsp" class="btn-default">목록</a>
+		<a href="../qna_list.jsp" class="btn-default">목록</a>
 		<%}else{ %>
 			<i class="fas fa-edit"></i>
 			<p class="form-span m20">

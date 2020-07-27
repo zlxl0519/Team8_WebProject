@@ -4,7 +4,7 @@
 <div class="content">
 	<h2>QnA 작성하기</h2>
 	<div class="table-wrap boardList">
-		<form action="insert.jsp" method="post" enctype="multipart/form-data">
+		<form action="insert.jsp" method="post">
 			<table class="mb20">
 				<tbody>
 					<tr>

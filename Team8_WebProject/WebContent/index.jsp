@@ -21,7 +21,7 @@
 					
 				</div>
 
-			<div class="reservation-btn"><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp"> 예약하기 </a></div>
+			<div class="reservation-btn"><a href="${pageContext.request.contextPath }/reservation/private/reserveform.jsp"> 예약하기 </a></div>
 			</div>
 
 			</div>
@@ -48,17 +48,14 @@
 			</div>
 			<div class="main-notice-list">
 				<ul>
-				<%
-				List<NoticeDto> list= NoticeDao.getInstance().getList2();
-				%>
-				<%for(int i=0; i<5; i++){ 
-					
-					NoticeDto tmp = list.get(i);
+				<% List<NoticeDto> list = NoticeDao.getInstance().getList2();%>
+				<% for(int i=0; i<5; i++){
+					NoticeDto tmp2 = list.get(i);
 				%>
    					<li>
-	   					<a href="${pageContext.request.contextPath }/notice/notice_detail.jsp?num=<%=tmp.getNum() %>">
-	   						<span>[ <%=tmp.getSel() %> ]</span>
-	   						<%=tmp.getTitle() %>
+	   					<a href="${pageContext.request.contextPath }/notice/notice_detail.jsp?num=<%=tmp2.getNum() %>">
+	   						<span>[ <%=tmp2.getSel() %> ]</span>
+	   						<%=tmp2.getTitle() %>
 	   					</a>
    					</li>
 				<%}%>
@@ -69,7 +66,7 @@
 	
 	</section>
 	<section class="main-gallery-wrap">
-		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 +</a></h6>
+		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 <span class="f_ye">+</span></a></h6>
 		<ul class="gallery-list">
 		<% List<GalleryDto> list2=GalleryDao.getInstance().getList2(); %>
 			<%for(int i=0; i<3; i++){
