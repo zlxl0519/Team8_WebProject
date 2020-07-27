@@ -48,17 +48,14 @@
 			</div>
 			<div class="main-notice-list">
 				<ul>
-				<%
-				List<NoticeDto> list= NoticeDao.getInstance().getList2();
-				%>
-				<%for(int i=0; i<5; i++){ 
-					
-					NoticeDto tmp = list.get(i);
+				<% List<NoticeDto> list = NoticeDao.getInstance().getList2();%>
+				<% for(int i=0; i<5; i++){
+					NoticeDto tmp2 = list.get(i);
 				%>
    					<li>
-	   					<a href="${pageContext.request.contextPath }/notice/notice_detail.jsp?num=<%=tmp.getNum() %>">
-	   						<span>[ <%=tmp.getSel() %> ]</span>
-	   						<%=tmp.getTitle() %>
+	   					<a href="${pageContext.request.contextPath }/notice/notice_detail.jsp?num=<%=tmp2.getNum() %>">
+	   						<span>[ <%=tmp2.getSel() %> ]</span>
+	   						<%=tmp2.getTitle() %>
 	   					</a>
    					</li>
 				<%}%>
