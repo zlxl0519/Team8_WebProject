@@ -131,9 +131,9 @@
 			</thead>
 			<tbody>
 				<% for(QnaDto tmp:list){ %>
-				<tr style="text-align:center;">
+				<tr>
 					<td><%=tmp.getNum() %></td>
-					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
+					<td class="board_title"><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
 					<td><%=tmp.getWriter() %></td>
 					<td><%=tmp.getRegdate() %></td>
 					<td><%=tmp.getHit() %></td>
@@ -146,11 +146,11 @@
 		
 	</div><!-- table-wrap -->
 	<div class="left mt20">
-	<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
+	 <a href="qna_list.jsp"><button>전체목록 보기</button></a>
+	 <a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button class="btn-out">작성하기</button></a>
 		<%if(id!=null){ %>
-			<a href="myqna.jsp"><button class="btn-b">내 글 보기</button></a>
+			<a href="myqna.jsp"><button class="btn-out-b">내 글 보기</button></a>
 		<%} %>
-     <a href="qna_list.jsp"><button>전체목록 보기</button></a>
   </div><!--left-->
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
