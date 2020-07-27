@@ -80,7 +80,7 @@ geocoder.addressSearch('서울 강남구 테헤란로 124 삼원타워 5층', fu
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">AMung</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">Amung</div>'
         });
         infowindow.open(map, marker);
 
