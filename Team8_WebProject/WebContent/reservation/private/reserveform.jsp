@@ -38,8 +38,6 @@
 				<select name="service" id="service">
 					<option value="">서비스 선택</option>
 					<option value="호텔&데이케어">호텔&amp;데이케어</option>
-					<option value="독파크">독파크</option>
-					<option value="스페셜 케어">스페셜 케어</option>
 				</select>
 			</li>
 		</ul>
