@@ -37,14 +37,17 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
 	<h2>호텔 일상</h2>
-
-	<%if(id.equals("admin")){ %>
-		<div id="btn" class="left mt20"></div>
-		<script>
-			$("<a>").attr("id", "submit").attr("href", "upload_form.jsp").appendTo("#btn");
-			$("<button>").text("글쓰기").appendTo("#submit");
-		</script>
-	<%}%>
+		<div class="left">
+			<%try{ %>
+				<%if(id.equals("admin")){ %>
+					<div id="btn" style="margin-top: 40px"></div>
+					<script>
+						$("<a>").attr("id", "submit").attr("href", "${pageContext.request.contextPath }/gallery/admin/upload_form.jsp").appendTo("#btn");
+						$("<button>").text("새 글 작성").appendTo("#submit");
+					</script>
+				<%}%>
+			<%}catch(Exception e){e.printStackTrace(); }%>
+		</div>
 
 		<ul class="gallery-list">
 			<%for(GalleryDto tmp : list){%>

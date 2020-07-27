@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <div class="content">
 	<h2>호텔 일상 | 글 작성</h2>
 	<div class="table-wrap boardList">
@@ -102,4 +102,4 @@
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
 </script>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

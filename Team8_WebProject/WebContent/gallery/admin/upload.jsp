@@ -113,7 +113,7 @@
     }
    
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <div class="content">
 	<%if(isSuccess){ %>
 		<script>
@@ -130,4 +130,4 @@
 	</div>
 	<%} %>
 </div>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

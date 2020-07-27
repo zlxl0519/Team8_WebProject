@@ -8,7 +8,7 @@
 	String id = (String)session.getAttribute("id");
 	
 	//한 페이지에 나타낼 row 의 갯수
-	final int PAGE_ROW_COUNT=6;
+	final int PAGE_ROW_COUNT=3;
 	
 	//보여줄 페이지의 번호
 	int pageNum=1;
@@ -34,7 +34,7 @@
 	//2. 글 목록을 응답한다.
 	
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <div class="content">
 	<h2>운영관리 | 호텔일상</h2>
 	<div class="left">
@@ -46,7 +46,7 @@
 			<li>
 				<div class="gallery-img">
 					<a href="content.jsp?num=<%=tmp.getNum()%>">
-						<img src="${pageContext.request.contextPath }<%= tmp.getImagePath()%>"/>
+						<img src="${pageContext.request.contextPath }<%= tmp.getImagePath() %>"/>
 					</a>
 				</div>
 				<div class="caption"><p><%=tmp.getCaption() %></p></div>
@@ -61,17 +61,8 @@
 		</ul>
 		
 		<div class="btn-down">
-			<a href="#" id="#nextBtn"><i class="fas fa-chevron-down"></i></a>
+			<a href="#" id="nextBtn"><i class="fas fa-chevron-down"></i></a>
 		</div><!-- btn-down -->
-		<%-- 어드민 적용
-		<%if(id.equals("admin")){ %>
-			<div id="btn" style="margin-top: 40px"></div>
-			<script>
-				$("<a>").attr("id", "submit").attr("href", "upload_form.jsp").appendTo("#btn");
-				$("<button>").text("글쓰기").appendTo("#submit");
-			</script>
-		<%}%>
-		 --%>
 </div><!-- content -->
 <script>
 	var currentPage = 1;
@@ -91,4 +82,4 @@
 		})
 	})
 </script>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>

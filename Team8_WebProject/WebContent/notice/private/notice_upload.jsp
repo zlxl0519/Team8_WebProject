@@ -5,7 +5,7 @@
 <jsp:include page="../../include/header.jsp"></jsp:include>
 <%
 	//1. 폼 전송되는 파라미터 읽어오기 (글제목, 내용)
-	String title=request.getParameter("title");
+	String title = request.getParameter("title");
 	String content=request.getParameter("content");
 	String sel = request.getParameter("sel");
 	

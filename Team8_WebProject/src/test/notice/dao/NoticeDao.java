@@ -19,6 +19,7 @@ public class NoticeDao {
 		return dao;
 	}//dao
 	//새글을 저장하는 메소드
+	
 	public boolean insert(NoticeDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -44,6 +45,7 @@ public class NoticeDao {
 		}if (flag > 0) {return true;
 		} else {return false;}
 	}//insert
+	
 	
 	//글 정보를 삭제하는 메소드
 	public boolean delete(int num) {
