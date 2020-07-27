@@ -28,17 +28,12 @@ $(document).ready(function() {
 
 		$(this).siblings('.upload-name').val(filename);
 	});
+	
 });
 
 
 
-$(function dropDown() {
-$(".gnb-drop a").on("click", function() {
-    $(".dropdown").fadeToggle();
-});
-$(".nav2-small .gnb-drop a").on("click", function() {
-    $(".dropdown2").fadeToggle();
-});
 
 
-});
+	
+

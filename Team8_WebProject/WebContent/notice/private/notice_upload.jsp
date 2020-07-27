@@ -2,8 +2,7 @@
 <%@page import="test.notice.dto.NoticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../../include/header.jsp"></jsp:include>
-<%
+    <%
 	//1. 폼 전송되는 파라미터 읽어오기 (글제목, 내용)
 	String title=request.getParameter("title");
 	String content=request.getParameter("content");
@@ -17,7 +16,9 @@
 	//2. DB 에 글 정보를 저장하고
 	boolean isSuccess=NoticeDao.getInstance().insert(dto);
 	//3. 응답하기 
-%>   
+%>
+<jsp:include page="../../include/header.jsp"></jsp:include>
+   
 <script>
 	document.title = "Amung'Notice"; 
 </script>
