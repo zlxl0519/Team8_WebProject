@@ -209,7 +209,12 @@
 			</li>
 			<li>
 				<label for="memo">기타사항</label>
-				<textarea name="memo" id="memo" cols="60" rows="10" placeholder="반려견 호텔링 시, 요청사항이나 주의해야하는 사항을 적어주세요"><%=dto2.getMemo() %></textarea>
+				
+				<%if(dto2.getMemo() != null) {%>
+				<textarea name="memo" id="memo" cols="60" rows="10"><%=dto2.getMemo() %></textarea>
+				<%}else{ %>
+				<textarea name="memo" id="memo" cols="60" rows="10" placeholder="반려견 호텔링 시, 요청사항이나 주의해야하는 사항을 적어주세요"></textarea>
+				<%} %>
 			</li>
 		</ul>	
 		</div>	

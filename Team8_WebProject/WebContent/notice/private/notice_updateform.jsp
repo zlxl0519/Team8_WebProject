@@ -21,7 +21,7 @@
 <%if(id.equals("admin")){ %>
 	<h2>공지사항 글 수정</h2>
 	<div class="table-wrap boardList">
-		<form action="notice_update.jsp?num=<%=num %>" method="post" enctype="multipart/form-data">
+		<form action="notice_update.jsp?num=<%=num %>" method="post">
 		<table>
 			<tr>
 				<th>

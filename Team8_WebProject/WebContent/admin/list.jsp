@@ -12,7 +12,7 @@
 		<a href="../gallary/list_admin.jsp"><i class="fas fa-camera-retro"></i>amung 일상 갤러리 관리</a>
 	</div>
 	<div>
-		<a href="../gallary/list_admin.jsp"><i class="fas fa-edit"></i>amung 공지사항 관리</a>
+		<a href="../notice/notice_list.jsp"><i class="fas fa-edit"></i>amung 공지사항 관리</a>
 	</div>
 	
 	

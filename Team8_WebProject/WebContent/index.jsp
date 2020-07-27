@@ -66,7 +66,7 @@
 	
 	</section>
 	<section class="main-gallery-wrap">
-		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 +</a></h6>
+		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 <span class="f_ye">+</span></a></h6>
 		<ul class="gallery-list">
 		<% List<GalleryDto> list2=GalleryDao.getInstance().getList2(); %>
 			<%for(int i=0; i<3; i++){
