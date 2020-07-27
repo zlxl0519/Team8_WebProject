@@ -90,14 +90,15 @@
 	<div class="center">
 		<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
 		
-		<%if(id.equals("admin")){ %>
-			<a class="btn-a btn-out-b" href="private/notice_updateform.jsp?num=<%=dto.getNum()%>">수정</a>
-		<%} %>
-		<a class="btn-a" href="notice_list.jsp">목록</a>
-		<%if(id.equals("admin")) {%>
-			<a class="btn-a btn-gray" href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
-		<%} %>
-			
+		<%try{ %>
+			<%if(id.equals("admin")){ %>
+				<a class="btn-a btn-out-b" href="private/notice_updateform.jsp?num=<%=dto.getNum()%>">수정</a>
+			<%} %>
+			<a class="btn-a" href="notice_list.jsp">목록</a>
+			<%if(id.equals("admin")) {%>
+				<a class="btn-a btn-gray" href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
+			<%} %>
+		<%}catch(Exception e){e.printStackTrace(); }%>	
 		
 	</div><!-- left -->
 	</div><!-- bottom-list -->

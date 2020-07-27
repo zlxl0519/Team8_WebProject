@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
 <%
 		//한 페이지에 나타낼 row 의 갯수
-		final int PAGE_ROW_COUNT=6;
+		final int PAGE_ROW_COUNT=3;
 		
 		//보여줄 페이지의 번호
 		int pageNum=Integer.parseInt(request.getParameter("pageNum"));

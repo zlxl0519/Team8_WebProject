@@ -1,11 +1,11 @@
+<%@page import="dto.ReviewDto"%>
+<%@page import="dao.ReviewDao"%>
 <%@page import="java.util.List"%>
-<%@page import="dto.QnaDto"%>
-<%@page import="dao.QnaDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	String id = (String)session.getAttribute("id");
-	QnaDao dao = QnaDao.getInstance();
+	ReviewDao dao = ReviewDao.getInstance();
 
 	
 	 //한 페이지에 나타낼 row 의 갯수
@@ -41,11 +41,11 @@
          endPageNum=totalPageCount; //보정해준다.
     }
     
-	QnaDto dto = new QnaDto();
+    ReviewDto dto = new ReviewDto();
     dto.setStartRowNum(startRowNum);
     dto.setEndRowNum(endRowNum);
     
-	List<QnaDto> list = dao.getMine(dto, id);
+	List<ReviewDto> list = dao.getMine(dto, id);
 	
 %>
 
@@ -58,46 +58,50 @@
 		<h3><%=id %>님의 게시물 목록입니다.</h3>
 		
 		<!-- 글 목록 테이블 -->
+		<!-- 글 목록 테이블 -->
 		<table class="table">
-			<thead class="thead-light">
-				<tr style="text-align:center;">
-					<th> 글번호 </th>
+			<% for(ReviewDto tmp:list){ %>
+				<tr>
 					<th> 제목 </th>
-					<th> 작성자 </th>
-					<th> 작성일 </th>
-					<th> 조회수 </th>
-				</tr>
-			</thead>
-			<tbody>
-				<% for(QnaDto tmp:list){ %>
-				<tr style="text-align:center;">
-					<td><%=tmp.getNum() %></td>
-					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
+					<td><%=tmp.getTitle() %></td>
+				</tr>	
+				<tr>
+					<th><img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/></th>
 					<td><%=tmp.getWriter() %></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><%=tmp.getContent() %></td>
+					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><button>더보기</button></a></td>
+				</tr>
+				<tr>
+					<th> 작성일 </th>
 					<td><%=tmp.getRegdate() %></td>
-					<td><%=tmp.getHit() %></td>
+				</tr>
+				<tr>
+					<th> 추천수 </th>
+					<td><%=tmp.getRecomm() %></td>
 				</tr>
 				<%} %>
-			</tbody>
 		</table>
-		<a href="${pageContext.request.contextPath}/qna/private/insertform.jsp"><button>작성하기</button></a>
-		<a href="qna_list.jsp"><button>목록으로</button></a>
+		<a href="${pageContext.request.contextPath}/review/private/insertform.jsp"><button>작성하기</button></a>
+		<a href="rev_list.jsp"><button>목록으로</button></a>
 		
 		<!-- 페이징 처리 버튼 -->
 		<div class="page-display">
               <ul>
                    <%if(startPageNum !=1){ %>
-                        <li class="prev"><a href="myqna.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
+                        <li class="prev"><a href="myrev.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
                    <%} %>
                    <%for(int i=startPageNum; i<=endPageNum; i++){ %>
                         <%if(i==pageNum){ %>
-                             <li class="active"><a href="myqna.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li class="active"><a href="myrev.jsp?pageNum=<%=i%>"><%=i %></a></li>
                         <%} else{%>
-                             <li><a href="myqna.jsp?pageNum=<%=i%>"><%=i %></a></li>
+                             <li><a href="myrev.jsp?pageNum=<%=i%>"><%=i %></a></li>
                         <%} %>
                    <%} %>
                    <%if(endPageNum < totalPageCount){ %>
-                        <li class="next"><a href="myqna.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+                        <li class="next"><a href="myrev.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
                    <%} %>
               </ul>
          </div>

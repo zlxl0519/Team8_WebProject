@@ -106,11 +106,13 @@
 	
 	
 	<!-- 아이디가 admin일 때만 작성 버튼이 보임. -->
-	<%if(id.equals("admin")){%>
-	<div class="left mt20">
-		 <a href="private/notice_uploadform.jsp" class="btn-a">글작성</a>
-	  </div><!--left-->
+	<%try{ %>
+		<%if(id.equals("admin")){%>
+		<div class="left mt20">
+		 	<a href="private/notice_uploadform.jsp" class="btn-a">글작성</a>
+	  	</div><!--left-->
 	<%} %>
+	<%}catch(Exception e){e.printStackTrace(); }%>
 	
 	<!-- 페이징 처리 버튼 -->
 	<div class="page-display">

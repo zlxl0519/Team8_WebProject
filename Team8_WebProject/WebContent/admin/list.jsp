@@ -5,7 +5,6 @@
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content admin">
-
 	<div onClick="location.href ='../signup/list.jsp'">
 		<span>
 			<i class="fas fa-users"></i>

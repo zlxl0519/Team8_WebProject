@@ -11,7 +11,7 @@
 	MemberDto dto2=MemberDao.getInstance().getPuppyData(id);
 	
 %>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../../include/header.jsp"></jsp:include>
 <%--예약페이지
 
 --%>
@@ -38,8 +38,6 @@
 				<select name="service" id="service">
 					<option value="">서비스 선택</option>
 					<option value="호텔&데이케어">호텔&amp;데이케어</option>
-					<option value="독파크">독파크</option>
-					<option value="스페셜 케어">스페셜 케어</option>
 				</select>
 			</li>
 		</ul>
@@ -71,16 +69,19 @@
 		<ul>
 			<li>
 				<label for="checkin">체크인</label>
-				<input type="text" name="checkin" id="checkin" placeholder="YYYY/MM/DD" />
+				<input type="text" name="checkin" id="checkin" placeholder="YYYY/MM/DD" 
+				onfocus="this.placeholder=''" onblur="this.placeholder='YYYY/MM/DD'"/>
 			</li>
 			<li>
 				<label for="checkout">체크아웃</label>
-				<input type="text" name="checkout" id="checkout" placeholder="YYYY/MM/DD" />
+				<input type="text" name="checkout" id="checkout" placeholder="YYYY/MM/DD" 
+				onfocus="this.placeholder=''" onblur="this.placeholder='YYYY/MM/DD'"/>
 			</li>
 			<li>
-				<label for="etc">기타사항</label>
+				<label for="etc">기타사항</label><%--focus 가 있을때 placeholder 비활성화(onfocus), input 입력값없이 focus가 나갔을때 다시 placeholder 나오게하기(onblur) --%>
 				<textarea name="etc" id="etc" cols="30" rows="10" 
-			     placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한사항을 작성해 주세요. 그리고 추가한 강아지의 정보도 입력해주세요"></textarea>
+			     placeholder="효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한사항을 작성해 주세요. 그리고 추가한 강아지의 정보도 입력해주세요"
+			     onfocus="this.placeholder=''" onblur="this.placeholder='효과적인 서비스 추천을 위해 반려견 이름, 중성화 여부, 문제행동 등 자세한사항을 작성해 주세요. 그리고 추가한 강아지의 정보도 입력해주세요'"></textarea>
 		
 			</li>
 		</ul>
@@ -102,17 +103,17 @@
 	$("#reserveForm").on("submit", function(){
 		if($("#dogName").val()==""){
 			alert("반려견 이름을 입력해주세요");
-			$("#dogName"+counter+"").focus();
+			$("#dogName").focus();
 			return false;
 		
 		}else if($("#dogBreed").val()==""){
 			alert("반려견종을 입력해주세요");
-			$("#dogBreed"+counter+"").focus();
+			$("#dogBreed").focus();
 			return false;
 		
 		}else if($("#dogAge").val()==""){
 			alert("반려견 나이를 입력해주세요");
-			$("#dogAge"+counter+"").focus();
+			$("#dogAge").focus();
 			return false;
 		
 		}else if($("#checkin").val()==""){
@@ -154,4 +155,4 @@
 	});
 
 </script>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+<jsp:include page="../../include/footer.jsp"></jsp:include>
