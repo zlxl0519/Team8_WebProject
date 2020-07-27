@@ -76,7 +76,7 @@
 					<div class="nav2-gnb">
 						<ul>
 							<li><a href="${pageContext.request.contextPath }/notice/notice_list.jsp">공지사항</a></li>
-							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/reservation/private/reserveform.jsp">예약하기</a></li>
 							<li class="gnb-drop"><a href="#">이용안내</a>
 								<ul class="dropdown">
 									<li>
@@ -119,7 +119,7 @@
 					<div class="nav2-gnb">
 						<ul>
 							<li><a href="${pageContext.request.contextPath }/notice/notice_list.jsp">공지사항</a></li>
-							<li><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp">예약하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/reservation/private/reserveform.jsp">예약하기</a></li>
 							<li class="gnb-drop"><a href="${pageContext.request.contextPath }/guide/guide.jsp">이용안내</a>
 								<ul class="dropdown dropdown-small">
 									<li>
