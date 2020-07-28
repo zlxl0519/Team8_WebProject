@@ -9,6 +9,10 @@
 	dao.viewCount(num);
 	//세션에서 아이디 얻어오기
 	String id = (String)session.getAttribute("id");
+	
+	int bgroup = dto.getBgroup();
+	int sorts = dto.getSorts();
+	
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
@@ -68,6 +72,12 @@
 		<%if(dto.getWriter().equals(id)||id.equals("admin")){ %>
 			<a class="btn-a btn-gray" href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
 		<%} %>
+		<%if(sorts==0){%>
+			<a class="btn-a btn-g" href="${pageContext.request.contextPath}/qna/private/insertform_re.jsp?num=<%=dto.getNum()%>">답글쓰기</a>
+		<%}else{%>
+			<a class="btn-a btn-g" href="content.jsp?num=<%=bgroup%>">원글보기</a>
+		<%} %>
+		
 	
 	</div><!-- left -->
 	</div><!-- bottom-list -->
