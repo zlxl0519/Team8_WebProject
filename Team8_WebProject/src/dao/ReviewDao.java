@@ -21,6 +21,8 @@ public class ReviewDao {
 		return dao;
 	}
 	
+	
+	/*CONCAT(SUBSTR(content, 1, 300), '…' )*/
 	//내글보기 메소드
 	public List<ReviewDto> getMine(ReviewDto dto, String id){
 		List<ReviewDto> list = new ArrayList<>();
@@ -36,7 +38,7 @@ public class ReviewDao {
 			String sql = "select *"
 					+" from"
 					+" 	(select result1.*, rownum as rnum"
-					+" 		from (select num, writer, profile, title, CONCAT(SUBSTR(content, 1, 150), '……' ), TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, recomm"
+					+" 		from (select num, writer, profile, title, content, TO_CHAR(regdate, 'yyyy-mm-dd') AS regdate, recomm"
 					+" 			from review where writer=?"
 					+"			order by num desc)"
 					+" 	result1)"
@@ -155,7 +157,7 @@ public class ReviewDao {
 		return count;
 	}
 	
-
+/*CONCAT(SUBSTR(content, 1, 300), '…') AS */
 	
 	//전체글을 가져오는 메소드 (select)
 	public List<ReviewDto> getList(ReviewDto dto){
@@ -172,8 +174,8 @@ public class ReviewDao {
 					+" from"
 					+" 	(select result1.*, rownum as rnum"
 					+" 		from (select num, writer, profile, title,"
-					+ "			CONCAT(SUBSTR(content, 1, 100), '……') AS content,"
-					+ "			TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, recomm"
+					+ "			content,"
+					+ "			TO_CHAR(regdate, 'yyyy-mm-dd') regdate, recomm"
 					+" 			from review order by num desc)"
 					+" 	result1)"
 					+" where rnum between ? and ?";
@@ -211,7 +213,46 @@ public class ReviewDao {
 		return list;
 	}
 	
-	
+	//메인에서 전체글을 가져오는 메소드 (select) -- 리연 추가
+		public List<ReviewDto> getList2(){
+			List<ReviewDto> list = new ArrayList<>();
+			//필요한 객체의 참조값을 담을 지역변수 만들기 
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				//Connection 객체의 참조값 얻어오기 
+				conn = new DbcpBean().getConn();
+				//실행할 sql 문 준비하기
+				String sql = "select num, writer, profile, title, content,"
+						   + " TO_CHAR(regdate, 'yyyy-mm-dd') regdate, recomm"
+						   + " FROM review ORDER by num DESC";
+				pstmt = conn.prepareStatement(sql);
+				//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고
+				//select 문 수행하고 결과 받아오기 
+				rs = pstmt.executeQuery();
+				//반복문 돌면서 결과 값 추출하기 
+				while (rs.next()) {
+					ReviewDto tmp = new ReviewDto();
+					tmp.setNum(rs.getInt("num"));
+					tmp.setWriter(rs.getString("writer"));
+					tmp.setProfile(rs.getString("profile"));
+					tmp.setTitle(rs.getString("title"));
+					tmp.setContent(rs.getString("content"));
+					tmp.setRegdate(rs.getString("regdate"));
+					tmp.setRecomm(rs.getInt("recomm"));
+					list.add(tmp);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)rs.close();
+					if (pstmt != null)pstmt.close();
+					if (conn != null)conn.close();
+				} catch (Exception e) {}
+			}return list;
+		}//GETLIST2
 	
 	//글 하나를 가져오는 메소드 (select)
 	public ReviewDto getData(int num) {
@@ -223,7 +264,7 @@ public class ReviewDao {
 			conn = new DbcpBean().getConn();
 			String sql = "select result1.*"
 					+" from"
-					+"	(select num, writer, profile, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, recomm,"
+					+"	(select num, writer, profile, title, content, TO_CHAR(regdate, 'YY/MM/DD') AS regdate, recomm,"
 					+" 	LAG(num,1,0) over (order by num desc) as prevNum,"
 					+" 	LEAD(num,1,0) over (order by num desc) as nextNum"
 					+" 	from review) result1"

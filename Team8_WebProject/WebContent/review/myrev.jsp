@@ -52,62 +52,72 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 <div class="content">
-
-		<h1>QnA 게시판</h1>
-			
-		<h3><%=id %>님의 게시물 목록입니다.</h3>
-		
-		<!-- 글 목록 테이블 -->
-		<!-- 글 목록 테이블 -->
-		<table class="table">
-			<% for(ReviewDto tmp:list){ %>
-				<tr>
-					<th> 제목 </th>
-					<td><%=tmp.getTitle() %></td>
-				</tr>	
-				<tr>
-					<th><img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/></th>
-					<td><%=tmp.getWriter() %></td>
-				</tr>
-				<tr>
-					<th></th>
-					<td><%=tmp.getContent() %></td>
-					<td><a href="content.jsp?num=<%=tmp.getNum()%>"><button>더보기</button></a></td>
-				</tr>
-				<tr>
-					<th> 작성일 </th>
-					<td><%=tmp.getRegdate() %></td>
-				</tr>
-				<tr>
-					<th> 추천수 </th>
-					<td><%=tmp.getRecomm() %></td>
-				</tr>
-				<%} %>
-		</table>
+<h3 class="review"><strong><%=id %></strong>님의 소중한 후기 <i class="fas fa-comment-dots"></i></h3>
+	<div class="left mb20">
 		<a href="${pageContext.request.contextPath}/review/private/insertform.jsp"><button>작성하기</button></a>
-		<a href="rev_list.jsp"><button>목록으로</button></a>
+		<a href="rev_list.jsp"><button class="btn-g">목록으로</button></a>
+	</div>
+	<ul class="review-ul">
+	<% for(ReviewDto tmp:list){ %>
+		<li>
+			<div class="review-wrap">
+			<span class="review-date">
+					<%
+					// - 를 기준으로 문자열 추출
+				    String regdate = tmp.getRegdate();
+					String date[] = regdate.split("-");
+					%>
+					
+					<%=date[0] %>년 
+					<%=date[1] %>월
+					<%=date[2] %>일 
+					</span>
+				<div class="review-wrap-users">
+					<div class="review-profile">
+					<%if(tmp.getProfile() != null) {%>
+						<img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/>
+					<%}else{ %>
+						<img id="profileImage" src="${pageContext.request.contextPath}/include/img/icon_user.png"/>
+					<%} %>
+					</div>
+					<div class="review-users">
+					<p>
+					<%if(tmp.getWriter() !=null){%>
+						<%=tmp.getWriter() %>
+					<%}else{ %>
+						익명의 리뷰어
+					<%} %>
+					</p>
+					<span><%=tmp.getTitle() %> <br/></span>
+					</div>
+				</div><!-- review-wrap-users -->
+				<div class="review-wrap-con mt30">
+					<p><%=tmp.getContent() %>
+					</p>
+				</div><!-- review-wrap-con -->
+				<div class="right mt20"><a class="review-btn" href="content.jsp?num=<%=tmp.getNum()%>">더보기</a></div>
+			</div><!-- review-wrap -->
+		</li>
+	<%} %>
+	</ul>
 		
 		<!-- 페이징 처리 버튼 -->
-		<div class="page-display">
-              <ul>
-                   <%if(startPageNum !=1){ %>
-                        <li class="prev"><a href="myrev.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
-                   <%} %>
-                   <%for(int i=startPageNum; i<=endPageNum; i++){ %>
-                        <%if(i==pageNum){ %>
-                             <li class="active"><a href="myrev.jsp?pageNum=<%=i%>"><%=i %></a></li>
-                        <%} else{%>
-                             <li><a href="myrev.jsp?pageNum=<%=i%>"><%=i %></a></li>
-                        <%} %>
-                   <%} %>
-                   <%if(endPageNum < totalPageCount){ %>
-                        <li class="next"><a href="myrev.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
-                   <%} %>
-              </ul>
-         </div>
-          <br/>
-          <br/>
-         
+	<div class="page-display">
+	          <ul>
+	               <%if(startPageNum !=1){ %>
+	                    <li class="prev"><a href="myrev.jsp?pageNum=<%=startPageNum-1  %>">prev</a></li>
+	               <%} %>
+	               <%for(int i=startPageNum; i<=endPageNum; i++){ %>
+	                    <%if(i==pageNum){ %>
+	                         <li class="active"><a href="myrev.jsp?pageNum=<%=i%>"><%=i %></a></li>
+	                    <%} else{%>
+	                         <li><a href="myrev.jsp?pageNum=<%=i%>"><%=i %></a></li>
+	                    <%} %>
+	               <%} %>
+	               <%if(endPageNum < totalPageCount){ %>
+	                    <li class="next"><a href="myrev.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+	               <%} %>
+	          </ul>
+	     </div><!-- 페이징 -->
 </div>
-	
 <jsp:include page="../include/footer.jsp"></jsp:include>
