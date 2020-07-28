@@ -75,7 +75,7 @@
 			<li>
 				<label for="checkout">체크아웃</label>
 				<input type="text" name="checkout" id="checkout" placeholder="YYYY/MM/DD" 
-				onfocus="this.placeholder=''" onblur="this.placeholder='YYYY/MM/DD'"/>
+				onfocus="this.placeholder=''" onblur="this.placeholder='YYYY/MM/DD'" />
 			</li>
 			<li>
 				<label for="etc">기타사항</label><%--focus 가 있을때 placeholder 비활성화(onfocus), input 입력값없이 focus가 나갔을때 다시 placeholder 나오게하기(onblur) --%>
@@ -152,7 +152,9 @@
 			buttonImageOnly:true,
 			buttonText:"날짜 선택"		
 		});
-	});
+		
 
+	});
+	
 </script>
 <jsp:include page="../../include/footer.jsp"></jsp:include>
