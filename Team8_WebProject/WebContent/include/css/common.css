@@ -66,7 +66,7 @@ footer .copyright {float: right; margin-top : 95px}
 
 
 /*main*/
-.main-article { margin : 39px 0; padding-top : 120px; text-align : center;}
+.main-article { margin : 39px 0 0 0; padding-top : 120px; text-align : center;}
 .main-slide{  width :  100%; height : 400px; display : inline-block; text-align : center;}
 .main-slide ul li{width : auto; display : inline-block; position : relative;}
 .main-slide img{object-fit: cover; width : 100%; height : 400px;}
@@ -105,24 +105,30 @@ footer .copyright {float: right; margin-top : 95px}
 
 
 
-.main-review{ display : inline-block;width: 1180px; margin: 80px 0;}
-.main-review h6 { text-align : left; margin : 0 0 20px 20px; color : #98d2bf;} 
+.main-review{ display : inline-block;width: 1180px; margin: 80px 0 0 0;}
+.main-review h6 { text-align : left; margin : 0 0 20px 0px; color : #98d2bf;} 
+.main-review h6 a{color : #98d2bf;}
 
-
-
-.review-ul li{margin-bottom : 40px;width: 1180px; display : inline-block;
+.review {padding-top : 50px;font-weight: 400;font-size: 39px;line-height: 70px;color: #393C47;}
+.review strong{font-weight: 700;font-size: 39px;}
+.review i{font-size: 39px;margin-left : 10px;}
+.review-ul li{margin-bottom : 40px;width: 100%; display : inline-block;
 cursor : pointer;}
 .review-ul li:last-child {margin-bottom : 0px;}
-.review-wrap{ padding :30px 50px;border-radius: 50px;box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1); width: 1174px;height: 230px;
- background: #fff url("../img/arrow.png") no-repeat 95% center;
+.review-wrap{position : relative; width: 100%; padding :20px 40px;border-radius : 15px;box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 8%);
+ background: #fff;
 }
+.review-wrap *{}
+.review-date {position : absolute; right : 30px;color : #9e9e9e;}
 .review-wrap-users{width : 100%; height : 70px;}
-.review-profile { width : 50px; height : 50px; text-align : center;border-radius: 70%;
+.review-profile { width : 70px; height : 70px; text-align : center;border-radius: 70%;
     overflow: hidden;box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.2);float : left;}
-.review-profile  img {width : 100%; height : auto; object-fit: cover;}
-.review-wrap-users .review-users {margin : 20px 0 0 20px;font-size : 20px; font-weight : bold; color : #85d4be;float:left;}
+.review-profile  img {width : 100%; height : 100%; object-fit: cover;}
+.review-wrap-users .review-users {text-align : left;margin : 20px 0 0 20px;float:left;}
+.review-users p{margin-bottom : 5px;font-size : 20px; font-weight : bold; color : #85d4be;}
+.review-users span{font-size : 20px; font-weight : 500; color : #4c4c4c;}
 .review-wrap-con {display : block;color : #818181;}
-.review-wrap-con p { display : inline-block;text-align : left; font-size : 20px; font-weight : bold; line-height : 2rem;
+.review-wrap-con p { display : inline-block;text-align : left; font-size : 18px; font-weight : 400;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					display: -webkit-box;
@@ -130,11 +136,44 @@ cursor : pointer;}
 					-webkit-box-orient: vertical;
 					word-wrap:break-word; 
 					line-height: 1.5em;
-					height: 4.5em; 
+
 					}
-					
-					
-					
+.review-btn {background : rgb(250, 250, 252);color : #97d2bf; border-radius : 20px;padding : 10px 40px;font-weight : bold;margin-right : -20px;}
+.review-wrap .right {margin-bottom : 10px;}
+.content-review {position : relative;margin-top : 50px;}
+.content-review ul {display : inline-block;width : 800px;}
+.c-review-wrap-con {margin-top : 20px;text-align : left;width : 100%;}
+.c-review-wrap-con pre{overflow: auto;white-space: pre-wrap;display : inline-block; width : 100%;font-size : 18px; font-weight : 400; line-height : 2rem;}
+.review-arrow {position : absolute;top:50%;;transform: translate(-50%, 0);}
+.review-arrow:first-child{left : 30px;}
+.review-arrow:last-child{right : 30px;}
+.review-arrow i {font-size : 5rem; color :#e8e8e8;}
+
+.review-btn2 {
+    margin-top: 60px;
+    width: 304px;
+    height: 59px;
+    border: 1px solid #97d2bf;
+    border-radius: 30px;
+    display: inline-block;;
+    font-size : 18px;
+    line-height: 3em;
+    font-weight: 600;
+    color: #62b35d;
+}
+.review-btn2 b {font-size : 18px;color: #62b35d;font-weight: 900;}
+.review-left {width: 100%;margin: 15px 0 0 243px;text-align: left;}
+.review-recommand {position : absolute; top : 0; }
+.review-recommand a{font-size : 3rem; border : 2px solid green;}
+
+
+.review-text .review-wrap{height : 600px;text-align : left;}
+.review-text .review-wrap div{display : inline-block;width : 100%;}
+.review-text .review-wrap div input{width : 95.6%;}
+.review-text .review-wrap div label{font-size : 20px;font-weight: bold;}
+.review-text .review-wrap div textarea{height : 423px;}
+
+
 /*관리자*/
 .admin {padding-top : 280px;}
 .admin div{cursor : pointer;border-radius : 10px;display : inline-block; width : 32%; height : 500px; background : #fff;margin-right : 20px;box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);}

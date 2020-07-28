@@ -37,7 +37,7 @@ public class QnaDao {
 					+" 	(select result1.*, rownum as rnum"
 					+" 		from (select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 					+" 			from qna where writer=?"
-					+ "			order by num desc)"
+					+ "			order by bgroup desc, sorts asc)"
 					+" 	result1)"
 					+" where rnum between ? and ?";
 			pstmt = conn.prepareStatement(sql);
@@ -283,7 +283,7 @@ public class QnaDao {
 					+" from"
 					+" 	(select result1.*, rownum as rnum"
 					+" 		from (select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
-					+" 			from qna order by num desc)"
+					+" 			from qna order by bgroup desc, sorts asc)"
 					+" 	result1)"
 					+" where rnum between ? and ?";
 			pstmt = conn.prepareStatement(sql);
@@ -336,7 +336,7 @@ public class QnaDao {
 						+" 		from(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 						+" 			from qna"
 						+"			where title like '%'||?||'%' or content like '%'||?||'%' "
-						+"			order by num desc)"
+						+"			order by bgroup desc, sorts asc)"
 						+" 	result1)"
 						+" where rnum between ? and ?";
 				pstmt = conn.prepareStatement(sql);
@@ -391,7 +391,7 @@ public class QnaDao {
 						+" 		from(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 						+" 			from qna"
 						+"			where title like '%'||?||'%' "	
-						+"			order by num desc)"
+						+"			order by bgroup desc, sorts asc)"
 						+" 	result1)"
 						+" where rnum between ? and ?";
 				pstmt = conn.prepareStatement(sql);
@@ -445,7 +445,7 @@ public class QnaDao {
 						+" 		from(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit"
 						+" 			from qna"
 						+"			where writer like '%'||?||'%' "
-						+"			order by num desc)"
+						+"			order by bgroup desc, sorts asc)"
 						+" 	result1)"
 						+" where rnum between ? and ?";
 				pstmt = conn.prepareStatement(sql);
@@ -493,7 +493,7 @@ public class QnaDao {
 			conn = new DbcpBean().getConn();
 			String sql = "select result1.*"
 					+" from"
-					+"	(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit,"
+					+"	(select num, writer, title, content, TO_CHAR(regdate, 'YY/MM/DD HH:MI:SS') AS regdate, hit, bgroup, sorts, depth,"
 					+" 	LAG(num,1,0) over (order by num desc) as prevNum,"
 					+" 	LEAD(num,1,0) over (order by num desc) as nextNum"
 					+" 	from qna) result1"
@@ -509,6 +509,9 @@ public class QnaDao {
 				dto.setContent(rs.getString("content"));
 				dto.setRegdate(rs.getString("regdate"));
 				dto.setHit(rs.getInt("hit"));
+				dto.setBgroup(rs.getInt("bgroup"));
+				dto.setSorts(rs.getInt("sorts"));
+				dto.setDepth(rs.getInt("depth"));
 				dto.setPrevNum(rs.getInt("prevNum"));
 				dto.setNextNum(rs.getInt("nextNum"));
 			}
@@ -537,8 +540,9 @@ public class QnaDao {
 			conn = new DbcpBean().getConn();
 			//실행할 sql 문 준비하기 
 			String sql = "insert into qna"
-					+ " (num, writer, title, content, regdate, hit)"
-					+ " values(qna_seq.NEXTVAL, ?, ?, ?, sysdate, 0)";
+					+ " (num, writer, title, content, regdate, hit,"
+					+ " bgroup, sorts, depth)"
+					+ " values(qna_seq.NEXTVAL, ?, ?, ?, sysdate, 0, qna_seq.CURRVAL, 0, 0)";
 			pstmt = conn.prepareStatement(sql);
 			//? 에 바인딩 할 값이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getWriter());
@@ -563,6 +567,83 @@ public class QnaDao {
 			return false;
 		}
 	}
+	
+	//답글 등록전 정렬 메소드
+	public boolean updateRe(QnaDto dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			//실행할 sql 문 준비하기 
+			String sql = "update qna"
+					+ " set sorts = sorts+1"
+					+ " where bgroup = ? and sorts > ?";
+			pstmt = conn.prepareStatement(sql);
+			//? 에 바인딩 할 값이 있으면 바인딩한다.
+			pstmt.setInt(1, dto.getBgroup());
+			pstmt.setInt(2, dto.getSorts());
+			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+			flag = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (flag > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	//답글을 등록하는 메소드 (insert)
+		public boolean insertRe(QnaDto dto, int num, String title) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			int flag = 0;
+			try {
+				conn = new DbcpBean().getConn();
+				//실행할 sql 문 준비하기 
+				String sql = "insert into qna"
+						+ " (num, writer, title, content, regdate, hit,"
+						+ " bgroup, sorts, depth)"
+						+ " values(qna_seq.NEXTVAL, ?, ?, ?, sysdate, 0, ?, ?, ?)";
+				pstmt = conn.prepareStatement(sql);
+				//? 에 바인딩 할 값이 있으면 바인딩한다.
+				pstmt.setString(1, dto.getWriter());
+				pstmt.setString(2, "└Re:"+title);
+				pstmt.setString(3, dto.getContent());
+				pstmt.setInt(4, num);
+				pstmt.setInt(5, dto.getSorts()+1);
+				pstmt.setInt(6, dto.getDepth()+1);
+				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+				flag = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+				}
+			}
+			if (flag > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
 	
 	
 	//조회수를 올리는 메소드 (update)

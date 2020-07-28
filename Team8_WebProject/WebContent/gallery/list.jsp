@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="test.member.dto.MemberDto"%>
 <%@page import="test.gallery.dao.GalleryDao"%>
 <%@page import="java.util.List"%>
@@ -22,7 +23,7 @@
 	int totalRow=GalleryDao.getInstance().getCount();
 	//전체 페이지의 갯수 구하기
 	int totalPageCount=
-			(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+	(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 	
 	// CafeDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
 	GalleryDto dto=new GalleryDto();
@@ -48,7 +49,8 @@
 				<%}%>
 			<%}catch(Exception e){e.printStackTrace(); }%>
 		</div>
-
+	
+		
 		<ul class="gallery-list">
 			<%for(GalleryDto tmp : list){%>
 			<li>
@@ -61,10 +63,10 @@
 			</li>
 			<%} %>
 		</ul>
+		
 		<div class="btn-down">
 			<a href="javascript:void(0);" id="nextBtn"><i class="fas fa-chevron-down"></i></a>
 		</div><!-- btn-down -->
-		
 </div>
 <script>
 	var currentPage = 1;
@@ -73,15 +75,14 @@
 	$("#nextBtn").on("click", function(){
 		
 		currentPage++;
-		
-		$.ajax({
-			url : "ajax_list.jsp",
-			method : "get",
-			data : {pageNum : currentPage},
-			success : function(data){
-				$(".gallery-list").append(data).fadeIn(1000);
-			}
-		})
+			$.ajax({
+				url : "ajax_list.jsp",
+				method : "get",
+				data : {pageNum : currentPage},
+				success : function(data){
+					$(".gallery-list").append(data).fadeIn(1000);
+				}
+			});	
 	})
 </script>
 <jsp:include page="../include/footer.jsp"></jsp:include>

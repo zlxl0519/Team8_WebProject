@@ -26,7 +26,7 @@
 	<%if(isSuccess){ %>
 		<script>
 			alert("글이 수정 완료되었습니다!");
-			location.href = "content.jsp?num=<%=num%>";
+			location.href = "${pageContext.request.contextPath}/review/content.jsp?num=<%=num%>";
 		</script>
 	<%} else{ %>
 		<script>

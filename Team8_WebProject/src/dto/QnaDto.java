@@ -8,6 +8,10 @@ public class QnaDto {
 	private String regdate;
 	private int hit;
 	
+	private int bgroup;
+	private int sorts;
+	private int depth;
+	
 	private int startRowNum;
 	private int endRowNum;
 	private int prevNum;
@@ -15,8 +19,8 @@ public class QnaDto {
 	
 	public QnaDto() {}
 
-	public QnaDto(int num, String writer, String title, String content, String regdate, int hit, int startRowNum,
-			int endRowNum, int prevNum, int nextNum) {
+	public QnaDto(int num, String writer, String title, String content, String regdate, int hit, int bgroup, int sorts,
+			int depth, int startRowNum, int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -24,6 +28,9 @@ public class QnaDto {
 		this.content = content;
 		this.regdate = regdate;
 		this.hit = hit;
+		this.bgroup = bgroup;
+		this.sorts = sorts;
+		this.depth = depth;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
 		this.prevNum = prevNum;
@@ -78,6 +85,30 @@ public class QnaDto {
 		this.hit = hit;
 	}
 
+	public int getBgroup() {
+		return bgroup;
+	}
+
+	public void setBgroup(int bgroup) {
+		this.bgroup = bgroup;
+	}
+
+	public int getSorts() {
+		return sorts;
+	}
+
+	public void setSorts(int sorts) {
+		this.sorts = sorts;
+	}
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+
 	public int getStartRowNum() {
 		return startRowNum;
 	}
@@ -109,7 +140,6 @@ public class QnaDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
-	
-	
+
 
 }
