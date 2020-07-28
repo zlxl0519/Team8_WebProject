@@ -1,12 +1,12 @@
-<%@page import="dto.QnaDto"%>
-<%@page import="dao.QnaDao"%>
+<%@page import="dto.ReviewDto"%>
+<%@page import="dao.ReviewDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 
 	int num = Integer.parseInt(request.getParameter("num"));
-	QnaDao dao = QnaDao.getInstance();
-	QnaDto dto = dao.getData(num);
+	ReviewDao dao = ReviewDao.getInstance();
+	ReviewDto dto = dao.getData(num);
 	
 	String writer = dto.getWriter();
 	String id = (String)session.getAttribute("id");
@@ -15,7 +15,7 @@
 		return;
 	}
 	
-	boolean isSuccess = QnaDao.getInstance().delete(num);
+	boolean isSuccess = ReviewDao.getInstance().delete(num);
 
 %>
 
@@ -29,7 +29,7 @@
 	<%if(isSuccess){ %>
 		<script>
 			alert("삭제되었습니다!");
-			location.href = "qna_list.jsp";
+			location.href = "rev_list.jsp";
 		</script>
 	<%} else{ %>
 		<script>
