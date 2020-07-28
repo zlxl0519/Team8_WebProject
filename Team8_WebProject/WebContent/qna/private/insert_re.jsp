@@ -5,6 +5,8 @@
 <%
 	//요청 인코딩 설정
 	request.setCharacterEncoding("utf-8");
+	int num = Integer.parseInt(request.getParameter("num"));
+	
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
 	String id = (String)session.getAttribute("id");
@@ -12,8 +14,9 @@
 	dto.setTitle(title);
 	dto.setContent(content);
 	dto.setWriter(id);
-	boolean isSuccess = QnaDao.getInstance().insert(dto);
 	
+	QnaDao.getInstance().updateRe(dto);
+	boolean isSuccess = QnaDao.getInstance().insertRe(dto, num, title);
 	
 %>
 <jsp:include page="../../include/header.jsp"></jsp:include>
@@ -30,7 +33,7 @@
 			<p class="form-span m20">
 				<strong>글 작성에 실패했습니다</strong>
 			</p>
-			<a href="insertform.jsp" class="btn-default">다시 작성</a>
+			<a href="insertform_re.jsp" class="btn-default">다시 작성</a>
 		<%} %>
 	</div>
 </div>
