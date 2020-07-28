@@ -3,42 +3,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	//로그인된 회원의 아이디 읽어오기 
+	String id=(String)session.getAttribute("id");
 	//1. 파라미터로 전달되는 수정할 글번호를 읽어온다.
 	int num=Integer.parseInt(request.getParameter("num"));
 	//2. DB 에서 글정보를 얻어온다.
 	NoticeDto dto=NoticeDao.getInstance().getData(num);
 	//3. 글 수정 폼을 응답한다.
-%>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/notice/private/updateform.jsp</title>
-</head>
-<body>
-<div class="container">
-	<h1>글 수정 양식 입니다.</h1>
-	<form action="update.jsp" method="post">
-		<input type="hidden" name="num" value="<%=num %>"/>
-		<div>
-			<label for="num">글번호</label>
-			<input type="text" id="num" value="<%=num %>" disabled/>
+%>
+<jsp:include page="../../include/header.jsp"></jsp:include>
+<script>
+	document.title = "Amung'공지사항 글 수정"; 
+</script>
+<%-- /notice/private/notice_updateform.jsp--%>
+
+<div class="content">
+<%if(id.equals("admin")){ %>
+	<h2>공지사항 글 수정</h2>
+	<div class="table-wrap boardList">
+		<form action="notice_update.jsp?num=<%=num %>" method="post">
+		<table>
+			<tr>
+				<th>
+					<label for="num">글번호</label>
+				</th>
+				<td>
+					<input type="hidden" name="num" id="num" value="<%=num %>"/>
+					<input type="text" id="num" name="num" value="<%=num %>" disabled/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<label for="title">제목</label>
+				</th>
+				<td class="boardList-select">
+					<select id="sel" name="sel">
+		            	<option value="공지사항" <%if(dto.getSel().equals("공지사항")){ %>selected<%} %>>공지사항</option>
+		            	<option value="이벤트" <%if(dto.getSel().equals("이벤트")){ %>selected<%} %>>이벤트</option>
+		        	</select>
+					<input type="text" name="title" id="title" placeholder="제목을 입력해주세요." value="<%=dto.getTitle() %>"/>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<label for="content">내용</label>
+				</th>
+				<td class="smart_content">
+					<textarea name="content" id="content"><%=dto.getContent() %></textarea>
+				</td>
+			</tr>
+		</table>
+		<div class="left mt20">
+			<button type="submit" onclick="submitContents(this);">수정</button>
+			<button type="reset" onclick="location.href='${pageContext.request.contextPath }/notice/notice_list.jsp'" class="btn-gray">취소</button>
 		</div>
-		<div>
-			<label for="title">제목</label>
-			<input type="text" id="title" name="title" 
-				value="<%=dto.getTitle() %>"/>
-		</div>
-		<div>
-			<label for="content">내용</label>
-			<textarea name="content" id="content">
-				<%=dto.getContent() %>
-			</textarea>
-		</div>
-		<button type="submit" onclick="submitContents(this);">수정확인</button>
-		<button type="reset">취소</button>
+		
 	</form>
-</div>
+	</div><!-- table-wrap -->
+<%}else {%>
+	<div class="icon-wrap">
+		<i class="fas fa-exclamation-circle"></i>
+		<p class="form-span m20">
+			<strong>관리자만 접근 가능합니다.</strong>
+		</p>
+		<a href="${pageContext.request.contextPath }/notice/notice_list.jsp" class="btn-default">확인</a>
+	</div>
+<%} %>
+	
+</div><!-- content -->
+	
+	
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
@@ -93,10 +127,7 @@
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
 </script>
-</body>
-</html>
-
-
+<jsp:include page="../../include/footer.jsp"></jsp:include>
 
 
 

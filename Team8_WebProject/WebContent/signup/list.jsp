@@ -110,12 +110,12 @@
 				<th scope="col">이메일</th>
 				<th scope="col">연락처</th>
 				<th scope="col">가입일</th>
-				<th scope="col">반려견 이름</th>
-				<th scope="col">반려견 나이</th>
-				<th scope="col">반려견 견종</th>
-				<th scope="col">반려견 무게</th>
-				<th scope="col">중성화 유무</th>
-				<th scope="col">반려견 성별</th>
+				<th scope="col">반려견<br />이름</th>
+				<th scope="col">반려견<br />나이</th>
+				<th scope="col">반려견<br />견종</th>
+				<th scope="col">반려견<br />무게</th>
+				<th scope="col">중성화<br />유무</th>
+				<th scope="col">반려견<br />성별</th>
 				<th scope="col">기타사항</th>
 			</tr>
 		</thead>
@@ -123,8 +123,8 @@
 			<%for(MemberDto tmp : list){ %>
 			<tr>
 				<td><%= tmp.getId()%></td>
-				<td><%= tmp.getEmail()%></td>
 				<td><%= tmp.getName()%></td>
+				<td><%= tmp.getEmail()%></td>
 				<td><%= tmp.getPhone()%></td>
 				<td><%= tmp.getRegdate()%></td>
 				<td><%= tmp.getDname()%></td>

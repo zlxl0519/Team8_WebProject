@@ -1,3 +1,8 @@
+<%@page import="test.gallery.dto.GalleryDto"%>
+<%@page import="test.gallery.dao.GalleryDao"%>
+<%@page import="java.util.List"%>
+<%@page import="test.notice.dao.NoticeDao"%>
+<%@page import="test.notice.dto.NoticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- header -->
@@ -16,7 +21,7 @@
 					
 				</div>
 
-			<div class="reservation-btn"><a href="${pageContext.request.contextPath }/reservation/reserveform.jsp"> 예약하기 </a></div>
+			<div class="reservation-btn"><a href="${pageContext.request.contextPath }/reservation/private/reserveform.jsp"> 예약하기 </a></div>
 			</div>
 
 			</div>
@@ -39,20 +44,43 @@
 				<p>어디에도 없는 프리미엄 반려견 호텔 서비스를 선사하는<br/>
 					AMung의 새 소식과 공지사항을 알려드립니다.</p>
 					
-				<a href="#" class="notice-plus"><span>+</span>더보기</a>
+				<a href="${pageContext.request.contextPath }/notice/notice_list.jsp" class="notice-plus"><span>+</span>더보기</a>
 			</div>
 			<div class="main-notice-list">
 				<ul>
-					<li><a><span>[ 공지 ]</span>2020년 하반기 휴가 일정 알려드립니다.020년 하반기 휴가 일정 알려드립니다.020년 하반기 휴가 일정 알려드립니다.</a></li>
-					<li><a><span>[ 이벤트 ]</span>여름 폭탄 할인이벤트 안내입니다.</a></li>
-					<li><a><span>[ 공지 ]</span>2020년 하반기 휴가 일정 알려드립니다.</a></li>
-					<li><a><span>[ 공지 ]</span>2020년 하반기 휴가 일정 알려드립니다.</a></li>
-					<li><a><span>[ 공지 ]</span>2020년 하반기 휴가 일정 알려드립니다.</a></li>
+				<% List<NoticeDto> list = NoticeDao.getInstance().getList2();%>
+				<% for(int i=0; i<5; i++){
+					NoticeDto tmp2 = list.get(i);
+				%>
+   					<li>
+	   					<a href="${pageContext.request.contextPath }/notice/notice_detail.jsp?num=<%=tmp2.getNum() %>">
+	   						<span>[ <%=tmp2.getSel() %> ]</span>
+	   						<%=tmp2.getTitle() %>
+	   					</a>
+   					</li>
+				<%}%>
+					
 				</ul>
 			</div>
 		</div>
 	
 	</section>
+	<section class="main-gallery-wrap">
+		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 <span class="f_ye">+</span></a></h6>
+		<ul class="gallery-list">
+		<% List<GalleryDto> list2=GalleryDao.getInstance().getList2(); %>
+			<%for(int i=0; i<3; i++){
+				GalleryDto tmp = list2.get(i);
+			%>
+			<li>
+					<a href="${pageContext.request.contextPath }/gallery/content.jsp?num=<%=tmp.getNum()%>">
+						<img src="${pageContext.request.contextPath }<%= tmp.getImagePath()%>"/>
+					</a>
+			</li>
+			<%} %>
+		</ul>
+	</section>
+	
 	
 	<section class="main-review">
 		<h6>Amung 후기</h6>

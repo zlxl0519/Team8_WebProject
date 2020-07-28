@@ -112,6 +112,48 @@ public class GalleryDao {
 		return list;
 	}
 	
+	//메인에서 갤러리 사진 리스트 불러오기 기능 --리연 추가
+	public List<GalleryDto> getList2(){	
+		List<GalleryDto> list = new ArrayList<>();
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Connection 객체의 참조값 얻어오기 
+			conn = new DbcpBean().getConn();
+			//실행할 sql 문 준비하기
+			String sql = " SELECT num, caption, imagePath"
+					+ " FROM gallery"
+					+ " ORDER BY num DESC";
+			pstmt = conn.prepareStatement(sql);
+			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			//반복문 돌면서 결과 값 추출하기 
+			while (rs.next()) {
+				GalleryDto tmp = new GalleryDto();
+				tmp.setNum(rs.getInt("num"));
+				tmp.setCaption(rs.getString("caption"));
+				tmp.setImagePath(rs.getString("imagePath"));
+				list.add(tmp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)rs.close();
+				if (pstmt != null)pstmt.close();
+				if (conn != null)conn.close();
+			} catch (Exception e) {}
+		}return list;
+		}//getList2
+	
+	
+	
+	
+	
+	
 	//전체 row의 갯수를 리턴해주는 메소드
 	public int getCount() {
 		int count = 0;
