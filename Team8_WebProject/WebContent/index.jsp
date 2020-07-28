@@ -1,3 +1,5 @@
+<%@page import="dao.ReviewDao"%>
+<%@page import="dto.ReviewDto"%>
 <%@page import="test.gallery.dto.GalleryDto"%>
 <%@page import="test.gallery.dao.GalleryDao"%>
 <%@page import="java.util.List"%>
@@ -66,7 +68,7 @@
 	
 	</section>
 	<section class="main-gallery-wrap">
-		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 <span class="f_ye">+</span></a></h6>
+		<h6><a href="${pageContext.request.contextPath }/gallery/list.jsp">Amung의 일상 <span class="f_gr">+</span></a></h6>
 		<ul class="gallery-list">
 		<% List<GalleryDto> list2=GalleryDao.getInstance().getList2(); %>
 			<%for(int i=0; i<3; i++){
@@ -83,54 +85,55 @@
 	
 	
 	<section class="main-review">
-		<h6>Amung 후기</h6>
+		<h6><a href="${pageContext.request.contextPath }/review/rev_list.jsp">Amung 후기 <span class="f_gr">+</span></a></h6>
 		<ul class="review-ul">
-			<li>
+		<% List<ReviewDto> list3=ReviewDao.getInstance().getList2(); %>
+	<% for(int i=0; i<3; i++){ 
+		ReviewDto tmp = list3.get(i);
+	%>
+		<li>
 			<div class="review-wrap">
+			<span class="review-date">
+					<%
+					// - 를 기준으로 문자열 추출
+				    String regdate = tmp.getRegdate();
+					String date[] = regdate.split("-");
+					%>
+					
+					<%=date[0] %>년 
+					<%=date[1] %>월
+					<%=date[2] %>일 
+					</span>
 				<div class="review-wrap-users">
-					<div class="review-profile"><img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_262/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" /></div>
-					<p class="review-users">사용자1</p>
-				</div>
-				<div class="review-wrap-con">
-				<p>여행갈때마다 덕분에 안심 하고 갈 수 있는 것 같아요!!<br/>
-				이번에도 역시나 정말정말 잘 돌봐주셔서 너무너무 감사합니다!!!<br/>
-				항상 와주시는 시터님들 모두 고양이한테 애정이 가득한게 느껴져서 믿음이 가고 좋은 것 같아요<br/>
-				정말 감사합니다 다음번에도 잘부탁드립니당!!!👍👍👍👍</p>
-				</div>
-				</div>
-			</li>
-			<li>
-			<div class="review-wrap">
-				<div class="review-wrap-users">
-					<div class="review-profile"><img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_262/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" /></div>
-					<p class="review-users">사용자1</p>
-				</div>
-				<div class="review-wrap-con">
-				<p>여행갈때마다 덕분에 안심 하고 갈 수 있는 것 같아요!!<br/>
-				이번에도 역시나 정말정말 잘 돌봐주셔서 너무너무 감사합니다!!!<br/>
-				항상 와주시는 시터님들 모두 고양이한테 애정이 가득한게 느껴져서 믿음이 가고 좋은 것 같아요<br/>
-				정말 감사합니다 다음번에도 잘부탁드립니당!!!👍👍👍👍</p>
-				</div>
-				</div>
-			</li>
-			<li>
-			<div class="review-wrap">
-				<div class="review-wrap-users">
-					<div class="review-profile"><img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-176213403491/media/magazine_img/magazine_262/%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg" /></div>
-					<p class="review-users">사용자1</p>
-				</div>
-				<div class="review-wrap-con">
-				<p>여행갈때마다 덕분에 안심 하고 갈 수 있는 것 같아요!!<br/>
-				이번에도 역시나 정말정말 잘 돌봐주셔서 너무너무 감사합니다!!!<br/>
-				항상 와주시는 시터님들 모두 고양이한테 애정이 가득한게 느껴져서 믿음이 가고 좋은 것 같아요<br/>
-				정말 감사합니다 다음번에도 잘부탁드립니당!!!👍👍👍👍</p>
-				</div>
-				</div>
-			</li>
-		</ul>
-	
+					<div class="review-profile">
+					<%if(tmp.getProfile() != null) {%>
+						<img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/>
+					<%}else{ %>
+						<img id="profileImage" src="${pageContext.request.contextPath}/include/img/icon_user.png"/>
+					<%} %>
+					</div>
+					<div class="review-users">
+					<p>
+					<%if(tmp.getWriter() !=null){%>
+						<%=tmp.getWriter() %>
+					<%}else{ %>
+						익명의 리뷰어
+					<%} %>
+					</p>
+					<span><%=tmp.getTitle() %> <br/></span>
+					</div>
+				</div><!-- review-wrap-users -->
+				<div class="review-wrap-con mt30">
+					<p><%=tmp.getContent() %>
+					</p>
+				</div><!-- review-wrap-con -->
+				<div class="right mt20"><a class="review-btn" href="${pageContext.request.contextPath}/review/content.jsp?num=<%=tmp.getNum()%>">더보기</a></div>
+			</div><!-- review-wrap -->
+		</li>
+	<%} %>
+	</ul>
+		
 	</section>
-	
 </article>
 
 

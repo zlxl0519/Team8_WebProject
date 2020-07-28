@@ -2,21 +2,6 @@
 <%@page import="dao.ReviewDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-	#profileImage{
-		width: 75px;
-		height: 75px;
-		border: 1px solid;
-		border-radius: 50%;
-	}
-</style>
-</head>
-<body>
 <%
 	int num = Integer.parseInt(request.getParameter("num"));
 	ReviewDao dao = ReviewDao.getInstance();
@@ -26,75 +11,79 @@
 	if(id==null){
 		id="";
 	}
-
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
+<div class="content center">
+<h3 class="review"><strong>후기</strong>를 자세히 살펴보아요! <i class="fas fa-comment-dots"></i></h3>
 
-<div class="content">
-	<h1>QnA 게시판</h1>
-	<table>
-		<tr>
-			<th>글번호</th>
-			<td><%=dto.getNum() %></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><%=dto.getWriter() %></td>
-		</tr>
-		<tr>
-			<th>프로필</th>
-			<td><img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>"/></td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><%=dto.getTitle() %></td>
-		</tr>
-		<tr>
-			<th>작성일</th>
-			<td><%=dto.getRegdate() %></td>
-		</tr>
-		<tr>
-			<th>추천수</th>
-			<td><%=dto.getRecomm() %></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td><div id="content"><%=dto.getContent() %></div></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>
-			<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
+<div class="content-review">
+<%if(dto.getPrevNum()!=0){ %>
+	<a href="content.jsp?num=<%=dto.getPrevNum() %>" class="review-arrow"><i class="fas fa-chevron-left"></i></a>
+<%} %>
+	<ul class="review-ul">
+		<li>
+			<div class="review-wrap">
+			<div class="review-recommand">
+			</div>
+			<span class="review-date">
+					<%
+					// - 를 기준으로 문자열 추출
+				    String regdate = dto.getRegdate();
+					String date[] = regdate.split("/");
+					%>
+					
+					<%=date[0] %>년 
+					<%=date[1] %>월
+					<%=date[2] %>일 
+					</span>
+				<div class="review-wrap-users">
+					<div class="review-profile">
+					<%if(dto.getProfile() != null) {%>
+						<img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>"/>
+					<%}else{ %>
+						<img id="profileImage" src="${pageContext.request.contextPath}/include/img/icon_user.png"/>
+					<%} %>
+					</div>
+					<div class="review-users">
+					<p>
+					<%if(dto.getWriter() !=null){%>
+						<%=dto.getWriter() %>
+					<%}else{ %>
+						익명의 리뷰어
+					<%} %>
+					</p>
+					<span><%=dto.getTitle() %> <br/></span>
+					</div>
+				</div><!-- review-wrap-users -->
+				<div class="c-review-wrap-con">
+					<pre><%=dto.getContent() %></pre>
+				</div><!-- review-wrap-con -->
+			</div><!-- review-wrap -->
+		</li>
+	</ul>
+<%if(dto.getNextNum()!=0){ %>
+	<a href="content.jsp?num=<%=dto.getNextNum() %>" class="review-arrow"><i class="fas fa-chevron-right"></i></a>
+<%} %>
+</div><!-- content-review -->
+	
+		<!-- 로그인 중인 id가 글 작성 시의 id와 같을 때에만 수정, 삭제 기능 볼 수 있도록 -->
+			<div class="review-left">
 			<%if(dto.getWriter().equals(id)){ %>
-				<a href="updateform.jsp?num=<%=dto.getNum()%>">수정</a>
+				<a href="private/updateform.jsp?num=<%=dto.getNum()%>" class="btn-a">수정</a>
 			<%} %>
 			<%if(dto.getWriter().equals(id)||id.equals("admin")){ %>
-				<a href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
+				<a href="javascript:deleteConfirm(<%=dto.getNum()%>)" class="btn-a btn-g">삭제</a>
 			<%} %>
-				<a href="rev_list.jsp">목록</a>
 			<!-- 로그인 중인 id가 글 작성 시의 id와 다를 때에만 추천 기능을 볼 수 있도록 -->
 			<%if(!dto.getWriter().equals(id)){ %>
-				<a href="recommand.jsp?num=<%=dto.getNum()%>">추천</a>
+				<a href="recommand.jsp?num=<%=dto.getNum()%>" class="btn-a btn-y">추천</a>
 			<%} %>
-			</td>
-		</tr>	
-		<tr>
-			<td></td>
-			<td>
-				<%if(dto.getPrevNum()!=0){ %>
-					<a href="content.jsp?num=<%=dto.getPrevNum() %>">이전글</a>
-				<%} %>
-			</td>
-			<td>
-				<%if(dto.getNextNum()!=0){ %>
-					<a href="content.jsp?num=<%=dto.getNextNum() %>">다음글</a>
-				<%} %>
-			</td>
-		</tr>	
-	</table>
-</div>
-<jsp:include page="../include/footer.jsp"></jsp:include>
-
+			</div>
+			<div class="center">
+				<a href="rev_list.jsp" class="review-btn2"><b>+</b> 전체 후기 보기</a>
+			</div>
+				
+</div><!-- content -->
 <script>
 	function deleteConfirm(num){
 		var isDelete = confirm(num+"번 글을 삭제하시겠습니까?");
@@ -103,6 +92,4 @@
 		  }
 	}
 </script>
-
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

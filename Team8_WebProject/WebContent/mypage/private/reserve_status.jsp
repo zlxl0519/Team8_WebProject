@@ -58,7 +58,13 @@
 			</li>
 			<li>
 				<label>희망서비스</label>
-				<p><%=dto3.getService() %></p>
+				<p>
+				<%if(dto3.getService() != null) {%>
+					<%=dto3.getService() %>
+				<%}else{ %>
+					요청하신 서비스가 없습니다.
+				<%} %>
+				</p>
 			</li>
 			<li>
 				<label>반려견 이름</label>
@@ -91,7 +97,15 @@
 			</li>
 			<li>
 				<label>기타사항</label>
-				<pre><%=dto3.getEtc() %></pre>
+				<%if(dto3.getEtc() != null) {%>
+					<pre>
+					<%=dto3.getEtc() %>
+					</pre>
+					<%}else{ %>
+					<pre>
+					요청하신 기타사항이 없습니다.
+					</pre>
+				<%} %>
 			</li>
 		</ul>
 		

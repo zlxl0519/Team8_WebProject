@@ -44,7 +44,7 @@ table a:hover, table a:active {text-decoration: underline !important;}
 .f_ye{color:#8e792d!important;}
 .f_blue{color:#96d2bf!important;}
 .f_red{color:#fa2929!important;}
-
+.f_gr{color:#d5e8aa!important;}
 .fr{float: right;border: 1px solid #f0f0f0;}
 .w100{width : 100%!important;}
 .height10{ float:left; width:100%; height:10px;}
@@ -65,6 +65,7 @@ input[type="reset"],
 .btn-a{border: 1px solid #97d2bf;border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
 .btn-y {background : #fdf0bb!important;color : #a2881e!important;border: 1px solid #fdf0bb}
 .btn-b {background : #cdeef3!important;border: 1px solid #cdeef3}
+.btn-g{background: #d5e8aa!important;border: 1px solid #d5e8aa;}
 .btn-out{background: #ffffff!important; color: #97d2bf!important;box-sizing:border-box; border: 1px solid #97d2bf;}
 .btn-out-b{background: #ffffff!important; color: #86d6e2!important;box-sizing:border-box; border: 1px solid #cdeef3!important;}
 .btn-gray {border: 1px solid #e7e4e8; background : #e7e4e8!important;}
