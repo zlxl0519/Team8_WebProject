@@ -8,6 +8,15 @@
 <!-- header -->
 <jsp:include page="./include/header.jsp"></jsp:include>
 
+<%
+	String isFiltered = (String)request.getAttribute("isFiltered");
+%>
+<script>
+	if(isFiltered){
+		alert("잘못된 접근입니다.");
+	}
+</script>
+
 <article class="main-article">
 <section class="main-slide">
 	<ul>
