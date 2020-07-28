@@ -20,10 +20,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/include/css/base.css">
 	<!-- fontAwesome -->
-	<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-  />
+	  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" />
 <!-- IE9 이전 버전 / 로컬에서는 실행되지 않음-->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -34,6 +31,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/include/js/script.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1cdd137b0b885c589d0ff1e9d01738a4"></script>
 <!-- jquery ui datepicker -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
@@ -123,7 +121,7 @@
 							<li class="gnb-drop"><a href="${pageContext.request.contextPath }/guide/guide.jsp">이용안내</a>
 								<ul class="dropdown dropdown-small">
 									<li>
-										<a href="#">Amung이용안내</a>
+										<a href="${pageContext.request.contextPath }/guide/guide.jsp">Amung이용안내</a>
 									</li>
 									<li>
 										<a href="${pageContext.request.contextPath }/guide/service.jsp">AMung주요서비스</a>

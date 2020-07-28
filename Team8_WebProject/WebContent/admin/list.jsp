@@ -11,7 +11,7 @@
 		</span>
 		<p>회원 리스트</p>
 	</div>
-	<div onClick="location.href ='../gallery/list_admin.jsp'">
+	<div onClick="location.href ='../gallery/admin/list_admin.jsp'">
 		<span>
 		<i class="fas fa-camera-retro"></i>
 		</span>

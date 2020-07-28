@@ -100,7 +100,7 @@
 </script>
 <%--회원 목록 페이지 입니다.--%>
 	<div class="content">
-	<h2>회원 목록</h2>
+	<h2>운영관리 | 회원 목록</h2>
 	<div class="table-wrap">
 	<table >
 		<thead>

@@ -32,8 +32,26 @@
 				<td colspan="7"><div id="content"><%=dto.getContent() %></div></td>
 			</tr>
 				
-		</table>
+	</table>
 	
-</div>
-</div>
+	<%--=============================이전글 다음글================================= --%>
+	<div class="bottom-list">
+	<div class="mt20">
+		<div class="left">
+				<%if(dto.getPrevNum()!=0){ %>
+					<a class="btn-left" href="content.jsp?num=<%=dto.getPrevNum() %>"><i class="fas fa-chevron-left"></i></a>
+				<%}else{%>
+					<a class="btn-left mute" href="javacript:void(0)"><i class="fas fa-chevron-left"></i></a>
+				<%} %>
+		</div>
+		<div class="right">
+				<%if(dto.getNextNum()!=0){ %>
+					<a class="btn-right" href="content.jsp?num=<%=dto.getNextNum() %>"><i class="fas fa-chevron-right"></i></a>
+				<%}else{%>
+					<a class="btn-right mute" href="javacript:void(0)"><i class="fas fa-chevron-right"></i></a>
+				<%} %>
+		</div>
+	</div>
+	</div>
+	
 <jsp:include page="../include/footer.jsp"></jsp:include>

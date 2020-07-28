@@ -15,26 +15,23 @@
 	dto.setWriter(id);
 	dto.setProfile(profile);
 	boolean isSuccess = ReviewDao.getInstance().insert(dto);
-	
-	
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert Question</title>
-</head>
-<body>
 <jsp:include page="../../include/header.jsp"></jsp:include>
 	<div class="content">
-		<%if(isSuccess){ %>
-			<p>작성하신 글이 저장되었습니다.</p>
-			<a href="../rev_list.jsp">목록으로</a>
-		<%}else{ %>
-			<p>글 작성에 실패했습니다.</p>
-			<a href="insertform.jsp">다시 작성</a>
-		<%} %>
+		<div class="icon-wrap">
+			<% if(isSuccess){%>
+			<i class="fas fa-feather-alt"></i>
+			<p class="form-span m20">
+				<strong>작성하신 글이 저장되었습니다.</strong>
+			</p>
+			<a href="../rev_list.jsp" class="btn-a">목록으로</a>
+			<% }else{%>
+			<i class="fas fa-feather-alt"></i>
+			<p class="form-span m20">
+				<strong>글 작성에 실패하였습니다.</strong>
+			</p>
+			<a href="insertform.jsp" class="btn-a">다시 작성</a>
+			<% }%>
+		</div>
 	</div>
 <jsp:include page="../../include/footer.jsp"></jsp:include>	
-</body>
-</html>
