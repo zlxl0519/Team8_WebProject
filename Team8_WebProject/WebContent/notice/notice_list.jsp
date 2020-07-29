@@ -139,7 +139,7 @@
 			<%} %>
 			<%if(endPageNum < totalPageCount){ %>
 				<li class="next">
-					<a href="notice_listt.jsp?pageNum=<%=endPageNum+1 %>">Next</a>
+					<a href="notice_list.jsp?pageNum=<%=endPageNum+1 %>">Next</a>
 				</li>
 			<%}else{ %>
 				<li class="next muted">
