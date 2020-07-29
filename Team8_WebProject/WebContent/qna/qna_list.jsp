@@ -133,7 +133,7 @@
 				<% for(QnaDto tmp:list){ %>
 				<tr>
 					<td><%=tmp.getNum() %></td>
-					<td class="board_title"><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
+					<td class="board_title left"><a href="content.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a></td>
 					<td><%=tmp.getWriter() %></td>
 					<td><%=tmp.getRegdate() %></td>
 					<td><%=tmp.getHit() %></td>

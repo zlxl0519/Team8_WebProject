@@ -5,8 +5,8 @@
 <%
 	String id = (String) session.getAttribute("id");
 	MemberDto dto = MemberDao.getInstance().getData(id);
-	MemberDto dto2 = MemberDao.getInstance().getPuppyData(id);
 	
+	MemberDto dto2 = MemberDao.getInstance().getPuppyData(id);
 	
 	// - 를 기준으로 문자열 추출
     String regdate = dto.getRegdate();
@@ -91,25 +91,40 @@
 	
 		</div>
 		<!-- form-ul-wrap -->
-	
+		
 		<div class="form-ul-wrap">
 			<h2 class="mt20">반려견 정보</h2>
 			<ul>
 				<li>
 					<label for="dname">반려견 이름</label> 
-					<p><%=dto2.getDname() %></p>
+					<%if(dto2.getDname() != null) {%>
+						<p><%=dto2.getDname() %></p>
+						<%}else{ %>
+						<p>입력한 정보가 없습니다.</p>
+						<%} %>
 				</li>
 				<li>
 					<label for="dage">반려견 나이</label>
-					<p><%=dto2.getDage() %> 살</p>
+					<%if(dto2.getDage() != 0) {%>
+						<p><%=dto2.getDage() %></p>
+						<%}else{ %>
+						<p>입력한 정보가 없습니다.</p>
+						<%} %>
 				</li>
 				<li>
 					<label for="breed">반려견의 견종</label> 
+						
+						<%if(dto2.getBreed() != null) {%>
 						<p><%=dto2.getBreed() %></p>
+						<%}else{ %>
+						<p>입력한 정보가 없습니다.</p>
+						<%} %>
 					</li>
 				<li>
-						<label>반려견의 무게</label> 
+						<label>반려견의 무게</label>
 						<p>
+						<%try{ %>
+						
 							<%if(dto2.getWeight().equals("0to4")){ %>
 							0~4kg
 							<%}else if(dto2.getWeight().equals("4to10")){ %>
@@ -119,7 +134,12 @@
 							<%}else if(dto2.getWeight().equals("over25")){ %>
 							25~kg
 							<%} %>
+						
+						<%}catch(NullPointerException e){ %>
+							입력하신 반려견 무게가 없습니다.
+						<%} %>
 						</p>
+						
 				</li>
 				<li>
 					<label>중성화 유무</label> 
@@ -153,7 +173,8 @@
 					
 				</li>
 			</ul>
-		</div>
+			</div>
+		
 		<!-- form-ul-wrap -->
 	
 		<a href="update_pwdokform.jsp" class="btn-default">개인정보 수정</a>
