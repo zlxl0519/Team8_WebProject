@@ -34,6 +34,15 @@
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath  }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
+	
+	$("#submit").on("click", function(){
+	    if($("#title").val() == ""){
+	       alert("제목을 입력해주세요")
+	       $("#title").focus();
+	       return false;
+	    }
+	 });
+
      var oEditors = [];
      
      //추가 글꼴 목록

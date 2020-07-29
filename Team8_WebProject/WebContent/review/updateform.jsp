@@ -46,5 +46,16 @@
 </div>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 
+<script>
+   $("#submit").on("click", function(){
+      if($("#title").val() == ""){
+         alert("제목을 입력해주세요")
+         $("#title").focus();
+         return false;
+      }
+   });
+   
+</script>
+
 </body>
 </html>

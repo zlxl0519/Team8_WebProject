@@ -7,18 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../../include/header.jsp"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 
 	
 	<div class="content">
+		<h1>faq 작성하기</h1>
 		<div class="form-wrap">
 			<br/>
-			<h1>리뷰 작성하기</h1>
-			<form action="insert.jsp" method="post">
-				<label for="title">제목</label>
-				<input type="text" name="title" id="title" /><br/>
-				<label for="content">작성하기</label>
-				<textarea name="content" id="content" cols="40" rows="20"></textarea><br/>
+			<form action="faq_insert.jsp" method="post">
+				<label for="qst">질문</label>
+				<textarea name="qst" id="qst" cols="20" rows="20"></textarea><br/>
+				<label for="ans">답변</label>
+				<textarea name="ans" id="ans" cols="20" rows="20"></textarea><br/>
 				<br/>
 				<button type="submit">등록</button>
 			</form>
@@ -26,12 +26,12 @@
 
 	</div>
 	
-<jsp:include page="../../include/footer.jsp"></jsp:include>
+<jsp:include page="../include/footer.jsp"></jsp:include>
 
 <script>
    $("#submit").on("click", function(){
       if($("#title").val() == ""){
-         alert("제목을 입력해주세요")
+         alert("질문을 입력해주세요")
          $("#title").focus();
          return false;
       }
