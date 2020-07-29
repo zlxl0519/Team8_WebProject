@@ -20,7 +20,7 @@
 				<label for="ans">답변</label>
 				<textarea name="ans" id="ans" cols="20" rows="20"></textarea><br/>
 				<br/>
-				<button type="submit">등록</button>
+				<button id="submit" type="submit">등록</button>
 			</form>
 		</div>
 
@@ -30,10 +30,14 @@
 
 <script>
    $("#submit").on("click", function(){
-      if($("#title").val() == ""){
+      if($("#qst").val() == ""){
          alert("질문을 입력해주세요")
-         $("#title").focus();
+         $("#qst").focus();
          return false;
+      } else if($("#ans").val() == ""){
+    	  alert("답변을 입력해주세요")
+          $("#ans").focus();
+          return false;
       }
    });
 </script>

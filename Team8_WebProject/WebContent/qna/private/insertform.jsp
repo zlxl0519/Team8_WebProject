@@ -25,7 +25,7 @@
 					</tr>
 			</table> 
 			<div>
-				<button type="submit"  class="btn-default" onclick="submitContents(this);">등록</button>
+				<button id="submit" type="submit"  class="btn-default" onclick="submitContents(this);">등록</button>
 			</div>
 			</form>
 	</div>
@@ -37,11 +37,12 @@
 	
 	$("#submit").on("click", function(){
 	    if($("#title").val() == ""){
-	       alert("제목을 입력해주세요")
-	       $("#title").focus();
-	       return false;
+	    	alert("내용을 입력해주세요");
+	    	$("#title").focus();
+		      return false;
 	    }
-	 });
+	});
+	
 
      var oEditors = [];
      
