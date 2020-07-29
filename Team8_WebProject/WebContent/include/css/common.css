@@ -191,7 +191,7 @@ cursor : pointer;}
 
 /*이용안내*/
 .guide {text-align : left;}
-.guide .review{line-height : 1.2em;}
+.guide .review{margin-bottom : 50px;line-height : 1.2em;}
 .guide h3 span{font-size : 23px; font-weight : 400;}
 .guide ul{width : 100%;margin : 20px 0;}
 .guide li{line-height : 1.8em;width : 100%; border : 1px solid #f0f0f0; border-top : none; padding : 20px; font-size : 15px;}
@@ -200,3 +200,22 @@ cursor : pointer;}
 .guide h4 i{margin-right : 20px;float : left;text-align : center;color : #fff; background : #b2ca7e; font-size : 2.5em; width : 80px; height : 80px; padding : 20px; border-radius : 70%;}
 .guide h4 strong{font-size : 20px;   padding-top: 16px; display: inline-block;}
 .guide h4 span{line-height : 2.3em;font-size : 16px;color : #a9a9a9; }
+.guide-box > div {position : relative;margin-top : 20px;width : 49%;display : inline-block;}
+.guide-box > div img {width : 300px;}
+.guide-box > div h4{position : absolute; top : 0px;line-height : 1.8em;width : 48%; margin-left : 10px;}
+.guide-box > div h4 strong{padding-top : 20px;}
+.guide-box > div h4 span{line-height : 1.8em;}
+
+.guide-table{padding : 80px 0;background : #F9F9F9;text-align : center;margin :50px auto;width : 100%;text-align : center;}
+.guide-table h3 {margin-bottom : 80px;font-size : 26px; font-weight : 800;}
+.guide-table table{display : inline-block;width : 1200px;} 
+.guide-table table tr{width : 100%;border-top : 2px solid #dee2e6}
+.guide-table table tr:last-child {border-bottom : 2px solid #dee2e6}
+.guide-table table tr:hover{background:#E6E6E6;}
+.guide-table table th,
+.guide-table table td {text-align : center;font-weight : bold;padding : 20px 50px;}
+
+.guide-room img {width : 50%;}
+.guide-room  > div{margin-bottom : 50px; text-align : center;}
+.guide-room h3{font-size : 24px;text-align : center;display : inline-block; width : 48%;}
+.guide-room span { font-size : 16px!important; font-weight : 300; line-height : 1.8em;}
