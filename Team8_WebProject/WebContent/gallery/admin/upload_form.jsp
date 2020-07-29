@@ -34,7 +34,7 @@
 					</tbody>
 				</table>
 				<div class="left mt20">
-					<button type="submit" onclick="submitContents(this);">저장</button>
+					<button type="submit" onclick="submitContents(this);" id="submit">저장</button>
 				</div>
 				
 				
@@ -51,6 +51,16 @@
 <%----------스마트 에디터 script--------------%>
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
+	
+	$("#submit").on("click", function(){
+		if($("#caption").val() == ""){
+			alert("제목을 입력해주세요")
+			$("#caption").focus();
+			return false;
+		}
+	});
+
+
 	var oEditors = [];
 	
 	//추가 글꼴 목록
