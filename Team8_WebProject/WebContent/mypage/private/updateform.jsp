@@ -135,20 +135,36 @@
 		<ul>
 			<li>
 				<label for="dname">반려견 이름</label>
-					<input type="text" name="dname" id="dname" placeholder="반려견의 이름을 작성해주세요"
+				<%if(dto2.getDname() != null) {%>
+				<input type="text" name="dname" id="dname" placeholder="반려견의 이름을 작성해주세요"
 					value="<%=dto2.getDname() %>" />
+				<%}else{ %>
+				<input type="text" name="dname" id="dname" placeholder="반려견의 이름을 작성해주세요" />
+				<%} %>
+					
 			</li>
 			<li>
 				<label for="dage">반려견 나이</label>
-				<input type="number" name="dage" id="dage" value="<%=dto2.getDage() %>" /><span>&nbsp;살</span>
+				<%if(dto2.getDage() != 0) {%>
+				<input type="number" name="dage" id="dage" value="<%=dto2.getDage() %>" />
+				<%}else{ %>
+				<input type="number" name="dage" id="dage" />
+				<%} %>
+				<span>&nbsp;살</span>
 			</li>
 			<li>
 				<label for="breed">반려견의 견종</label>
+				<%if(dto2.getBreed() != null) {%>
 				<input type="text" name="breed" id="breed" placeholder="견종을 작성해주세요"  value="<%=dto2.getBreed() %>" />
+				<%}else{ %>
+				<input type="text" name="breed" id="breed" placeholder="견종을 작성해주세요" />
+				<%} %>
+				
 			</li>
 			<li>
 				<fieldset>
 					<legend>반려견 무게</legend>
+					<%try{ %>
 						<%if(dto2.getWeight().equals("0to4")){ %>
 							<input type="checkbox" name="weight" value="0to4" checked/>0~4kg
 						<%}else{ %>
@@ -172,6 +188,13 @@
 						<%}else{ %>
 							<input type="checkbox" name="weight" value="over25"/>25~kg
 						<%}%>
+						<%}catch(NullPointerException e){ %>
+							<input type="checkbox" name="weight" value="0to4"/>0~4kg
+							<input type="checkbox" name="weight" value="4to10"/>4~10kg
+							<input type="checkbox" name="weight" value="10to25"/>10~25kg
+							<input type="checkbox" name="weight" value="over25"/>25~kg
+						<%} %>
+						
 				</fieldset>
 			</li>
 			<li>

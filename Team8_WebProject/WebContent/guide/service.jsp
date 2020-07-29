@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>주요 서비스</title>
-</head>
-<body>
-<div class="content">
-	<h3>"최고의 힐링 공간, 호텔&데이케어"</h3>
-	<p>최첨단 공조시스템(음압설비)이 적용된 국내 최고의 5성급 호텔 서비스를 제공합니다.</p>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<div class="content guide">
+<h3 class="review center mb20"><strong>"최고의 힐링 공간, 호텔&데이케어"</strong> <br/> 
+<span>최첨단 공조시스템(음압설비)이 적용된 국내 최고의 5성급 호텔 서비스를 제공합니다.</span>
+</h3>
+	
 	
 	<img src="http://www.bowraum.com/images/v6/services/01_hotel/01.jpg" alt="" />
 	<h4>24시간 전문가 상주</h4>
@@ -90,5 +86,4 @@
 		<br>개별마당 : 140cm × 169cm × 97cm
 	</p>
 </div>
-</body>
-</html>
+<jsp:include page="../include/footer.jsp"></jsp:include>

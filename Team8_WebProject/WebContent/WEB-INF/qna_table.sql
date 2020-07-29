@@ -7,7 +7,7 @@ regdate DATE,
 hit NUMBER,
 bgroup NUMBER,
 sorts NUMBER,
-depth NUMBER
+depth NUMBER,
 CONSTRAINT qna_num_pk PRIMARY KEY(num)
 );
 
