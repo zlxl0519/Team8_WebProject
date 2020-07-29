@@ -9,16 +9,6 @@
 	pageEncoding="UTF-8"%>
 <!-- header -->
 <jsp:include page="./include/header.jsp"></jsp:include>
-
-<%
-	String isFiltered = (String)request.getAttribute("isFiltered");
-%>
-<script>
-	if(isFiltered){
-		alert("잘못된 접근입니다.");
-	}
-</script>
-
 <article class="main-article">
 <section class="main-slide">
 	<ul>
@@ -97,9 +87,9 @@
 		<h6><a href="${pageContext.request.contextPath }/review/rev_list.jsp">Amung 후기 <span class="f_gr">+</span></a></h6>
 		<ul class="review-ul">
 		<% List<ReviewDto> list3=ReviewDao.getInstance().getList2(); %>
-	<% for(int i=0; i<3; i++){ 
-		ReviewDto tmp = list3.get(i);
-	%>
+		<% for(int i=0; i<3; i++){ 
+			ReviewDto tmp = list3.get(i);
+		%>
 		<li>
 			<div class="review-wrap">
 			<span class="review-date">
@@ -143,6 +133,14 @@
 	</ul>
 		
 	</section>
+	<%
+	boolean isFiltered = (boolean)request.getAttribute("isFiltered");
+	%>
+	<script>
+		<%if(isFiltered){%>
+			alert("잘못된 접근입니다.");
+		<%} %>
+	</script>
 </article>
 
 

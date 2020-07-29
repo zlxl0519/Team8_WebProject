@@ -43,6 +43,8 @@
 	
 	boolean isSuccess1 = MemberDao.getInstance().insertHuman(dto);
 	boolean isSuccess2 = MemberDao.getInstance().insertDog(dto);
+	
+	
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
@@ -59,9 +61,13 @@
 		<div class="center">
 			<table class="table-wrap" style="width : auto!important;">
 				<tr>
-					<td rowspan="3">
+					<td rowspan="3" class="bbn">
 						<div class="profile-img">
-                  			<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile()%>"/>
+							<%if(dto.getProfile() == null){ %>
+								<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
+							<%}else{ %>
+								<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
+							<%} %>
                			</div>
 					</td>
 					<th>아이디</th>
@@ -73,11 +79,11 @@
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><%=dto.getEmail() %></td>
+					<td class="bbn"><%=dto.getEmail() %></td>
 				</tr>
 			</table>
 		</div>
-		<a href="../index.jsp" class="btn-default">GO HOME</a>
+		<a href="../index.jsp" class="btn-default mt20">GO HOME</a>
 		<% }else{%>
 		<i class="fas fa-lock"></i>
 		<p class="form-span m20">

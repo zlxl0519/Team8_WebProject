@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter({"/admin/*"}) //어드민만 접근 가능한 곳 맵핑하기
+@WebFilter({"/admin/*", "/gallery/admin/*", "/notice/private/*", "/qna/private/*", "/review/private/*"}) //어드민만 접근 가능한 곳 맵핑하기
 public class AdminFilter implements Filter{
 
 	@Override
@@ -35,19 +35,13 @@ public class AdminFilter implements Filter{
 		HttpSession session = req.getSession();
 		//로그인된 아이디가 있는지 얻어와본다.
 		String id=(String)session.getAttribute("id");
-		boolean isFiltered = false;
 		if(id.equals("admin")) { //로그인된 상태
 			//요청의 흐름 계속 진행시키기
 			chain.doFilter(request, response);
 		}else{
-			isFiltered = true;
 			HttpServletResponse res = (HttpServletResponse)response;
 			String cPath = req.getContextPath();
-			
-			req.setAttribute("isFiltered", isFiltered);
-			RequestDispatcher rd = req.getRequestDispatcher(cPath+"/index.jsp");
-			rd.forward(req, res);
-			
+			res.sendRedirect(cPath+"/index.jsp");
 		}
 	}
 

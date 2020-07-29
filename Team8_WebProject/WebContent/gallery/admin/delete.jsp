@@ -6,6 +6,6 @@
 	boolean isSuccess = GalleryDao.getInstance().delete(num);
 	if(isSuccess){
 		String cpath = request.getContextPath();
-		response.sendRedirect(cpath+"/gallary/list_admin.jsp");
+		response.sendRedirect(cpath+"/gallery/admin/list_admin.jsp");
 	}
 %>

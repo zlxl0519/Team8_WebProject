@@ -66,7 +66,7 @@ footer .copyright {float: right; margin-top : 95px}
 
 
 /*main*/
-.main-article { margin : 39px 0 0 0; padding-top : 120px; text-align : center;}
+.main-article { margin : 34px 0 0 0; padding-top : 120px; text-align : center;}
 .main-slide{  width :  100%; height : 400px; display : inline-block; text-align : center;}
 .main-slide ul li{width : auto; display : inline-block; position : relative;}
 .main-slide img{object-fit: cover; width : 100%; height : 400px;}
@@ -186,3 +186,17 @@ cursor : pointer;}
 .admin div:first-child p{ color : #8abcc3;}
 .admin div:last-child span{background : #d5e8aa;}
 .admin div:last-child p { color : #b2ca7e;}
+
+
+
+/*이용안내*/
+.guide {text-align : left;}
+.guide .review{line-height : 1.2em;}
+.guide h3 span{font-size : 23px; font-weight : 400;}
+.guide ul{width : 100%;margin : 20px 0;}
+.guide li{line-height : 1.8em;width : 100%; border : 1px solid #f0f0f0; border-top : none; padding : 20px; font-size : 15px;}
+.guide li:first-child {border-top : 1px solid #f0f0f0;}
+.guide h4 {    clear: both;width: 100%;display: inline-block;}
+.guide h4 i{margin-right : 20px;float : left;text-align : center;color : #fff; background : #b2ca7e; font-size : 2.5em; width : 80px; height : 80px; padding : 20px; border-radius : 70%;}
+.guide h4 strong{font-size : 20px;   padding-top: 16px; display: inline-block;}
+.guide h4 span{line-height : 2.3em;font-size : 16px;color : #a9a9a9; }
