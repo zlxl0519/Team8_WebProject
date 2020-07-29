@@ -11,7 +11,7 @@
 
 	
 	<div class="content">
-		<h1>faq 작성하기</h1>
+		<h2>faq 작성하기</h2>
 		<div class="form-wrap">
 			<br/>
 			<form action="faq_insert.jsp" method="post">
