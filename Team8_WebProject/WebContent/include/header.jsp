@@ -41,7 +41,7 @@
 
 	<div id="wrap">
 		<div class="floatmenu">
-			<a href="#"><img src="${pageContext.request.contextPath }/include/img/icon_talk.png"></a>
+			<a href="${pageContext.request.contextPath }/qna/qna_list.jsp"><img src="${pageContext.request.contextPath }/include/img/icon_talk.png"></a>
 			<a
 				href="#"><img src="${pageContext.request.contextPath }/include/img/icon_up.png"></a>
 		</div>
