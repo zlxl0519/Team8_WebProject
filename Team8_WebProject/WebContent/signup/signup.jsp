@@ -51,15 +51,39 @@
 		<% if(isSuccess1 && isSuccess2){%>
 		<i class="fas fa-lock-open"></i>
 		<p class="form-span m20">
-			<strong>회원가입이 완료되었습니다.</strong>
+			<strong>THANKS</strong>
 		</p>
-		<a href="../index.jsp" class="btn-default">확인</a>
+		<p class="form-span m20">
+			<%=dto.getName() %>님 회원가입이 완료되었습니다.
+		</p>
+		<div class="center">
+			<table class="table-wrap" style="width : auto!important;">
+				<tr>
+					<td rowspan="3">
+						<div class="profile-img">
+                  			<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile()%>"/>
+               			</div>
+					</td>
+					<th>아이디</th>
+					<td><%=dto.getId() %></td>
+				</tr>
+				<tr>
+					<th>성함</th>
+					<td><%=dto.getName() %></td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><%=dto.getEmail() %></td>
+				</tr>
+			</table>
+		</div>
+		<a href="../index.jsp" class="btn-default">GO HOME</a>
 		<% }else{%>
 		<i class="fas fa-lock"></i>
 		<p class="form-span m20">
 			<strong>회원가입을 실패했습니다.</strong>
 		</p>
-		<a href="../index.jsp" class="btn-default">확인</a>
+		<a href="../index.jsp" class="btn-default">GO HOME</a>
 		<% }%>
 	</div>
 </div>

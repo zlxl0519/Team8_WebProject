@@ -34,7 +34,7 @@
 	<%} else{ %>
 		<script>
 			alert("삭제 실패!");
-			location.href = "content.jsp?num=<%=num%>";
+			location.href = "content.jsp?num=<%=num %>";
 		</script>
 	<%} %>
 </body>

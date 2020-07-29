@@ -54,7 +54,7 @@
 			<li>
 				<label for="pwd">비밀번호 *</label>
 				<input type="password" name="pwd" id="pwd" maxlength="16" placeholder="영문/숫자/특수문자 조합 8~16자리"/>
-				<div id="pwdAlert" class="form-span">* 특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자<br/>
+				<div id="pwdAlert" class="form-span">* 비밀번호는 8자 이상 16자리 이하의 영문/숫자/특수문자<br/>
 													&nbsp;&nbsp;&nbsp;~!@#$%^&* 만 사용이 가능합니다.</div>
 			</li>
 			<li>
@@ -98,7 +98,7 @@
 			</li>
 			<li>
 				<label for="dage">반려견 나이</label>
-				<input type="number" name="dage" id="dage" /><span>&nbsp;살</span>
+				<input type="number" name="dage" id="dage" value="0"/><span>&nbsp;살</span>
 			</li>
 			<li>
 				<label for="breed">반려견의 견종</label>
@@ -231,11 +231,14 @@
 		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
-		var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+		var pattern1 = /[0-9]/;
+		var pattern2 = /[a-zA-Z]/;
+		var pattern3 = /[~!@#$%^&*]/; 
 
 		$("#pwdAlert").hide();
 		$("#pwd").keyup(function(){
-			if(enNumSpkCheck.test($("#pwd").val()) || $("#pwd").val().length < 8){
+			if(!pattern1.test($("#pwd").val())||!pattern2.test($("#pwd").val())
+					||!pattern3.test($("#pwd").val())||$("#pwd").val().length<8){
 				$("#pwdAlert").show();
 				$("#submit").attr("disabled", true);
 				 canUse = false;
@@ -264,6 +267,7 @@
 
 		
 		//=========기타...등등===========
+			
 		$("#submit").on("click", function(){
 			if($("#id").val() == "" || $("#id").val().length <5){
 				alert("아이디를 5자 이상 쓰세요")
@@ -278,6 +282,10 @@
 				$("#pwd").focus();
 				return false;
 			}else if($("#pwd").val().length < 8){
+				alert("특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자 ~!@#$%^&* 만 사용가능합니다.")
+				$("#pwd").focus();
+				return false;
+			}else if(!pattern1.test($("#pwd").val())||!pattern2.test($("#pwd").val())||!pattern3.test($("#pwd").val())){
 				alert("특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자 ~!@#$%^&* 만 사용가능합니다.")
 				$("#pwd").focus();
 				return false;

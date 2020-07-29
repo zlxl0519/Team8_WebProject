@@ -21,7 +21,7 @@
 <div class="content">
 <h2>QnA 수정하기</h2>
 	<div class="table-wrap boardList">
-		<form action="update.jsp" method="post" enctype="multipart/form-data">
+		<form action="update.jsp" method="post">
 		<table>
 			<tr>
 				<th>

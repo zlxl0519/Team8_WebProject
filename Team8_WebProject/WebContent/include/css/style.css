@@ -4,7 +4,7 @@ html, body{height: 100%;}
 
 /* common */
 .cb { clear : both;}
-.left {text-align: left;}
+.left {text-align: left!important;}
 .leftf {float : left;clear : both;}
 .left h3{line-height : 1.8em;}
 .center {text-align: center!important;}
@@ -41,9 +41,10 @@ table a:hover, table a:active {text-decoration: underline !important;}
 
 .underline{text-decoration:underline;}
 
+.f_ye{color:#8e792d!important;}
 .f_blue{color:#96d2bf!important;}
 .f_red{color:#fa2929!important;}
-
+.f_gr{color:#d5e8aa!important;}
 .fr{float: right;border: 1px solid #f0f0f0;}
 .w100{width : 100%!important;}
 .height10{ float:left; width:100%; height:10px;}
@@ -56,10 +57,15 @@ table a:hover, table a:active {text-decoration: underline !important;}
 textarea {resize: none;border: 1px solid #f0f0f0; height : 250px;width : 100%;box-sizing: border-box; padding: 10px; font-size : 15px;}
 button#addBtn, button#removeBtn { width : 40px; height : 40px;padding : 10px 15px;}
 .btn-default {font-size : 25px; padding : 10px 80px;}
-button, a.btn-default ,input[type="submit"],
-input[type="reset"], .btn-a{border: 1px solid #97d2bf;border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
+.btn-default i {font-size : 25px ; color : #fff; margin-right : 10px;}
+button,
+a.btn-default,
+input[type="submit"],
+input[type="reset"],
+.btn-a{border: 1px solid #97d2bf;border-radius : 5px;background : #97d2bf; border : none;  padding : 9px 30px;display : inline-block; color : #fff; font-weight: bold}
 .btn-y {background : #fdf0bb!important;color : #a2881e!important;border: 1px solid #fdf0bb}
 .btn-b {background : #cdeef3!important;border: 1px solid #cdeef3}
+.btn-g{background: #d5e8aa!important;border: 1px solid #d5e8aa;}
 .btn-out{background: #ffffff!important; color: #97d2bf!important;box-sizing:border-box; border: 1px solid #97d2bf;}
 .btn-out-b{background: #ffffff!important; color: #86d6e2!important;box-sizing:border-box; border: 1px solid #cdeef3!important;}
 .btn-gray {border: 1px solid #e7e4e8; background : #e7e4e8!important;}
@@ -192,11 +198,18 @@ select{cursor: pointer;}
 
 .page-display li a{margin : 0 10px;display:inline-block;width : 30px; height : 30px;padding : 6px 0;border-radius : 50%;font-weight : bold; font-size : 18px; color : #3f3f3f;}
 .page-display li.active a{background : #97d2bf;color : #fff;}
+.page-display li:hover a {background : #ebf6ce; color : #fff;}
 .page-display li.prev a,
 .page-display li.next a
 {width : auto; padding : 6px 20px;background : #97d2bf; color : #fff;}
+.page-display li.muted a,
+.page-display li.muted a
+{background : #ebebeb; color : #fff;}
+
 .page-display li.prev a{border-radius: 20px 0 0 20px;}
 .page-display li.next a{border-radius: 0px 20px 20px 0px;}
+
+
 /*테이블 스타일 */
 .form-table-wrap table {width : 100%; text-align : left;}
 .form-table-wrap th,
@@ -220,8 +233,8 @@ select{cursor: pointer;}
     word-wrap: break-word;
     line-height: 1.5em;
 }
-
-
+.board_title span, .title-select {color : #957f35;font-weight : bold; margin : 0 20px;}
+.title-select {margin-left : 0px;}
 /*글작성 */
 .boardList th,
 .boardList td
@@ -260,7 +273,13 @@ select{cursor: pointer;}
   border: 1px solid #ebebeb;
   border-radius: 5px;
 }
-
+.boardList-select {padding : 0px!important;}
+.boardList-select select {
+	width : 20%; margin : 0 10px;
+}
+.boardList-select input {
+	width : 75%!important;
+}
 /*갤러리*/
 
 .gallery-list {width : 100%; text-align : left;}
@@ -297,6 +316,7 @@ select{cursor: pointer;}
 .gallery-img {}
 .gallery-img a {width : 100%; height : 350px; display : inline-block;}
 .gallery-img img {width : 100%; height : 100%; object-fit : cover;box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 18%)}
+
 /* 아코디언 faq */
 .accordion-wrap {width : 100%;}
 .accordion-wrap ul{width : 100%;}
