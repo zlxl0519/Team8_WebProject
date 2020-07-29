@@ -6,6 +6,11 @@
 	pageEncoding="UTF-8"%>
     
 <%
+	String id = (String)session.getAttribute("id");
+	if(id==null){
+		id="";
+	}
+
     //한 페이지에 나타낼 row 의 갯수
     final int PAGE_ROW_COUNT=5;
     //하단 디스플레이 페이지 갯수
@@ -156,6 +161,13 @@
           <br/>
           <br/>
  
+ 	<div class="center">
+		<!-- 로그인 중인 id가 admin일 경우에만 FAQ 등록 가능하게 -->
+		<%if(id.equals("admin")){ %>
+			<a class="btn-a btn-b" href="faq_insertform.jsp">새 FAQ 등록</a>
+		<%} %>
+
+	</div>
 
           
 </div>
