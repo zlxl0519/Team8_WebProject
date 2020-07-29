@@ -2,23 +2,29 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp"></jsp:include>
 
-<div class="content">
-	<h1>이용안내</h1>
-	<h2>운영시간</h2>
-	<p>매일 10:30~21:00</p><br />
+<div class="content guide">
+<h3 class="review center mb20"><strong>이용안내</strong>  </h3>
+	<h4><i class="fas fa-clock"></i>
+	<strong>운영시간</strong><br />
+	<span>매일 10:30~21:00</span>
+	</h4>
 		<ul>
 			<li>에이멍은 연중 무휴로 운영됩니다.</li>
 			<li>독파크를 제외한 모든 서비스는 100% 예약제로 운영됩니다.</li>
 			<li>호텔은 사전예약 시 8시부터 입실이 가능합니다.(사전예약 필수)</li>
 			<li>사전입실 시 개인 상담이 어려우니 양해해 주시기 바랍니다.</li>
 		</ul>
-	<h2>상담문의</h2>
-	<p>예약 및 상담시간 08:00 ~ 20:00</p>
+	<h4><i class="fas fa-phone-alt"></i>
+	<strong>상담문의</strong><br />
+	<span>예약 및 상담시간 08:00 ~ 20:00</span>
+	</h4>
 		<ul>
 			<li>에이멍 1111-2222</li>
 		</ul>
-	<h2>안내사항</h2>
-	<p>이용 시 주의사항</p><br />
+	<h4><i class="fas fa-clipboard-list"></i>
+	<strong>안내사항</strong><br />
+	<span>이용 시 주의사항</span>
+	</h4>
 		<ul>
 			<li>
 				1년 이내 5가지 접종(종합, 코로나, 켄넬코프, 신종 인플루엔자, 광견병) 받지 않은  반려견은 입실이 제한됩니다.
@@ -34,21 +40,23 @@
 				<br>(* 픽업 서비스 페이지 참고)
 			</li>
 		</ul>
-	<h2>오시는 길</h2>
-	<p>바우라움 위치</p><br />
+	<h4><i class="fas fa-map-marker-alt"></i>
+		<strong>오시는 길</strong><br />
+		<span>에이멍 위치</span>
+	</h4>
 		<ul>
 			<li><i class="far fa-compass"></i>
 				서울특별시 강남구 테헤란로 124 삼원타워 (1층 우리은행 건물)
-				<br />※ 주차안내 : 평일주차 무료, 주말주차 30분 무료(이후 10분 당 500원)
+				<br /><b>※ 주차안내 : 평일주차 무료, 주말주차 30분 무료(이후 10분 당 500원)</b>
 			</li>
 			<li><i class="fas fa-subway"></i>
 				지하철 이용 시
-				<br /><br />2호선 (강남 1번출구, 역삼 3번출구) , 도보 10분
+				<br />2호선 (강남 1번출구, 역삼 3번출구) , 도보 10분
 				<br />신분당선(강남)
 			</li>
 		</ul>
 </div>
-<div id="map" style="width:500px;height:400px;"></div>
+<div id="map" style="width:100%;height:400px;"></div>
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 

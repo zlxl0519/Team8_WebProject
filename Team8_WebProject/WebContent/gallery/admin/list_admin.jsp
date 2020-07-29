@@ -61,10 +61,12 @@
 	</div>
 	
 	<!-- ===============================검색창================================= -->
-	<form action="list_admin.jsp" method="get">
-		<input value="<%=keyword %>" type="text" name="keyword" placeholder="제목 검색" id="search"/>
-		<button type="submit">검색</button>
-	</form>
+	<div class="right">
+		<form action="list_admin.jsp" method="get">
+			<input value="<%=keyword %>" type="text" name="keyword" placeholder="제목 검색" id="search"/>
+			<button type="submit">검색</button>
+		</form>
+	</div>
 	<!-- ===================================================================== -->
 	
 		<ul class="gallery-list">
@@ -91,6 +93,7 @@
 		</div><!-- btn-down -->
 </div><!-- content -->
 <script>
+
 	var currentPage = 1;
 	var totalPageCount = <%= totalPageCount%>;
 	
