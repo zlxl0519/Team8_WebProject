@@ -44,7 +44,7 @@
 	boolean isSuccess1 = MemberDao.getInstance().insertHuman(dto);
 	boolean isSuccess2 = MemberDao.getInstance().insertDog(dto);
 	
-	
+	MemberDto dto2 = MemberDao.getInstance().getData(id);
 %>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <div class="content">
@@ -60,10 +60,15 @@
 		</p>
 		<div class="center">
 			<table class="table-wrap" style="width : auto!important;">
+				<colgroup>
+					<col />
+					<col width="117px;" />
+					<col />
+				</colgroup>
 				<tr>
 					<td rowspan="3" class="bbn">
 						<div class="profile-img">
-							<%if(dto.getProfile()==null || dto.getProfile().equals("null")){ %>
+							<%if(dto2.getProfile()==null || dto2.getProfile().equals("null")){ %>
 								<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 							<%}else{ %>
 								<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
