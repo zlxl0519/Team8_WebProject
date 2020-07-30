@@ -135,7 +135,7 @@
 				<div class="a">
 					<h6></h6>
 				</div>
-				<p><%=tmp.getAns() %></p>
+				<pre><%=tmp.getAns() %></pre>
 			</div>
 		</li>
 	<%} %>
