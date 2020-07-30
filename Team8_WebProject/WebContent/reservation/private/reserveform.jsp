@@ -48,20 +48,35 @@
 				<li>
 					<label>
 						반려견 이름
-						<input type="text"  name="dogName" id="dogName" value="<%=dto2.getDname() %>" />
+						<input type="text"  name="dogName" id="dogName" 
+						<%if(dto2.getDname() != null) {%>
+							value="<%=dto2.getDname() %>"
+						<%}else{ %>
+							placeholder="강아지 이름을 적어주세요"
+						<%} %> />
 					</label>
 				</li>
 				<li>
 					<label>
 						반려견종
-						<input type="text" name="dogBreed" id="dogBreed" value="<%=dto2.getBreed() %>"/>
+						<input type="text" name="dogBreed" id="dogBreed" 
+						<%if(dto2.getBreed() != null) {%>
+							value="<%=dto2.getBreed() %>"
+						<%}else{ %>
+							placeholder="견종을 적어주세요"
+						<%} %> />
 					</label>
 							
 				</li>
 				<li class="bbn">
 					<label>
 						반려견나이
-						<input type="text" name="dogAge" id="dogAge" value="<%=dto2.getDage() %>" />
+						<input type="text" name="dogAge" id="dogAge" 
+						<%if(dto2.getDage() != 0) {%>
+							value="<%=dto2.getDage() %>"
+						<%}else{ %>
+							placeholder="강아지 나이를 적어주세요"
+						<%} %> />
 					</label>
 				</li>
 			</ul>
@@ -138,7 +153,12 @@
 			showOn:"both", //버튼클릭하거나 포커스가 가면 달력이 나온다.
 			buttonImage:"${pageContext.request.contextPath }/include/img/icon_cal.png",
 			buttonImageOnly:true,
-			buttonText:"날짜 선택"
+			buttonText:"날짜 선택",
+			onClose: function(selectedDate){
+				//체크인 datepicker 가 닫힐때
+				//체크아웃의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+				$("#checkout").datepicker("option", "minDate", selectedDate);
+			}
 		});
 		
 		$("#checkout").datepicker({
@@ -150,7 +170,12 @@
 			showOn:"both", //버튼클릭하거나 포커스가 가면 달력이 나온다.
 			buttonImage:"${pageContext.request.contextPath }/include/img/icon_cal.png",
 			buttonImageOnly:true,
-			buttonText:"날짜 선택"		
+			buttonText:"날짜 선택"	,
+			onClose: function(selectedDate){
+				//체크아웃 datepicker 가 닫힐때
+				//체크인 의 선택할수 있는 최대 날짜(maxDate)를 선택한 시작일로 지정
+				$("#checkin").datepicker("option","maxDate",dateText);
+			}
 		});
 		
 
