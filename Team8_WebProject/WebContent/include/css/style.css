@@ -332,6 +332,15 @@ select{cursor: pointer;}
 	line-height : 1.8em;
 }
 
+.accordion-wrap pre{   
+	width : 98%;
+	overflow: auto;
+    white-space: pre-wrap;
+    display: inline-block;
+    width: 98%;
+}
+
+
 .accordion-q a {color : #696969}
 .accordion-q *,
 .accordion-a * { display : inline-block;}
