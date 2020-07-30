@@ -37,7 +37,7 @@
 	
 	$("#submit").on("click", function(){
 	    if($("#title").val() == ""){
-	    	alert("내용을 입력해주세요");
+	    	alert("제목을 입력해주세요");
 	    	$("#title").focus();
 		      return false;
 	    }

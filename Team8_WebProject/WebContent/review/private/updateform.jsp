@@ -50,11 +50,11 @@
 <script>
 	$("#submit").on("click", function(){
 	    if($("#title").val() == ""){
-	    	alert("내용을 입력해주세요");
+	    	alert("제목을 입력해주세요");
 	    	$("#title").focus();
 		      return false;
 	    }else if($("#content").val() == ""){
-	    	alert("제목을 입력해주세요");
+	    	alert("내용을 입력해주세요");
 	    	$("#content").focus();
 		      return false;
 	    }
