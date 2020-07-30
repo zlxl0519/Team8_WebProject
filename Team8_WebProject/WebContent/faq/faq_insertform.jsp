@@ -11,17 +11,28 @@
 
 	
 	<div class="content">
-		<h2>faq 작성하기</h2>
-		<div class="form-wrap">
-			<br/>
-			<form action="faq_insert.jsp" method="post">
-				<label for="qst">질문</label>
-				<textarea name="qst" id="qst" cols="20" rows="20"></textarea><br/>
-				<label for="ans">답변</label>
-				<textarea name="ans" id="ans" cols="20" rows="20"></textarea><br/>
-				<br/>
-				<button id="submit" type="submit">등록</button>
-			</form>
+		
+		<h2>신규 FAQ 등록</h2>
+	
+		<form action="faq_insert.jsp" method="post">
+		<ul class="review-ul mt30 review-text">
+			<li>
+				<div class="review-wrap">
+					<div class="mt20">
+						<label for="qst">질문</label>
+						<input type="text" name="qst" id="qst" />
+					</div>
+					<div class="mt20">
+						<label for="ans">답변</label>
+						<textarea name="ans" id="ans" class="mt20" cols="40" rows="20" placeholder="답변을 입력해주세요!" onfocus="this.placeholder=''" onblur="this.placeholder='답변을 입력해주세요!'"></textarea>
+					</div>
+				</div>
+			</li>
+		</ul>
+		</form>
+
+		<div class="left">
+			<button id="submit" type="submit" class="mt20">등록</button>
 		</div>
 
 	</div>
