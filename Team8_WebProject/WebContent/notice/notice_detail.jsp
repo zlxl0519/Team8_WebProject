@@ -20,7 +20,7 @@
 <%--공지사항 글 자세히 보기--%>
 
 <div class="content">
-	<h2>QnA 게시판</h2>	
+	<h2>공지사항 글 보기</h2>	
 	<div class="table-wrap boardList bl2">
 		<table>
 		<colgroup>
@@ -98,7 +98,9 @@
 			<%if(id.equals("admin")) {%>
 				<a class="btn-a btn-gray" href="javascript:deleteConfirm(<%=dto.getNum()%>)">삭제</a>
 			<%} %>
-		<%}catch(Exception e){e.printStackTrace(); }%>	
+		<%}catch(Exception e){%>	
+			<a class="btn-a" href="notice_list.jsp">목록</a>
+		<%}%>	
 		
 	</div><!-- left -->
 	</div><!-- bottom-list -->
