@@ -19,22 +19,14 @@
 	String checkout=request.getParameter("checkout");
 	String etc=request.getParameter("etc");
 	
-	//예약 강아지 강아지 테이블에 등록
+	//예약한 강아지를 회원가입할때 입력한 강아지가 맞는지 반려견이름, 종, 나이로 비교해서 그 강아지 번호 구하기
 	MemberDto dto=new MemberDto();
-	dto.setId(id);
 	dto.setDname(dogName);
 	dto.setBreed(dogBreed);
 	dto.setDage(dogAge);
-	boolean isSuccess=MemberDao.getInstance().insertDog(dto);
+	MemberDto mdto=MemberDao.getInstance().getDogNum(dto);
 	
-	//예약한 강아지를 회원가입할때 입력한 강아지가 맞는지 반려견이름, 종, 나이로 비교해서 그 강아지 번호 구하기
-	MemberDto dto2=new MemberDto();
-	dto2.setDname(dogName);
-	dto2.setBreed(dogBreed);
-	dto2.setDage(dogAge);
-	MemberDto mdto=MemberDao.getInstance().getDogNum(dto2);
-	
-	//예약테이블에에 입력할 정보
+	//예약테이블에 입력할 정보
 	ReserveDto rdto=new ReserveDto();
 	rdto.setMember_id(id);
 	rdto.setService(service);
@@ -43,7 +35,7 @@
 	rdto.setEtc(etc);
 	
 	//예약 테이블에 예약 정보 넣기
-	boolean isSuccess2=ReserveDao.getInstance().insert(rdto, mdto);
+	boolean isSuccess=ReserveDao.getInstance().insert(rdto, mdto);
 %>
 <!DOCTYPE html>
 <html>
@@ -53,7 +45,7 @@
 </head><body>
 
 <script>
-	<%if(isSuccess &&isSuccess2){ %>
+	<%if(isSuccess){ %>
 		alert("예약되었습니다.");
 		location.href="${pageContext.request.contextPath }/mypage/private/reserve_status.jsp";
 	<%}else{ %>
