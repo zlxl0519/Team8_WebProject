@@ -46,7 +46,7 @@
 		
 			<ul id="TextBoxDiv">
 				<li>
-					<label>
+					<label>s
 						반려견 이름
 						<input type="text"  name="dogName" id="dogName" value="<%=dto2.getDname() %>" />
 					</label>
