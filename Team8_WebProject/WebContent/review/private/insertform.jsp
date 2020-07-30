@@ -18,12 +18,10 @@
 				</div>
 			</li>
 		</ul>
-		</form>
-
 		<div class="left">
 			<button id="submit" type="submit" class="mt20">등록</button>
 		</div>
-
+		</form>
 	</div>
 	
 <jsp:include page="../../include/footer.jsp"></jsp:include>
