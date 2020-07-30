@@ -242,7 +242,7 @@ select{cursor: pointer;}
 
 .boardList textarea {padding : 0;border : none;}
 .boardList #content {min-height : 500px;border : none!important;}
-#content * {font-family : auto;}
+#content * {font-family : auto;line-height : 1.8em;}
 .boardList #content img {max-width : 100%; height : auto;}
 #smart_editor2 {border : none!important; width : 100%!important;}
 .smart_content {padding : 0!important;}

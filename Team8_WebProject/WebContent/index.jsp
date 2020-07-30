@@ -133,7 +133,5 @@
 	</ul>
 	</section>
 </article>
-
-
 <!-- footer -->
 <jsp:include page="./include/footer.jsp"></jsp:include>

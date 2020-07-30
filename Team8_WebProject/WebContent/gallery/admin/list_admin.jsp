@@ -55,18 +55,26 @@
 %>
 <jsp:include page="../../include/header.jsp"></jsp:include>
 <div class="content">
-	<h2>운영관리 | 호텔일상</h2>
-	<div class="left">
-		<a href="upload_form.jsp"><button>새 글 작성</button></a>
-	</div>
-	
+	<h2>운영관리 | 호텔일상</h2>	
 	<!-- ===============================검색창================================= -->
+	
+	<%-- 검색창 --%>
 	<div class="right">
-		<form action="list_admin.jsp" method="get">
-			<input value="<%=keyword %>" type="text" name="keyword" placeholder="제목 검색" id="search"/>
-			<button type="submit">검색</button>
+	
+	
+	<div class="search-form search-sm">
+		<form action="list_admin.jsp" method="get" style="margin-right : 40px">
+		<label for="keyword">
+				<input value="<%=keyword %>" type="text" name="keyword" placeholder="제목 검색" id="search"/>
+				<button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+		</label>
 		</form>
 	</div>
+	<div class="leftf mt30">
+		<a href="upload_form.jsp"><button>새 글 작성</button></a>
+	</div>
+	</div><!-- right -->
+	
 	<!-- ===================================================================== -->
 	
 		<ul class="gallery-list">
