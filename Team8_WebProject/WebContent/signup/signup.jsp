@@ -63,7 +63,7 @@
 				<tr>
 					<td rowspan="3" class="bbn">
 						<div class="profile-img">
-							<%if(dto.getProfile() == null){ %>
+							<%if(dto.getProfile()==null || dto.getProfile().equals("null")){ %>
 								<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 							<%}else{ %>
 								<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>

@@ -119,7 +119,7 @@
 		<strong>예약을 하지 않으셨습니다.</strong>
 	</p>
 <div>
-			<button onclick="location.href='${pageContext.request.contextPath }/reservation/reserveform.jsp'" class="btn-default">예약하러가기</button>
+			<button onclick="location.href='${pageContext.request.contextPath }/reservation/private/reserveform.jsp'" class="btn-default">예약하러가기</button>
 		</div>
 </div>
 <%} %>

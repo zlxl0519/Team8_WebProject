@@ -74,10 +74,10 @@
 					</span>
 				<div class="review-wrap-users">
 					<div class="review-profile">
-					<%if(tmp.getProfile() != null) {%>
-						<img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/>
-					<%}else{ %>
+					<%if(tmp.getProfile()==null || tmp.getProfile().equals("null")) {%>
 						<img id="profileImage" src="${pageContext.request.contextPath}/include/img/icon_user.png"/>
+					<%}else{ %>
+						<img id="profileImage" src="${pageContext.request.contextPath}<%=tmp.getProfile() %>"/>
 					<%} %>
 					</div>
 					<div class="review-users">
