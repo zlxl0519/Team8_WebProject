@@ -98,13 +98,9 @@
 			<li>
 				<label>기타사항</label>
 				<%if(dto3.getEtc() != null) {%>
-					<pre>
-					<%=dto3.getEtc() %>
-					</pre>
+					<pre><%=dto3.getEtc() %></pre>
 					<%}else{ %>
-					<pre>
-					요청하신 기타사항이 없습니다.
-					</pre>
+					<pre>요청하신 기타사항이 없습니다.</pre>
 				<%} %>
 			</li>
 		</ul>
