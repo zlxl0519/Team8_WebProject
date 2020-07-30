@@ -175,7 +175,9 @@
 
 
 <script>
-/*faq 아코디언*/
+/*faq 아코디언
+ * 리연 추가
+ */
 $(document).ready(function(){
 	  $(".accordion-a").hide();
 	  $(".accordion-q").click(function(){
