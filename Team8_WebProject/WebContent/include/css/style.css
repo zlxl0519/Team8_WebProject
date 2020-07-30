@@ -323,8 +323,9 @@ select{cursor: pointer;}
 .accordion-wrap ul{width : 100%;}
 .accordion-wrap li{position : relative;margin-top: 20px;width : 100%;;text-align : left;}
 .accordion-q, .accordion-a{position : relative;clear : both;padding: 20px 30px 20px 30px; border : 1px solid #f0f0f0;width : 100%; display : inline-block;}
+.accordion-wrap a {font-weight : bold;}
 .accordion-wrap a,
-.accordion-wrap p{
+.accordion-wrap p,.accordion-wrap pre{
 	
 	font-size : 17px;
 	margin-left : 40px;
