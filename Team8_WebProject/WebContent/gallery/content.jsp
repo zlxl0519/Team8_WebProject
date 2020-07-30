@@ -33,9 +33,9 @@
 			</tr>
 				
 	</table>
-	
+</div><!-- table-wrap -->
 	<%--=============================이전글 다음글================================= --%>
-	<div class="bottom-list">
+<div class="bottom-list">
 	<div class="mt20">
 		<div class="left">
 				<%if(dto.getPrevNum()!=0){ %>
@@ -51,7 +51,7 @@
 					<a class="btn-right mute" href="javacript:void(0)"><i class="fas fa-chevron-right"></i></a>
 				<%} %>
 		</div>
-	</div>
-	</div>
-	
+	</div><!-- mt20 -->
+</div><!-- bottom-list -->
+</div>	<!-- content -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
