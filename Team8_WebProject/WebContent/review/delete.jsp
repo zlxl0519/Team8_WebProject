@@ -10,7 +10,7 @@
 	
 	String writer = dto.getWriter();
 	String id = (String)session.getAttribute("id");
-	if(!writer.equals(id)){
+	if(!writer.equals(id)&&!id.equals("admin")){
 		response.sendError(HttpServletResponse.SC_FORBIDDEN,"잘못된 접근입니다!");
 		return;
 	}
