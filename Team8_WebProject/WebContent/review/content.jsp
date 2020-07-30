@@ -39,9 +39,9 @@
 				<div class="review-wrap-users">
 					<div class="review-profile">
 					<%if(dto.getProfile()==null || dto.getProfile().equals("null")) {%>
-						<img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>"/>
-					<%}else{ %>
 						<img id="profileImage" src="${pageContext.request.contextPath}/include/img/icon_user.png"/>
+					<%}else{ %>
+						<img id="profileImage" src="${pageContext.request.contextPath}<%=dto.getProfile() %>"/>
 					<%} %>
 					</div>
 					<div class="review-users">
