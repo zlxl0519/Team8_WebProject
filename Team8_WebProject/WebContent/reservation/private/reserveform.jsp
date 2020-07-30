@@ -48,35 +48,20 @@
 				<li>
 					<label>
 						반려견 이름
-						<input type="text"  name="dogName" id="dogName" 
-						<%if(dto2.getDname() != null) {%>
-							value="<%=dto2.getDname() %>"
-						<%}else{ %>
-							placeholder="강아지 이름을 적어주세요"
-						<%} %> />
+						<input type="text"  name="dogName" id="dogName" value="<%=dto2.getDname() %>" />
 					</label>
 				</li>
 				<li>
 					<label>
 						반려견종
-						<input type="text" name="dogBreed" id="dogBreed" 
-						<%if(dto2.getBreed() != null) {%>
-							value="<%=dto2.getBreed() %>"
-						<%}else{ %>
-							placeholder="견종을 적어주세요"
-						<%} %> />
+						<input type="text" name="dogBreed" id="dogBreed" value="<%=dto2.getBreed() %>" />
 					</label>
 							
 				</li>
 				<li class="bbn">
 					<label>
 						반려견나이
-						<input type="text" name="dogAge" id="dogAge" 
-						<%if(dto2.getDage() != 0) {%>
-							value="<%=dto2.getDage() %>"
-						<%}else{ %>
-							placeholder="강아지 나이를 적어주세요"
-						<%} %> />
+						<input type="text" name="dogAge" id="dogAge" value="<%=dto2.getDage() %>" />
 					</label>
 				</li>
 			</ul>
