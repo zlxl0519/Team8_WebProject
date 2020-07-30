@@ -131,16 +131,7 @@
 		</li>
 	<%} %>
 	</ul>
-		
 	</section>
-	<script>
-	<%
-	boolean isFiltered = (boolean)request.getAttribute("isFiltered");
-	%>
-		<%if(isFiltered){%>
-			alert("잘못된 접근입니다.");
-		<%} %>
-	</script>
 </article>
 <!-- footer -->
 <jsp:include page="./include/footer.jsp"></jsp:include>
