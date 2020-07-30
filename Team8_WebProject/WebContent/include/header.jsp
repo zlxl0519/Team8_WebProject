@@ -21,6 +21,10 @@
 	href="${pageContext.request.contextPath }/include/css/base.css">
 	<!-- fontAwesome -->
 	  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" />
+	  
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/include/img/favicon.ico">	  
+<link rel="icon" href="myicon.ico" type="image/x-icon">
+	  
 <!-- IE9 이전 버전 / 로컬에서는 실행되지 않음-->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
