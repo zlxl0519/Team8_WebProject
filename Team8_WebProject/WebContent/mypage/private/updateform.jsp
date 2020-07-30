@@ -281,7 +281,7 @@
 					$("#email02").attr("disabled",true); //비활성화 
 					} }); });
 	
-	
+	var canUse = false;
 	//==========  비밀번호 재확인 일치불일치 =============
 		$("#alert-success").hide();
 		$("#alert-danger").hide();
@@ -303,30 +303,16 @@
 				}
 			}
 		})
-	
-		
-	//=========아이디 영문/숫자 제한==============
-		var enNumCheck = RegExp(/[^A-Za-z0-9]$/);
-		$("#idAlert").hide();
-		$("#id").keyup(function(){
-			if(enNumCheck.test($("#id").val()) || $("#id").val().length < 5){
-				$("#idAlert").show();
-				$("#submit").attr("disabled", true);
-				canUseId2 = false;
-			}else{
-				$("#idAlert").hide();
-				$("#submit").removeAttr("disabled");
-				 canUseId2 = true;
-			}
-		})
-		
-		
 		
 	//=========비밀번호 영문/숫자/특수문자 제한===========
- 	var enNumSpkCheck = RegExp(/[^A-Za-z0-9~!@#$%^&*]$/);
+		var pattern1 = /[0-9]/;
+		var pattern2 = /[a-zA-Z]/;
+		var pattern3 = /[~!@#$%^&*]/; 
+
 		$("#pwdAlert").hide();
 		$("#pwdnew").keyup(function(){
-			if(enNumSpkCheck.test($("#pwdnew").val()) || $("#pwdnew").val().length < 8){
+			if(!pattern1.test($("#pwdnew").val())||!pattern2.test($("#pwdnew").val())
+					||!pattern3.test($("#pwdnew").val())||$("#pwdnew").val().length<8){
 				$("#pwdAlert").show();
 				$("#submit").attr("disabled", true);
 				 canUse = false;
@@ -335,7 +321,7 @@
 				$("#submit").removeAttr("disabled");
 				 canUse = true;
 			}
-		}) 
+		})
 		
 		
 	//=========연락처 숫자 제한===========
@@ -351,13 +337,28 @@
 				 canUse = true; 
 			}
 		})
+
+
 		
 		//=========기타...등등===========
+			
 		$("#submit").on("click", function(){
-			if($("#pwdnew").val() == " " || $("#pwdnew").val() != $("#pwdnew2").val()){
+			if($("#pwdnew").val() != $("#pwdnew2").val()){
 				alert("비밀번호를 확인하세요.")
 				$("#pwdnew").focus();
 				return false;
+			}else if($("#pwdnew").val().length < 8){
+				if($("#pwdnew").val() != ""){
+					alert("특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자 ~!@#$%^&* 만 사용가능합니다.")
+					$("#pwdnew").focus();
+					return false;
+				}
+			}else if(!pattern1.test($("#pwdnew").val())||!pattern2.test($("#pwdnew").val())||!pattern3.test($("#pwdnew").val())){
+				if($("#pwdnew").val() != ""){
+					alert("특수문자는 8자 이상 16자리 이하의 영문/숫자/특수문자 ~!@#$%^&* 만 사용가능합니다.")
+					$("#pwdnew").focus();
+					return false;
+				}
 			}else if($("#email01").val() == "" || $("#email02").val() == ""){
 				alert("이메일을 확인하세요")
 				$("#email").focus();
@@ -369,8 +370,36 @@
 			}else if($("#name").val() == ""){
 				alert("이름을 확인하세요")
 				$("#name").focus();
+			}else if(!canUse){
+				alert("잘못입력하신 가입란이 있습니다. 다시 확인해주세요.")
+				return false;
 			}
 		})
+		
+	//==========  비밀번호 재확인 일치불일치 =============
+		$("#alert-success").hide();
+		$("#alert-danger").hide();
+		
+		$("#signup").keyup(function(){
+			var pwd1 = $("#pwdnew").val();
+			var pwd2 = $("#pwdnew2").val();
+			if(pwd1!="" || pwd2!=""){
+				if(pwd1==pwd2){
+					$("#alert-sucess").show();
+					$("#alert-danger").hide();
+					$("#submit").removeAttr("disabled");
+					 canUse = true;
+				}else{
+					$("#alert-success").hide(); 
+					$("#alert-danger").show();
+					$("#submit").attr("disabled", true);
+					 canUse = false;
+				}
+			}
+			
+			
+		});
+		
 		
 	</script>
 
