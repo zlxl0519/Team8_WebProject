@@ -41,7 +41,7 @@
 				<li class="profile-wrap bbn">
 					<div class="profile-box">
 						<div class="profile-img">
-							<%if(dto.getProfile()==null){ %>
+							<%if(dto.getProfile()==null || dto.getProfile().equals("null")){ %>
 							<img id="profileImage"
 								src="${pageContext.request.contextPath }/include/img/icon_user.png" />
 							<%}else{ %>

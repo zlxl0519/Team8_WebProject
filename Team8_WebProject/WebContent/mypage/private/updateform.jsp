@@ -51,7 +51,7 @@
 				<div class="profile-box">
 				<label for="image">프로필 이미지</label>
 					<div class="profile-img">
-						<%if(dto.getProfile()==null){ %>
+						<%if(dto.getProfile()==null || dto.getProfile().equals("null")){ %>
 							<img id="profileImage" src="${pageContext.request.contextPath }/include/img/icon_user.png"/>
 						<%}else{ %>
 							<img id="profileImage" src="${pageContext.request.contextPath }<%=dto.getProfile() %>"/>
@@ -145,11 +145,7 @@
 			</li>
 			<li>
 				<label for="dage">반려견 나이</label>
-				<%if(dto2.getDage() != 0) {%>
 				<input type="number" name="dage" id="dage" value="<%=dto2.getDage() %>" />
-				<%}else{ %>
-				<input type="number" name="dage" id="dage" />
-				<%} %>
 				<span>&nbsp;살</span>
 			</li>
 			<li>
