@@ -3,7 +3,7 @@
 <jsp:include page="../include/header.jsp"></jsp:include>
 
 <div class="content guide">
-<h3 class="review center mb20"><strong>이용안내</strong>  </h3>
+<h3 class="review center"><strong>이용안내</strong>  </h3>
 	<h4><i class="fas fa-clock"></i>
 	<strong>운영시간</strong><br />
 	<span>매일 10:30~21:00</span>

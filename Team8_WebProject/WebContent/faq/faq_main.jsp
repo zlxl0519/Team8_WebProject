@@ -135,7 +135,7 @@
 				<div class="a">
 					<h6></h6>
 				</div>
-				<p><%=tmp.getAns() %></p>
+				<pre><%=tmp.getAns() %></pre>
 			</div>
 		</li>
 	<%} %>
@@ -175,7 +175,9 @@
 
 
 <script>
-/*faq 아코디언*/
+/*faq 아코디언
+ * 리연 추가
+ */
 $(document).ready(function(){
 	  $(".accordion-a").hide();
 	  $(".accordion-q").click(function(){

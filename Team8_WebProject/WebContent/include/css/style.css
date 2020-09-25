@@ -242,7 +242,7 @@ select{cursor: pointer;}
 
 .boardList textarea {padding : 0;border : none;}
 .boardList #content {min-height : 500px;border : none!important;}
-#content * {font-family : auto;}
+#content * {font-family : auto;line-height : 1.8em;}
 .boardList #content img {max-width : 100%; height : auto;}
 #smart_editor2 {border : none!important; width : 100%!important;}
 .smart_content {padding : 0!important;}
@@ -323,13 +323,23 @@ select{cursor: pointer;}
 .accordion-wrap ul{width : 100%;}
 .accordion-wrap li{position : relative;margin-top: 20px;width : 100%;;text-align : left;}
 .accordion-q, .accordion-a{position : relative;clear : both;padding: 20px 30px 20px 30px; border : 1px solid #f0f0f0;width : 100%; display : inline-block;}
+.accordion-wrap a {font-weight : bold;}
 .accordion-wrap a,
-.accordion-wrap p{
+.accordion-wrap p,.accordion-wrap pre{
 	
 	font-size : 17px;
 	margin-left : 40px;
 	line-height : 1.8em;
 }
+
+.accordion-wrap pre{   
+	width : 98%;
+	overflow: auto;
+    white-space: pre-wrap;
+    display: inline-block;
+    width: 98%;
+}
+
 
 .accordion-q a {color : #696969}
 .accordion-q *,

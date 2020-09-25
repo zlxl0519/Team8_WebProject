@@ -26,7 +26,7 @@
 	dto.setDage(dogAge);
 	MemberDto mdto=MemberDao.getInstance().getDogNum(dto);
 	
-	//예약테이블에에 입력할 정보
+	//예약테이블에 입력할 정보
 	ReserveDto rdto=new ReserveDto();
 	rdto.setMember_id(id);
 	rdto.setService(service);

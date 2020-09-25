@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter({"/admin/*", "/gallery/admin/*", "/notice/private/*", "/qna/private/*", "/review/private/*"}) //어드민만 접근 가능한 곳 맵핑하기
+@WebFilter({"/admin/*", "/gallery/admin/*", "/notice/private/*", "/faq/faq_insert.jsp", "/faq/faq_insertform.jsp"}) //어드민만 접근 가능한 곳 맵핑하기
 public class AdminFilter implements Filter{
 
 	@Override

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter() //=============로그인 맵핑할 때 어노테이션 추가하기================
+@WebFilter({"/qna/private/*", "/review/private/*", "/mypage/private/*", "/reservation/private/*"}) //=============로그인 맵핑할 때 어노테이션 추가하기================
 public class LoginFilter implements Filter{
 
 	@Override
@@ -39,7 +39,7 @@ public class LoginFilter implements Filter{
 			//로그인 폼으로 강제 리다이렉트
 			HttpServletResponse resp = (HttpServletResponse)response;
 			String cpath = req.getContextPath();
-			resp.sendRedirect(cpath+"/test/loginform.jsp");
+			resp.sendRedirect(cpath+"/users/loginform.jsp");
 		}
 		
 	}

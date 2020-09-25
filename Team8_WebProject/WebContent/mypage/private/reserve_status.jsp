@@ -98,13 +98,9 @@
 			<li>
 				<label>기타사항</label>
 				<%if(dto3.getEtc() != null) {%>
-					<pre>
-					<%=dto3.getEtc() %>
-					</pre>
+					<pre><%=dto3.getEtc() %></pre>
 					<%}else{ %>
-					<pre>
-					요청하신 기타사항이 없습니다.
-					</pre>
+					<pre>요청하신 기타사항이 없습니다.</pre>
 				<%} %>
 			</li>
 		</ul>
@@ -119,7 +115,7 @@
 		<strong>예약을 하지 않으셨습니다.</strong>
 	</p>
 <div>
-			<button onclick="location.href='${pageContext.request.contextPath }/reservation/reserveform.jsp'" class="btn-default">예약하러가기</button>
+			<button onclick="location.href='${pageContext.request.contextPath }/reservation/private/reserveform.jsp'" class="btn-default">예약하러가기</button>
 		</div>
 </div>
 <%} %>
